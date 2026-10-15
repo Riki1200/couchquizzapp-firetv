@@ -13,9 +13,10 @@ import { Platform } from 'react-native';
  */
 const VEGA_SERVER: { httpUrl: string; wsUrl: string } | null = { httpUrl: 'http://localhost:8787', wsUrl: 'ws://localhost:8787' };
 
-const env = typeof process !== 'undefined' ? process.env : {};
-const httpUrl = env.EXPO_PUBLIC_HTTP_URL;
-const wsUrl = env.EXPO_PUBLIC_WS_URL;
+// Written as literal `process.env.EXPO_PUBLIC_*` so Expo can inline them at build time.
+declare const process: { env: Record<string, string | undefined> } | undefined;
+const httpUrl = typeof process !== 'undefined' ? process.env.EXPO_PUBLIC_HTTP_URL : undefined;
+const wsUrl = typeof process !== 'undefined' ? process.env.EXPO_PUBLIC_WS_URL : undefined;
 
 export const GAME_SERVER: { httpUrl: string; wsUrl: string } | null =
   httpUrl && wsUrl ? { httpUrl, wsUrl } : Platform.OS === 'web' ? null : VEGA_SERVER;
