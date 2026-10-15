@@ -1,23 +1,34 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { QuitDialog } from './components/QuitDialog';
 import { GameProvider, useGame } from './game/GameContext';
-import { useBackHandler } from './hooks/useBackHandler';
 import { scaledPixels } from './hooks/useScale';
 import CustomTopicScreen from './screens/CustomTopicScreen';
 import LobbyScreen from './screens/LobbyScreen';
+import PodiumScreen from './screens/PodiumScreen';
+import QuestionScreen from './screens/QuestionScreen';
+import RevealScreen from './screens/RevealScreen';
 import SetupScreen, { PRESET_TOPICS } from './screens/SetupScreen';
 import { colors } from './theme/colors';
 
 // The game is a short linear flow, so a screen switch is simpler than a navigation stack
 // and behaves the same on Vega, Android TV and web.
-type Screen = 'setup' | 'customTopic' | 'lobby' | 'game';
+type Screen = 'setup' | 'customTopic' | 'lobby' | 'question' | 'reveal' | 'podium';
 
 function Screens() {
-  const { state, setTopic, openLobby } = useGame();
+  const game = useGame();
+  const { state } = game;
   const [screen, setScreen] = useState<Screen>('setup');
   const [setupFocus, setSetupFocus] = useState<'topics' | 'difficulty'>('topics');
+  const [quitOpen, setQuitOpen] = useState(false);
 
-  // Each screen except Setup registers its own Back handler; on Setup the system handles Back (exits the app).
+  const goToSetup = () => {
+    setQuitOpen(false);
+    setSetupFocus('topics');
+    setScreen('setup');
+  };
+
+  // Each screen except Setup handles Back itself; on Setup the system handles Back (exits the app).
   switch (screen) {
     case 'setup':
       return (
@@ -25,7 +36,7 @@ function Screens() {
           initialFocus={setupFocus}
           onCustomTopic={() => setScreen('customTopic')}
           onCreateRoom={() => {
-            openLobby();
+            game.openLobby();
             setScreen('lobby');
           }}
         />
@@ -35,38 +46,66 @@ function Screens() {
         <CustomTopicScreen
           initialTopic={PRESET_TOPICS.some((t) => t.label === state.topic) ? '' : (state.topic ?? '')}
           onDone={(topic) => {
-            setTopic(topic);
+            game.setTopic(topic);
             setSetupFocus('difficulty');
             setScreen('setup');
           }}
-          onCancel={() => {
-            setSetupFocus('topics');
-            setScreen('setup');
-          }}
+          onCancel={goToSetup}
         />
       );
     case 'lobby':
       return (
         <LobbyScreen
-          onChangeTopic={() => {
-            setSetupFocus('topics');
-            setScreen('setup');
+          onChangeTopic={goToSetup}
+          onRetryGeneration={game.openLobby}
+          onStart={() => {
+            game.startQuestion(0);
+            setScreen('question');
           }}
-          onRetryGeneration={openLobby}
-          onStart={() => setScreen('game')}
         />
       );
-    case 'game':
-      return <GamePlaceholder onBack={() => setScreen('lobby')} />;
+    case 'question':
+    case 'reveal':
+      return (
+        <View style={styles.fill}>
+          {screen === 'question' ? (
+            <QuestionScreen
+              navActive={!quitOpen}
+              onBack={quitOpen ? null : () => setQuitOpen(true)}
+              onReveal={() => {
+                game.reveal();
+                setScreen('reveal');
+              }}
+            />
+          ) : (
+            <RevealScreen
+              navActive={!quitOpen}
+              onBack={quitOpen ? null : () => setQuitOpen(true)}
+              onNext={() => {
+                if (state.questionIndex + 1 < state.questions.length) {
+                  game.startQuestion(state.questionIndex + 1);
+                  setScreen('question');
+                } else {
+                  game.endGame();
+                  setScreen('podium');
+                }
+              }}
+            />
+          )}
+          {quitOpen ? <QuitDialog onKeepPlaying={() => setQuitOpen(false)} onQuit={goToSetup} /> : null}
+        </View>
+      );
+    case 'podium':
+      return <PodiumScreen onPlayAgain={goToSetup} />;
   }
 }
 
-// Replaced by the Question / Reveal / Podium screens on Day 3.
-function GamePlaceholder({ onBack }: { onBack: () => void }) {
-  useBackHandler(onBack);
+function ConnectionBanner() {
+  const { state } = useGame();
+  if (state.connected) return null;
   return (
-    <View style={styles.placeholder}>
-      <Text style={styles.placeholderText}>Game screens arrive on Day 3. Press Back to return to the lobby.</Text>
+    <View style={styles.banner}>
+      <Text style={styles.bannerText}>Reconnecting to the game server…</Text>
     </View>
   );
 }
@@ -74,12 +113,24 @@ function GamePlaceholder({ onBack }: { onBack: () => void }) {
 export default function CouchQuizApp() {
   return (
     <GameProvider>
-      <Screens />
+      <View style={styles.fill}>
+        <Screens />
+        <ConnectionBanner />
+      </View>
     </GameProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  placeholder: { flex: 1, backgroundColor: colors.background, alignItems: 'center', justifyContent: 'center' },
-  placeholderText: { color: colors.text, fontSize: scaledPixels(36) },
+  fill: { flex: 1, backgroundColor: colors.background },
+  banner: {
+    position: 'absolute',
+    top: scaledPixels(24),
+    alignSelf: 'center',
+    backgroundColor: colors.error,
+    borderRadius: scaledPixels(12),
+    paddingVertical: scaledPixels(12),
+    paddingHorizontal: scaledPixels(28),
+  },
+  bannerText: { color: colors.text, fontSize: scaledPixels(28), fontWeight: 'bold' },
 });

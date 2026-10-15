@@ -1,18 +1,20 @@
-import { Difficulty, Room, ServerEvent } from './types';
+import { Difficulty, HostEvent, Room } from './types';
+
+/** Server events plus the client's own connection state. */
+export type GameClientEvent = HostEvent | { type: 'connection'; connected: boolean };
 
 /**
  * What the TV (the host) can do. The TV owns the game phase; the server stores
  * room state, collects phone answers, scores them and generates questions.
- * Implemented by MockGameClient (local bots) and, from Day 4, the WebSocket client.
+ * Implemented by MockGameClient (local bots, no server) and WsGameClient.
  */
 export interface GameClient {
   createRoom(): Promise<Room>;
-  /** Sets the topic and starts question generation in the background. */
+  /** Sets the topic, resets scores and starts question generation in the background. */
   configure(topic: string, difficulty: Difficulty): void;
-  /** timeLimitMs is null in kids mode (no timer). */
-  startQuestion(index: number, timeLimitMs: number | null): void;
+  startQuestion(index: number): void;
   reveal(index: number): void;
   endGame(): void;
-  subscribe(listener: (event: ServerEvent) => void): () => void;
+  subscribe(listener: (event: GameClientEvent) => void): () => void;
   close(): void;
 }

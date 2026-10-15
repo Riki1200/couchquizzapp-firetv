@@ -55,7 +55,9 @@ export default function LobbyScreen({ onChangeTopic, onStart, onRetryGeneration 
               {generation === 'ready'
                 ? `✓ ${QUESTION_COUNT} questions about “${topic}” are ready`
                 : generation === 'failed'
-                  ? '✗ The AI host could not write the questions.'
+                  ? room
+                    ? '✗ The AI host could not write the questions.'
+                    : '✗ Could not reach the game server.'
                   : `🎙️ The AI host is writing ${QUESTION_COUNT} questions about “${topic}”…`}
             </Text>
           </View>

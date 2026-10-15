@@ -20,6 +20,7 @@ config.resolver = {
   ],
   extraNodeModules: {
     '@multi-tv/shared-ui': path.resolve(__dirname, '../../packages/shared-ui/src'),
+    '@couch-quiz/protocol': path.resolve(__dirname, '../../packages/protocol'),
   },
 };
 

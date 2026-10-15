@@ -1,30 +1,42 @@
 import React, { createContext, useContext, useEffect, useMemo, useReducer, useRef } from 'react';
-import { GameClient } from './GameClient';
-import { MockGameClient } from './MockGameClient';
-import { Difficulty, GenerationStatus, Player, Question, Room, ServerEvent } from './types';
+import { createGameClient } from './createGameClient';
+import { GameClient, GameClientEvent } from './GameClient';
+import { Award, Difficulty, GenerationStatus, Player, PlayerResult, Question, Room } from './types';
 
 export interface GameState {
   room: Room | null;
+  connected: boolean;
   players: Player[];
   topic: string | null;
   difficulty: Difficulty | null;
   generation: GenerationStatus;
   questions: Question[];
+  questionIndex: number;
+  answeredIds: string[];
+  /** Results of the current question once revealed. */
+  results: PlayerResult[] | null;
+  awards: Award[] | null;
 }
 
 type Action =
   | { type: 'roomCreated'; room: Room }
   | { type: 'setTopic'; topic: string }
   | { type: 'setDifficulty'; difficulty: Difficulty }
-  | ServerEvent;
+  | { type: 'questionStarted'; index: number }
+  | GameClientEvent;
 
 const initialState: GameState = {
   room: null,
+  connected: true,
   players: [],
   topic: null,
   difficulty: null,
   generation: 'idle',
   questions: [],
+  questionIndex: 0,
+  answeredIds: [],
+  results: null,
+  awards: null,
 };
 
 function reducer(state: GameState, action: Action): GameState {
@@ -35,13 +47,20 @@ function reducer(state: GameState, action: Action): GameState {
       return { ...state, topic: action.topic };
     case 'setDifficulty':
       return { ...state, difficulty: action.difficulty };
+    case 'questionStarted':
+      return { ...state, questionIndex: action.index, answeredIds: [], results: null, awards: null };
+    case 'connection':
+      return { ...state, connected: action.connected };
     case 'players':
       return { ...state, players: action.players };
     case 'generation':
       return { ...state, generation: action.status, questions: action.questions ?? [] };
-    default:
-      // answerProgress / reveal / gameOver are handled by the game screens (Day 3).
-      return state;
+    case 'answerProgress':
+      return action.index === state.questionIndex ? { ...state, answeredIds: action.answeredPlayerIds } : state;
+    case 'reveal':
+      return action.index === state.questionIndex ? { ...state, results: action.results } : state;
+    case 'gameOver':
+      return { ...state, awards: action.awards };
   }
 }
 
@@ -51,12 +70,15 @@ interface GameContextValue {
   setDifficulty: (difficulty: Difficulty) => void;
   /** Creates the room the first time, then (re)starts question generation for the chosen topic. */
   openLobby: () => Promise<void>;
+  startQuestion: (index: number) => void;
+  reveal: () => void;
+  endGame: () => void;
 }
 
 const GameContext = createContext<GameContextValue | null>(null);
 
 export function GameProvider({ children }: { children: React.ReactNode }) {
-  const clientRef = useRef<GameClient>(new MockGameClient());
+  const clientRef = useRef<GameClient>(createGameClient());
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
@@ -68,19 +90,29 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
     };
   }, []);
 
-  const value = useMemo<GameContextValue>(
-    () => ({
+  const value = useMemo<GameContextValue>(() => {
+    const client = clientRef.current;
+    return {
       state,
       setTopic: (topic) => dispatch({ type: 'setTopic', topic }),
       setDifficulty: (difficulty) => dispatch({ type: 'setDifficulty', difficulty }),
       openLobby: async () => {
-        const client = clientRef.current;
-        if (!state.room) dispatch({ type: 'roomCreated', room: await client.createRoom() });
-        client.configure(state.topic!, state.difficulty!);
+        try {
+          if (!state.room) dispatch({ type: 'roomCreated', room: await client.createRoom() });
+          client.configure(state.topic!, state.difficulty!);
+        } catch (error) {
+          console.warn('[game] could not open the lobby', error);
+          dispatch({ type: 'generation', status: 'failed' }); // the lobby offers "Try again"
+        }
       },
-    }),
-    [state],
-  );
+      startQuestion: (index) => {
+        dispatch({ type: 'questionStarted', index });
+        client.startQuestion(index);
+      },
+      reveal: () => client.reveal(state.questionIndex),
+      endGame: () => client.endGame(),
+    };
+  }, [state]);
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 }

@@ -1,10 +1,12 @@
 {
-  "name": "react-native-multi-tv-app-sample",
+  "name": "couch-quiz",
   "version": "1.0.0",
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "backend",
+    "infra"
   ],
   "packageManager": "yarn@4.5.0",
   "resolutions": {
@@ -29,9 +31,12 @@
     "clean:all": "yarn workspaces foreach -A run clean && rm -rf node_modules",
     "bootstrap": "yarn install && yarn build:all",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "prepare": "husky"
+    "prepare": "husky",
+    "dev:server": "yarn workspace @couch-quiz/backend dev",
+    "dev:controller": "yarn workspace @couch-quiz/controller dev"
   },
   "devDependencies": {
+    "esbuild": "^0.28.2",
     "husky": "^9.1.6",
     "prettier": "^3.3.3"
   }
