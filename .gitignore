@@ -31,3 +31,4 @@ cdk.out/
 
 # CDK outputs (environment-specific)
 infra/cdk-outputs.json
+bank-review/

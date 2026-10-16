@@ -15,7 +15,7 @@ const lambda = new LambdaClient({});
 
 const game = new GameService({
   store: new DynamoStore(TABLE_NAME!),
-  // AI_API=mantle: OpenAI-compatible bedrock-mantle endpoint (e.g. Google Gemma); otherwise the Converse API.
+  // AI_API=mantle: OpenAI-compatible bedrock-mantle endpoint (e.g. Mistral, Gemma); otherwise the Converse API.
   ai: process.env.AI_API === 'mantle' ? new MantleHostAi() : new BedrockHostAi(),
   controllerUrl: CONTROLLER_URL ?? '',
   publicUrls: { httpUrl: PUBLIC_HTTP_URL ?? '', wsUrl: PUBLIC_WS_URL ?? '' },

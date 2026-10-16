@@ -6,7 +6,8 @@
     "dev": "tsx watch src/local/server.ts",
     "typecheck": "tsc --noEmit",
     "expand-bank": "tsx scripts/expand-bank.ts",
-    "try-ai": "tsx scripts/try-ai.ts"
+    "try-ai": "tsx scripts/try-ai.ts",
+    "merge-bank": "tsx scripts/merge-bank.ts"
   },
   "dependencies": {
     "@aws-crypto/sha256-js": "^5.2.0",

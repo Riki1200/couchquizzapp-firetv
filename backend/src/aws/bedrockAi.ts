@@ -32,10 +32,10 @@ export class BedrockHostAi implements HostAi {
   private client = new BedrockRuntimeClient({ maxAttempts: 4, retryMode: 'adaptive' });
   private modelId = process.env.MODEL_ID ?? DEFAULT_MODEL_ID;
 
-  writeQuestions(topic: string, difficulty: Difficulty, language: Language, count: number): Promise<Question[]> {
+  writeQuestions(topic: string, difficulty: Difficulty, language: Language, count: number, avoid?: string[]): Promise<Question[]> {
     return withValidationRetry(
       (feedback) =>
-        this.callTool(QUESTIONS_SYSTEM_PROMPT, questionsUserPrompt(topic, difficulty, language, count), QUESTIONS_TOOL, feedback, 4000),
+        this.callTool(QUESTIONS_SYSTEM_PROMPT, questionsUserPrompt(topic, difficulty, language, count, avoid), QUESTIONS_TOOL, feedback, 4000),
       (input) => parseQuestions(input, count),
     );
   }

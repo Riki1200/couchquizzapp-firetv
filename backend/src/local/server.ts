@@ -3,7 +3,7 @@
 // on the same Wi-Fi play without AWS.
 //
 //   yarn dev:server                 mock AI (bundled "Space for kids" questions)
-//   AI=mantle yarn dev:server       Amazon Bedrock, Google Gemma via bedrock-mantle (local AWS credentials)
+//   AI=mantle yarn dev:server       Amazon Bedrock, Mistral Large 3 via bedrock-mantle (local AWS credentials)
 //   AI=bedrock yarn dev:server      Amazon Bedrock Converse API (e.g. Amazon Nova)
 import { randomUUID } from 'crypto';
 import { createServer, IncomingMessage, ServerResponse } from 'http';

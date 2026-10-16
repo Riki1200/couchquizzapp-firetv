@@ -27,7 +27,7 @@ export class CouchQuizStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
     const modelId: string = this.node.tryGetContext('modelId');
-    // "mantle": OpenAI-compatible bedrock-mantle endpoint (Google Gemma…); "converse": Bedrock Converse API (Amazon Nova…).
+    // "mantle": OpenAI-compatible bedrock-mantle endpoint (Mistral, Gemma…); "converse": Bedrock Converse API (Amazon Nova…).
     const aiApi: string = this.node.tryGetContext('aiApi') ?? 'converse';
 
     // ---------- Storage ----------

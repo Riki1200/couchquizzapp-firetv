@@ -1,7 +1,7 @@
 {
   "app": "npx tsx bin/app.ts",
   "context": {
-    "modelId": "google.gemma-3-27b-it",
+    "modelId": "mistral.mistral-large-3-675b-instruct",
     "aiApi": "mantle"
   }
 }

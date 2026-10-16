@@ -18,7 +18,7 @@ import {
   withValidationRetry,
 } from '../game/ai';
 
-const DEFAULT_MODEL_ID = 'google.gemma-3-27b-it';
+const DEFAULT_MODEL_ID = 'mistral.mistral-large-3-675b-instruct';
 
 interface JsonSchema {
   name: string;
@@ -28,13 +28,14 @@ interface JsonSchema {
 
 /**
  * AI host on Amazon Bedrock through the bedrock-mantle endpoint (OpenAI-compatible Chat
- * Completions), used for models such as Google Gemma. Requests are signed with SigV4 using the
+ * Completions), used for models such as Mistral Large 3 or Google Gemma. Requests are signed with SigV4 using the
  * Lambda role (or local AWS credentials) — no API keys. The model must answer with JSON that
  * matches a schema (`response_format: json_schema`); the output is then validated with zod and
  * retried with the validation errors as feedback, exactly like the Converse-based host.
  */
 export class MantleHostAi implements HostAi {
-  private modelId = process.env.MODEL_ID ?? DEFAULT_MODEL_ID;
+  constructor(private modelId: string = process.env.MODEL_ID ?? DEFAULT_MODEL_ID) {}
+
   private region = process.env.AWS_REGION ?? 'us-east-1';
   private url = new URL(`https://bedrock-mantle.${this.region}.api.aws/v1/chat/completions`);
   private signer = new SignatureV4({
@@ -44,10 +45,10 @@ export class MantleHostAi implements HostAi {
     sha256: Sha256,
   });
 
-  writeQuestions(topic: string, difficulty: Difficulty, language: Language, count: number): Promise<Question[]> {
+  writeQuestions(topic: string, difficulty: Difficulty, language: Language, count: number, avoid?: string[]): Promise<Question[]> {
     return withValidationRetry(
       (feedback) =>
-        this.callJson(QUESTIONS_SYSTEM_PROMPT, questionsUserPrompt(topic, difficulty, language, count), QUESTIONS_TOOL, feedback, 4000),
+        this.callJson(QUESTIONS_SYSTEM_PROMPT, questionsUserPrompt(topic, difficulty, language, count, avoid), QUESTIONS_TOOL, feedback, 4000),
       (input) => parseQuestions(input, count),
     );
   }
@@ -60,7 +61,8 @@ export class MantleHostAi implements HostAi {
     );
   }
 
-  private async callJson(
+  /** One JSON-schema answer from the model (also used by the bank review script). */
+  async callJson(
     system: string,
     prompt: string,
     format: JsonSchema,
