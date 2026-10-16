@@ -310,6 +310,26 @@ button {
   place-items: center;
 }
 
+.double {
+  margin: 0;
+  align-self: flex-start;
+  background: var(--accent);
+  color: var(--bg);
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.streak {
+  margin: 0;
+  background: #f97316;
+  color: var(--text);
+  font-weight: 800;
+  font-size: 20px;
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
 /* Full-screen flash when the answer is revealed. */
 .flash {
   position: fixed;

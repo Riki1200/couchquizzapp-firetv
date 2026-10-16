@@ -3,7 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { DefaultFocus, SpatialNavigationRoot } from 'react-tv-space-navigation';
 import { CountdownButton } from '../components/Focusable';
 import { AnswerGrid, HostBubble, MiniAvatar } from '../components/GamePieces';
-import { CountUp, FadeIn } from '../components/Motion';
+import { FadeIn } from '../components/Motion';
+import { Leaderboard } from '../components/Leaderboard';
 import { Screen } from '../components/Screen';
 import { useGame } from '../game/GameContext';
 import { useBackHandler } from '../hooks/useBackHandler';
@@ -30,7 +31,6 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
   useBackHandler(onBack);
 
   if (!question) return null;
-  const standings = [...players].sort((a, b) => b.score - a.score).slice(0, 3);
 
   return (
     <SpatialNavigationRoot isActive={navActive}>
@@ -54,6 +54,7 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
                   <MiniAvatar
                     key={p.id}
                     player={p}
+                    streak={result?.streak}
                     badge={result?.correct ? `+${result.points}` : '✗'}
                     badgeColor={result?.correct ? colors.success : colors.error}
                   />
@@ -63,16 +64,12 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
           </View>
 
           <View style={styles.side}>
-            <View style={styles.standings}>
-              {standings.map((p, i) => (
-                <FadeIn key={p.id} delay={500 + i * 120} distance={12} style={styles.standingRow}>
-                  <Text style={styles.standing}>
-                    {i + 1}. {p.avatar} {p.name} —{' '}
-                  </Text>
-                  <CountUp value={p.score} style={styles.standing} />
-                </FadeIn>
-              ))}
-            </View>
+            {results !== null ? (
+              <FadeIn delay={400} style={styles.standings}>
+                <Text style={styles.standingsTitle}>{t('reveal.standings')}</Text>
+                <Leaderboard players={players} results={results} />
+              </FadeIn>
+            ) : null}
             <DefaultFocus>
               <CountdownButton
                 label={isLast ? t('reveal.results') : t('reveal.next')}
@@ -97,7 +94,6 @@ const styles = StyleSheet.create({
   players: { flexDirection: 'row', gap: scaledPixels(12), flex: 1 },
   counting: { color: colors.textTertiary, fontSize: scaledPixels(32) },
   side: { alignItems: 'flex-end', gap: scaledPixels(16) },
-  standings: { alignItems: 'flex-end' },
-  standingRow: { flexDirection: 'row' },
-  standing: { color: colors.textSecondary, fontSize: scaledPixels(28), fontWeight: 'bold' },
+  standings: { alignItems: 'flex-start' },
+  standingsTitle: { color: colors.textTertiary, fontSize: scaledPixels(24), fontWeight: 'bold', marginBottom: scaledPixels(8) },
 });

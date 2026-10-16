@@ -21,6 +21,7 @@ import {
   QuestionSource,
   bankKey,
   bankPool,
+  isFinalQuestion,
   isLanguage,
   pickGame,
   pointsFor,
@@ -327,6 +328,7 @@ export class GameService {
       text: question.text,
       choices: question.choices,
       timeLeftMs: limit,
+      double: isFinalQuestion(index, room.questions.length),
     });
   }
 
@@ -334,18 +336,19 @@ export class GameService {
     if (room.phase !== 'question' || room.questionIndex !== index) return; // already revealed
     const question = room.questions[index];
     const limit = timeLimitMs(room.difficulty);
+    const final = isFinalQuestion(index, room.questions.length);
     const answers = await this.deps.store.getAnswers(room.roomCode, index);
     const players = await this.deps.store.getPlayers(room.roomCode);
 
     const results: PlayerResult[] = players.map((p) => {
       const answer = answers.find((a) => a.playerId === p.id);
       const correct = answer?.choice === question.correctIndex;
-      const points = answer ? pointsFor(correct, answer.ms, limit) : 0;
+      const points = answer ? pointsFor(correct, answer.ms, limit, final) : 0;
       p.score += points;
       p.streak = correct ? p.streak + 1 : 0;
       p.bestStreak = Math.max(p.bestStreak, p.streak);
       if (correct && answer) p.correctMs.push(answer.ms);
-      return { playerId: p.id, choice: answer?.choice ?? null, correct, points, total: p.score };
+      return { playerId: p.id, choice: answer?.choice ?? null, correct, points, total: p.score, streak: p.streak };
     });
     const ranked = [...players].sort((a, b) => b.score - a.score);
     for (const p of players) {
@@ -372,6 +375,7 @@ export class GameService {
           correct: r.correct,
           points: r.points,
           total: r.total,
+          streak: r.streak,
         });
       }
     }
@@ -488,6 +492,7 @@ export class GameService {
         text: question.text,
         choices: question.choices,
         timeLeftMs,
+        double: isFinalQuestion(room.questionIndex, room.questions.length),
       });
     } else {
       await this.deps.send(connId, { type: 'lobby', topic: room.topic, language: room.language });

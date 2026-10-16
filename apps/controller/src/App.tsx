@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { ANSWER_STYLES, AVATARS, GetRoomResponse, Language, MAX_NAME_LENGTH } from '@couch-quiz/protocol';
+import { ANSWER_STYLES, AVATARS, GetRoomResponse, Language, MAX_NAME_LENGTH, STREAK_BADGE } from '@couch-quiz/protocol';
 import { LanguageContext, useT } from './i18n';
 import { endpoints, useGameSocket, View } from './useGameSocket';
 
@@ -177,6 +177,7 @@ function PlayerView({
           {!view.correct ? (
             <p>{t('phone.answerWas', { letter: ANSWER_STYLES[view.correctIndex].letter, answer: view.choices[view.correctIndex] })}</p>
           ) : null}
+          {view.correct && view.streak >= STREAK_BADGE ? <p className="streak pop">{t('phone.streak', { count: view.streak })}</p> : null}
           <p className="muted">{t('phone.score', { score: view.total })}</p>
         </div>
       );
@@ -229,6 +230,7 @@ function QuestionPad({ view, onAnswer }: { view: Extract<View, { kind: 'question
           <div className="timebar-fill" style={{ animationDuration: `${totalMs}ms` }} />
         </div>
       ) : null}
+      {view.double ? <p className="double pop">{t('phone.double')}</p> : null}
       <p className="question-text">{view.text}</p>
       <div className="answers">
         {view.choices.map((choice, i) => (

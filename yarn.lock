@@ -140,6 +140,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@amazon-devices/react-native-async-storage__async-storage@npm:~2.1.9":
+  version: 2.1.9000000001
+  resolution: "@amazon-devices/react-native-async-storage__async-storage@npm:2.1.9000000001"
+  dependencies:
+    "@amazon-devices/keplerscript-turbomodule-api": "npm:^1.0.0"
+    merge-options: "npm:^3.0.4"
+  peerDependencies:
+    "@amazon-devices/react-native-kepler": "*"
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/4be485e1cfa53185275e135446f5982d76adeeb89e9bb8c8dae1e9771b2d6c1a04fc8672669791e6b6f656d5c43282f927cd9a978bcd9c35cba57c866b1fdae2
+  languageName: node
+  linkType: hard
+
 "@amazon-devices/react-native-gesture-handler@npm:~2.0.0":
   version: 2.0.1758683737
   resolution: "@amazon-devices/react-native-gesture-handler@npm:2.0.1758683737"
@@ -4970,6 +4984,7 @@ __metadata:
     "@amazon-devices/kepler-cli-platform": "npm:^0"
     "@amazon-devices/kepler-media-controls": "npm:^1.0.0"
     "@amazon-devices/kepler-media-types": "npm:^1.0.0"
+    "@amazon-devices/react-native-async-storage__async-storage": "npm:~2.1.9"
     "@amazon-devices/react-native-gesture-handler": "npm:~2.0.0"
     "@amazon-devices/react-native-kepler": "npm:^2.0.0"
     "@amazon-devices/react-native-reanimated": "npm:~2.0.0"
@@ -12917,6 +12932,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"is-plain-obj@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "is-plain-obj@npm:2.1.0"
+  checksum: 10c0/e5c9814cdaa627a9ad0a0964ded0e0491bfd9ace405c49a5d63c88b30a162f1512c069d5b80997893c4d0181eadc3fed02b4ab4b81059aba5620bfcdfdeb9c53
+  languageName: node
+  linkType: hard
+
 "is-plain-object@npm:^2.0.3, is-plain-object@npm:^2.0.4":
   version: 2.0.4
   resolution: "is-plain-object@npm:2.0.4"
@@ -15329,6 +15351,15 @@ __metadata:
   version: 12.1.1
   resolution: "meow@npm:12.1.1"
   checksum: 10c0/a125ca99a32e2306e2f4cbe651a0d27f6eb67918d43a075f6e80b35e9bf372ebf0fc3a9fbc201cbbc9516444b6265fb3c9f80c5b7ebd32f548aa93eb7c28e088
+  languageName: node
+  linkType: hard
+
+"merge-options@npm:^3.0.4":
+  version: 3.0.4
+  resolution: "merge-options@npm:3.0.4"
+  dependencies:
+    is-plain-obj: "npm:^2.1.0"
+  checksum: 10c0/02b5891ceef09b0b497b5a0154c37a71784e68ed71b14748f6fd4258ffd3fe4ecd5cb0fd6f7cae3954fd11e7686c5cb64486daffa63c2793bbe8b614b61c7055
   languageName: node
   linkType: hard
 

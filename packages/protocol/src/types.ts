@@ -29,6 +29,8 @@ export interface PlayerResult {
   correct: boolean;
   points: number;
   total: number;
+  /** Correct answers in a row, including this one (0 after a miss). */
+  streak: number;
 }
 
 export interface Award {
@@ -89,9 +91,11 @@ export type PlayerEvent =
       choices: string[];
       /** Milliseconds left when sent; null in kids mode (no timer). */
       timeLeftMs: number | null;
+      /** The final question is worth double points. */
+      double: boolean;
     }
   | { type: 'answerAck'; index: number; choice: number }
-  | { type: 'reveal'; index: number; correctIndex: number; correct: boolean; points: number; total: number }
+  | { type: 'reveal'; index: number; correctIndex: number; correct: boolean; points: number; total: number; streak: number }
   | { type: 'gameOver'; rank: number; playerCount: number; score: number; award: Award | null }
   | { type: 'hostLeft' }
   | { type: 'error'; message: string };

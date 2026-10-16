@@ -94,15 +94,27 @@ export function CountdownBar({ durationMs, style, fillStyle }: { durationMs: num
   );
 }
 
-/** Shows `value` counting up from the previous value (or from 0 on mount). */
-export function CountUp({ value, duration = 900, style }: { value: number; duration?: number; style?: StyleProp<TextStyle> }) {
-  const animated = useRef(new Animated.Value(0)).current;
-  const [shown, setShown] = useState(0);
+/** Shows `value` counting up from `from` (default 0) on mount, and from the previous value after that. */
+export function CountUp({
+  value,
+  from = 0,
+  duration = 900,
+  delay = 0,
+  style,
+}: {
+  value: number;
+  from?: number;
+  duration?: number;
+  delay?: number;
+  style?: StyleProp<TextStyle>;
+}) {
+  const animated = useRef(new Animated.Value(from)).current;
+  const [shown, setShown] = useState(from);
   useEffect(() => {
     const id = animated.addListener(({ value: v }) => setShown(Math.round(v)));
-    Animated.timing(animated, { toValue: value, duration, easing: Easing.out(Easing.cubic), useNativeDriver: false }).start();
+    Animated.timing(animated, { toValue: value, duration, delay, easing: Easing.out(Easing.cubic), useNativeDriver: false }).start();
     return () => animated.removeListener(id);
-  }, [value, duration, animated]);
+  }, [value, duration, delay, animated]);
   return <Text style={style}>{shown}</Text>;
 }
 

@@ -8,15 +8,15 @@ An AI-hosted family trivia game for Fire TV (Vega OS). The TV is the game board,
 
 1. **Setup (TV):** pick a topic (or type your own) and a difficulty — Easy, Medium, Hard or Kids (simpler questions, no timer).
 2. **Lobby (TV + phones):** the TV shows a QR code and a 4-letter room code. Each player scans it, types a name and picks an avatar; they appear on the TV live. Preset topics come from the built-in question bank instantly; for a custom topic the AI host writes 10 questions while players join.
-3. **Questions:** the TV shows the question and a countdown; phones show four big answer buttons. Faster correct answers score more (500–1000 points; a flat 1000 in Kids mode).
-4. **Reveal:** the TV highlights the answer, shows the host's quip and everyone's points.
+3. **Questions:** a short "Question N" intro, then the TV shows the question and a countdown while phones show four big answer buttons. Faster correct answers score more (500–1000 points; a flat 1000 in Kids mode). The **final question is worth double points**. The question ends when everyone has answered or time runs out.
+4. **Reveal:** the TV highlights the answer, shows the host's quip, everyone's points, 🔥 streak badges (3+ correct in a row) and an animated leaderboard where players slide to their new rank. The game moves on by itself after a few seconds (or right away with the remote).
 5. **Podium:** final ranking plus an AI-written award for every player ("Fastest Finger", "Comeback Kid"…).
 
 Phones that lose the connection rejoin automatically with their name and score.
 
 **Question bank.** [`question-bank.json`](packages/protocol/src/question-bank.json) holds 150 questions (5 topics × easy/medium/hard × 10, each with a host quip; Kids mode uses the easy ones), and [`question-bank.es.json`](packages/protocol/src/question-bank.es.json) 150 more in Spanish. Questions of a **completed** game (one that reached the podium) are not served again for that topic and level; an abandoned game can come back. When a topic is used up, the AI host writes a fresh game (or, without AI, a new cycle starts). `yarn workspace @couch-quiz/backend expand-bank` grows the bank with Bedrock-written games, validated like live ones.
 
-**Settings.** From the Setup screen (⚙): language (English or Spanish — applies to the TV, the phones, the question bank and the AI host), questions per game (5 or 10), sound effects and music on/off.
+**Settings.** From the Setup screen (⚙): language (English or Spanish — applies to the TV, the phones, the question bank and the AI host), questions per game (5 or 10), sound effects and music on/off. Settings are saved on the TV (AsyncStorage on Vega, localStorage on web).
 
 **Sound.** The TV plays lobby music and effects (player joined, answer locked in, last-seconds ticks, time's up, reveal, podium fanfare). All sounds are original, synthesized by [`make-sounds.py`](backend/scripts/make-sounds.py), and streamed from the backend (`GET /sounds/{name}.m4a`). Phones stay silent so the room isn't a cacophony.
 

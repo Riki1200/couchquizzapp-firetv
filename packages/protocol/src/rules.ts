@@ -17,11 +17,22 @@ export function timeLimitMs(difficulty: Difficulty): number | null {
   return difficulty === 'hard' ? 15000 : 20000;
 }
 
-/** 500 for a correct answer plus up to 500 for speed; a flat 1000 when there is no timer. */
-export function pointsFor(correct: boolean, answerMs: number, limitMs: number | null): number {
+/** Streak length that earns the 🔥 badge. */
+export const STREAK_BADGE = 3;
+
+/** The last question of a game is worth double points. */
+export function isFinalQuestion(index: number, total: number): boolean {
+  return index === total - 1;
+}
+
+/**
+ * 500 for a correct answer plus up to 500 for speed; a flat 1000 when there is no timer.
+ * Doubled on the final question.
+ */
+export function pointsFor(correct: boolean, answerMs: number, limitMs: number | null, final = false): number {
   if (!correct) return 0;
-  if (limitMs === null) return 1000;
-  return 500 + Math.round(500 * Math.max(0, 1 - answerMs / limitMs));
+  const base = limitMs === null ? 1000 : 500 + Math.round(500 * Math.max(0, 1 - answerMs / limitMs));
+  return final ? base * 2 : base;
 }
 
 // Letters only, without ones that are easy to confuse on a TV (I, O).

@@ -14,8 +14,17 @@ const RECONNECT_DELAYS_MS = [500, 1000, 2000, 4000];
 export type View =
   | { kind: 'join' }
   | { kind: 'lobby'; topic: string | null }
-  | { kind: 'question'; index: number; total: number; text: string; choices: string[]; deadline: number | null; answered: number | null }
-  | { kind: 'reveal'; correctIndex: number; correct: boolean; points: number; total: number; choices: string[] }
+  | {
+      kind: 'question';
+      index: number;
+      total: number;
+      text: string;
+      choices: string[];
+      deadline: number | null;
+      answered: number | null;
+      double: boolean;
+    }
+  | { kind: 'reveal'; correctIndex: number; correct: boolean; points: number; total: number; streak: number; choices: string[] }
   | { kind: 'over'; rank: number; playerCount: number; score: number; title: string | null; line: string | null };
 
 const playerKey = (room: string) => `couchquiz:player:${room}`;
@@ -74,6 +83,7 @@ export function useGameSocket(room: string, onLanguage: (language: Language) => 
             choices: event.choices,
             deadline: event.timeLeftMs === null ? null : Date.now() + event.timeLeftMs,
             answered: null,
+            double: event.double,
           });
           break;
         case 'answerAck':

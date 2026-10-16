@@ -7,7 +7,7 @@ import { AnswerGrid, MiniAvatar } from '../components/GamePieces';
 import { CountdownBar, FadeIn, PopIn, usePulse } from '../components/Motion';
 import { Screen } from '../components/Screen';
 import { useGame } from '../game/GameContext';
-import { TextKey, timeLimitMs } from '../game/types';
+import { TextKey, isFinalQuestion, timeLimitMs } from '../game/types';
 import { useBackHandler } from '../hooks/useBackHandler';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
@@ -46,6 +46,7 @@ export default function QuestionScreen({ navActive, onIntroDone, onReveal, onBac
   }, []);
   const [timeLeft, setTimeLeft] = useState(limit);
   const revealedRef = useRef(false);
+  const final = isFinalQuestion(questionIndex, questions.length);
   const topicLabel = PRESET_TOPICS.some((preset) => preset.label === topic) ? t(`topic.${topic}` as TextKey) : topic;
 
   useBackHandler(onBack);
@@ -117,6 +118,13 @@ export default function QuestionScreen({ navActive, onIntroDone, onReveal, onBac
           <FadeIn delay={250}>
             <Text style={styles.introSub}>{t('question.introSub', { total: questions.length, topic: topicLabel ?? '' })}</Text>
           </FadeIn>
+          {final ? (
+            <PopIn delay={500}>
+              <View style={styles.finalBadge}>
+                <Text style={styles.finalText}>{t('question.final')}</Text>
+              </View>
+            </PopIn>
+          ) : null}
         </Screen>
       </SpatialNavigationRoot>
     );
@@ -126,9 +134,16 @@ export default function QuestionScreen({ navActive, onIntroDone, onReveal, onBac
     <SpatialNavigationRoot isActive={navActive}>
       <Screen style={styles.screen}>
         <View style={styles.header}>
-          <Text style={styles.counter}>
-            {t('question.counter', { index: questionIndex + 1, total: questions.length })} · {topicLabel}
-          </Text>
+          <View style={styles.headerLeft}>
+            <Text style={styles.counter}>
+              {t('question.counter', { index: questionIndex + 1, total: questions.length })} · {topicLabel}
+            </Text>
+            {final ? (
+              <View style={styles.doubleChip}>
+                <Text style={styles.doubleText}>{t('question.double')}</Text>
+              </View>
+            ) : null}
+          </View>
           {seconds === null ? (
             <Text style={styles.kids}>{t('question.noTimer')}</Text>
           ) : (
@@ -150,7 +165,7 @@ export default function QuestionScreen({ navActive, onIntroDone, onReveal, onBac
         <View style={styles.footer}>
           <View style={styles.players}>
             {players.map((p) => (
-              <MiniAvatar key={p.id} player={p} answered={answeredIds.includes(p.id)} />
+              <MiniAvatar key={p.id} player={p} answered={answeredIds.includes(p.id)} streak={state.streaks[p.id]} />
             ))}
           </View>
           <DefaultFocus>
@@ -178,6 +193,22 @@ const styles = StyleSheet.create({
   introSub: { color: colors.textSecondary, fontSize: scaledPixels(44), fontWeight: 'bold', textAlign: 'center' },
   screen: { paddingVertical: scaledPixels(48) },
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
+  headerLeft: { flexDirection: 'row', alignItems: 'center', gap: scaledPixels(20) },
+  doubleChip: {
+    backgroundColor: colors.focus,
+    borderRadius: scaledPixels(14),
+    paddingVertical: scaledPixels(6),
+    paddingHorizontal: scaledPixels(16),
+  },
+  doubleText: { color: colors.textOnFocus, fontSize: scaledPixels(28), fontWeight: 'bold' },
+  finalBadge: {
+    marginTop: scaledPixels(40),
+    backgroundColor: colors.focus,
+    borderRadius: scaledPixels(24),
+    paddingVertical: scaledPixels(18),
+    paddingHorizontal: scaledPixels(40),
+  },
+  finalText: { color: colors.textOnFocus, fontSize: scaledPixels(44), fontWeight: 'bold' },
   counter: { color: colors.textSecondary, fontSize: scaledPixels(32), fontWeight: 'bold' },
   kids: { color: colors.focus, fontSize: scaledPixels(36), fontWeight: 'bold' },
   timer: {

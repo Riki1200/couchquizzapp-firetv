@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
-import { ANSWER_STYLES, Player } from '../game/types';
+import { ANSWER_STYLES, Player, STREAK_BADGE } from '../game/types';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
 import { FadeIn, PopIn, nativeDriver } from './Motion';
@@ -82,11 +82,14 @@ export function HostBubble({ text, delay = 350 }: { text: string; delay?: number
 export function MiniAvatar({
   player,
   answered,
+  streak = 0,
   badge,
   badgeColor,
 }: {
   player: Player;
   answered?: boolean;
+  /** Correct answers in a row; shows 🔥N from STREAK_BADGE on. */
+  streak?: number;
   badge?: string;
   badgeColor?: string;
 }) {
@@ -94,6 +97,11 @@ export function MiniAvatar({
     <View style={[styles.mini, !player.connected && styles.disconnected]}>
       <View style={[styles.miniCircle, answered === false && styles.waiting, answered && styles.answeredRing]}>
         <Text style={styles.miniEmoji}>{player.avatar}</Text>
+        {streak >= STREAK_BADGE ? (
+          <PopIn key={streak} style={styles.streak}>
+            <Text style={styles.streakText}>🔥{streak}</Text>
+          </PopIn>
+        ) : null}
         {answered ? (
           <PopIn style={styles.check}>
             <Text style={styles.checkText}>✓</Text>
@@ -183,6 +191,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   checkText: { color: colors.text, fontSize: scaledPixels(26), fontWeight: 'bold' },
+  streak: {
+    position: 'absolute',
+    left: -scaledPixels(14),
+    top: -scaledPixels(10),
+    paddingHorizontal: scaledPixels(8),
+    height: scaledPixels(36),
+    borderRadius: scaledPixels(18),
+    backgroundColor: '#F97316',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  streakText: { color: colors.text, fontSize: scaledPixels(22), fontWeight: 'bold' },
   miniName: { color: colors.text, fontSize: scaledPixels(24), fontWeight: 'bold', marginTop: scaledPixels(6) },
   miniBadge: { color: colors.success, fontSize: scaledPixels(28), fontWeight: 'bold' },
 });

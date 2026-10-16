@@ -11,6 +11,7 @@ import {
   Room,
   bankKey,
   bankPool,
+  isFinalQuestion,
   pickGame,
   pointsFor,
   randomRoomCode,
@@ -40,6 +41,7 @@ export class MockGameClient implements GameClient {
   private language: Language = 'en';
   private answers = new Map<string, { choice: number; ms: number }>();
   private correctMs = new Map<string, number[]>();
+  private streaks = new Map<string, number>();
   private currentIndex = -1;
 
   async createRoom(): Promise<Room> {
@@ -58,6 +60,7 @@ export class MockGameClient implements GameClient {
     this.language = language;
     this.players.forEach((p) => (p.score = 0));
     this.correctMs.clear();
+    this.streaks.clear();
     this.emitPlayers();
     if (this.generationTimer) clearTimeout(this.generationTimer);
     this.emit({ type: 'generation', status: 'pending', topic });
@@ -101,13 +104,16 @@ export class MockGameClient implements GameClient {
   reveal(index: number): void {
     const correctIndex = this.questions[index].correctIndex;
     const limit = timeLimitMs(this.difficulty);
+    const final = isFinalQuestion(index, this.questions.length);
     const results: PlayerResult[] = this.players.map((player) => {
       const answer = this.answers.get(player.id);
       const correct = answer?.choice === correctIndex;
-      const points = answer ? pointsFor(correct, answer.ms, limit) : 0;
+      const points = answer ? pointsFor(correct, answer.ms, limit, final) : 0;
+      const streak = correct ? (this.streaks.get(player.id) ?? 0) + 1 : 0;
+      this.streaks.set(player.id, streak);
       if (correct && answer) this.correctMs.set(player.id, [...(this.correctMs.get(player.id) ?? []), answer.ms]);
       player.score += points;
-      return { playerId: player.id, choice: answer?.choice ?? null, correct, points, total: player.score };
+      return { playerId: player.id, choice: answer?.choice ?? null, correct, points, total: player.score, streak };
     });
     this.currentIndex = -1;
     this.emit({ type: 'reveal', index, results });

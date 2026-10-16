@@ -3,6 +3,7 @@ import { createGameClient } from './createGameClient';
 import { GameClient, GameClientEvent } from './GameClient';
 import { audioOptions } from '../audio/options';
 import { stopMusic } from '../audio/sounds';
+import { loadValue, saveValue } from '../storage';
 import {
   Award,
   AwardSource,
@@ -12,12 +13,16 @@ import {
   Player,
   PlayerResult,
   QUESTION_COUNT,
+  QUESTION_COUNT_OPTIONS,
   Question,
   QuestionSource,
   Room,
   TextKey,
+  isLanguage,
   translate,
 } from './types';
+
+const SETTINGS_KEY = 'couchquiz:settings';
 
 export interface Settings {
   language: Language;
@@ -41,6 +46,8 @@ export interface GameState {
   results: PlayerResult[] | null;
   awards: Award[] | null;
   awardSource: AwardSource | null;
+  /** Correct answers in a row per player, as of the last reveal (for the 🔥 badge). */
+  streaks: Record<string, number>;
   settings: Settings;
 }
 
@@ -66,6 +73,7 @@ const initialState: GameState = {
   results: null,
   awards: null,
   awardSource: null,
+  streaks: {},
   settings: { language: 'en', questionCount: QUESTION_COUNT, effects: true, music: true },
 };
 
@@ -78,7 +86,15 @@ function reducer(state: GameState, action: Action): GameState {
     case 'setDifficulty':
       return { ...state, difficulty: action.difficulty };
     case 'questionStarted':
-      return { ...state, questionIndex: action.index, answeredIds: [], results: null, awards: null, awardSource: null };
+      return {
+        ...state,
+        questionIndex: action.index,
+        answeredIds: [],
+        results: null,
+        awards: null,
+        awardSource: null,
+        streaks: action.index === 0 ? {} : state.streaks, // a new game starts without streaks
+      };
     case 'settings':
       return { ...state, settings: { ...state.settings, ...action.settings } };
     case 'connection':
@@ -90,7 +106,12 @@ function reducer(state: GameState, action: Action): GameState {
     case 'answerProgress':
       return action.index === state.questionIndex ? { ...state, answeredIds: action.answeredPlayerIds } : state;
     case 'reveal':
-      return action.index === state.questionIndex ? { ...state, results: action.results } : state;
+      if (action.index !== state.questionIndex) return state;
+      return {
+        ...state,
+        results: action.results,
+        streaks: Object.fromEntries(action.results.map((r) => [r.playerId, r.streak])),
+      };
     case 'gameOver':
       return { ...state, awards: action.awards, awardSource: action.source };
   }
@@ -118,6 +139,22 @@ const GameContext = createContext<GameContextValue | null>(null);
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const clientRef = useRef<GameClient>(createGameClient());
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // Restore the host's saved settings.
+  useEffect(() => {
+    loadValue(SETTINGS_KEY).then((saved) => {
+      if (!saved) return;
+      try {
+        const settings = { ...initialState.settings, ...JSON.parse(saved) } as Settings;
+        if (!isLanguage(settings.language) || !(QUESTION_COUNT_OPTIONS as readonly number[]).includes(settings.questionCount)) return;
+        audioOptions.effects = settings.effects;
+        audioOptions.music = settings.music;
+        dispatch({ type: 'settings', settings });
+      } catch {
+        // ignore unreadable settings
+      }
+    });
+  }, []);
 
   useEffect(() => {
     const client = clientRef.current;
@@ -155,6 +192,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
           if (!settings.music) stopMusic();
         }
         dispatch({ type: 'settings', settings });
+        saveValue(SETTINGS_KEY, JSON.stringify({ ...state.settings, ...settings }));
       },
       t: (key, vars) => translate(state.settings.language, key, vars),
     };
