@@ -7,10 +7,12 @@
 import { randomUUID } from 'crypto';
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { networkInterfaces } from 'os';
+import { join } from 'path';
 import { WebSocket, WebSocketServer } from 'ws';
 import { HostAi, MockHostAi } from '../game/ai';
 import { GameService } from '../game/GameService';
 import { MemoryStore } from '../game/store';
+import { readSound } from '../game/sounds';
 import { BedrockHostAi } from '../aws/bedrockAi';
 
 const PORT = Number(process.env.PORT ?? 8787);
@@ -22,6 +24,7 @@ const CONTROLLER_URL = process.env.CONTROLLER_URL ?? `http://${lanIp}:5173/`;
 
 const ai: HostAi = process.env.AI === 'bedrock' ? new BedrockHostAi() : new MockHostAi();
 const sockets = new Map<string, WebSocket>();
+const soundsServed = new Set<string>();
 
 const game: GameService = new GameService({
   store: new MemoryStore(),
@@ -52,6 +55,13 @@ const server = createServer(async (req: IncomingMessage, res: ServerResponse) =>
       const room = await game.createRoom();
       console.log(`room ${room.roomCode} created → ${room.joinUrl}`);
       return json(200, room);
+    }
+    const sound = url.pathname.match(/^\/sounds\/([a-z]+\.m4a)$/);
+    const audio = sound && readSound(join(__dirname, '..', '..', 'assets', 'sounds'), sound[1]);
+    if (audio) {
+      if (!soundsServed.has(sound![1])) console.log(`sound ${sound![1]} requested (${req.headers['user-agent']?.slice(0, 40)})`);
+      soundsServed.add(sound![1]);
+      return void res.writeHead(200, { 'Content-Type': 'audio/mp4', 'Cache-Control': 'max-age=3600' }).end(audio);
     }
     const match = url.pathname.match(/^\/rooms\/([A-Za-z]{4})$/);
     if (req.method === 'GET' && match) return json(200, await game.getRoom(match[1]));

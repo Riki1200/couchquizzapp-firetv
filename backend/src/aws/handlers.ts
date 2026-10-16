@@ -5,6 +5,7 @@ import type { APIGatewayProxyEventV2, APIGatewayProxyResultV2, APIGatewayProxyWe
 import { GameService, GenerationJob } from '../game/GameService';
 import { BedrockHostAi } from './bedrockAi';
 import { DynamoStore } from './dynamoStore';
+import { readSound } from '../game/sounds';
 
 const { TABLE_NAME, WS_ENDPOINT, GENERATE_FUNCTION, CONTROLLER_URL } = process.env;
 
@@ -39,6 +40,18 @@ export async function http(event: APIGatewayProxyEventV2): Promise<APIGatewayPro
   });
   if (event.routeKey === 'POST /rooms') return json(200, await game.createRoom());
   if (event.routeKey === 'GET /rooms/{code}') return json(200, await game.getRoom(event.pathParameters?.code ?? ''));
+  if (event.routeKey === 'GET /sounds/{file}') {
+    // The sound files are copied next to the bundled handler (see the stack's bundling hooks).
+    const audio = readSound(__dirname + '/sounds', event.pathParameters?.file ?? '');
+    if (audio) {
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'audio/mp4', 'Cache-Control': 'public, max-age=86400' },
+        body: audio.toString('base64'),
+        isBase64Encoded: true,
+      };
+    }
+  }
   return json(404, { message: 'Not found' });
 }
 

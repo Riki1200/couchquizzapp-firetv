@@ -72,7 +72,19 @@ export class CouchQuizStack extends Stack {
         architecture: Architecture.ARM_64,
         memorySize: 512,
         timeout: Duration.seconds(29),
-        bundling: { minify: true, sourceMap: true, target: 'node22' },
+        bundling: {
+          minify: true,
+          sourceMap: true,
+          target: 'node22',
+          // Ship the TV's sound effects with the function (served at GET /sounds/{file}).
+          commandHooks: {
+            beforeBundling: () => [],
+            beforeInstall: () => [],
+            afterBundling: (inputDir: string, outputDir: string) => [
+              `cp -r "${inputDir}/backend/assets/sounds" "${outputDir}/sounds"`,
+            ],
+          },
+        },
         logGroup: new LogGroup(this, `${name}Logs`, { retention: RetentionDays.ONE_WEEK, removalPolicy: RemovalPolicy.DESTROY }),
         ...extra,
         environment: {
@@ -134,6 +146,7 @@ export class CouchQuizStack extends Stack {
     const httpIntegration = new HttpLambdaIntegration('HttpIntegration', httpFn);
     httpApi.addRoutes({ path: '/rooms', methods: [HttpMethod.POST], integration: httpIntegration });
     httpApi.addRoutes({ path: '/rooms/{code}', methods: [HttpMethod.GET], integration: httpIntegration });
+    httpApi.addRoutes({ path: '/sounds/{file}', methods: [HttpMethod.GET], integration: httpIntegration });
 
     // ---------- Upload the controller with its runtime config ----------
     const httpUrl = httpApi.apiEndpoint;

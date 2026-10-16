@@ -13,6 +13,8 @@ export class WsGameClient implements GameClient {
   private closed = false;
   private pingTimer: ReturnType<typeof setInterval> | null = null;
   private reconnectTimer: ReturnType<typeof setTimeout> | null = null;
+  /** Commands issued while the socket is (re)connecting; sent in order once it opens. */
+  private outbox: HostMessage[] = [];
 
   constructor(private server: { httpUrl: string; wsUrl: string }) {}
 
@@ -62,6 +64,7 @@ export class WsGameClient implements GameClient {
         this.attempt = 0;
         this.emit({ type: 'connection', connected: true });
         socket.send(JSON.stringify({ action: 'sync' }));
+        this.outbox.splice(0).forEach((message) => socket.send(JSON.stringify(message)));
         if (this.pingTimer) clearInterval(this.pingTimer);
         this.pingTimer = setInterval(() => this.sendRaw({ action: 'ping' }), PING_INTERVAL_MS);
         resolve();
@@ -79,7 +82,7 @@ export class WsGameClient implements GameClient {
   }
 
   private send(message: HostMessage) {
-    if (!this.sendRaw(message)) console.warn('[WsGameClient] not connected, dropped', message.action);
+    if (!this.sendRaw(message)) this.outbox.push(message);
   }
 
   private sendRaw(message: object): boolean {

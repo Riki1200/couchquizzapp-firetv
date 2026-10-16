@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { DefaultFocus, SpatialNavigationRoot } from 'react-tv-space-navigation';
 import { FocusableButton } from '../components/Focusable';
+import { playSound } from '../audio/sounds';
 import { AnswerGrid, MiniAvatar } from '../components/GamePieces';
 import { useGame } from '../game/GameContext';
 import { timeLimitMs } from '../game/types';
@@ -57,8 +58,14 @@ export default function QuestionScreen({ navActive, onReveal, onBack }: Props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allAnswered]);
 
-  if (!question) return null;
   const seconds = timeLeft === null ? null : Math.ceil(timeLeft / 1000);
+  // Tick during the last five seconds, buzz when time runs out.
+  useEffect(() => {
+    if (seconds === null || seconds > 5 || revealedRef.current) return;
+    playSound(seconds === 0 ? 'timesup' : 'tick');
+  }, [seconds]);
+
+  if (!question) return null;
 
   return (
     <SpatialNavigationRoot isActive={navActive}>

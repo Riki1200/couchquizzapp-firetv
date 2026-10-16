@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { playSound, preloadSounds, startMusic, stopMusic } from './audio/sounds';
 import { QuitDialog } from './components/QuitDialog';
 import { GameProvider, useGame } from './game/GameContext';
 import { scaledPixels } from './hooks/useScale';
@@ -21,6 +22,14 @@ function Screens() {
   const [screen, setScreen] = useState<Screen>('setup');
   const [setupFocus, setSetupFocus] = useState<'topics' | 'difficulty'>('topics');
   const [quitOpen, setQuitOpen] = useState(false);
+
+  useEffect(preloadSounds, []);
+  useGameSounds();
+  useEffect(() => {
+    if (screen === 'lobby') startMusic();
+    else stopMusic();
+    if (screen === 'podium') playSound('podium');
+  }, [screen]);
 
   const goToSetup = () => {
     setQuitOpen(false);
@@ -98,6 +107,19 @@ function Screens() {
     case 'podium':
       return <PodiumScreen onPlayAgain={goToSetup} />;
   }
+}
+
+/** Sounds for things that happen on the phones: a player joins, a player answers, the answer is revealed. */
+function useGameSounds() {
+  const { state } = useGame();
+  const previous = useRef(state);
+  useEffect(() => {
+    const before = previous.current;
+    if (state.players.length > before.players.length) playSound('join');
+    if (state.answeredIds.length > before.answeredIds.length) playSound('lock');
+    if (state.results && !before.results) playSound('reveal');
+    previous.current = state;
+  }, [state]);
 }
 
 function ConnectionBanner() {

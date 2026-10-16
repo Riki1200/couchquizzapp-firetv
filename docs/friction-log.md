@@ -101,6 +101,32 @@ Severity: **High** (blocked progress) · **Medium** (cost > 30 min or needed a w
 
 ---
 
+## 8. `AudioPlayer` rejects `http://` sources with an empty "not supported" error
+
+- **Date:** 2026-10-15
+- **Task:** Play short sound effects (AAC `.m4a`) on the TV with `AudioPlayer` from `@amazon-devices/react-native-w3cmedia`.
+- **Steps:** `const a = new AudioPlayer(); await a.initialize(); a.src = 'http://localhost:8787/sounds/join.m4a'; a.load(); a.play();` (port 8787 forwarded into the VVD; `curl` from the VVD shell downloads the file fine).
+- **Expected:** The sound plays, or an error that explains why not.
+- **Actual:** `play()` resolves, but nothing plays. The `error` event reports `{ code: 4, message: "" }` (MEDIA_ERR_SRC_NOT_SUPPORTED) and the server never receives a request. The same happens for a LAN IP and for a WAV file. The same `.m4a` over **HTTPS** plays, and so does a public HTTPS MP3.
+- **Severity:** High (cost ~1 hour; looked like a codec or port-forwarding problem)
+- **Workaround:** Serve the sounds over HTTPS (we use the API Gateway HTTP API).
+- **Suggestion:** Put a clear message in `MediaError` ("cleartext HTTP is not allowed"), document the HTTPS requirement in the AudioPlayer docs, and allow `http://localhost` for development.
+
+---
+
+## 9. WebSocket on the VVD sometimes closes right after opening ("connection is null")
+
+- **Date:** 2026-10-15
+- **Task:** Keep the TV's WebSocket to the game server open.
+- **Steps:** Open a WebSocket to the local server (port-forwarded) right as the app starts several `AudioPlayer` instances.
+- **Expected:** The connection stays open.
+- **Actual:** Once in a while `onerror` fires with `connection is null` just after `onopen`, followed by `onclose` with code 1006. A message sent in between was lost. The reconnect works.
+- **Severity:** Medium (intermittent; lost the first game command)
+- **Workaround:** Queue outgoing messages while (re)connecting and flush them on `open`; reconnect with backoff.
+- **Suggestion:** Document when a native WebSocket can be closed by the system, and give `onerror`/`onclose` a meaningful reason.
+
+---
+
 <!-- Template
 ## N. Title
 
