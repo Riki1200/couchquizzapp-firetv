@@ -2,7 +2,7 @@ import React from 'react';
 import { BackHandler, Platform, StyleSheet, Text, View } from 'react-native';
 import { DefaultFocus, SpatialNavigationRoot, SpatialNavigationView } from 'react-tv-space-navigation';
 import { FocusableButton } from '../components/Focusable';
-import { FadeIn, PopIn } from '../components/Motion';
+import { Confetti, CountUp, FadeIn, PopIn } from '../components/Motion';
 import { Screen } from '../components/Screen';
 import { useGame } from '../game/GameContext';
 import { Player } from '../game/types';
@@ -75,6 +75,8 @@ export default function PodiumScreen({ onPlayAgain }: Props) {
             {Platform.OS !== 'web' ? <FocusableButton label={t('podium.exit')} onSelect={() => BackHandler.exitApp()} /> : null}
           </SpatialNavigationView>
         </FadeIn>
+        <Confetti delay={1000} />
+        <Confetti delay={3200} pieces={40} />
       </Screen>
     </SpatialNavigationRoot>
   );
@@ -89,7 +91,7 @@ function Step({ player, place }: { player: Player; place: number }) {
       <Text style={styles.stepName} numberOfLines={1}>
         {player.name}
       </Text>
-      <Text style={styles.stepScore}>{player.score}</Text>
+      <CountUp value={player.score} duration={1400} style={styles.stepScore} />
       <View style={[styles.stepBlock, { height: STEP_HEIGHTS[place] }, place === 0 && styles.stepFirst]}>
         <Text style={styles.medal}>{MEDALS[place]}</Text>
       </View>

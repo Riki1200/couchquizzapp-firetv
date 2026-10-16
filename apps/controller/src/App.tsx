@@ -171,8 +171,9 @@ function PlayerView({
     case 'reveal':
       return (
         <div className={`center view result ${view.correct ? 'good' : 'bad'}`} key={`reveal-${view.total}-${view.correctIndex}`}>
+          <div className={`flash ${view.correct ? 'good' : 'bad'}`} />
           <div className="big-avatar pop">{view.correct ? '🎉' : '🙈'}</div>
-          <h1 className="pop">{view.correct ? t('phone.correct', { points: view.points }) : t('phone.wrong')}</h1>
+          <h1 className={view.correct ? 'pop' : 'shake'}>{view.correct ? t('phone.correct', { points: view.points }) : t('phone.wrong')}</h1>
           {!view.correct ? (
             <p>{t('phone.answerWas', { letter: ANSWER_STYLES[view.correctIndex].letter, answer: view.choices[view.correctIndex] })}</p>
           ) : null}
@@ -182,6 +183,7 @@ function PlayerView({
     case 'over':
       return (
         <div className="center view" key="over">
+          {view.rank <= 3 ? <PhoneConfetti /> : null}
           <div className="big-avatar pop">{view.rank === 1 ? '🏆' : avatar}</div>
           <h1>{t('phone.rank', { rank: view.rank, count: view.playerCount })}</h1>
           <p className="muted">{t('phone.points', { score: view.score })}</p>
@@ -244,6 +246,27 @@ function QuestionPad({ view, onAnswer }: { view: Extract<View, { kind: 'question
       </div>
       {view.answered !== null ? <p className="center muted pop">{t('phone.lockedIn')}</p> : null}
       {view.answered === null && secondsLeft === 0 ? <p className="center muted">{t('phone.timesUp')}</p> : null}
+    </div>
+  );
+}
+
+const CONFETTI_COLORS = ['#FFD23F', '#14B8A6', '#F97316', '#EC4899', '#6366F1', '#2ECC71'];
+
+/** CSS confetti for the top three. */
+function PhoneConfetti() {
+  return (
+    <div className="confetti" aria-hidden="true">
+      {Array.from({ length: 36 }, (_, i) => (
+        <span
+          key={i}
+          style={{
+            left: `${(i * 37) % 100}%`,
+            background: CONFETTI_COLORS[i % CONFETTI_COLORS.length],
+            animationDelay: `${(i % 12) * 0.25}s`,
+            animationDuration: `${3 + (i % 5) * 0.4}s`,
+          }}
+        />
+      ))}
     </div>
   );
 }

@@ -102,7 +102,10 @@ interface GameContextValue {
   setDifficulty: (difficulty: Difficulty) => void;
   /** Creates the room the first time, then (re)starts question generation for the chosen topic. */
   openLobby: () => Promise<void>;
-  startQuestion: (index: number) => void;
+  /** Shows question `index` on the TV (intro); the phones get it once beginQuestion() is called. */
+  showQuestion: (index: number) => void;
+  /** Starts the current question: phones get the answers and the server starts timing. */
+  beginQuestion: () => void;
   reveal: () => void;
   endGame: () => void;
   updateSettings: (settings: Partial<Settings>) => void;
@@ -141,10 +144,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
           dispatch({ type: 'generation', status: 'failed' }); // the lobby offers "Try again"
         }
       },
-      startQuestion: (index) => {
-        dispatch({ type: 'questionStarted', index });
-        client.startQuestion(index);
-      },
+      showQuestion: (index) => dispatch({ type: 'questionStarted', index }),
+      beginQuestion: () => client.startQuestion(state.questionIndex),
       reveal: () => client.reveal(state.questionIndex),
       endGame: () => client.endGame(),
       updateSettings: (settings) => {

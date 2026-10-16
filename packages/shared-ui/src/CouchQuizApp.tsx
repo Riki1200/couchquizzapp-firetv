@@ -72,7 +72,7 @@ function Screens() {
           onChangeTopic={goToSetup}
           onRetryGeneration={game.openLobby}
           onStart={() => {
-            game.startQuestion(0);
+            game.showQuestion(0);
             setScreen('question');
           }}
         />
@@ -83,7 +83,9 @@ function Screens() {
         <View style={styles.fill}>
           {screen === 'question' ? (
             <QuestionScreen
+              key={state.questionIndex}
               navActive={!quitOpen}
+              onIntroDone={game.beginQuestion}
               onBack={quitOpen ? null : () => setQuitOpen(true)}
               onReveal={() => {
                 game.reveal();
@@ -96,7 +98,7 @@ function Screens() {
               onBack={quitOpen ? null : () => setQuitOpen(true)}
               onNext={() => {
                 if (state.questionIndex + 1 < state.questions.length) {
-                  game.startQuestion(state.questionIndex + 1);
+                  game.showQuestion(state.questionIndex + 1);
                   setScreen('question');
                 } else {
                   game.endGame();

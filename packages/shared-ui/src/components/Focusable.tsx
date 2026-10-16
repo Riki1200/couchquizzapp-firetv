@@ -1,9 +1,9 @@
-import React, { forwardRef } from 'react';
-import { Animated, Pressable, StyleSheet, Text, View, ViewStyle } from 'react-native';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import { Animated, Easing, Pressable, StyleSheet, Text, View, ViewStyle } from 'react-native';
 import { SpatialNavigationFocusableView, SpatialNavigationNodeRef } from 'react-tv-space-navigation';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
-import { useFocusSpring } from './Motion';
+import { nativeDriver, useFocusSpring } from './Motion';
 
 interface ButtonProps {
   label: string;
@@ -31,6 +31,49 @@ export const FocusableButton = forwardRef<SpatialNavigationNodeRef, ButtonProps>
     );
   },
 );
+
+interface CountdownButtonProps {
+  label: string;
+  durationMs: number;
+  /** The fill only runs while true (e.g. paused while a dialog is open); it restarts from empty. */
+  running: boolean;
+  onSelect: () => void;
+}
+
+/** Button that fills up over `durationMs` and selects itself when full; the host can press it earlier. */
+export function CountdownButton({ label, durationMs, running, onSelect }: CountdownButtonProps) {
+  const [width, setWidth] = useState(0);
+  const progress = useRef(new Animated.Value(0)).current;
+  const selectRef = useRef(onSelect);
+  selectRef.current = onSelect;
+
+  useEffect(() => {
+    progress.setValue(0);
+    if (!running) return;
+    const fill = Animated.timing(progress, { toValue: 1, duration: durationMs, easing: Easing.linear, useNativeDriver: nativeDriver });
+    fill.start(({ finished }) => finished && selectRef.current());
+    return () => fill.stop();
+  }, [running, durationMs, progress]);
+
+  const translateX = progress.interpolate({ inputRange: [0, 1], outputRange: [-width, 0] });
+  return (
+    <SpatialNavigationFocusableView onSelect={onSelect}>
+      {({ isFocused }) => (
+        <Pressable onPress={onSelect}>
+          <SpringScale focused={isFocused} amount={0.08}>
+            <View
+              onLayout={(e) => setWidth(e.nativeEvent.layout.width)}
+              style={[styles.button, styles.countdownButton, isFocused && styles.buttonFocused]}
+            >
+              <Animated.View style={[styles.countdownFill, isFocused && styles.countdownFillFocused, { transform: [{ translateX }] }]} />
+              <Text style={[styles.buttonText, isFocused && styles.textFocused]}>{label}</Text>
+            </View>
+          </SpringScale>
+        </Pressable>
+      )}
+    </SpatialNavigationFocusableView>
+  );
+}
 
 interface TileProps {
   label: string;
@@ -105,6 +148,16 @@ const styles = StyleSheet.create({
   buttonFocused: { borderColor: colors.focus, backgroundColor: colors.focus, ...glow },
   buttonText: { color: colors.text, fontSize: scaledPixels(32), fontWeight: 'bold' },
   textFocused: { color: colors.textOnFocus },
+  countdownButton: { overflow: 'hidden' },
+  countdownFill: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    width: '100%',
+    backgroundColor: 'rgba(255, 255, 255, 0.22)',
+  },
+  countdownFillFocused: { backgroundColor: 'rgba(11, 16, 38, 0.22)' },
   tile: {
     width: scaledPixels(300),
     height: scaledPixels(150),

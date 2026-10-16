@@ -310,6 +310,72 @@ button {
   place-items: center;
 }
 
+/* Full-screen flash when the answer is revealed. */
+.flash {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  animation: flash 0.9s ease-out both;
+}
+
+.flash.good {
+  background: radial-gradient(circle, rgba(46, 204, 113, 0.55), transparent 70%);
+}
+
+.flash.bad {
+  background: radial-gradient(circle, rgba(255, 92, 92, 0.45), transparent 70%);
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out both;
+}
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.confetti span {
+  position: absolute;
+  top: -16px;
+  width: 9px;
+  height: 14px;
+  border-radius: 2px;
+  animation: fall linear forwards;
+}
+
+@keyframes flash {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-10px);
+  }
+  40%,
+  80% {
+    transform: translateX(10px);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(105vh) rotate(720deg);
+  }
+}
+
 @keyframes fade-up {
   from {
     opacity: 0;

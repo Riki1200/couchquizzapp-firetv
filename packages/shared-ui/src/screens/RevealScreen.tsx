@@ -1,14 +1,18 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { DefaultFocus, SpatialNavigationRoot } from 'react-tv-space-navigation';
-import { FocusableButton } from '../components/Focusable';
+import { CountdownButton } from '../components/Focusable';
 import { AnswerGrid, HostBubble, MiniAvatar } from '../components/GamePieces';
-import { FadeIn } from '../components/Motion';
+import { CountUp, FadeIn } from '../components/Motion';
 import { Screen } from '../components/Screen';
 import { useGame } from '../game/GameContext';
 import { useBackHandler } from '../hooks/useBackHandler';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
+
+/** The reveal moves on by itself after this long (the host can press Next earlier). */
+const AUTO_NEXT_MS = 8000;
+const AUTO_NEXT_KIDS_MS = 12000;
 
 interface Props {
   navActive: boolean;
@@ -21,6 +25,7 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
   const { questions, questionIndex, players, results } = state;
   const question = questions[questionIndex];
   const isLast = questionIndex === questions.length - 1;
+  const autoNextMs = state.difficulty === 'kids' ? AUTO_NEXT_KIDS_MS : AUTO_NEXT_MS;
 
   useBackHandler(onBack);
 
@@ -60,18 +65,20 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
           <View style={styles.side}>
             <View style={styles.standings}>
               {standings.map((p, i) => (
-                <FadeIn key={p.id} delay={500 + i * 120} distance={12}>
+                <FadeIn key={p.id} delay={500 + i * 120} distance={12} style={styles.standingRow}>
                   <Text style={styles.standing}>
-                    {i + 1}. {p.avatar} {p.name} — {p.score}
+                    {i + 1}. {p.avatar} {p.name} —{' '}
                   </Text>
+                  <CountUp value={p.score} style={styles.standing} />
                 </FadeIn>
               ))}
             </View>
             <DefaultFocus>
-              <FocusableButton
+              <CountdownButton
                 label={isLast ? t('reveal.results') : t('reveal.next')}
-                disabled={results === null}
-                onSelect={onNext}
+                durationMs={autoNextMs}
+                running={navActive && results !== null}
+                onSelect={() => results !== null && onNext()}
               />
             </DefaultFocus>
           </View>
@@ -91,5 +98,6 @@ const styles = StyleSheet.create({
   counting: { color: colors.textTertiary, fontSize: scaledPixels(32) },
   side: { alignItems: 'flex-end', gap: scaledPixels(16) },
   standings: { alignItems: 'flex-end' },
+  standingRow: { flexDirection: 'row' },
   standing: { color: colors.textSecondary, fontSize: scaledPixels(28), fontWeight: 'bold' },
 });
