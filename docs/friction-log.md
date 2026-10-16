@@ -166,6 +166,19 @@ Severity: **High** (blocked progress) · **Medium** (cost > 30 min or needed a w
 
 ---
 
+## 13. D-pad controls that appear later are reached in the wrong order
+
+- **Date:** 2026-10-16
+- **Task:** Show topic suggestions from the phones above the lobby's "Start game" button, as soon as a phone sends one.
+- **Steps:** In a vertical `SpatialNavigationView`, render `{suggestions.length > 0 ? <Row/> : null}` above the buttons row; the row appears after the screen mounted. Press Up from "Start game".
+- **Expected:** Focus moves up to the suggestion that is shown above the buttons.
+- **Actual:** Nothing happens on Up. react-tv-space-navigation (used by the Vega samples) registers the newly mounted row after the existing children, so for the D-pad it is *below* the buttons, whatever the layout shows. When the focused suggestion disappeared (a new game clears them), focus was lost too.
+- **Severity:** Medium (looks like a dead remote to the user)
+- **Workaround:** Keep the container always mounted and only render its children conditionally; move focus to a known button (`ref.focus()`) before removing the focused element.
+- **Suggestion:** Document this in the Vega focus-management guide, or have the library order nodes by their position in the tree.
+
+---
+
 <!-- Template
 ## N. Title
 

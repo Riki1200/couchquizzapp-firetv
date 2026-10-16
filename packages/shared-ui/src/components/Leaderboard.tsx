@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
-import { Player, PlayerResult } from '../game/types';
+import { Player, PlayerResult, TEAMS, teamTotals } from '../game/types';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
 import { CountUp, nativeDriver } from './Motion';
@@ -59,6 +59,27 @@ function LeaderboardRow({ row }: { row: Row }) {
   );
 }
 
+/** Team mode: each team's total, with a bar sized by its share of the points. */
+export function TeamScores({ players, label }: { players: Player[]; label: (team: number) => string }) {
+  const totals = teamTotals(players);
+  const max = Math.max(1, ...totals);
+  return (
+    <View style={styles.teams}>
+      {TEAMS.map((team, i) => (
+        <View key={i} style={styles.teamRow}>
+          <Text style={styles.teamName} numberOfLines={1}>
+            {team.emoji} {label(i)}
+          </Text>
+          <View style={styles.teamTrack}>
+            <View style={[styles.teamBar, { backgroundColor: team.color, width: `${Math.round((totals[i] / max) * 100)}%` }]} />
+          </View>
+          <CountUp value={totals[i]} duration={900} style={styles.score} />
+        </View>
+      ))}
+    </View>
+  );
+}
+
 /** Ranks before this question (total − points) and after it. Ties keep a stable order by name. */
 function rank(players: Player[], results: PlayerResult[]): Row[] {
   const rows = players.map((player) => {
@@ -94,4 +115,9 @@ const styles = StyleSheet.create({
   up: { color: colors.success },
   down: { color: colors.error },
   score: { color: colors.text, fontSize: scaledPixels(26), fontWeight: 'bold', width: scaledPixels(90), textAlign: 'right' },
+  teams: { width: scaledPixels(560), gap: scaledPixels(8), marginBottom: scaledPixels(12) },
+  teamRow: { flexDirection: 'row', alignItems: 'center', gap: scaledPixels(12) },
+  teamName: { color: colors.text, fontSize: scaledPixels(24), fontWeight: 'bold', width: scaledPixels(190) },
+  teamTrack: { flex: 1, height: scaledPixels(18), borderRadius: scaledPixels(9), backgroundColor: 'rgba(255,255,255,0.1)', overflow: 'hidden' },
+  teamBar: { height: '100%', borderRadius: scaledPixels(9) },
 });

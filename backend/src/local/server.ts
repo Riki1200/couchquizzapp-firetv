@@ -10,6 +10,7 @@ import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { networkInterfaces } from 'os';
 import { join } from 'path';
 import { WebSocket, WebSocketServer } from 'ws';
+import type { Difficulty, Language } from '@couch-quiz/protocol';
 import { HostAi, MockHostAi } from '../game/ai';
 import { GameService } from '../game/GameService';
 import { MemoryStore } from '../game/store';
@@ -43,7 +44,21 @@ const game: GameService = new GameService({
   },
 });
 
-// ---------- HTTP: POST /rooms, GET /rooms/{code} ----------
+// ---------- HTTP: rooms, family scores, topic ideas, sounds ----------
+
+function readBody(req: IncomingMessage): Promise<{ familyId?: string } | null> {
+  return new Promise((resolve) => {
+    let raw = '';
+    req.on('data', (chunk) => (raw += chunk));
+    req.on('end', () => {
+      try {
+        resolve(raw ? JSON.parse(raw) : null);
+      } catch {
+        resolve(null);
+      }
+    });
+  });
+}
 
 const server = createServer(async (req: IncomingMessage, res: ServerResponse) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -56,7 +71,7 @@ const server = createServer(async (req: IncomingMessage, res: ServerResponse) =>
     res.writeHead(status, { 'Content-Type': 'application/json' }).end(JSON.stringify(body));
   try {
     if (req.method === 'POST' && url.pathname === '/rooms') {
-      const room = await game.createRoom();
+      const room = await game.createRoom((await readBody(req))?.familyId);
       console.log(`room ${room.roomCode} created → ${room.joinUrl.split('&')[0]}`);
       return json(200, room);
     }
@@ -69,6 +84,12 @@ const server = createServer(async (req: IncomingMessage, res: ServerResponse) =>
     }
     const match = url.pathname.match(/^\/rooms\/([A-Za-z]{4})$/);
     if (req.method === 'GET' && match) return json(200, await game.getRoom(match[1]));
+    const family = url.pathname.match(/^\/families\/([A-Za-z0-9-]+)$/);
+    if (req.method === 'GET' && family) return json(200, { standings: await game.getFamily(family[1]) });
+    if (req.method === 'GET' && url.pathname === '/topic-ideas') {
+      const language = url.searchParams.get('language') as Language;
+      return json(200, { topics: await game.topicIdeas(language, url.searchParams.get('difficulty') as Difficulty) });
+    }
     json(404, { message: 'Not found' });
   } catch (error) {
     console.error(error);

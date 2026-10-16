@@ -2,6 +2,7 @@
   "app": "npx tsx bin/app.ts",
   "context": {
     "modelId": "mistral.mistral-large-3-675b-instruct",
+    "checkerModelId": "deepseek.v3.1",
     "aiApi": "mantle",
     "site": "lambda"
   }

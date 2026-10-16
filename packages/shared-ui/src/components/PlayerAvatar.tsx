@@ -2,13 +2,14 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
-import { Player } from '../game/types';
+import { Player, TEAMS } from '../game/types';
 
-/** Avatar + name. Disconnected players are dimmed until their phone reconnects. */
+/** Avatar + name; a ring in the team's color in team mode. Disconnected players are dimmed until their phone reconnects. */
 export function PlayerAvatar({ player }: { player: Player }) {
+  const team = player.team !== null ? TEAMS[player.team] : null;
   return (
     <View style={[styles.container, !player.connected && styles.disconnected]}>
-      <View style={styles.circle}>
+      <View style={[styles.circle, team && { borderWidth: scaledPixels(6), borderColor: team.color }]}>
         <Text style={styles.emoji}>{player.avatar}</Text>
       </View>
       <Text style={styles.name} numberOfLines={1}>

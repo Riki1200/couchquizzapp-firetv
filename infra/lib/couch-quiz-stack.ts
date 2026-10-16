@@ -28,6 +28,8 @@ export class CouchQuizStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
     const modelId: string = this.node.tryGetContext('modelId');
+    // A second model fact-checks the AI's questions (bedrock-mantle only).
+    const checkerModelId: string = this.node.tryGetContext('checkerModelId') ?? '';
     // "mantle": OpenAI-compatible bedrock-mantle endpoint (Mistral, Gemma…); "converse": Bedrock Converse API (Amazon Nova…).
     const aiApi: string = this.node.tryGetContext('aiApi') ?? 'converse';
 
@@ -96,20 +98,21 @@ export class CouchQuizStack extends Stack {
         environment: {
           TABLE_NAME: table.tableName,
           MODEL_ID: modelId,
+          CHECKER_MODEL_ID: checkerModelId,
           AI_API: aiApi,
           NODE_OPTIONS: '--enable-source-maps',
           ...extra.environment,
         },
       });
 
-    // Bedrock access for the configured model only.
+    // Bedrock access for the configured models only.
     const bedrockPolicy =
       aiApi === 'mantle'
-        ? // bedrock-mantle authorizes inference with CreateInference, narrowed to the model.
+        ? // bedrock-mantle authorizes inference with CreateInference, narrowed to the writer and checker models.
           new PolicyStatement({
             actions: ['bedrock-mantle:CreateInference'],
             resources: ['*'],
-            conditions: { StringEquals: { 'bedrock-mantle:Model': modelId } },
+            conditions: { StringEquals: { 'bedrock-mantle:Model': [modelId, checkerModelId].filter(Boolean) } },
           })
         : // Converse: the cross-region inference profile plus the model in every region it can route to.
           new PolicyStatement({
@@ -144,6 +147,7 @@ export class CouchQuizStack extends Stack {
     generateFn.grantInvoke(socketFn);
     generateFn.addToRolePolicy(bedrockPolicy); // questions
     socketFn.addToRolePolicy(bedrockPolicy); // end-of-game awards
+    httpFn.addToRolePolicy(bedrockPolicy); // "Surprise me" topic ideas
 
     // ---------- APIs ----------
     const socketIntegration = new WebSocketLambdaIntegration('SocketIntegration', socketFn);
@@ -161,6 +165,8 @@ export class CouchQuizStack extends Stack {
     const httpIntegration = new HttpLambdaIntegration('HttpIntegration', httpFn);
     httpApi.addRoutes({ path: '/rooms', methods: [HttpMethod.POST], integration: httpIntegration });
     httpApi.addRoutes({ path: '/rooms/{code}', methods: [HttpMethod.GET], integration: httpIntegration });
+    httpApi.addRoutes({ path: '/families/{id}', methods: [HttpMethod.GET], integration: httpIntegration });
+    httpApi.addRoutes({ path: '/topic-ideas', methods: [HttpMethod.GET], integration: httpIntegration });
     httpApi.addRoutes({ path: '/sounds/{file}', methods: [HttpMethod.GET], integration: httpIntegration });
     httpApi.addRoutes({ path: '/', methods: [HttpMethod.GET], integration: httpIntegration });
     httpApi.addRoutes({ path: '/assets/{file}', methods: [HttpMethod.GET], integration: httpIntegration });

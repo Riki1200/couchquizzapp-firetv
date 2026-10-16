@@ -2,6 +2,7 @@
 import { ApiGatewayManagementApiClient, GoneException, PostToConnectionCommand } from '@aws-sdk/client-apigatewaymanagementapi';
 import { InvokeCommand, LambdaClient } from '@aws-sdk/client-lambda';
 import type { APIGatewayProxyEventV2, APIGatewayProxyResultV2, APIGatewayProxyWebsocketEventV2 } from 'aws-lambda';
+import type { Difficulty, Language } from '@couch-quiz/protocol';
 import { GameService, GenerationJob } from '../game/GameService';
 import { BedrockHostAi } from './bedrockAi';
 import { MantleHostAi } from './mantleAi';
@@ -42,8 +43,13 @@ export async function http(event: APIGatewayProxyEventV2): Promise<APIGatewayPro
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body),
   });
-  if (event.routeKey === 'POST /rooms') return json(200, await game.createRoom());
+  if (event.routeKey === 'POST /rooms') return json(200, await game.createRoom(parseBody(event)?.familyId));
   if (event.routeKey === 'GET /rooms/{code}') return json(200, await game.getRoom(event.pathParameters?.code ?? ''));
+  if (event.routeKey === 'GET /families/{id}') return json(200, { standings: await game.getFamily(event.pathParameters?.id ?? '') });
+  if (event.routeKey === 'GET /topic-ideas') {
+    const q = event.queryStringParameters ?? {};
+    return json(200, { topics: await game.topicIdeas(q.language as Language, q.difficulty as Difficulty) });
+  }
   if (event.routeKey === 'GET /sounds/{file}') {
     // The sound files are copied next to the bundled handler (see the stack's bundling hooks).
     const audio = readSound(__dirname + '/sounds', event.pathParameters?.file ?? '');
@@ -70,6 +76,15 @@ export async function http(event: APIGatewayProxyEventV2): Promise<APIGatewayPro
     }
   }
   return json(404, { message: 'Not found' });
+}
+
+function parseBody(event: APIGatewayProxyEventV2): { familyId?: string } | null {
+  try {
+    const raw = event.isBase64Encoded ? Buffer.from(event.body ?? '', 'base64').toString() : event.body;
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
 }
 
 /** WebSocket API: $connect, $disconnect and $default (all messages). */

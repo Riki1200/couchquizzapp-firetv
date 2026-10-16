@@ -469,3 +469,53 @@ button {
     transition: none !important;
   }
 }
+
+/* Team mode: the player's team color. */
+.team {
+  margin: 0;
+  background: var(--card-raised);
+  color: var(--text);
+  font-weight: 800;
+  font-size: 18px;
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+/* Suggest a topic from the lobby; it appears on the TV. */
+.suggest {
+  width: 100%;
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.suggest label {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.suggest-row {
+  display: flex;
+  gap: 8px;
+}
+
+.suggest-input {
+  flex: 1;
+  min-width: 0;
+  font-size: 18px;
+  padding: 12px 14px;
+}
+
+.suggest-send {
+  background: var(--selected);
+  font-weight: 800;
+  padding: 0 16px;
+  border-radius: 14px;
+  white-space: nowrap;
+}
+
+.suggest-send:disabled {
+  opacity: 0.5;
+}

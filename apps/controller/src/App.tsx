@@ -1,5 +1,5 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { ANSWER_STYLES, AVATARS, GetRoomResponse, Language, MAX_NAME_LENGTH, STREAK_BADGE } from '@couch-quiz/protocol';
+import { ANSWER_STYLES, AVATARS, GetRoomResponse, Language, MAX_NAME_LENGTH, MAX_TOPIC_LENGTH, STREAK_BADGE, TEAMS, TextKey } from '@couch-quiz/protocol';
 import { LanguageContext, useT } from './i18n';
 import { endpoints, useGameSocket, View } from './useGameSocket';
 
@@ -146,17 +146,25 @@ function PlayerView({
   const { t, topicLabel } = useT();
   switch (view.kind) {
     case 'join':
-    case 'lobby':
+    case 'lobby': {
+      const team = view.kind === 'lobby' && view.team !== null ? view.team : null;
       return (
         <div className="center view" key="lobby">
           <div className="big-avatar bob">{avatar}</div>
           <h1>{t('phone.youreIn', { name })}</h1>
+          {team !== null ? (
+            <p className="team pop" style={{ background: TEAMS[team].color }}>
+              {t('phone.team', { emoji: TEAMS[team].emoji, team: t(`team.${team}` as TextKey) })}
+            </p>
+          ) : null}
           <p className="muted">
             {view.kind === 'lobby' && view.topic ? `${t('phone.topic', { topic: topicLabel(view.topic) })} ` : ''}
             {t('phone.lookAtTv')}
           </p>
+          {view.kind === 'lobby' ? <SuggestTopic onSend={(topic) => send({ action: 'suggestTopic', topic })} /> : null}
         </div>
       );
+    }
     case 'question':
       return (
         <QuestionPad
@@ -188,6 +196,7 @@ function PlayerView({
           <div className="big-avatar pop">{view.rank === 1 ? '🏆' : avatar}</div>
           <h1>{t('phone.rank', { rank: view.rank, count: view.playerCount })}</h1>
           <p className="muted">{t('phone.points', { score: view.score })}</p>
+          {view.team !== null ? <TeamResult team={view.team} won={view.teamWon} /> : null}
           {view.title ? (
             <div className="award">
               <strong>{view.title}</strong>
@@ -198,6 +207,57 @@ function PlayerView({
         </div>
       );
   }
+}
+
+/** Team mode: which team won, in the winner's color. */
+function TeamResult({ team, won }: { team: number; won: boolean | null }) {
+  const { t } = useT();
+  if (won === null) return <p className="team pop">{t('phone.teamTie')}</p>;
+  const winner = won ? team : 1 - team;
+  return (
+    <p className="team pop" style={{ background: TEAMS[winner].color }}>
+      {t('phone.teamWon', { emoji: TEAMS[winner].emoji, team: t(`team.${winner}` as TextKey) })}
+    </p>
+  );
+}
+
+/** A phone suggests a topic; it shows up on the TV, where the host can pick it. */
+function SuggestTopic({ onSend }: { onSend: (topic: string) => void }) {
+  const { t } = useT();
+  const [topic, setTopic] = useState('');
+  const [sent, setSent] = useState<string | null>(null);
+  const submit = () => {
+    const clean = topic.trim();
+    if (!clean) return;
+    onSend(clean);
+    setSent(clean);
+    setTopic('');
+  };
+  return (
+    <form
+      className="suggest"
+      onSubmit={(e) => {
+        e.preventDefault();
+        submit();
+      }}
+    >
+      <label htmlFor="suggest-input">{t('phone.suggestTitle')}</label>
+      <div className="suggest-row">
+        <input
+          id="suggest-input"
+          className="suggest-input"
+          value={topic}
+          maxLength={MAX_TOPIC_LENGTH}
+          placeholder={t('phone.suggestPlaceholder')}
+          onChange={(e) => setTopic(e.target.value)}
+        />
+        <button type="submit" className="suggest-send" disabled={!topic.trim()}>
+          {t('phone.suggestSend')}
+        </button>
+      </div>
+      {sent ? <p className="muted pop">{t('phone.suggestSent', { topic: sent })}</p> : null}
+    </form>
+  );
 }
 
 function QuestionPad({ view, onAnswer }: { view: Extract<View, { kind: 'question' }>; onAnswer: (choice: number) => void }) {

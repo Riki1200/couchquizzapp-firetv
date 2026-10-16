@@ -5,7 +5,7 @@ import { FocusableButton } from '../components/Focusable';
 import { Confetti, CountUp, FadeIn, PopIn } from '../components/Motion';
 import { Screen } from '../components/Screen';
 import { useGame } from '../game/GameContext';
-import { Player } from '../game/types';
+import { Player, TEAMS, TextKey, teamTotals, winningTeam } from '../game/types';
 import { useBackHandler } from '../hooks/useBackHandler';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
@@ -16,12 +16,18 @@ const MEDALS = ['🥇', '🥈', '🥉'];
 const RISE_DELAY = [900, 500, 150];
 
 interface Props {
-  onPlayAgain: () => void;
+  /** Same topic and players, new questions. */
+  onRematch: () => void;
+  onNewTopic: () => void;
+  onFamily: () => void;
 }
 
-export default function PodiumScreen({ onPlayAgain }: Props) {
+export default function PodiumScreen({ onRematch, onNewTopic, onFamily }: Props) {
   const { state, t } = useGame();
-  useBackHandler(onPlayAgain);
+  useBackHandler(onNewTopic);
+  const teamMode = state.players.some((p) => p.team !== null);
+  const winner = teamMode ? winningTeam(state.players) : null;
+  const totals = teamTotals(state.players);
   const ranked = [...state.players].sort((a, b) => b.score - a.score);
   // Podium order on screen: 2nd, 1st, 3rd.
   const podium = [ranked[1], ranked[0], ranked[2]].map((player, i) => ({ player, place: [1, 0, 2][i] }));
@@ -30,7 +36,22 @@ export default function PodiumScreen({ onPlayAgain }: Props) {
   return (
     <SpatialNavigationRoot>
       <Screen>
-        <Text style={styles.title}>{t('podium.title')}</Text>
+        <View style={styles.header}>
+          <Text style={styles.title}>{t('podium.title')}</Text>
+          {teamMode ? (
+            <PopIn delay={1100}>
+              <View style={[styles.teamBanner, winner !== null && { backgroundColor: TEAMS[winner].color }]}>
+                <Text style={styles.teamBannerText}>
+                  {winner === null
+                    ? t('podium.teamTie')
+                    : t('podium.teamWins', { emoji: TEAMS[winner].emoji, team: t(`team.${winner}` as TextKey) })}
+                  {'  '}
+                  {totals[0].toLocaleString()} – {totals[1].toLocaleString()}
+                </Text>
+              </View>
+            </PopIn>
+          ) : null}
+        </View>
 
         <View style={styles.body}>
           <View style={styles.podium}>
@@ -69,8 +90,10 @@ export default function PodiumScreen({ onPlayAgain }: Props) {
 
         <FadeIn delay={1200}>
           <SpatialNavigationView direction="horizontal" style={styles.buttons}>
+            <FocusableButton label={t('podium.family')} onSelect={onFamily} />
+            <FocusableButton label={t('podium.newTopic')} onSelect={onNewTopic} />
             <DefaultFocus>
-              <FocusableButton label={t('podium.playAgain')} onSelect={onPlayAgain} />
+              <FocusableButton label={t('podium.rematch')} onSelect={onRematch} />
             </DefaultFocus>
             {Platform.OS !== 'web' ? <FocusableButton label={t('podium.exit')} onSelect={() => BackHandler.exitApp()} /> : null}
           </SpatialNavigationView>
@@ -101,6 +124,9 @@ function Step({ player, place }: { player: Player; place: number }) {
 
 const styles = StyleSheet.create({
   title: { color: colors.focus, fontSize: scaledPixels(72), fontWeight: 'bold' },
+  header: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
+  teamBanner: { backgroundColor: colors.cardRaised, borderRadius: scaledPixels(20), paddingVertical: scaledPixels(14), paddingHorizontal: scaledPixels(28) },
+  teamBannerText: { color: colors.text, fontSize: scaledPixels(38), fontWeight: 'bold' },
   body: { flex: 1, flexDirection: 'row', gap: scaledPixels(80), marginTop: scaledPixels(30) },
   podium: { flexDirection: 'row', alignItems: 'flex-end', gap: scaledPixels(24) },
   step: { alignItems: 'center', width: scaledPixels(240) },

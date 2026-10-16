@@ -5,6 +5,7 @@ import { QuitDialog } from './components/QuitDialog';
 import { GameProvider, useGame } from './game/GameContext';
 import { scaledPixels } from './hooks/useScale';
 import CustomTopicScreen from './screens/CustomTopicScreen';
+import FamilyScreen from './screens/FamilyScreen';
 import LobbyScreen from './screens/LobbyScreen';
 import PodiumScreen from './screens/PodiumScreen';
 import QuestionScreen from './screens/QuestionScreen';
@@ -15,7 +16,7 @@ import { colors } from './theme/colors';
 
 // The game is a short linear flow, so a screen switch is simpler than a navigation stack
 // and behaves the same on Vega, Android TV and web.
-type Screen = 'setup' | 'settings' | 'customTopic' | 'lobby' | 'question' | 'reveal' | 'podium';
+type Screen = 'setup' | 'settings' | 'family' | 'customTopic' | 'lobby' | 'question' | 'reveal' | 'podium';
 
 function Screens() {
   const game = useGame();
@@ -23,6 +24,12 @@ function Screens() {
   const [screen, setScreen] = useState<Screen>('setup');
   const [setupFocus, setSetupFocus] = useState<'topics' | 'difficulty'>('topics');
   const [quitOpen, setQuitOpen] = useState(false);
+  // The family scores open from Setup or the podium and go back there.
+  const [familyReturn, setFamilyReturn] = useState<Screen>('setup');
+  const openFamily = (from: Screen) => {
+    setFamilyReturn(from);
+    setScreen('family');
+  };
 
   useEffect(preloadSounds, []);
   useGameSounds();
@@ -46,6 +53,7 @@ function Screens() {
           initialFocus={setupFocus}
           onCustomTopic={() => setScreen('customTopic')}
           onSettings={() => setScreen('settings')}
+          onFamily={() => openFamily('setup')}
           onCreateRoom={() => {
             game.openLobby();
             setScreen('lobby');
@@ -54,6 +62,8 @@ function Screens() {
       );
     case 'settings':
       return <SettingsScreen onDone={goToSetup} />;
+    case 'family':
+      return <FamilyScreen onDone={() => (familyReturn === 'setup' ? goToSetup() : setScreen(familyReturn))} />;
     case 'customTopic':
       return (
         <CustomTopicScreen
@@ -70,7 +80,8 @@ function Screens() {
       return (
         <LobbyScreen
           onChangeTopic={goToSetup}
-          onRetryGeneration={game.openLobby}
+          onRetryGeneration={() => game.openLobby()}
+          onPickSuggestion={(topic) => game.openLobby(topic)}
           onStart={() => {
             game.showQuestion(0);
             setScreen('question');
@@ -111,7 +122,16 @@ function Screens() {
         </View>
       );
     case 'podium':
-      return <PodiumScreen onPlayAgain={goToSetup} />;
+      return (
+        <PodiumScreen
+          onRematch={() => {
+            game.openLobby(); // same topic and players, new questions
+            setScreen('lobby');
+          }}
+          onNewTopic={goToSetup}
+          onFamily={() => openFamily('podium')}
+        />
+      );
   }
 }
 

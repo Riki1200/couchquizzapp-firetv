@@ -8,6 +8,7 @@ import {
   Award,
   AwardSource,
   Difficulty,
+  FamilyStanding,
   GenerationStatus,
   Language,
   Player,
@@ -18,17 +19,21 @@ import {
   QuestionSource,
   Room,
   TextKey,
+  TopicSuggestion,
   isLanguage,
   translate,
 } from './types';
 
 const SETTINGS_KEY = 'couchquiz:settings';
+const FAMILY_KEY = 'couchquiz:family';
 
 export interface Settings {
   language: Language;
   questionCount: number;
   effects: boolean;
   music: boolean;
+  /** Two teams instead of everyone for themselves. */
+  teams: boolean;
 }
 
 export interface GameState {
@@ -40,6 +45,8 @@ export interface GameState {
   generation: GenerationStatus;
   questions: Question[];
   questionSource: QuestionSource | null;
+  /** The AI's questions were fact-checked by a second model. */
+  factChecked: boolean;
   questionIndex: number;
   answeredIds: string[];
   /** Results of the current question once revealed. */
@@ -48,6 +55,12 @@ export interface GameState {
   awardSource: AwardSource | null;
   /** Correct answers in a row per player, as of the last reveal (for the 🔥 badge). */
   streaks: Record<string, number>;
+  /** Topics suggested from the phones in the lobby. */
+  suggestions: TopicSuggestion[];
+  /** This TV's id for the family scores (saved on the device). */
+  familyId: string | null;
+  /** Family scores, once loaded or after a game. */
+  family: FamilyStanding[] | null;
   settings: Settings;
 }
 
@@ -57,6 +70,8 @@ type Action =
   | { type: 'setDifficulty'; difficulty: Difficulty }
   | { type: 'questionStarted'; index: number }
   | { type: 'settings'; settings: Partial<Settings> }
+  | { type: 'familyId'; familyId: string }
+  | { type: 'family'; family: FamilyStanding[] }
   | GameClientEvent;
 
 const initialState: GameState = {
@@ -68,13 +83,17 @@ const initialState: GameState = {
   generation: 'idle',
   questions: [],
   questionSource: null,
+  factChecked: false,
   questionIndex: 0,
   answeredIds: [],
   results: null,
   awards: null,
   awardSource: null,
   streaks: {},
-  settings: { language: 'en', questionCount: QUESTION_COUNT, effects: true, music: true },
+  suggestions: [],
+  familyId: null,
+  family: null,
+  settings: { language: 'en', questionCount: QUESTION_COUNT, effects: true, music: true, teams: false },
 };
 
 function reducer(state: GameState, action: Action): GameState {
@@ -97,12 +116,24 @@ function reducer(state: GameState, action: Action): GameState {
       };
     case 'settings':
       return { ...state, settings: { ...state.settings, ...action.settings } };
+    case 'familyId':
+      return { ...state, familyId: action.familyId };
+    case 'family':
+      return { ...state, family: action.family };
+    case 'topicSuggestions':
+      return { ...state, suggestions: action.suggestions };
     case 'connection':
       return { ...state, connected: action.connected };
     case 'players':
       return { ...state, players: action.players };
     case 'generation':
-      return { ...state, generation: action.status, questions: action.questions ?? [], questionSource: action.source ?? null };
+      return {
+        ...state,
+        generation: action.status,
+        questions: action.questions ?? [],
+        questionSource: action.source ?? null,
+        factChecked: !!action.factChecked,
+      };
     case 'answerProgress':
       return action.index === state.questionIndex ? { ...state, answeredIds: action.answeredPlayerIds } : state;
     case 'reveal':
@@ -113,7 +144,7 @@ function reducer(state: GameState, action: Action): GameState {
         streaks: Object.fromEntries(action.results.map((r) => [r.playerId, r.streak])),
       };
     case 'gameOver':
-      return { ...state, awards: action.awards, awardSource: action.source };
+      return { ...state, awards: action.awards, awardSource: action.source, family: action.family };
   }
 }
 
@@ -121,8 +152,11 @@ interface GameContextValue {
   state: GameState;
   setTopic: (topic: string) => void;
   setDifficulty: (difficulty: Difficulty) => void;
-  /** Creates the room the first time, then (re)starts question generation for the chosen topic. */
-  openLobby: () => Promise<void>;
+  /**
+   * Creates the room the first time, then starts a game (new questions) for the chosen topic — or for
+   * `topic`, e.g. one suggested from a phone. Players stay in the room, so this is also the rematch.
+   */
+  openLobby: (topic?: string) => Promise<void>;
   /** Shows question `index` on the TV (intro); the phones get it once beginQuestion() is called. */
   showQuestion: (index: number) => void;
   /** Starts the current question: phones get the answers and the server starts timing. */
@@ -130,6 +164,9 @@ interface GameContextValue {
   reveal: () => void;
   endGame: () => void;
   updateSettings: (settings: Partial<Settings>) => void;
+  loadFamily: () => Promise<void>;
+  /** "Surprise me" topic ideas in the host's language. */
+  topicIdeas: () => Promise<string[]>;
   /** Text in the host's language. */
   t: (key: TextKey, vars?: Record<string, string | number>) => string;
 }
@@ -139,6 +176,15 @@ const GameContext = createContext<GameContextValue | null>(null);
 export function GameProvider({ children }: { children: React.ReactNode }) {
   const clientRef = useRef<GameClient>(createGameClient());
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  // This TV's family id: created once and kept on the device.
+  useEffect(() => {
+    loadValue(FAMILY_KEY).then((saved) => {
+      const familyId = saved ?? `fam-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+      if (!saved) saveValue(FAMILY_KEY, familyId);
+      dispatch({ type: 'familyId', familyId });
+    });
+  }, []);
 
   // Restore the host's saved settings.
   useEffect(() => {
@@ -171,11 +217,12 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       state,
       setTopic: (topic) => dispatch({ type: 'setTopic', topic }),
       setDifficulty: (difficulty) => dispatch({ type: 'setDifficulty', difficulty }),
-      openLobby: async () => {
+      openLobby: async (topic) => {
         try {
-          if (!state.room) dispatch({ type: 'roomCreated', room: await client.createRoom() });
-          const { language, questionCount } = state.settings;
-          client.configure(state.topic!, state.difficulty!, language, questionCount);
+          if (!state.room) dispatch({ type: 'roomCreated', room: await client.createRoom(state.familyId) });
+          if (topic) dispatch({ type: 'setTopic', topic });
+          const { language, questionCount, teams } = state.settings;
+          client.configure(topic ?? state.topic!, state.difficulty!, language, questionCount, teams);
         } catch (error) {
           console.warn('[game] could not open the lobby', error);
           dispatch({ type: 'generation', status: 'failed' }); // the lobby offers "Try again"
@@ -194,6 +241,16 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         dispatch({ type: 'settings', settings });
         saveValue(SETTINGS_KEY, JSON.stringify({ ...state.settings, ...settings }));
       },
+      loadFamily: async () => {
+        if (!state.familyId) return;
+        try {
+          dispatch({ type: 'family', family: await client.getFamily(state.familyId) });
+        } catch (error) {
+          console.warn('[game] could not load the family scores', error);
+          dispatch({ type: 'family', family: [] });
+        }
+      },
+      topicIdeas: () => client.topicIdeas(state.settings.language, state.difficulty ?? 'easy'),
       t: (key, vars) => translate(state.settings.language, key, vars),
     };
   }, [state]);

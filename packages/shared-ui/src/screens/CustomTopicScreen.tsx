@@ -22,8 +22,18 @@ interface Props {
 }
 
 export default function CustomTopicScreen({ initialTopic, onDone, onCancel }: Props) {
-  const { t } = useGame();
+  const { t, topicIdeas } = useGame();
   const [topic, setTopic] = useState(initialTopic);
+  // "Surprise me": topic ideas from the AI host, picked with the D-pad (no typing).
+  const [ideas, setIdeas] = useState<string[] | null>(null);
+  const loadIdeas = () => {
+    setIdeas(null);
+    topicIdeas()
+      .then(setIdeas)
+      .catch(() => setIdeas([]));
+  };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(loadIdeas, []);
   const inputRef = useRef<TextInput>(null);
   const trimmed = topic.trim();
   const submit = () => trimmed && onDone(trimmed);
@@ -69,6 +79,16 @@ export default function CustomTopicScreen({ initialTopic, onDone, onCancel }: Pr
               <FocusableButton label={t('common.cancel')} onSelect={onCancel} />
             </SpatialNavigationView>
           </FadeIn>
+
+          <FadeIn delay={320}>
+            <Text style={styles.ideasLabel}>{ideas === null ? t('custom.loadingIdeas') : t('custom.ideas')}</Text>
+            <SpatialNavigationView direction="horizontal" style={styles.buttons}>
+              {(ideas ?? []).map((idea) => (
+                <FocusableButton key={idea} label={`✨ ${idea}`} onSelect={() => onDone(idea)} />
+              ))}
+              {ideas !== null ? <FocusableButton label={t('custom.moreIdeas')} onSelect={loadIdeas} /> : null}
+            </SpatialNavigationView>
+          </FadeIn>
         </SpatialNavigationView>
 
         {Platform.OS !== 'web' ? (
@@ -98,6 +118,7 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
   },
   inputFocused: { borderColor: colors.focus },
-  buttons: { flexDirection: 'row', gap: scaledPixels(32) },
+  buttons: { flexDirection: 'row', flexWrap: 'wrap', gap: scaledPixels(32) },
+  ideasLabel: { color: colors.textSecondary, fontSize: scaledPixels(30), fontWeight: 'bold', marginBottom: scaledPixels(16) },
   keyboardHint: { color: colors.focus, fontSize: scaledPixels(30), marginTop: scaledPixels(48) },
 });

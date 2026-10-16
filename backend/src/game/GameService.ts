@@ -6,6 +6,7 @@ import {
   ClientMessage,
   CreateRoomResponse,
   Difficulty,
+  FamilyStanding,
   GetRoomResponse,
   HostEvent,
   Language,
@@ -19,20 +20,29 @@ import {
   QUESTION_COUNT_OPTIONS,
   Question,
   QuestionSource,
+  TopicSuggestion,
   bankKey,
   bankPool,
   isFinalQuestion,
   isLanguage,
   pickGame,
   pointsFor,
+  randomIdeas,
   randomRoomCode,
+  smallerTeam,
   timeLimitMs,
   translate,
+  winningTeam,
 } from '@couch-quiz/protocol';
 import { HostAi, PlayerFacts, fallbackAwards } from './ai';
 import { ConnectionRecord, PlayerRecord, RoomRecord, Store } from './store';
 
 const DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard', 'kids'];
+const MAX_SUGGESTIONS = 4;
+const MAX_FAMILY_SIZE = 30;
+/** Extra questions the AI writes when a fact-checker is available, so flagged ones can be dropped. */
+const SPARE_QUESTIONS = 3;
+const isFamilyId = (id: unknown): id is string => typeof id === 'string' && /^[A-Za-z0-9-]{8,64}$/.test(id);
 
 export interface GameDeps {
   store: Store;
@@ -58,6 +68,7 @@ export interface GameDeps {
 interface GameQuestions {
   questions: Question[];
   source: QuestionSource;
+  factChecked?: boolean;
   bankKey?: string;
   bankQuestionIds?: string[];
 }
@@ -69,6 +80,8 @@ export interface GenerationJob {
   difficulty: Difficulty;
   language: Language;
   questionCount: number;
+  /** Questions of the previous game on the same topic (rematch): the AI must not repeat them. */
+  avoid: string[];
 }
 
 export interface ConnectParams {
@@ -92,7 +105,7 @@ export class GameService {
 
   // ---------- HTTP ----------
 
-  async createRoom(): Promise<CreateRoomResponse> {
+  async createRoom(familyId?: string): Promise<CreateRoomResponse> {
     for (let attempt = 0; attempt < 5; attempt++) {
       const room: RoomRecord = {
         roomCode: randomRoomCode(),
@@ -107,6 +120,11 @@ export class GameService {
         generationId: null,
         questions: [],
         questionSource: null,
+        factChecked: false,
+        round: 0,
+        teams: false,
+        familyId: isFamilyId(familyId) ? familyId : null,
+        suggestions: [],
         bankKey: null,
         bankQuestionIds: [],
         questionIndex: 0,
@@ -128,6 +146,21 @@ export class GameService {
     if (!room) return { exists: false, playerCount: 0, language: 'en' };
     const playerCount = (await this.deps.store.getPlayers(room.roomCode)).length;
     return { exists: true, playerCount, language: room.language };
+  }
+
+  async getFamily(familyId: string): Promise<FamilyStanding[]> {
+    return isFamilyId(familyId) ? this.deps.store.getFamily(familyId) : [];
+  }
+
+  /** "Surprise me" topics: from the AI host, or the built-in list when it is unavailable. */
+  async topicIdeas(language: Language, difficulty: Difficulty, count = 3): Promise<string[]> {
+    const lang = isLanguage(language) ? language : 'en';
+    try {
+      if (this.deps.ai.suggestTopics) return await this.deps.ai.suggestTopics(DIFFICULTIES.includes(difficulty) ? difficulty : 'easy', lang, count);
+    } catch (error) {
+      console.warn(`[topics] using built-in ideas: ${error instanceof Error ? error.message : error}`);
+    }
+    return randomIdeas(lang, count);
   }
 
   // ---------- WebSocket lifecycle ----------
@@ -195,7 +228,7 @@ export class GameService {
         case 'sync':
           return this.syncHost(room, connId);
         case 'configure':
-          return this.configure(room, msg.topic, msg.difficulty, msg.language, msg.questionCount);
+          return this.configure(room, msg.topic, msg.difficulty, msg.language, msg.questionCount, msg.teams);
         case 'startQuestion':
           return this.startQuestion(room, msg.index);
         case 'reveal':
@@ -211,6 +244,8 @@ export class GameService {
           return this.join(room, conn, msg.name, msg.avatar);
         case 'answer':
           return this.answer(room, conn, msg.index, msg.choice);
+        case 'suggestTopic':
+          return this.suggestTopic(room, conn, msg.topic);
       }
     }
   }
@@ -225,14 +260,31 @@ export class GameService {
       topic: room.topic ?? undefined,
       questions: room.generation === 'ready' ? room.questions : undefined,
       source: room.questionSource ?? undefined,
+      factChecked: room.factChecked,
     });
+    await this.deps.send(connId, { type: 'topicSuggestions', suggestions: room.suggestions ?? [] });
   }
 
-  private async configure(room: RoomRecord, topic: string, difficulty: Difficulty, language: Language, questionCount: number) {
+  /**
+   * Starts a game in this room: a new round (scores reset, players stay), teams if asked, and questions
+   * from the bank or the AI host. Also used for a rematch: same topic, new questions.
+   */
+  private async configure(
+    room: RoomRecord,
+    topic: string,
+    difficulty: Difficulty,
+    language: Language,
+    questionCount: number,
+    teams: boolean,
+  ) {
     const cleanTopic = String(topic ?? '').trim().slice(0, MAX_TOPIC_LENGTH);
     if (!cleanTopic || !DIFFICULTIES.includes(difficulty)) return;
     const lang: Language = isLanguage(language) ? language : 'en';
     const count = (QUESTION_COUNT_OPTIONS as readonly number[]).includes(questionCount) ? questionCount : QUESTION_COUNT;
+
+    // A rematch on the same topic must not repeat the AI's previous questions.
+    const sameTopic = room.topic?.toLowerCase() === cleanTopic.toLowerCase() && room.questionSource === 'ai';
+    const avoid = sameTopic ? room.questions.map((q) => q.text) : [];
 
     const generationId = randomUUID();
     const patch = {
@@ -243,19 +295,31 @@ export class GameService {
       generation: 'pending' as const,
       generationId,
       questions: [],
+      questionSource: null,
+      factChecked: false,
+      round: (room.round ?? 0) + 1,
+      teams: !!teams,
+      suggestions: [],
       phase: 'lobby' as const,
     };
     await this.deps.store.updateRoom(room.roomCode, patch);
     const players = await this.deps.store.getPlayers(room.roomCode);
-    for (const p of players) {
-      await this.deps.store.updatePlayer(room.roomCode, p.id, { score: 0, correctMs: [], ranks: [], streak: 0, bestStreak: 0 });
+    for (const [i, p] of players.entries()) {
+      // Teams alternate in join order, so they stay balanced.
+      p.team = teams ? i % 2 : null;
+      await this.deps.store.updatePlayer(room.roomCode, p.id, { score: 0, correctMs: [], ranks: [], streak: 0, bestStreak: 0, team: p.team });
     }
     const updated = { ...room, ...patch };
     await this.sendToHost(updated, { type: 'generation', status: 'pending', topic: cleanTopic });
+    await this.sendToHost(updated, { type: 'topicSuggestions', suggestions: [] });
     await this.sendPlayersToHost(updated);
-    await this.toPlayers(room.roomCode, { type: 'lobby', topic: cleanTopic, language: lang });
+    await Promise.all(
+      players
+        .filter((p) => p.connId)
+        .map((p) => this.deps.send(p.connId!, { type: 'lobby', topic: cleanTopic, language: lang, team: p.team })),
+    );
 
-    const job: GenerationJob = { roomCode: room.roomCode, generationId, topic: cleanTopic, difficulty, language: lang, questionCount: count };
+    const job: GenerationJob = { roomCode: room.roomCode, generationId, topic: cleanTopic, difficulty, language: lang, questionCount: count, avoid };
     // Preset topics come from the question bank, skipping questions of games already completed.
     // Custom topics, and preset topics whose bank is used up, go to the AI host.
     const bankGame = await this.pickBankGame(job, false);
@@ -285,6 +349,7 @@ export class GameService {
       generation: status,
       questions: game?.questions ?? [],
       questionSource: game?.source ?? null,
+      factChecked: !!game?.factChecked,
       bankKey: game?.bankKey ?? null,
       bankQuestionIds: game?.bankQuestionIds ?? [],
     });
@@ -294,6 +359,7 @@ export class GameService {
       topic: job.topic,
       questions: game?.questions,
       source: game?.source,
+      factChecked: !!game?.factChecked,
     });
   }
 
@@ -301,13 +367,37 @@ export class GameService {
   async runGeneration(job: GenerationJob): Promise<void> {
     let game: GameQuestions | null = null;
     try {
-      const questions = await this.deps.ai.writeQuestions(job.topic, job.difficulty, job.language, job.questionCount);
-      game = { questions, source: 'ai' };
+      game = { ...(await this.writeCheckedQuestions(job)), source: 'ai' };
     } catch (error) {
       console.warn(`[generation] AI failed for "${job.topic}": ${error instanceof Error ? error.message : error}`);
       game = await this.pickBankGame(job, true);
     }
     await this.completeGeneration(job, game);
+  }
+
+  /**
+   * With a fact-checker: the AI writes a few spare questions, a second model checks them all, and the
+   * game uses the first ones that passed (topped up with flagged ones only if too few passed).
+   */
+  private async writeCheckedQuestions(job: GenerationJob): Promise<{ questions: Question[]; factChecked: boolean }> {
+    const { ai } = this.deps;
+    if (!ai.checkQuestions) {
+      return { questions: await ai.writeQuestions(job.topic, job.difficulty, job.language, job.questionCount, job.avoid), factChecked: false };
+    }
+    const written = await ai.writeQuestions(job.topic, job.difficulty, job.language, job.questionCount + SPARE_QUESTIONS, job.avoid);
+    try {
+      const checks = await ai.checkQuestions(written, job.difficulty, job.language);
+      const passed = written.filter((_, i) => checks[i].ok);
+      const flagged = written.filter((_, i) => !checks[i].ok);
+      flagged.forEach((q) => console.log(`[fact-check] flagged "${q.text}": ${checks[written.indexOf(q)].note}`));
+      return {
+        questions: [...passed, ...flagged].slice(0, job.questionCount),
+        factChecked: passed.length >= job.questionCount,
+      };
+    } catch (error) {
+      console.warn(`[fact-check] skipped: ${error instanceof Error ? error.message : error}`);
+      return { questions: written.slice(0, job.questionCount), factChecked: false };
+    }
   }
 
   private async startQuestion(room: RoomRecord, index: number) {
@@ -337,7 +427,7 @@ export class GameService {
     const question = room.questions[index];
     const limit = timeLimitMs(room.difficulty);
     const final = isFinalQuestion(index, room.questions.length);
-    const answers = await this.deps.store.getAnswers(room.roomCode, index);
+    const answers = await this.deps.store.getAnswers(room.roomCode, room.round ?? 0, index);
     const players = await this.deps.store.getPlayers(room.roomCode);
 
     const results: PlayerResult[] = players.map((p) => {
@@ -405,6 +495,9 @@ export class GameService {
       placesClimbed: p.ranks.length ? Math.max(...p.ranks) - (i + 1) : 0,
     }));
 
+    const family = room.familyId ? await this.addToFamily(room.familyId, ranked) : [];
+    const teamWon = room.teams ? winningTeam(players) : null;
+
     let awards: Award[];
     let source: 'ai' | 'rules' = 'ai';
     try {
@@ -415,7 +508,7 @@ export class GameService {
       source = 'rules';
     }
 
-    await this.sendToHost(room, { type: 'gameOver', awards, source });
+    await this.sendToHost(room, { type: 'gameOver', awards, source, family });
     for (const [i, p] of ranked.entries()) {
       if (p.connId) {
         await this.deps.send(p.connId, {
@@ -424,9 +517,30 @@ export class GameService {
           playerCount: ranked.length,
           score: p.score,
           award: awards.find((a) => a.playerId === p.id) ?? null,
+          team: room.teams ? p.team : null,
+          teamWon: room.teams && teamWon !== null ? teamWon === p.team : null,
         });
       }
     }
+  }
+
+  /** Adds a finished game to the TV's family scores (people are matched by name) and returns them. */
+  private async addToFamily(familyId: string, ranked: PlayerRecord[]): Promise<FamilyStanding[]> {
+    const standings = await this.deps.store.getFamily(familyId);
+    const top = ranked[0]?.score ?? 0;
+    for (const p of ranked) {
+      const key = p.name.trim().toLowerCase();
+      let s = standings.find((f) => f.name.trim().toLowerCase() === key);
+      if (!s) standings.push((s = { name: p.name, avatar: p.avatar, games: 0, wins: 0, points: 0, best: 0 }));
+      s.avatar = p.avatar;
+      s.games += 1;
+      s.points += p.score;
+      s.best = Math.max(s.best, p.score);
+      if (top > 0 && p.score === top) s.wins += 1;
+    }
+    const sorted = standings.sort((a, b) => b.wins - a.wins || b.points - a.points).slice(0, MAX_FAMILY_SIZE);
+    await this.deps.store.setFamily(familyId, sorted);
+    return sorted;
   }
 
   // ---------- Player actions ----------
@@ -436,7 +550,7 @@ export class GameService {
     const player = (await this.deps.store.getPlayers(room.roomCode)).find((p) => p.id === conn.playerId);
     if (!player) return;
     await this.deps.send(conn.connId, { type: 'joined', player: publicPlayers([player])[0] });
-    await this.sendPhaseToPlayer(room, conn.connId);
+    await this.sendPhaseToPlayer(room, conn.connId, player.team);
     await this.sendPlayersToHost(room);
   }
 
@@ -459,11 +573,12 @@ export class GameService {
       ranks: [],
       streak: 0,
       bestStreak: 0,
+      team: room.teams ? smallerTeam(players) : null,
     };
     await this.deps.store.putPlayer(room.roomCode, player);
     await this.deps.store.putConnection({ ...conn, playerId: player.id });
     await this.deps.send(conn.connId, { type: 'joined', player: publicPlayers([player])[0] });
-    await this.sendPhaseToPlayer(room, conn.connId);
+    await this.sendPhaseToPlayer(room, conn.connId, player.team);
     await this.sendPlayersToHost(room);
   }
 
@@ -474,14 +589,27 @@ export class GameService {
     if (room.questionDeadline !== null && now > room.questionDeadline + ANSWER_GRACE_MS) return;
 
     const ms = now - (room.questionStartedAt ?? now);
-    if (!(await this.deps.store.putAnswer(room.roomCode, index, { playerId: conn.playerId, choice, ms }))) return;
+    const round = room.round ?? 0;
+    if (!(await this.deps.store.putAnswer(room.roomCode, round, index, { playerId: conn.playerId, choice, ms }))) return;
     await this.deps.send(conn.connId, { type: 'answerAck', index, choice });
-    const answers = await this.deps.store.getAnswers(room.roomCode, index);
+    const answers = await this.deps.store.getAnswers(room.roomCode, round, index);
     await this.sendToHost(room, { type: 'answerProgress', index, answeredPlayerIds: answers.map((a) => a.playerId) });
   }
 
+  /** A phone suggests a topic in the lobby; the TV shows the latest suggestions, one per player. */
+  private async suggestTopic(room: RoomRecord, conn: ConnectionRecord, topic: string) {
+    if (!conn.playerId || room.phase !== 'lobby') return;
+    const cleanTopic = String(topic ?? '').replace(/\s+/g, ' ').trim().slice(0, MAX_TOPIC_LENGTH);
+    const player = (await this.deps.store.getPlayers(room.roomCode)).find((p) => p.id === conn.playerId);
+    if (!cleanTopic || !player) return;
+    const suggestion: TopicSuggestion = { playerId: player.id, name: player.name, avatar: player.avatar, topic: cleanTopic };
+    const suggestions = [...(room.suggestions ?? []).filter((s) => s.playerId !== player.id), suggestion].slice(-MAX_SUGGESTIONS);
+    await this.deps.store.updateRoom(room.roomCode, { suggestions });
+    await this.sendToHost(room, { type: 'topicSuggestions', suggestions });
+  }
+
   /** Tells a (re)joining phone what is happening right now. */
-  private async sendPhaseToPlayer(room: RoomRecord, connId: string) {
+  private async sendPhaseToPlayer(room: RoomRecord, connId: string, team: number | null) {
     const question = room.questions[room.questionIndex];
     if (room.phase === 'question' && question) {
       const timeLeftMs = room.questionDeadline === null ? null : Math.max(0, room.questionDeadline - this.now());
@@ -495,7 +623,7 @@ export class GameService {
         double: isFinalQuestion(room.questionIndex, room.questions.length),
       });
     } else {
-      await this.deps.send(connId, { type: 'lobby', topic: room.topic, language: room.language });
+      await this.deps.send(connId, { type: 'lobby', topic: room.topic, language: room.language, team: room.teams ? team : null });
     }
   }
 
@@ -519,5 +647,5 @@ export class GameService {
 }
 
 function publicPlayers(players: PlayerRecord[]): Player[] {
-  return players.map(({ id, name, avatar, score, connected }) => ({ id, name, avatar, score, connected }));
+  return players.map(({ id, name, avatar, score, connected, team }) => ({ id, name, avatar, score, connected, team: team ?? null }));
 }

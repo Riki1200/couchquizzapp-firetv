@@ -12,7 +12,7 @@ import { colors } from '../theme/colors';
 
 const TILE_WIDTH = scaledPixels(240);
 
-/** Host settings: language (TV, phones and questions), questions per game, sound effects, music. */
+/** Host settings: language (TV, phones and questions), questions per game, teams, sound effects, music. */
 export default function SettingsScreen({ onDone }: { onDone: () => void }) {
   const { state, updateSettings, t } = useGame();
   const { settings } = state;
@@ -53,20 +53,26 @@ export default function SettingsScreen({ onDone }: { onDone: () => void }) {
               return i === 0 ? <DefaultFocus key={language.code}>{tile}</DefaultFocus> : tile;
             }),
           )}
-          {row(
-            t('settings.questions'),
-            160,
-            QUESTION_COUNT_OPTIONS.map((count) => (
-              <OptionTile
-                key={count}
-                width={TILE_WIDTH}
-                label={String(count)}
-                icon={count === 5 ? '⚡' : '🎯'}
-                selected={settings.questionCount === count}
-                onSelect={() => updateSettings({ questionCount: count })}
-              />
-            )),
-          )}
+          <SpatialNavigationView direction="horizontal" style={styles.pair}>
+            {row(
+              t('settings.questions'),
+              160,
+              QUESTION_COUNT_OPTIONS.map((count) => (
+                <OptionTile
+                  key={count}
+                  width={TILE_WIDTH}
+                  label={String(count)}
+                  icon={count === 5 ? '⚡' : '🎯'}
+                  selected={settings.questionCount === count}
+                  onSelect={() => updateSettings({ questionCount: count })}
+                />
+              )),
+            )}
+            {row(t('settings.teams'), 200, [
+              <OptionTile key="solo" width={TILE_WIDTH} label={t('settings.solo')} icon="🙋" selected={!settings.teams} onSelect={() => updateSettings({ teams: false })} />,
+              <OptionTile key="teams" width={TILE_WIDTH} label={t('settings.twoTeams')} icon="🔴🔵" selected={settings.teams} onSelect={() => updateSettings({ teams: true })} />,
+            ])}
+          </SpatialNavigationView>
           <SpatialNavigationView direction="horizontal" style={styles.pair}>
             {row(t('settings.sound'), 240, onOff(settings.effects, (effects) => updateSettings({ effects })))}
             {row(t('settings.music'), 320, onOff(settings.music, (music) => updateSettings({ music })))}

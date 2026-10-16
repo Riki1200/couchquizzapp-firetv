@@ -4,9 +4,10 @@ import { DefaultFocus, SpatialNavigationRoot } from 'react-tv-space-navigation';
 import { CountdownButton } from '../components/Focusable';
 import { AnswerGrid, HostBubble, MiniAvatar } from '../components/GamePieces';
 import { FadeIn } from '../components/Motion';
-import { Leaderboard } from '../components/Leaderboard';
+import { Leaderboard, TeamScores } from '../components/Leaderboard';
 import { Screen } from '../components/Screen';
 import { useGame } from '../game/GameContext';
+import { TextKey } from '../game/types';
 import { useBackHandler } from '../hooks/useBackHandler';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
@@ -67,6 +68,9 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
             {results !== null ? (
               <FadeIn delay={400} style={styles.standings}>
                 <Text style={styles.standingsTitle}>{t('reveal.standings')}</Text>
+                {players.some((p) => p.team !== null) ? (
+                  <TeamScores players={players} label={(team) => t(`team.${team}` as TextKey)} />
+                ) : null}
                 <Leaderboard players={players} results={results} />
               </FadeIn>
             ) : null}

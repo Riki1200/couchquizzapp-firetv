@@ -7,6 +7,7 @@ import {
   UpdateCommand,
   DeleteCommand,
 } from '@aws-sdk/lib-dynamodb';
+import { FamilyStanding } from '@couch-quiz/protocol';
 import { AnswerRecord, ConnectionRecord, PlayerRecord, RoomRecord, Store } from '../game/store';
 
 const TTL_SECONDS = 24 * 60 * 60; // rooms and connections expire after a day
@@ -15,9 +16,10 @@ const TTL_SECONDS = 24 * 60 * 60; // rooms and connections expire after a day
  * Single-table layout:
  *   pk=ROOM#ABCD  sk=META                  room
  *   pk=ROOM#ABCD  sk=PLAYER#<id>           player
- *   pk=ROOM#ABCD  sk=ANSWER#03#<playerId>  answer to question 3 (conditional put = one answer each)
+ *   pk=ROOM#ABCD  sk=ANSWER#2#03#<id>      answer to question 3 of round 2 (conditional put = one answer each)
  *   pk=CONN#<id>  sk=META                  WebSocket connection → room/role/player
  *   pk=PLAYED     sk=space#easy            bank questions from completed games (no TTL)
+ *   pk=FAMILY#<id> sk=META                 family scores of one TV (no TTL)
  */
 export class DynamoStore implements Store {
   private db = DynamoDBDocumentClient.from(new DynamoDBClient({}), { marshallOptions: { removeUndefinedValues: true } });
@@ -68,12 +70,12 @@ export class DynamoStore implements Store {
     await this.update({ pk: `ROOM#${roomCode}`, sk: `PLAYER#${playerId}` }, patch);
   }
 
-  async putAnswer(roomCode: string, index: number, answer: AnswerRecord) {
+  async putAnswer(roomCode: string, round: number, index: number, answer: AnswerRecord) {
     try {
       await this.db.send(
         new PutCommand({
           TableName: this.table,
-          Item: { pk: `ROOM#${roomCode}`, sk: `${answerPrefix(index)}${answer.playerId}`, ttl: this.ttl(), ...answer },
+          Item: { pk: `ROOM#${roomCode}`, sk: `${answerPrefix(round, index)}${answer.playerId}`, ttl: this.ttl(), ...answer },
           ConditionExpression: 'attribute_not_exists(sk)',
         }),
       );
@@ -84,8 +86,8 @@ export class DynamoStore implements Store {
     }
   }
 
-  async getAnswers(roomCode: string, index: number) {
-    return (await this.query(`ROOM#${roomCode}`, answerPrefix(index))) as AnswerRecord[];
+  async getAnswers(roomCode: string, round: number, index: number) {
+    return (await this.query(`ROOM#${roomCode}`, answerPrefix(round, index))) as AnswerRecord[];
   }
 
   async putConnection(connection: ConnectionRecord) {
@@ -110,6 +112,15 @@ export class DynamoStore implements Store {
 
   async setPlayed(bankKey: string, ids: string[]) {
     await this.db.send(new PutCommand({ TableName: this.table, Item: { pk: 'PLAYED', sk: bankKey, ids } }));
+  }
+
+  async getFamily(familyId: string) {
+    const { Item } = await this.db.send(new GetCommand({ TableName: this.table, Key: { pk: `FAMILY#${familyId}`, sk: 'META' } }));
+    return (Item?.standings as FamilyStanding[] | undefined) ?? [];
+  }
+
+  async setFamily(familyId: string, standings: FamilyStanding[]) {
+    await this.db.send(new PutCommand({ TableName: this.table, Item: { pk: `FAMILY#${familyId}`, sk: 'META', standings } }));
   }
 
   private async query(pk: string, skPrefix: string) {
@@ -138,6 +149,6 @@ export class DynamoStore implements Store {
   }
 }
 
-function answerPrefix(index: number) {
-  return `ANSWER#${String(index).padStart(2, '0')}#`;
+function answerPrefix(round: number, index: number) {
+  return `ANSWER#${round}#${String(index).padStart(2, '0')}#`;
 }

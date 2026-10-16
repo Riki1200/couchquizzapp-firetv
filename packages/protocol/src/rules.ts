@@ -1,4 +1,4 @@
-import { Difficulty } from './types';
+import { Difficulty, Player } from './types';
 
 /** Default questions per game; the host can pick any of QUESTION_COUNT_OPTIONS in Settings. */
 export const QUESTION_COUNT = 10;
@@ -42,6 +42,29 @@ export function randomRoomCode(): string {
   let code = '';
   for (let i = 0; i < 4; i++) code += ROOM_CODE_LETTERS[Math.floor(Math.random() * ROOM_CODE_LETTERS.length)];
   return code;
+}
+
+/** Team mode: two teams, balanced as players join. Names are translated ('team.0', 'team.1'). */
+export const TEAMS = [
+  { emoji: '🔴', color: '#EF4444' },
+  { emoji: '🔵', color: '#3B82F6' },
+] as const;
+
+/** The team a new player joins: the one with fewer players (the first team on a tie). */
+export function smallerTeam(players: Pick<Player, 'team'>[]): number {
+  const sizes = TEAMS.map((_, team) => players.filter((p) => p.team === team).length);
+  return sizes.indexOf(Math.min(...sizes));
+}
+
+/** Each team's total score. */
+export function teamTotals(players: Pick<Player, 'team' | 'score'>[]): number[] {
+  return TEAMS.map((_, team) => players.filter((p) => p.team === team).reduce((sum, p) => sum + p.score, 0));
+}
+
+/** The winning team, or null on a tie. */
+export function winningTeam(players: Pick<Player, 'team' | 'score'>[]): number | null {
+  const [a, b] = teamTotals(players);
+  return a === b ? null : a > b ? 0 : 1;
 }
 
 /** Letter + color per answer slot, identical on the TV and the phones. */

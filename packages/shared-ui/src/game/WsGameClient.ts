@@ -1,5 +1,5 @@
 import { GameClient, GameClientEvent } from './GameClient';
-import { CreateRoomResponse, Difficulty, HostEvent, HostMessage, Language, Room } from './types';
+import { CreateRoomResponse, Difficulty, FamilyStanding, HostEvent, HostMessage, Language, Room, TopicIdeasResponse } from './types';
 
 const RECONNECT_DELAYS_MS = [500, 1000, 2000, 4000];
 const PING_INTERVAL_MS = 60000; // keeps idle connections alive (API Gateway drops them after 10 min)
@@ -18,16 +18,20 @@ export class WsGameClient implements GameClient {
 
   constructor(private server: { httpUrl: string; wsUrl: string }) {}
 
-  async createRoom(): Promise<Room> {
-    const response = await fetch(`${this.server.httpUrl}/rooms`, { method: 'POST' });
+  async createRoom(familyId: string | null): Promise<Room> {
+    const response = await fetch(`${this.server.httpUrl}/rooms`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(familyId ? { familyId } : {}),
+    });
     if (!response.ok) throw new Error(`Could not create a room (HTTP ${response.status})`);
     this.room = await response.json();
     await this.connect();
     return { roomCode: this.room!.roomCode, joinUrl: this.room!.joinUrl };
   }
 
-  configure(topic: string, difficulty: Difficulty, language: Language, questionCount: number) {
-    this.send({ action: 'configure', topic, difficulty, language, questionCount });
+  configure(topic: string, difficulty: Difficulty, language: Language, questionCount: number, teams: boolean) {
+    this.send({ action: 'configure', topic, difficulty, language, questionCount, teams });
   }
   startQuestion(index: number) {
     this.send({ action: 'startQuestion', index });
@@ -37,6 +41,18 @@ export class WsGameClient implements GameClient {
   }
   endGame() {
     this.send({ action: 'endGame' });
+  }
+
+  async getFamily(familyId: string): Promise<FamilyStanding[]> {
+    const response = await fetch(`${this.server.httpUrl}/families/${familyId}`);
+    if (!response.ok) throw new Error(`Could not load the family scores (HTTP ${response.status})`);
+    return ((await response.json()) as { standings: FamilyStanding[] }).standings;
+  }
+
+  async topicIdeas(language: Language, difficulty: Difficulty): Promise<string[]> {
+    const response = await fetch(`${this.server.httpUrl}/topic-ideas?language=${language}&difficulty=${difficulty}`);
+    if (!response.ok) throw new Error(`Could not load topic ideas (HTTP ${response.status})`);
+    return ((await response.json()) as TopicIdeasResponse).topics;
   }
 
   subscribe(listener: (event: GameClientEvent) => void) {

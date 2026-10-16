@@ -26,12 +26,22 @@ export interface PlayerFacts {
   placesClimbed: number;
 }
 
-/** The AI host. BedrockHostAi in AWS (and locally with AI=bedrock); MockHostAi otherwise. */
+/** A fact-checker's verdict on one question. */
+export interface FactCheck {
+  ok: boolean;
+  note: string;
+}
+
+/** The AI host. MantleHostAi or BedrockHostAi in AWS (and locally with AI=…); MockHostAi otherwise. */
 export interface HostAi {
   /** Resolves with exactly `count` valid questions in `language`, or throws. `avoid`: questions not to repeat. */
   writeQuestions(topic: string, difficulty: Difficulty, language: Language, count: number, avoid?: string[]): Promise<Question[]>;
   /** Resolves with one award per player in `language`, or throws. */
   writeAwards(topic: string, facts: PlayerFacts[], language: Language): Promise<Award[]>;
+  /** Optional: a second model checks the questions; one verdict per question, in order. */
+  checkQuestions?(questions: Question[], difficulty: Difficulty, language: Language): Promise<FactCheck[]>;
+  /** Optional: `count` short, family-friendly topic ideas. */
+  suggestTopics?(difficulty: Difficulty, language: Language, count: number): Promise<string[]>;
 }
 
 // ---------- Prompts ----------
@@ -128,6 +138,63 @@ export const AWARDS_TOOL = {
   },
 };
 
+export const FACT_CHECK_SYSTEM_PROMPT = `You are a meticulous trivia fact-checker for a family quiz game.
+For each numbered question, decide whether the marked answer is correct AND the only defensible choice.
+Flag (ok=false) anything wrong, ambiguous, outdated, misleading, or not suitable for the stated level
+(easy questions are also played by kids aged 6-10). Return one result per question, in order, with its number
+and its marked answer copied exactly. Keep notes short (max 20 words) and about that question only.
+Always answer by calling the check_questions tool.`;
+
+export function factCheckUserPrompt(questions: Question[], difficulty: Difficulty, language: Language): string {
+  const list = questions
+    .map((q, i) => `${i + 1}. ${q.text}\n   Choices: ${q.choices.join(' | ')}\n   Marked answer: ${q.choices[q.correctIndex]}`)
+    .join('\n');
+  return `Level: ${difficulty}. Language: ${LANGUAGE_NAMES[language]}.\n\n${list}`;
+}
+
+export const FACT_CHECK_TOOL = {
+  name: 'check_questions',
+  description: 'Fact-check results, one per question, in order.',
+  schema: {
+    type: 'object',
+    properties: {
+      results: {
+        type: 'array',
+        items: {
+          type: 'object',
+          properties: {
+            number: { type: 'integer' },
+            answer: { type: 'string' },
+            ok: { type: 'boolean' },
+            note: { type: 'string' },
+          },
+          required: ['number', 'answer', 'ok', 'note'],
+        },
+      },
+    },
+    required: ['results'],
+  },
+};
+
+export const TOPICS_SYSTEM_PROMPT = `You suggest topics for "Couch Quiz", a family trivia game played on a TV.
+Suggest varied, fun, family-friendly topics a whole family can play: 1 to 4 words each, no brands, no real people.
+Always answer by calling the submit_topics tool.`;
+
+export function topicsUserPrompt(difficulty: Difficulty, language: Language, count: number): string {
+  return `Suggest ${count} different topics in ${LANGUAGE_NAMES[language]} for a game at this level: ${DIFFICULTY_GUIDE[difficulty]}.
+Surprise us: mix nature, science, history, culture, food and everyday life.`;
+}
+
+export const TOPICS_TOOL = {
+  name: 'submit_topics',
+  description: 'Submit the topic ideas.',
+  schema: {
+    type: 'object',
+    properties: { topics: { type: 'array', items: { type: 'string' } } },
+    required: ['topics'],
+  },
+};
+
 // ---------- Validation ----------
 
 /** The model answered, but not in the shape we asked for (worth retrying with feedback). */
@@ -167,6 +234,27 @@ export function parseAwards(input: unknown, facts: PlayerFacts[]): Award[] {
     throw new InvalidModelOutput('awards must contain exactly one entry per playerId from the facts');
   }
   return awards;
+}
+
+/**
+ * Matches the checker's results to the questions by the echoed answer (the checker sometimes shifts the
+ * numbering); a question without a matching result counts as not checked (flagged).
+ */
+export function parseFactCheck(input: unknown, questions: Question[]): FactCheck[] {
+  const { results } = z
+    .object({ results: z.array(z.object({ number: z.number(), answer: z.coerce.string(), ok: z.boolean(), note: z.coerce.string() })) })
+    .parse(input);
+  const same = (a: string, b: string) => a.trim().toLowerCase() === b.trim().toLowerCase();
+  return questions.map((q, i) => {
+    const answer = q.choices[q.correctIndex];
+    const r = results.find((x) => x.number === i + 1 && same(x.answer, answer)) ?? results.find((x) => same(x.answer, answer));
+    return r ? { ok: r.ok, note: r.note } : { ok: false, note: 'Not checked' };
+  });
+}
+
+export function parseTopics(input: unknown, count: number): string[] {
+  const { topics } = z.object({ topics: z.array(z.string().trim().min(2).max(40)).min(count) }).parse(input);
+  return topics.map((t) => t.replace(/[*_`"“”]+/g, '').trim()).slice(0, count);
 }
 
 /**

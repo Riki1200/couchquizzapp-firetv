@@ -14,6 +14,26 @@ export interface Player {
   avatar: string; // a single emoji
   score: number;
   connected: boolean;
+  /** Team index (see TEAMS) in team mode; null when everyone plays for themselves. */
+  team: number | null;
+}
+
+/** A topic a phone suggested in the lobby; the TV can pick it with the D-pad. */
+export interface TopicSuggestion {
+  playerId: string;
+  name: string;
+  avatar: string;
+  topic: string;
+}
+
+/** One person's totals over every game finished on the same TV (matched by name). */
+export interface FamilyStanding {
+  name: string;
+  avatar: string;
+  games: number;
+  wins: number;
+  points: number;
+  best: number;
 }
 
 export interface Question {
@@ -39,6 +59,11 @@ export interface Award {
   line: string;
 }
 
+/** Body of POST /rooms (optional): the TV's family id, for the family scores. */
+export interface CreateRoomRequest {
+  familyId?: string;
+}
+
 /** Returned by POST /rooms. */
 export interface CreateRoomResponse {
   roomCode: string;
@@ -53,12 +78,17 @@ export interface GetRoomResponse {
   language: Language;
 }
 
+/** Returned by GET /topic-ideas?language=&difficulty=. */
+export interface TopicIdeasResponse {
+  topics: string[];
+}
+
 /** Where the end-of-game awards came from: the AI host, or rules when the AI is unavailable. */
 export type AwardSource = 'ai' | 'rules';
 
 // ---- WebSocket messages: TV (host) → server ----
 export type HostMessage =
-  | { action: 'configure'; topic: string; difficulty: Difficulty; language: Language; questionCount: number }
+  | { action: 'configure'; topic: string; difficulty: Difficulty; language: Language; questionCount: number; teams: boolean }
   | { action: 'startQuestion'; index: number }
   | { action: 'reveal'; index: number }
   | { action: 'endGame' };
@@ -66,7 +96,8 @@ export type HostMessage =
 // ---- WebSocket messages: phone (player) → server ----
 export type PlayerMessage =
   | { action: 'join'; name: string; avatar: string }
-  | { action: 'answer'; index: number; choice: number };
+  | { action: 'answer'; index: number; choice: number }
+  | { action: 'suggestTopic'; topic: string };
 
 /** 'sync' asks the server for the current state right after connecting (or reconnecting). */
 export type ClientMessage = HostMessage | PlayerMessage | { action: 'sync' } | { action: 'ping' };
@@ -74,15 +105,24 @@ export type ClientMessage = HostMessage | PlayerMessage | { action: 'sync' } | {
 // ---- WebSocket events: server → TV ----
 export type HostEvent =
   | { type: 'players'; players: Player[] }
-  | { type: 'generation'; status: GenerationStatus; topic?: string; questions?: Question[]; source?: QuestionSource }
+  | {
+      type: 'generation';
+      status: GenerationStatus;
+      topic?: string;
+      questions?: Question[];
+      source?: QuestionSource;
+      /** AI questions were checked by a second model (and flagged ones replaced). */
+      factChecked?: boolean;
+    }
+  | { type: 'topicSuggestions'; suggestions: TopicSuggestion[] }
   | { type: 'answerProgress'; index: number; answeredPlayerIds: string[] }
   | { type: 'reveal'; index: number; results: PlayerResult[] }
-  | { type: 'gameOver'; awards: Award[]; source: AwardSource };
+  | { type: 'gameOver'; awards: Award[]; source: AwardSource; family: FamilyStanding[] };
 
 // ---- WebSocket events: server → phone ----
 export type PlayerEvent =
   | { type: 'joined'; player: Player }
-  | { type: 'lobby'; topic: string | null; language: Language }
+  | { type: 'lobby'; topic: string | null; language: Language; team: number | null }
   | {
       type: 'question';
       index: number;
@@ -96,6 +136,15 @@ export type PlayerEvent =
     }
   | { type: 'answerAck'; index: number; choice: number }
   | { type: 'reveal'; index: number; correctIndex: number; correct: boolean; points: number; total: number; streak: number }
-  | { type: 'gameOver'; rank: number; playerCount: number; score: number; award: Award | null }
+  | {
+      type: 'gameOver';
+      rank: number;
+      playerCount: number;
+      score: number;
+      award: Award | null;
+      /** Team mode: the player's team and whether it won (null on a tie). */
+      team: number | null;
+      teamWon: boolean | null;
+    }
   | { type: 'hostLeft' }
   | { type: 'error'; message: string };

@@ -13,7 +13,7 @@ const RECONNECT_DELAYS_MS = [500, 1000, 2000, 4000];
 
 export type View =
   | { kind: 'join' }
-  | { kind: 'lobby'; topic: string | null }
+  | { kind: 'lobby'; topic: string | null; team: number | null }
   | {
       kind: 'question';
       index: number;
@@ -25,7 +25,16 @@ export type View =
       double: boolean;
     }
   | { kind: 'reveal'; correctIndex: number; correct: boolean; points: number; total: number; streak: number; choices: string[] }
-  | { kind: 'over'; rank: number; playerCount: number; score: number; title: string | null; line: string | null };
+  | {
+      kind: 'over';
+      rank: number;
+      playerCount: number;
+      score: number;
+      title: string | null;
+      line: string | null;
+      team: number | null;
+      teamWon: boolean | null;
+    };
 
 const playerKey = (room: string) => `couchquiz:player:${room}`;
 
@@ -71,7 +80,7 @@ export function useGameSocket(room: string, onLanguage: (language: Language) => 
           break;
         case 'lobby':
           onLanguage(event.language);
-          setView({ kind: 'lobby', topic: event.topic });
+          setView({ kind: 'lobby', topic: event.topic, team: event.team });
           break;
         case 'question':
           lastChoices.current = event.choices;

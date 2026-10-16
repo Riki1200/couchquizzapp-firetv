@@ -2,6 +2,7 @@ import { GameClient, GameClientEvent } from './GameClient';
 import {
   Award,
   Difficulty,
+  FamilyStanding,
   Player,
   PlayerResult,
   Question,
@@ -14,7 +15,9 @@ import {
   isFinalQuestion,
   pickGame,
   pointsFor,
+  randomIdeas,
   randomRoomCode,
+  smallerTeam,
   timeLimitMs,
   translate,
 } from './types';
@@ -43,22 +46,37 @@ export class MockGameClient implements GameClient {
   private correctMs = new Map<string, number[]>();
   private streaks = new Map<string, number>();
   private currentIndex = -1;
+  private teams = false;
+  private suggested = false;
+  private family = new Map<string, FamilyStanding[]>(); // this session only
 
   async createRoom(): Promise<Room> {
     const roomCode = randomRoomCode();
     for (const bot of BOTS) {
       this.later(bot.joinAfterMs, () => {
-        this.players.push({ id: bot.id, name: bot.name, avatar: bot.avatar, score: 0, connected: true });
+        const team = this.teams ? smallerTeam(this.players) : null;
+        this.players.push({ id: bot.id, name: bot.name, avatar: bot.avatar, score: 0, connected: true, team });
         this.emitPlayers();
       });
     }
     return { roomCode, joinUrl: `https://couchquiz.example/join?room=${roomCode}` };
   }
 
-  configure(topic: string, difficulty: Difficulty, language: Language, questionCount: number): void {
+  configure(topic: string, difficulty: Difficulty, language: Language, questionCount: number, teams: boolean): void {
     this.difficulty = difficulty;
     this.language = language;
-    this.players.forEach((p) => (p.score = 0));
+    this.teams = teams;
+    this.players.forEach((p, i) => {
+      p.score = 0;
+      p.team = teams ? i % 2 : null;
+    });
+    this.emit({ type: 'topicSuggestions', suggestions: [] });
+    if (!this.suggested) {
+      // The first bot suggests a topic from its "phone", once.
+      this.suggested = true;
+      const topic = language === 'es' ? 'Piratas' : 'Pirates';
+      this.later(6000, () => this.emit({ type: 'topicSuggestions', suggestions: [{ playerId: BOTS[0].id, name: BOTS[0].name, avatar: BOTS[0].avatar, topic }] }));
+    }
     this.correctMs.clear();
     this.streaks.clear();
     this.emitPlayers();
@@ -136,7 +154,30 @@ export class MockGameClient implements GameClient {
         return { playerId: player.id, title: t('award.fastest'), line: t('award.fastestLine', { seconds: (average(player.id) / 1000).toFixed(1) }) };
       return { playerId: player.id, title: t('award.sport'), line: t('award.sportLine') };
     });
-    this.emit({ type: 'gameOver', awards, source: 'rules' });
+    this.emit({ type: 'gameOver', awards, source: 'rules', family: this.addToFamily(ranked) });
+  }
+
+  async getFamily(): Promise<FamilyStanding[]> {
+    return this.family.get('mock') ?? [];
+  }
+
+  async topicIdeas(language: Language): Promise<string[]> {
+    return randomIdeas(language, 3);
+  }
+
+  private addToFamily(ranked: Player[]): FamilyStanding[] {
+    const standings = this.family.get('mock') ?? [];
+    for (const p of ranked) {
+      let s = standings.find((f) => f.name === p.name);
+      if (!s) standings.push((s = { name: p.name, avatar: p.avatar, games: 0, wins: 0, points: 0, best: 0 }));
+      s.games += 1;
+      s.points += p.score;
+      s.best = Math.max(s.best, p.score);
+      if (p.score > 0 && p.score === ranked[0].score) s.wins += 1;
+    }
+    standings.sort((a, b) => b.wins - a.wins || b.points - a.points);
+    this.family.set('mock', standings);
+    return standings.map((s) => ({ ...s }));
   }
 
   subscribe(listener: (event: GameClientEvent) => void): () => void {

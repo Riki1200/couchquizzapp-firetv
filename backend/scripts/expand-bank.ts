@@ -31,64 +31,19 @@ interface Candidate extends BankQuestion {
   review: { ok: boolean; note: string };
 }
 
-const writer = new MantleHostAi(process.env.WRITER_MODEL ?? 'mistral.mistral-large-3-675b-instruct');
-const checker = new MantleHostAi(process.env.CHECKER_MODEL ?? 'qwen.qwen3-235b-a22b-2507');
-
-const CHECK_SYSTEM = `You are a meticulous trivia fact-checker for a family quiz game.
-For each numbered question, decide whether the marked answer is correct AND the only defensible choice.
-Flag (ok=false) anything wrong, ambiguous, outdated, misleading, or not suitable for the stated level
-(easy questions are also played by kids aged 6-10). Return one result per question, in order, with its number
-and its marked answer copied exactly. Keep notes short (max 20 words) and about that question only.
-Answer only with JSON that matches the schema.`;
-const CHECK_SCHEMA = {
-  name: 'check_questions',
-  description: 'Fact-check results, one per question, in order.',
-  schema: {
-    type: 'object',
-    properties: {
-      results: {
-        type: 'array',
-        items: {
-          type: 'object',
-          properties: {
-            number: { type: 'integer' },
-            answer: { type: 'string' },
-            ok: { type: 'boolean' },
-            note: { type: 'string' },
-          },
-          required: ['number', 'answer', 'ok', 'note'],
-        },
-      },
-    },
-    required: ['results'],
-  },
-};
+// The same writer + fact-checker pair as live games (see MantleHostAi).
+const ai = new MantleHostAi(
+  process.env.WRITER_MODEL ?? 'mistral.mistral-large-3-675b-instruct',
+  process.env.CHECKER_MODEL ?? 'qwen.qwen3-235b-a22b-2507',
+);
 
 function bankPath(language: Language) {
   return join(ROOT, 'packages', 'protocol', 'src', language === 'en' ? 'question-bank.json' : `question-bank.${language}.json`);
 }
 
 async function checkGame(questions: BankQuestion[], language: Language, level: BankLevel) {
-  const list = questions
-    .map((q, i) => `${i + 1}. ${q.text}\n   Choices: ${q.choices.join(' | ')}\n   Marked answer: ${q.choices[q.correctIndex]}`)
-    .join('\n');
   try {
-    const out = (await checker.callJson(
-      CHECK_SYSTEM,
-      `Level: ${level}. Language: ${LANGUAGE_NAMES[language]}.\n\n${list}`,
-      CHECK_SCHEMA,
-      undefined,
-      2000,
-    )) as { results?: Array<{ number: number; answer: string; ok: boolean; note: string }> };
-    // Match each result by the echoed answer, not only by number: the checker sometimes shifts the numbering.
-    const same = (a: string, b: string) => a.trim().toLowerCase() === b.trim().toLowerCase();
-    return questions.map((q, i) => {
-      const answer = q.choices[q.correctIndex];
-      const r =
-        out.results?.find((x) => x.number === i + 1 && same(String(x.answer), answer)) ??
-        out.results?.find((x) => same(String(x.answer), answer));
-      return r ? { ok: !!r.ok, note: String(r.note ?? '') } : { ok: false, note: 'Not checked' };
-    });
+    return await ai.checkQuestions(questions, level, language);
   } catch (error) {
     return questions.map(() => ({ ok: false, note: `Check failed: ${error instanceof Error ? error.message : error}` }));
   }
@@ -152,7 +107,7 @@ async function main() {
         let n = 0;
         for (let game = 1; game <= GAMES; game++) {
           try {
-            const questions = await writer.writeQuestions(topic, level, language, QUESTION_COUNT, known);
+            const questions = await ai.writeQuestions(topic, level, language, QUESTION_COUNT, known);
             const fresh = questions
               .filter((q) => !seen.has(q.text.toLowerCase()))
               .map((q) => ({ id: `new-${topic.toLowerCase()}-${level}-${String(++n).padStart(2, '0')}`, topic, level, ...q }));

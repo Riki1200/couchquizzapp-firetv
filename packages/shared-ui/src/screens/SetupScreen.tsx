@@ -36,9 +36,10 @@ interface Props {
   onCustomTopic: () => void;
   onCreateRoom: () => void;
   onSettings: () => void;
+  onFamily: () => void;
 }
 
-export default function SetupScreen({ initialFocus, onCustomTopic, onCreateRoom, onSettings }: Props) {
+export default function SetupScreen({ initialFocus, onCustomTopic, onCreateRoom, onSettings, onFamily }: Props) {
   const { state, setTopic, setDifficulty, t } = useGame();
   const difficultyRefs = useRef<Array<SpatialNavigationNodeRef | null>>([]);
   const createRef = useRef<SpatialNavigationNodeRef>(null);
@@ -99,7 +100,10 @@ export default function SetupScreen({ initialFocus, onCustomTopic, onCreateRoom,
               <Text style={styles.title}>Couch Quiz</Text>
               <Text style={styles.subtitle}>{t('setup.subtitle')}</Text>
             </View>
-            <FocusableButton label={t('setup.settings')} onSelect={onSettings} />
+            <SpatialNavigationView direction="horizontal" style={styles.headerButtons}>
+              <FocusableButton label={t('setup.family')} onSelect={onFamily} />
+              <FocusableButton label={t('setup.settings')} onSelect={onSettings} />
+            </SpatialNavigationView>
           </View>
 
           <SpatialNavigationView direction="vertical" alignInGrid style={styles.grid}>
@@ -146,6 +150,7 @@ export default function SetupScreen({ initialFocus, onCustomTopic, onCreateRoom,
 const styles = StyleSheet.create({
   sections: { gap: scaledPixels(22) },
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start' },
+  headerButtons: { flexDirection: 'row', gap: scaledPixels(24) },
   title: { color: colors.focus, fontSize: scaledPixels(72), fontWeight: 'bold' },
   subtitle: { color: colors.textSecondary, fontSize: scaledPixels(30) },
   grid: { gap: scaledPixels(24) },
