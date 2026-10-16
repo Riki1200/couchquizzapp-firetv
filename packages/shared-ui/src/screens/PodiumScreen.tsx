@@ -45,7 +45,7 @@ export default function PodiumScreen({ onPlayAgain }: Props) {
 
           <View style={styles.awards}>
             <FadeIn delay={1300}>
-              <Text style={styles.awardsTitle}>{state.awardSource === 'ai' ? t('podium.awardsAi') : t('podium.awards')}</Text>
+              <Text style={styles.awardsTitle}>{t('podium.awards')}</Text>
             </FadeIn>
             {state.awards === null ? (
               <Text style={styles.awardLine}>{t('podium.writing')}</Text>
