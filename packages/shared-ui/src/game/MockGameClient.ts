@@ -5,8 +5,12 @@ import {
   Player,
   PlayerResult,
   Question,
+  QUESTION_BANK,
+  QuestionSource,
   Room,
-  SPACE_FOR_KIDS,
+  bankKey,
+  bankPool,
+  pickGame,
   pointsFor,
   randomRoomCode,
   timeLimitMs,
@@ -26,7 +30,10 @@ export class MockGameClient implements GameClient {
   private timers: ReturnType<typeof setTimeout>[] = [];
   private generationTimer: ReturnType<typeof setTimeout> | null = null;
   private players: Player[] = [];
-  private questions: Question[] = SPACE_FOR_KIDS;
+  private questions: Question[] = [];
+  private source: QuestionSource = 'bank';
+  private game: { key: string; ids: string[] } | null = null;
+  private played = new Map<string, string[]>(); // like the server, but only for this session
   private difficulty: Difficulty = 'easy';
   private answers = new Map<string, { choice: number; ms: number }>();
   private correctMs = new Map<string, number[]>();
@@ -50,9 +57,23 @@ export class MockGameClient implements GameClient {
     this.emitPlayers();
     if (this.generationTimer) clearTimeout(this.generationTimer);
     this.emit({ type: 'generation', status: 'pending', topic });
-    this.generationTimer = setTimeout(() => {
-      this.emit({ type: 'generation', status: 'ready', topic, questions: this.questions });
-    }, GENERATION_DELAY_MS);
+
+    // Preset topic: a bank game not completed yet (new cycle when used up). Custom topic: a random mix
+    // from the bank stands in for the AI host.
+    const pool = bankPool(topic, difficulty);
+    const key = bankKey(topic, difficulty);
+    let game = pool ? pickGame(pool, this.played.get(key) ?? []) : pickGame(QUESTION_BANK, []);
+    if (pool && !game) {
+      this.played.set(key, []); // every game of this topic was completed: start a new cycle
+      game = pickGame(pool, []);
+    }
+    this.questions = game!.questions;
+    this.source = pool ? 'bank' : 'ai';
+    this.game = pool ? { key, ids: game!.ids } : null;
+    this.generationTimer = setTimeout(
+      () => this.emit({ type: 'generation', status: 'ready', topic, questions: this.questions, source: this.source }),
+      pool ? 300 : GENERATION_DELAY_MS,
+    );
   }
 
   startQuestion(index: number): void {
@@ -90,6 +111,7 @@ export class MockGameClient implements GameClient {
   }
 
   endGame(): void {
+    if (this.game) this.played.set(this.game.key, [...(this.played.get(this.game.key) ?? []), ...this.game.ids]);
     const ranked = [...this.players].sort((a, b) => b.score - a.score);
     const average = (id: string) => {
       const times = this.correctMs.get(id) ?? [];

@@ -1,0 +1,2106 @@
+{
+ "version": 1,
+ "note": "Correct answer is listed first; choices are shuffled when a game is built.",
+ "questions": [
+  {
+   "id": "space-easy-01",
+   "topic": "Space",
+   "level": "easy",
+   "text": "What is the closest star to Earth?",
+   "choices": [
+    "The Sun",
+    "Polaris",
+    "Sirius",
+    "The Moon"
+   ],
+   "correctIndex": 0,
+   "quip": "Hot take: it's the Sun. Literally."
+  },
+  {
+   "id": "space-easy-02",
+   "topic": "Space",
+   "level": "easy",
+   "text": "Which planet is known as the Red Planet?",
+   "choices": [
+    "Mars",
+    "Venus",
+    "Jupiter",
+    "Mercury"
+   ],
+   "correctIndex": 0,
+   "quip": "Mars: rusty, dusty, and totally red-y."
+  },
+  {
+   "id": "space-easy-03",
+   "topic": "Space",
+   "level": "easy",
+   "text": "What is the biggest planet in our solar system?",
+   "choices": [
+    "Jupiter",
+    "Saturn",
+    "Earth",
+    "Neptune"
+   ],
+   "correctIndex": 0,
+   "quip": "You could fit over 1,000 Earths inside Jupiter. Big house!"
+  },
+  {
+   "id": "space-easy-04",
+   "topic": "Space",
+   "level": "easy",
+   "text": "How many planets are in our solar system?",
+   "choices": [
+    "8",
+    "7",
+    "9",
+    "10"
+   ],
+   "correctIndex": 0,
+   "quip": "Eight! Sorry, Pluto — you're still a star to us."
+  },
+  {
+   "id": "space-easy-05",
+   "topic": "Space",
+   "level": "easy",
+   "text": "What do astronauts wear to breathe in space?",
+   "choices": [
+    "A space suit",
+    "A raincoat",
+    "Pajamas",
+    "A snorkel"
+   ],
+   "correctIndex": 0,
+   "quip": "Pajamas are comfy, but terrible at making oxygen."
+  },
+  {
+   "id": "space-easy-06",
+   "topic": "Space",
+   "level": "easy",
+   "text": "Which planet has the most famous rings?",
+   "choices": [
+    "Saturn",
+    "Mars",
+    "Earth",
+    "Venus"
+   ],
+   "correctIndex": 0,
+   "quip": "Saturn put a ring on it. Lots of rings, actually."
+  },
+  {
+   "id": "space-easy-07",
+   "topic": "Space",
+   "level": "easy",
+   "text": "What is the Moon mostly covered with?",
+   "choices": [
+    "Rock and dust",
+    "Cheese",
+    "Water",
+    "Grass"
+   ],
+   "correctIndex": 0,
+   "quip": "Sorry, cheese fans. Rock and dust only."
+  },
+  {
+   "id": "space-easy-08",
+   "topic": "Space",
+   "level": "easy",
+   "text": "What pulls things down toward the ground?",
+   "choices": [
+    "Gravity",
+    "Wind",
+    "Light",
+    "Magnets"
+   ],
+   "correctIndex": 0,
+   "quip": "Gravity: keeping your snacks on the table since forever."
+  },
+  {
+   "id": "space-easy-09",
+   "topic": "Space",
+   "level": "easy",
+   "text": "Which planet is closest to the Sun?",
+   "choices": [
+    "Mercury",
+    "Venus",
+    "Earth",
+    "Mars"
+   ],
+   "correctIndex": 0,
+   "quip": "Mercury is so close to the Sun it needs serious sunscreen."
+  },
+  {
+   "id": "space-easy-10",
+   "topic": "Space",
+   "level": "easy",
+   "text": "What do we call a group of stars that makes a picture in the sky?",
+   "choices": [
+    "A constellation",
+    "A comet",
+    "A galaxy",
+    "A planet"
+   ],
+   "correctIndex": 0,
+   "quip": "Connect-the-dots, cosmic edition!"
+  },
+  {
+   "id": "space-medium-01",
+   "topic": "Space",
+   "level": "medium",
+   "text": "Which planet spins on its side, like a rolling ball?",
+   "choices": [
+    "Uranus",
+    "Mars",
+    "Venus",
+    "Mercury"
+   ],
+   "correctIndex": 0,
+   "quip": "Uranus: the solar system's professional roller."
+  },
+  {
+   "id": "space-medium-02",
+   "topic": "Space",
+   "level": "medium",
+   "text": "What is the name of the galaxy we live in?",
+   "choices": [
+    "The Milky Way",
+    "Andromeda",
+    "The Whirlpool",
+    "The Sombrero"
+   ],
+   "correctIndex": 0,
+   "quip": "Home sweet spiral."
+  },
+  {
+   "id": "space-medium-03",
+   "topic": "Space",
+   "level": "medium",
+   "text": "Who was the first person to walk on the Moon?",
+   "choices": [
+    "Neil Armstrong",
+    "Buzz Aldrin",
+    "Yuri Gagarin",
+    "John Glenn"
+   ],
+   "correctIndex": 0,
+   "quip": "One small step for a player, one giant leap for your score."
+  },
+  {
+   "id": "space-medium-04",
+   "topic": "Space",
+   "level": "medium",
+   "text": "Which planet has the shortest year?",
+   "choices": [
+    "Mercury",
+    "Venus",
+    "Earth",
+    "Mars"
+   ],
+   "correctIndex": 0,
+   "quip": "Mercury has a birthday every 88 days. Huge cake budget."
+  },
+  {
+   "id": "space-medium-05",
+   "topic": "Space",
+   "level": "medium",
+   "text": "What is the hottest planet in our solar system?",
+   "choices": [
+    "Venus",
+    "Mercury",
+    "Mars",
+    "Jupiter"
+   ],
+   "correctIndex": 0,
+   "quip": "Venus: thick clouds, trapped heat, zero chill."
+  },
+  {
+   "id": "space-medium-06",
+   "topic": "Space",
+   "level": "medium",
+   "text": "Why does the Moon seem to change shape during the month?",
+   "choices": [
+    "We see different parts of its lit side",
+    "Earth's shadow covers it",
+    "Clouds cover parts of it",
+    "The Moon shrinks and grows"
+   ],
+   "correctIndex": 0,
+   "quip": "Earth's shadow only shows up during eclipses!"
+  },
+  {
+   "id": "space-medium-07",
+   "topic": "Space",
+   "level": "medium",
+   "text": "About how long does sunlight take to reach Earth?",
+   "choices": [
+    "About 8 minutes",
+    "About 8 seconds",
+    "About 8 hours",
+    "About 8 days"
+   ],
+   "correctIndex": 0,
+   "quip": "Your sunshine is about 8 minutes old. Still fresh!"
+  },
+  {
+   "id": "space-medium-08",
+   "topic": "Space",
+   "level": "medium",
+   "text": "What is the largest volcano in the solar system?",
+   "choices": [
+    "Olympus Mons",
+    "Mauna Kea",
+    "Mount Everest",
+    "Mount Vesuvius"
+   ],
+   "correctIndex": 0,
+   "quip": "Olympus Mons, on Mars, is about 2.5 times taller than Everest."
+  },
+  {
+   "id": "space-medium-09",
+   "topic": "Space",
+   "level": "medium",
+   "text": "Which planet has the Great Red Spot, a giant storm?",
+   "choices": [
+    "Jupiter",
+    "Mars",
+    "Saturn",
+    "Neptune"
+   ],
+   "correctIndex": 0,
+   "quip": "A storm bigger than Earth, raging for centuries. Bring an umbrella."
+  },
+  {
+   "id": "space-medium-10",
+   "topic": "Space",
+   "level": "medium",
+   "text": "What do we call a space rock that burns up in Earth's sky?",
+   "choices": [
+    "A meteor",
+    "A comet",
+    "A planet",
+    "A nebula"
+   ],
+   "correctIndex": 0,
+   "quip": "Quick, make a wish — it's a meteor!"
+  },
+  {
+   "id": "space-hard-01",
+   "topic": "Space",
+   "level": "hard",
+   "text": "What is the largest moon in our solar system?",
+   "choices": [
+    "Ganymede",
+    "Titan",
+    "Europa",
+    "Callisto"
+   ],
+   "correctIndex": 0,
+   "quip": "Ganymede is even bigger than the planet Mercury."
+  },
+  {
+   "id": "space-hard-02",
+   "topic": "Space",
+   "level": "hard",
+   "text": "Which spacecraft was the first to leave the heliosphere?",
+   "choices": [
+    "Voyager 1",
+    "Pioneer 10",
+    "New Horizons",
+    "Voyager 2"
+   ],
+   "correctIndex": 0,
+   "quip": "Launched in 1977 and still sending postcards."
+  },
+  {
+   "id": "space-hard-03",
+   "topic": "Space",
+   "level": "hard",
+   "text": "What is the name of Saturn's largest moon?",
+   "choices": [
+    "Titan",
+    "Ganymede",
+    "Io",
+    "Triton"
+   ],
+   "correctIndex": 0,
+   "quip": "Titan has lakes — of liquid methane. Not great for swimming."
+  },
+  {
+   "id": "space-hard-04",
+   "topic": "Space",
+   "level": "hard",
+   "text": "About how many Earth days does Mars take to orbit the Sun?",
+   "choices": [
+    "About 687",
+    "About 365",
+    "About 225",
+    "About 88"
+   ],
+   "correctIndex": 0,
+   "quip": "A Mars year is almost two Earth years. Double summer break?"
+  },
+  {
+   "id": "space-hard-05",
+   "topic": "Space",
+   "level": "hard",
+   "text": "What is the closest star system to our Sun?",
+   "choices": [
+    "Alpha Centauri",
+    "Sirius",
+    "Betelgeuse",
+    "Vega"
+   ],
+   "correctIndex": 0,
+   "quip": "Only about 4.4 light-years away. Practically neighbors!"
+  },
+  {
+   "id": "space-hard-06",
+   "topic": "Space",
+   "level": "hard",
+   "text": "Io, the most volcanic place known, is a moon of which planet?",
+   "choices": [
+    "Jupiter",
+    "Saturn",
+    "Neptune",
+    "Mars"
+   ],
+   "correctIndex": 0,
+   "quip": "Io has hundreds of active volcanoes. Talk about a hot spot."
+  },
+  {
+   "id": "space-hard-07",
+   "topic": "Space",
+   "level": "hard",
+   "text": "What will our Sun become near the end of its life?",
+   "choices": [
+    "A red giant",
+    "A black hole",
+    "A neutron star",
+    "A blue giant"
+   ],
+   "correctIndex": 0,
+   "quip": "Red giant first, then a white dwarf. Billions of years away — relax."
+  },
+  {
+   "id": "space-hard-08",
+   "topic": "Space",
+   "level": "hard",
+   "text": "What is the edge of a black hole, past which nothing escapes?",
+   "choices": [
+    "The event horizon",
+    "The asteroid belt",
+    "The ozone layer",
+    "The Kuiper belt"
+   ],
+   "correctIndex": 0,
+   "quip": "Past the event horizon, even light can't get out."
+  },
+  {
+   "id": "space-hard-09",
+   "topic": "Space",
+   "level": "hard",
+   "text": "Which dwarf planet is the largest object in the asteroid belt?",
+   "choices": [
+    "Ceres",
+    "Pluto",
+    "Eris",
+    "Haumea"
+   ],
+   "correctIndex": 0,
+   "quip": "Ceres: the asteroid belt's heavyweight champion."
+  },
+  {
+   "id": "space-hard-10",
+   "topic": "Space",
+   "level": "hard",
+   "text": "Which space telescope, launched in 2021, sees mainly in infrared?",
+   "choices": [
+    "James Webb",
+    "Hubble",
+    "Kepler",
+    "Spitzer"
+   ],
+   "correctIndex": 0,
+   "quip": "It parked about 1.5 million km away to keep its cool."
+  },
+  {
+   "id": "animals-easy-01",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "What is the largest animal on Earth?",
+   "choices": [
+    "Blue whale",
+    "African elephant",
+    "Giraffe",
+    "Great white shark"
+   ],
+   "correctIndex": 0,
+   "quip": "Longer than a school bus and heavier than a herd of elephants."
+  },
+  {
+   "id": "animals-easy-02",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "Which animal can change the color of its skin?",
+   "choices": [
+    "Chameleon",
+    "Giraffe",
+    "Zebra",
+    "Owl"
+   ],
+   "correctIndex": 0,
+   "quip": "Now you see it, now you… still kind of see it."
+  },
+  {
+   "id": "animals-easy-03",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "How many legs does a spider have?",
+   "choices": [
+    "8",
+    "6",
+    "10",
+    "12"
+   ],
+   "correctIndex": 0,
+   "quip": "Eight legs and zero shoelaces to tie."
+  },
+  {
+   "id": "animals-easy-04",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "What sweet food do bees make?",
+   "choices": [
+    "Honey",
+    "Milk",
+    "Jam",
+    "Candy"
+   ],
+   "correctIndex": 0,
+   "quip": "Bees: tiny, buzzy, and very sweet."
+  },
+  {
+   "id": "animals-easy-05",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "Which animal is the tallest in the world?",
+   "choices": [
+    "Giraffe",
+    "Elephant",
+    "Horse",
+    "Camel"
+   ],
+   "correctIndex": 0,
+   "quip": "Great view up there, long way to swallow."
+  },
+  {
+   "id": "animals-easy-06",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "What is a baby kangaroo called?",
+   "choices": [
+    "A joey",
+    "A cub",
+    "A kid",
+    "A calf"
+   ],
+   "correctIndex": 0,
+   "quip": "A joey rides in mom's pouch. Best seat in the house."
+  },
+  {
+   "id": "animals-easy-07",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "Which bird can turn its head almost all the way around?",
+   "choices": [
+    "Owl",
+    "Penguin",
+    "Flamingo",
+    "Parrot"
+   ],
+   "correctIndex": 0,
+   "quip": "Owls can turn their heads about 270 degrees. Don't try it at home!"
+  },
+  {
+   "id": "animals-easy-08",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "What is the fastest land animal?",
+   "choices": [
+    "Cheetah",
+    "Lion",
+    "Horse",
+    "Gazelle"
+   ],
+   "correctIndex": 0,
+   "quip": "Zero to highway speed in about three seconds."
+  },
+  {
+   "id": "animals-easy-09",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "Which African animal looks like a horse with black and white stripes?",
+   "choices": [
+    "Zebra",
+    "Giraffe",
+    "Rhino",
+    "Antelope"
+   ],
+   "correctIndex": 0,
+   "quip": "Every zebra's stripes are unique, like a fingerprint."
+  },
+  {
+   "id": "animals-easy-10",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "What do caterpillars turn into?",
+   "choices": [
+    "Butterflies or moths",
+    "Bees",
+    "Spiders",
+    "Beetles"
+   ],
+   "correctIndex": 0,
+   "quip": "From very hungry to very fancy."
+  },
+  {
+   "id": "animals-medium-01",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "Which mammal can truly fly?",
+   "choices": [
+    "Bat",
+    "Flying squirrel",
+    "Ostrich",
+    "Penguin"
+   ],
+   "correctIndex": 0,
+   "quip": "Flying squirrels glide. Bats actually fly!"
+  },
+  {
+   "id": "animals-medium-02",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "How many hearts does an octopus have?",
+   "choices": [
+    "Three",
+    "One",
+    "Two",
+    "Eight"
+   ],
+   "correctIndex": 0,
+   "quip": "Three hearts and blue blood. Very royal."
+  },
+  {
+   "id": "animals-medium-03",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "What is a group of lions called?",
+   "choices": [
+    "A pride",
+    "A pack",
+    "A herd",
+    "A flock"
+   ],
+   "correctIndex": 0,
+   "quip": "A pride of lions — and they know it."
+  },
+  {
+   "id": "animals-medium-04",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "Which is the largest big cat?",
+   "choices": [
+    "Tiger",
+    "Lion",
+    "Jaguar",
+    "Leopard"
+   ],
+   "correctIndex": 0,
+   "quip": "The biggest kitty on the planet. Do not pet."
+  },
+  {
+   "id": "animals-medium-05",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "What do giant pandas mostly eat?",
+   "choices": [
+    "Bamboo",
+    "Fish",
+    "Fruit",
+    "Insects"
+   ],
+   "correctIndex": 0,
+   "quip": "Pandas munch bamboo for up to 14 hours a day."
+  },
+  {
+   "id": "animals-medium-06",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "Which of these animals is NOT a mammal?",
+   "choices": [
+    "Shark",
+    "Dolphin",
+    "Whale",
+    "Bat"
+   ],
+   "correctIndex": 0,
+   "quip": "Sharks are fish; dolphins and whales are mammals."
+  },
+  {
+   "id": "animals-medium-07",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "How do frogs take in most of the water they need?",
+   "choices": [
+    "Through their skin",
+    "With their tongue",
+    "They never need water",
+    "Through their ears"
+   ],
+   "correctIndex": 0,
+   "quip": "No cups needed — frogs soak it up through their skin."
+  },
+  {
+   "id": "animals-medium-08",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "What is a baby goat called?",
+   "choices": [
+    "A kid",
+    "A lamb",
+    "A foal",
+    "A pup"
+   ],
+   "correctIndex": 0,
+   "quip": "Kids are kids. Literally."
+  },
+  {
+   "id": "animals-medium-09",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "Which bird lays the largest eggs?",
+   "choices": [
+    "Ostrich",
+    "Eagle",
+    "Emu",
+    "Swan"
+   ],
+   "correctIndex": 0,
+   "quip": "One ostrich egg makes an omelet for the whole family."
+  },
+  {
+   "id": "animals-medium-10",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "Which animal finds food in the dark using echoes?",
+   "choices": [
+    "Bat",
+    "Owl",
+    "Cat",
+    "Rabbit"
+   ],
+   "correctIndex": 0,
+   "quip": "Bats shout and listen for echoes. Nature's sonar!"
+  },
+  {
+   "id": "animals-hard-01",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "Which mammal lays eggs and has a duck-like bill?",
+   "choices": [
+    "Platypus",
+    "Armadillo",
+    "Opossum",
+    "Sloth"
+   ],
+   "correctIndex": 0,
+   "quip": "The platypus: nature's mix-and-match project."
+  },
+  {
+   "id": "animals-hard-02",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "How many compartments does a cow's stomach have?",
+   "choices": [
+    "Four",
+    "One",
+    "Two",
+    "Six"
+   ],
+   "correctIndex": 0,
+   "quip": "Four compartments, one very long lunch."
+  },
+  {
+   "id": "animals-hard-03",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "Which animal has fingerprints almost identical to humans?",
+   "choices": [
+    "Koala",
+    "Kangaroo",
+    "Panda",
+    "Sloth"
+   ],
+   "correctIndex": 0,
+   "quip": "Koala fingerprints could fool a detective. Suspicious!"
+  },
+  {
+   "id": "animals-hard-04",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "What is the fastest bird when diving?",
+   "choices": [
+    "Peregrine falcon",
+    "Bald eagle",
+    "Ostrich",
+    "Hummingbird"
+   ],
+   "correctIndex": 0,
+   "quip": "Over 300 km/h in a dive. Speed limit? Never heard of it."
+  },
+  {
+   "id": "animals-hard-05",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "What is a group of crows called?",
+   "choices": [
+    "A murder",
+    "A pride",
+    "A school",
+    "A gaggle"
+   ],
+   "correctIndex": 0,
+   "quip": "Spooky name, very clever birds."
+  },
+  {
+   "id": "animals-hard-06",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "Which animal has the largest eyes in the animal kingdom?",
+   "choices": [
+    "Colossal squid",
+    "Blue whale",
+    "Elephant",
+    "Ostrich"
+   ],
+   "correctIndex": 0,
+   "quip": "Eyes the size of dinner plates. Great for spotting snacks."
+  },
+  {
+   "id": "animals-hard-07",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "Hummingbirds are the only birds that can…",
+   "choices": [
+    "Fly backwards",
+    "Swim underwater",
+    "Walk on water",
+    "Sleep while flying"
+   ],
+   "correctIndex": 0,
+   "quip": "Reverse gear: unlocked."
+  },
+  {
+   "id": "animals-hard-08",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "Which animal can sleep up to 20 hours a day?",
+   "choices": [
+    "Koala",
+    "Dog",
+    "Horse",
+    "Giraffe"
+   ],
+   "correctIndex": 0,
+   "quip": "Koalas: undefeated champions of the nap."
+  },
+  {
+   "id": "animals-hard-09",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "What is a baby swan called?",
+   "choices": [
+    "A cygnet",
+    "A gosling",
+    "A duckling",
+    "A kitten"
+   ],
+   "correctIndex": 0,
+   "quip": "Cygnet: a fancy name for a fluffy grey baby."
+  },
+  {
+   "id": "animals-hard-10",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "Which amphibian can regrow legs and even parts of its heart?",
+   "choices": [
+    "Axolotl",
+    "Turtle",
+    "Frog",
+    "Snake"
+   ],
+   "correctIndex": 0,
+   "quip": "Axolotls: the regrowing superheroes of the pond."
+  },
+  {
+   "id": "oceans-easy-01",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "What is the largest ocean on Earth?",
+   "choices": [
+    "Pacific",
+    "Atlantic",
+    "Indian",
+    "Arctic"
+   ],
+   "correctIndex": 0,
+   "quip": "The Pacific is bigger than all the land on Earth put together."
+  },
+  {
+   "id": "oceans-easy-02",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "Why does ocean water taste salty?",
+   "choices": [
+    "It has salt in it",
+    "It has sugar in it",
+    "Fish make it salty",
+    "Sand makes it salty"
+   ],
+   "correctIndex": 0,
+   "quip": "Great for waves, terrible for lemonade."
+  },
+  {
+   "id": "oceans-easy-03",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "Which ocean animal has eight arms?",
+   "choices": [
+    "Octopus",
+    "Crab",
+    "Dolphin",
+    "Shark"
+   ],
+   "correctIndex": 0,
+   "quip": "Eight arms: excellent at group hugs."
+  },
+  {
+   "id": "oceans-easy-04",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "What do we call a giant ocean wave caused by an earthquake?",
+   "choices": [
+    "A tsunami",
+    "A tide",
+    "A ripple",
+    "A current"
+   ],
+   "correctIndex": 0,
+   "quip": "Scientists watch the oceans so people get warnings in time."
+  },
+  {
+   "id": "oceans-easy-05",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "Which sea animal is a mammal that breathes air?",
+   "choices": [
+    "Dolphin",
+    "Shark",
+    "Tuna",
+    "Jellyfish"
+   ],
+   "correctIndex": 0,
+   "quip": "Dolphins pop up for air — and for applause."
+  },
+  {
+   "id": "oceans-easy-06",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "Which fish lives safely among the stinging arms of sea anemones?",
+   "choices": [
+    "Clownfish",
+    "Goldfish",
+    "Swordfish",
+    "Catfish"
+   ],
+   "correctIndex": 0,
+   "quip": "A slimy coat protects them. Gross, but genius."
+  },
+  {
+   "id": "oceans-easy-07",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "What covers most of Earth's surface?",
+   "choices": [
+    "Water",
+    "Sand",
+    "Forests",
+    "Ice"
+   ],
+   "correctIndex": 0,
+   "quip": "About 71% water. Maybe we should call it Planet Ocean!"
+  },
+  {
+   "id": "oceans-easy-08",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "Which crab moves into bigger empty shells as it grows?",
+   "choices": [
+    "Hermit crab",
+    "Blue crab",
+    "King crab",
+    "Spider crab"
+   ],
+   "correctIndex": 0,
+   "quip": "Moving day, every time it grows!"
+  },
+  {
+   "id": "oceans-easy-09",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "What colorful underwater structure is built by tiny animals?",
+   "choices": [
+    "A coral reef",
+    "A shipwreck",
+    "A kelp forest",
+    "A sand dune"
+   ],
+   "correctIndex": 0,
+   "quip": "Coral reefs are built by tiny animals called polyps."
+  },
+  {
+   "id": "oceans-easy-10",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "Which ocean reptile lays its eggs on sandy beaches?",
+   "choices": [
+    "Sea turtle",
+    "Seal",
+    "Penguin",
+    "Octopus"
+   ],
+   "correctIndex": 0,
+   "quip": "Baby sea turtles race to the waves right after hatching."
+  },
+  {
+   "id": "oceans-medium-01",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "What is the deepest known point in the ocean?",
+   "choices": [
+    "Challenger Deep",
+    "Grand Canyon",
+    "Dead Sea",
+    "Great Barrier Reef"
+   ],
+   "correctIndex": 0,
+   "quip": "Almost 11 km deep. Everest would fit with room to spare."
+  },
+  {
+   "id": "oceans-medium-02",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "What is the largest fish in the ocean?",
+   "choices": [
+    "Whale shark",
+    "Blue whale",
+    "Great white shark",
+    "Manta ray"
+   ],
+   "correctIndex": 0,
+   "quip": "Huge fish, tiny menu: it eats plankton."
+  },
+  {
+   "id": "oceans-medium-03",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "What mostly causes ocean tides?",
+   "choices": [
+    "The Moon's gravity",
+    "Wind",
+    "Whales swimming",
+    "Earthquakes"
+   ],
+   "correctIndex": 0,
+   "quip": "The Moon pulls, the ocean follows. The Sun helps a little too."
+  },
+  {
+   "id": "oceans-medium-04",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "Which is the smallest of Earth's oceans?",
+   "choices": [
+    "Arctic",
+    "Indian",
+    "Atlantic",
+    "Pacific"
+   ],
+   "correctIndex": 0,
+   "quip": "Smallest, iciest, coolest — literally."
+  },
+  {
+   "id": "oceans-medium-05",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "How do fish breathe underwater?",
+   "choices": [
+    "With gills",
+    "With lungs",
+    "Through their fins",
+    "Through their tails"
+   ],
+   "correctIndex": 0,
+   "quip": "Gills pull oxygen straight out of the water."
+  },
+  {
+   "id": "oceans-medium-06",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "What is a group of fish swimming together called?",
+   "choices": [
+    "A school",
+    "A flock",
+    "A herd",
+    "A pride"
+   ],
+   "correctIndex": 0,
+   "quip": "A school of fish. No homework, though."
+  },
+  {
+   "id": "oceans-medium-07",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "Which sea creature squirts ink to escape danger?",
+   "choices": [
+    "Squid",
+    "Seal",
+    "Dolphin",
+    "Sea turtle"
+   ],
+   "correctIndex": 0,
+   "quip": "Squirt, swirl, and — poof — gone."
+  },
+  {
+   "id": "oceans-medium-08",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "Which sea creature has no brain, no heart and no bones?",
+   "choices": [
+    "Jellyfish",
+    "Octopus",
+    "Shark",
+    "Seahorse"
+   ],
+   "correctIndex": 0,
+   "quip": "And it has been drifting along for over 500 million years."
+  },
+  {
+   "id": "oceans-medium-09",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "In seahorses, which parent carries the eggs until they hatch?",
+   "choices": [
+    "The father",
+    "The mother",
+    "Both take turns",
+    "Neither"
+   ],
+   "correctIndex": 0,
+   "quip": "Seahorse dads: pregnancy pros."
+  },
+  {
+   "id": "oceans-medium-10",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "What is the world's largest coral reef system?",
+   "choices": [
+    "Great Barrier Reef",
+    "Belize Barrier Reef",
+    "Red Sea Coral Reef",
+    "Florida Reef"
+   ],
+   "correctIndex": 0,
+   "quip": "It's so big it can be seen from space."
+  },
+  {
+   "id": "oceans-hard-01",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "Which ocean zone, starting around 1,000 m deep, gets no sunlight?",
+   "choices": [
+    "The midnight zone",
+    "The sunlight zone",
+    "The twilight zone",
+    "The tidal zone"
+   ],
+   "correctIndex": 0,
+   "quip": "So dark that many animals make their own light."
+  },
+  {
+   "id": "oceans-hard-02",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "What do we call living things that make their own light?",
+   "choices": [
+    "Bioluminescent",
+    "Photosynthetic",
+    "Nocturnal",
+    "Magnetic"
+   ],
+   "correctIndex": 0,
+   "quip": "Glow-in-the-dark, no batteries required."
+  },
+  {
+   "id": "oceans-hard-03",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "Which current carries warm water from the Gulf of Mexico toward Europe?",
+   "choices": [
+    "The Gulf Stream",
+    "The Humboldt Current",
+    "The Kuroshio",
+    "The Agulhas Current"
+   ],
+   "correctIndex": 0,
+   "quip": "It helps keep parts of Europe milder than you'd expect."
+  },
+  {
+   "id": "oceans-hard-04",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "About how much of Earth's water is in the oceans?",
+   "choices": [
+    "About 97%",
+    "About 50%",
+    "About 75%",
+    "About 85%"
+   ],
+   "correctIndex": 0,
+   "quip": "Only about 3% is fresh water. Save some for the plants!"
+  },
+  {
+   "id": "oceans-hard-05",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "What is the long underwater mountain range in the middle of the Atlantic?",
+   "choices": [
+    "Mid-Atlantic Ridge",
+    "The Andes",
+    "Ural Mountains",
+    "Great Dividing Range"
+   ],
+   "correctIndex": 0,
+   "quip": "Earth's longest mountain range is mostly underwater."
+  },
+  {
+   "id": "oceans-hard-06",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "Which fish can walk on land using its fins?",
+   "choices": [
+    "Mudskipper",
+    "Tuna",
+    "Clownfish",
+    "Goldfish"
+   ],
+   "correctIndex": 0,
+   "quip": "Mudskippers: part fish, part hiking enthusiast."
+  },
+  {
+   "id": "oceans-hard-07",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "Which gas do ocean algae release that we breathe?",
+   "choices": [
+    "Oxygen",
+    "Carbon dioxide",
+    "Helium",
+    "Nitrogen"
+   ],
+   "correctIndex": 0,
+   "quip": "Tiny ocean algae make a huge share of the air we breathe."
+  },
+  {
+   "id": "oceans-hard-08",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "What is the name of the ocean that surrounds Antarctica?",
+   "choices": [
+    "The Southern Ocean",
+    "The Arctic Ocean",
+    "The Indian Ocean",
+    "The Antarctic Sea"
+   ],
+   "correctIndex": 0,
+   "quip": "The fifth official ocean — and a chilly one."
+  },
+  {
+   "id": "oceans-hard-09",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "Which shark is the largest predatory fish?",
+   "choices": [
+    "Great white shark",
+    "Whale shark",
+    "Hammerhead shark",
+    "Tiger shark"
+   ],
+   "correctIndex": 0,
+   "quip": "Big, toothy, and mostly misunderstood."
+  },
+  {
+   "id": "oceans-hard-10",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "How long can a sperm whale hold its breath?",
+   "choices": [
+    "About 90 minutes",
+    "About 5 minutes",
+    "About 1 day",
+    "About 1 week"
+   ],
+   "correctIndex": 0,
+   "quip": "Ninety minutes on one breath. Please don't try it in the bathtub."
+  },
+  {
+   "id": "dinosaurs-easy-01",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "What does the word \"dinosaur\" mean?",
+   "choices": [
+    "Terrible lizard",
+    "Big bird",
+    "Ancient dragon",
+    "Giant tooth"
+   ],
+   "correctIndex": 0,
+   "quip": "Terrible lizard — though many were peaceful plant-eaters."
+  },
+  {
+   "id": "dinosaurs-easy-02",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "Which dinosaur had three horns on its face?",
+   "choices": [
+    "Triceratops",
+    "Stegosaurus",
+    "Velociraptor",
+    "Brachiosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "Three horns: one for each bad hair day."
+  },
+  {
+   "id": "dinosaurs-easy-03",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "Which dinosaur had big plates along its back?",
+   "choices": [
+    "Stegosaurus",
+    "Tyrannosaurus rex",
+    "Triceratops",
+    "Diplodocus"
+   ],
+   "correctIndex": 0,
+   "quip": "Stegosaurus: a walking, spiky fence."
+  },
+  {
+   "id": "dinosaurs-easy-04",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "Tyrannosaurus rex had very short…",
+   "choices": [
+    "Arms",
+    "Legs",
+    "Teeth",
+    "Tail"
+   ],
+   "correctIndex": 0,
+   "quip": "Huge teeth, tiny arms. High-fives were tricky."
+  },
+  {
+   "id": "dinosaurs-easy-05",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "Which dinosaur's name means \"tyrant lizard king\"?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Triceratops",
+    "Stegosaurus",
+    "Iguanodon"
+   ],
+   "correctIndex": 0,
+   "quip": "A royal title for a royally big chomper."
+  },
+  {
+   "id": "dinosaurs-easy-06",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "How do we know about dinosaurs today?",
+   "choices": [
+    "From fossils",
+    "From old photos",
+    "From videos",
+    "From cave paintings"
+   ],
+   "correctIndex": 0,
+   "quip": "Fossils are nature's time capsules."
+  },
+  {
+   "id": "dinosaurs-easy-07",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "Which long-necked dinosaur could reach the tops of trees?",
+   "choices": [
+    "Brachiosaurus",
+    "Triceratops",
+    "Ankylosaurus",
+    "Velociraptor"
+   ],
+   "correctIndex": 0,
+   "quip": "Brachiosaurus never needed a ladder."
+  },
+  {
+   "id": "dinosaurs-easy-08",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "Did dinosaurs and people live at the same time?",
+   "choices": [
+    "No",
+    "Yes",
+    "Only in caves",
+    "Only on islands"
+   ],
+   "correctIndex": 0,
+   "quip": "Dinosaurs were gone about 66 million years before the first people."
+  },
+  {
+   "id": "dinosaurs-easy-09",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "Which flying reptile lived at the time of the dinosaurs?",
+   "choices": [
+    "Pteranodon",
+    "Parrot",
+    "Eagle",
+    "Bat"
+   ],
+   "correctIndex": 0,
+   "quip": "Not technically a dinosaur — but a great flyer!"
+  },
+  {
+   "id": "dinosaurs-easy-10",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "Baby dinosaurs hatched from…",
+   "choices": [
+    "Eggs",
+    "Seeds",
+    "Pods",
+    "Cocoons"
+   ],
+   "correctIndex": 0,
+   "quip": "Some dinosaur eggs were as big as a melon."
+  },
+  {
+   "id": "dinosaurs-medium-01",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "About when did most dinosaurs die out?",
+   "choices": [
+    "66 million years ago",
+    "66 thousand years ago",
+    "6,600 years ago",
+    "660 million years ago"
+   ],
+   "correctIndex": 0,
+   "quip": "A giant space rock had a very bad day — and so did the dinosaurs."
+  },
+  {
+   "id": "dinosaurs-medium-02",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "What is a scientist who studies fossils called?",
+   "choices": [
+    "Paleontologist",
+    "Archaeologist",
+    "Astronomer",
+    "Geologist"
+   ],
+   "correctIndex": 0,
+   "quip": "Archaeologists dig up human history. Paleontologists dig up dinosaurs."
+  },
+  {
+   "id": "dinosaurs-medium-03",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "Which animals alive today are descended from dinosaurs?",
+   "choices": [
+    "Birds",
+    "Frogs",
+    "Cats",
+    "Fish"
+   ],
+   "correctIndex": 0,
+   "quip": "Next time you see a pigeon, say hi to a tiny dinosaur."
+  },
+  {
+   "id": "dinosaurs-medium-04",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "Which dinosaur had a bony club at the end of its tail?",
+   "choices": [
+    "Ankylosaurus",
+    "Stegosaurus",
+    "Spinosaurus",
+    "Iguanodon"
+   ],
+   "correctIndex": 0,
+   "quip": "Built like a tank, swings like a batter."
+  },
+  {
+   "id": "dinosaurs-medium-05",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "About how big was a real Velociraptor?",
+   "choices": [
+    "Turkey-sized",
+    "Bus-sized",
+    "House-sized",
+    "Elephant-sized"
+   ],
+   "correctIndex": 0,
+   "quip": "Movies made them huge. Real ones were turkey-sized — with feathers!"
+  },
+  {
+   "id": "dinosaurs-medium-06",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "Which dinosaur had a big sail on its back and probably ate fish?",
+   "choices": [
+    "Spinosaurus",
+    "Triceratops",
+    "Brachiosaurus",
+    "Stegosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "Spinosaurus: part dinosaur, part sailboat."
+  },
+  {
+   "id": "dinosaurs-medium-07",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "In which period did Tyrannosaurus rex live?",
+   "choices": [
+    "Cretaceous",
+    "Jurassic",
+    "Triassic",
+    "Ice Age"
+   ],
+   "correctIndex": 0,
+   "quip": "T. rex lived near the very end of the dinosaur age."
+  },
+  {
+   "id": "dinosaurs-medium-08",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "What are dinosaur footprints preserved in rock called?",
+   "choices": [
+    "Trace fossils",
+    "Rock art",
+    "Fossil fuels",
+    "Crystals"
+   ],
+   "correctIndex": 0,
+   "quip": "Footprints even tell us how fast dinosaurs walked."
+  },
+  {
+   "id": "dinosaurs-medium-09",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "Which group of giant long-necked dinosaurs were the biggest land animals ever?",
+   "choices": [
+    "Sauropods",
+    "Raptors",
+    "Ceratopsians",
+    "Ankylosaurs"
+   ],
+   "correctIndex": 0,
+   "quip": "Long neck, long tail, very long lunch."
+  },
+  {
+   "id": "dinosaurs-medium-10",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "What did Triceratops probably use its horns for?",
+   "choices": [
+    "Defense and display",
+    "Digging holes",
+    "Climbing trees",
+    "Catching fish"
+   ],
+   "correctIndex": 0,
+   "quip": "Part shield, part showing off."
+  },
+  {
+   "id": "dinosaurs-hard-01",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "Which dinosaur was the first to be scientifically named, in 1824?",
+   "choices": [
+    "Megalosaurus",
+    "Iguanodon",
+    "Tyrannosaurus rex",
+    "Stegosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "Named before anyone had even invented the word \"dinosaur.\""
+  },
+  {
+   "id": "dinosaurs-hard-02",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "What is the event that wiped out the dinosaurs called?",
+   "choices": [
+    "K-Pg extinction",
+    "Permian extinction",
+    "The Ice Age",
+    "The Big Bang"
+   ],
+   "correctIndex": 0,
+   "quip": "An asteroid about 10 km wide ended a 165-million-year run."
+  },
+  {
+   "id": "dinosaurs-hard-03",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "In which country is the crater from the dinosaur-ending asteroid?",
+   "choices": [
+    "Mexico",
+    "Australia",
+    "Egypt",
+    "Canada"
+   ],
+   "correctIndex": 0,
+   "quip": "The Chicxulub crater is buried under the Yucatán Peninsula."
+  },
+  {
+   "id": "dinosaurs-hard-04",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "Which period of the dinosaur age came first?",
+   "choices": [
+    "Triassic",
+    "Jurassic",
+    "Cretaceous",
+    "Paleogene"
+   ],
+   "correctIndex": 0,
+   "quip": "Triassic, Jurassic, Cretaceous — the original dinosaur trilogy."
+  },
+  {
+   "id": "dinosaurs-hard-05",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "What was unusual about the small dinosaur Microraptor?",
+   "choices": [
+    "It had four wings",
+    "It had six legs",
+    "It lived underwater",
+    "It had no teeth"
+   ],
+   "correctIndex": 0,
+   "quip": "Four feathered wings! Nature tried a biplane."
+  },
+  {
+   "id": "dinosaurs-hard-06",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "What is the name of a famous, nearly complete T. rex skeleton?",
+   "choices": [
+    "Sue",
+    "Lucy",
+    "Dolly",
+    "Rexy"
+   ],
+   "correctIndex": 0,
+   "quip": "Sue is about 90% complete. Not bad for 67 million years old."
+  },
+  {
+   "id": "dinosaurs-hard-07",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "Pachycephalosaurus is named for its unusually thick…",
+   "choices": [
+    "Skull",
+    "Neck",
+    "Claws",
+    "Tail"
+   ],
+   "correctIndex": 0,
+   "quip": "Thick-headed lizard. It's a compliment, honestly."
+  },
+  {
+   "id": "dinosaurs-hard-08",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "Roughly how long did non-bird dinosaurs live on Earth?",
+   "choices": [
+    "About 165 million years",
+    "About 1 million years",
+    "About 10,000 years",
+    "About 4 billion years"
+   ],
+   "correctIndex": 0,
+   "quip": "Humans have been around for a tiny fraction of that."
+  },
+  {
+   "id": "dinosaurs-hard-09",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "Which supercontinent existed when the first dinosaurs appeared?",
+   "choices": [
+    "Pangaea",
+    "Atlantis",
+    "Zealandia",
+    "Rodinia"
+   ],
+   "correctIndex": 0,
+   "quip": "All the continents were one big block. Road trip!"
+  },
+  {
+   "id": "dinosaurs-hard-10",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "What is a coprolite?",
+   "choices": [
+    "Fossilized poop",
+    "A dinosaur tooth",
+    "A type of egg",
+    "A baby dinosaur"
+   ],
+   "correctIndex": 0,
+   "quip": "Yes, scientists study fossil poop. Science is glamorous!"
+  },
+  {
+   "id": "food-easy-01",
+   "topic": "Food",
+   "level": "easy",
+   "text": "Which fruit is yellow and curved?",
+   "choices": [
+    "Banana",
+    "Apple",
+    "Grape",
+    "Cherry"
+   ],
+   "correctIndex": 0,
+   "quip": "Bananas: the original snack with built-in wrapping."
+  },
+  {
+   "id": "food-easy-02",
+   "topic": "Food",
+   "level": "easy",
+   "text": "Which crunchy orange vegetable do rabbits love?",
+   "choices": [
+    "Carrot",
+    "Potato",
+    "Pea",
+    "Onion"
+   ],
+   "correctIndex": 0,
+   "quip": "Crunchy, orange, and great for your eyes."
+  },
+  {
+   "id": "food-easy-03",
+   "topic": "Food",
+   "level": "easy",
+   "text": "What is the main ingredient in guacamole?",
+   "choices": [
+    "Avocado",
+    "Tomato",
+    "Lime",
+    "Pepper"
+   ],
+   "correctIndex": 0,
+   "quip": "Holy guacamole, you got it!"
+  },
+  {
+   "id": "food-easy-04",
+   "topic": "Food",
+   "level": "easy",
+   "text": "Which drink do we get from cows?",
+   "choices": [
+    "Milk",
+    "Orange juice",
+    "Lemonade",
+    "Tea"
+   ],
+   "correctIndex": 0,
+   "quip": "Moo-velous answer!"
+  },
+  {
+   "id": "food-easy-05",
+   "topic": "Food",
+   "level": "easy",
+   "text": "Pizza first comes from which country?",
+   "choices": [
+    "Italy",
+    "France",
+    "Mexico",
+    "Japan"
+   ],
+   "correctIndex": 0,
+   "quip": "Mamma mia, that's right!"
+  },
+  {
+   "id": "food-easy-06",
+   "topic": "Food",
+   "level": "easy",
+   "text": "What do you get when you heat corn kernels until they burst?",
+   "choices": [
+    "Popcorn",
+    "Cornflakes",
+    "Corn soup",
+    "Tortillas"
+   ],
+   "correctIndex": 0,
+   "quip": "Pop, pop, hooray!"
+  },
+  {
+   "id": "food-easy-07",
+   "topic": "Food",
+   "level": "easy",
+   "text": "Which fruit keeps the doctor away, in a famous saying?",
+   "choices": [
+    "Apple",
+    "Pear",
+    "Banana",
+    "Kiwi"
+   ],
+   "correctIndex": 0,
+   "quip": "An apple a day… and a quiz every night."
+  },
+  {
+   "id": "food-easy-08",
+   "topic": "Food",
+   "level": "easy",
+   "text": "What color is the inside of a watermelon, usually?",
+   "choices": [
+    "Red or pink",
+    "Blue",
+    "Purple",
+    "Black"
+   ],
+   "correctIndex": 0,
+   "quip": "It's over 90% water — the name says it all."
+  },
+  {
+   "id": "food-easy-09",
+   "topic": "Food",
+   "level": "easy",
+   "text": "Which food do we get from chickens?",
+   "choices": [
+    "Eggs",
+    "Cheese",
+    "Honey",
+    "Butter"
+   ],
+   "correctIndex": 0,
+   "quip": "Which came first? Doesn't matter — you got it."
+  },
+  {
+   "id": "food-easy-10",
+   "topic": "Food",
+   "level": "easy",
+   "text": "What is the frozen dessert made from milk or cream and sugar?",
+   "choices": [
+    "Ice cream",
+    "Pudding",
+    "Jelly",
+    "Pancakes"
+   ],
+   "correctIndex": 0,
+   "quip": "Brain freeze: totally worth it."
+  },
+  {
+   "id": "food-medium-01",
+   "topic": "Food",
+   "level": "medium",
+   "text": "Which spice is the most expensive by weight?",
+   "choices": [
+    "Saffron",
+    "Black pepper",
+    "Cinnamon",
+    "Salt"
+   ],
+   "correctIndex": 0,
+   "quip": "Saffron threads are picked from flowers by hand."
+  },
+  {
+   "id": "food-medium-02",
+   "topic": "Food",
+   "level": "medium",
+   "text": "Sushi comes from which country?",
+   "choices": [
+    "Japan",
+    "China",
+    "Korea",
+    "Thailand"
+   ],
+   "correctIndex": 0,
+   "quip": "Rice, fish, and a lot of skill."
+  },
+  {
+   "id": "food-medium-03",
+   "topic": "Food",
+   "level": "medium",
+   "text": "What is tofu made from?",
+   "choices": [
+    "Soybeans",
+    "Rice",
+    "Milk",
+    "Wheat"
+   ],
+   "correctIndex": 0,
+   "quip": "Soy milk, curdled and pressed. Tasty science!"
+  },
+  {
+   "id": "food-medium-04",
+   "topic": "Food",
+   "level": "medium",
+   "text": "Which nut is used to make marzipan?",
+   "choices": [
+    "Almond",
+    "Peanut",
+    "Walnut",
+    "Cashew"
+   ],
+   "correctIndex": 0,
+   "quip": "Almonds plus sugar equals tiny edible sculptures."
+  },
+  {
+   "id": "food-medium-05",
+   "topic": "Food",
+   "level": "medium",
+   "text": "What makes bread dough rise and get fluffy?",
+   "choices": [
+    "Yeast",
+    "Salt",
+    "Sugar",
+    "Butter"
+   ],
+   "correctIndex": 0,
+   "quip": "Tiny yeast make bubbles. Bread says thank you."
+  },
+  {
+   "id": "food-medium-06",
+   "topic": "Food",
+   "level": "medium",
+   "text": "Which fruit has its seeds on the outside?",
+   "choices": [
+    "Strawberry",
+    "Blueberry",
+    "Cherry",
+    "Orange"
+   ],
+   "correctIndex": 0,
+   "quip": "About 200 seeds per strawberry. Count them later."
+  },
+  {
+   "id": "food-medium-07",
+   "topic": "Food",
+   "level": "medium",
+   "text": "What is the main ingredient in hummus?",
+   "choices": [
+    "Chickpeas",
+    "Lentils",
+    "Rice",
+    "Potatoes"
+   ],
+   "correctIndex": 0,
+   "quip": "Chickpeas, blended into something wonderful."
+  },
+  {
+   "id": "food-medium-08",
+   "topic": "Food",
+   "level": "medium",
+   "text": "Which vegetable can make you cry when you cut it?",
+   "choices": [
+    "Onion",
+    "Carrot",
+    "Lettuce",
+    "Cucumber"
+   ],
+   "correctIndex": 0,
+   "quip": "Onions: emotional damage, delicious results."
+  },
+  {
+   "id": "food-medium-09",
+   "topic": "Food",
+   "level": "medium",
+   "text": "Paella is a famous rice dish from which country?",
+   "choices": [
+    "Spain",
+    "Italy",
+    "Mexico",
+    "India"
+   ],
+   "correctIndex": 0,
+   "quip": "Cooked in a wide pan, shared with everyone."
+  },
+  {
+   "id": "food-medium-10",
+   "topic": "Food",
+   "level": "medium",
+   "text": "Which of these is a fruit, scientifically speaking?",
+   "choices": [
+    "Tomato",
+    "Carrot",
+    "Potato",
+    "Lettuce"
+   ],
+   "correctIndex": 0,
+   "quip": "Tomato: a fruit by science, a vegetable by salad."
+  },
+  {
+   "id": "food-hard-01",
+   "topic": "Food",
+   "level": "hard",
+   "text": "What is the main green herb in classic pesto?",
+   "choices": [
+    "Basil",
+    "Parsley",
+    "Mint",
+    "Cilantro"
+   ],
+   "correctIndex": 0,
+   "quip": "Basil, garlic, pine nuts, cheese and oil. Green magic."
+  },
+  {
+   "id": "food-hard-02",
+   "topic": "Food",
+   "level": "hard",
+   "text": "Which rice is traditionally used to make risotto?",
+   "choices": [
+    "Arborio rice",
+    "Basmati rice",
+    "Wild rice",
+    "Jasmine rice"
+   ],
+   "correctIndex": 0,
+   "quip": "Arborio releases starch for that creamy texture."
+  },
+  {
+   "id": "food-hard-03",
+   "topic": "Food",
+   "level": "hard",
+   "text": "Lack of vitamin C causes which disease?",
+   "choices": [
+    "Scurvy",
+    "Sunburn",
+    "Hiccups",
+    "Freckles"
+   ],
+   "correctIndex": 0,
+   "quip": "Old-time sailors learned this one the hard way."
+  },
+  {
+   "id": "food-hard-04",
+   "topic": "Food",
+   "level": "hard",
+   "text": "Which food can last thousands of years and still be edible?",
+   "choices": [
+    "Honey",
+    "Bread",
+    "Cheese",
+    "Milk"
+   ],
+   "correctIndex": 0,
+   "quip": "Archaeologists have found ancient honey that was still good!"
+  },
+  {
+   "id": "food-hard-05",
+   "topic": "Food",
+   "level": "hard",
+   "text": "Kimchi is a fermented dish from which country?",
+   "choices": [
+    "Korea",
+    "Japan",
+    "Vietnam",
+    "China"
+   ],
+   "correctIndex": 0,
+   "quip": "Spicy, tangy, and full of good bacteria."
+  },
+  {
+   "id": "food-hard-06",
+   "topic": "Food",
+   "level": "hard",
+   "text": "Chocolate is made from the beans of which plant?",
+   "choices": [
+    "Cacao",
+    "Coffee",
+    "Vanilla",
+    "Soy"
+   ],
+   "correctIndex": 0,
+   "quip": "People in Mesoamerica drank chocolate thousands of years ago."
+  },
+  {
+   "id": "food-hard-07",
+   "topic": "Food",
+   "level": "hard",
+   "text": "What does the Scoville scale measure?",
+   "choices": [
+    "Spiciness of peppers",
+    "Sweetness of fruit",
+    "Saltiness of soup",
+    "Sourness of lemons"
+   ],
+   "correctIndex": 0,
+   "quip": "From a bell pepper's zero to \"call the fire brigade.\""
+  },
+  {
+   "id": "food-hard-08",
+   "topic": "Food",
+   "level": "hard",
+   "text": "Which country produces the most coffee in the world?",
+   "choices": [
+    "Brazil",
+    "Colombia",
+    "Ethiopia",
+    "Vietnam"
+   ],
+   "correctIndex": 0,
+   "quip": "Brazil has been the top coffee grower for over 150 years."
+  },
+  {
+   "id": "food-hard-09",
+   "topic": "Food",
+   "level": "hard",
+   "text": "Which vegetable is used to make sauerkraut?",
+   "choices": [
+    "Cabbage",
+    "Cucumber",
+    "Carrot",
+    "Beet"
+   ],
+   "correctIndex": 0,
+   "quip": "Fermented cabbage: crunchy, tangy, and very German."
+  },
+  {
+   "id": "food-hard-10",
+   "topic": "Food",
+   "level": "hard",
+   "text": "Quinoa was first grown in which mountain region?",
+   "choices": [
+    "The Andes",
+    "The Alps",
+    "The Himalayas",
+    "The Rockies"
+   ],
+   "correctIndex": 0,
+   "quip": "The Incas called it the \"mother of all grains.\""
+  }
+ ]
+}

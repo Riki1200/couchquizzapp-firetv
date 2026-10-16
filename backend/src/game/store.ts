@@ -1,4 +1,4 @@
-import { Difficulty, GenerationStatus, Player, Question } from '@couch-quiz/protocol';
+import { Difficulty, GenerationStatus, Player, Question, QuestionSource } from '@couch-quiz/protocol';
 
 export type Phase = 'lobby' | 'question' | 'reveal' | 'podium';
 
@@ -13,6 +13,10 @@ export interface RoomRecord {
   /** Ignores results of a generation that was superseded by a newer configure. */
   generationId: string | null;
   questions: Question[];
+  questionSource: QuestionSource | null;
+  /** Bank game in play: marked as played when the game is completed. */
+  bankKey: string | null;
+  bankQuestionIds: string[];
   questionIndex: number;
   questionStartedAt: number | null;
   questionDeadline: number | null;
@@ -56,6 +60,9 @@ export interface Store {
   putConnection(connection: ConnectionRecord): Promise<void>;
   getConnection(connId: string): Promise<ConnectionRecord | null>;
   deleteConnection(connId: string): Promise<void>;
+  /** Ids of bank questions from completed games, per topic and level (e.g. "space#easy"). */
+  getPlayed(bankKey: string): Promise<string[]>;
+  setPlayed(bankKey: string, ids: string[]): Promise<void>;
 }
 
 export class MemoryStore implements Store {
@@ -63,6 +70,7 @@ export class MemoryStore implements Store {
   private players = new Map<string, PlayerRecord[]>();
   private answers = new Map<string, AnswerRecord[]>();
   private connections = new Map<string, ConnectionRecord>();
+  private played = new Map<string, string[]>();
 
   async createRoom(room: RoomRecord) {
     if (this.rooms.has(room.roomCode)) return false;
@@ -108,5 +116,11 @@ export class MemoryStore implements Store {
   }
   async deleteConnection(connId: string) {
     this.connections.delete(connId);
+  }
+  async getPlayed(bankKey: string) {
+    return [...(this.played.get(bankKey) ?? [])];
+  }
+  async setPlayed(bankKey: string, ids: string[]) {
+    this.played.set(bankKey, [...ids]);
   }
 }

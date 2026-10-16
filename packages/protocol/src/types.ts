@@ -4,6 +4,9 @@ export type Difficulty = 'easy' | 'medium' | 'hard' | 'kids';
 
 export type GenerationStatus = 'idle' | 'pending' | 'ready' | 'failed';
 
+/** Where a game's questions came from: the built-in bank or the AI host. */
+export type QuestionSource = 'bank' | 'ai';
+
 export interface Player {
   id: string;
   name: string;
@@ -64,7 +67,7 @@ export type ClientMessage = HostMessage | PlayerMessage | { action: 'sync' } | {
 // ---- WebSocket events: server → TV ----
 export type HostEvent =
   | { type: 'players'; players: Player[] }
-  | { type: 'generation'; status: GenerationStatus; topic?: string; questions?: Question[] }
+  | { type: 'generation'; status: GenerationStatus; topic?: string; questions?: Question[]; source?: QuestionSource }
   | { type: 'answerProgress'; index: number; answeredPlayerIds: string[] }
   | { type: 'reveal'; index: number; results: PlayerResult[] }
   | { type: 'gameOver'; awards: Award[] };

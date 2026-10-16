@@ -1,4 +1,4 @@
-import { Award, Difficulty, QUESTION_COUNT, Question, SPACE_FOR_KIDS } from '@couch-quiz/protocol';
+import { Award, Difficulty, QUESTION_BANK, QUESTION_COUNT, Question, bankPool, pickGame, shuffleChoices } from '@couch-quiz/protocol';
 import { z } from 'zod';
 
 /** Facts about one player at the end of the game; the awards must be true to these. */
@@ -118,6 +118,7 @@ const QuestionSchema = z
 const QuestionsSchema = z.object({ questions: z.array(QuestionSchema).length(QUESTION_COUNT) });
 
 export function parseQuestions(input: unknown): Question[] {
+  // Models tend to favor one slot for the correct answer; shuffle so it is fair.
   return QuestionsSchema.parse(input).questions.map((q) => shuffleChoices(q as Question));
 }
 
@@ -156,16 +157,6 @@ export async function withValidationRetry<T>(
   }
 }
 
-/** Models tend to favor one slot for the correct answer; shuffle so it is fair. */
-function shuffleChoices(question: Question): Question {
-  const order = [0, 1, 2, 3].sort(() => Math.random() - 0.5);
-  return {
-    ...question,
-    choices: order.map((i) => question.choices[i]) as Question['choices'],
-    correctIndex: order.indexOf(question.correctIndex) as Question['correctIndex'],
-  };
-}
-
 // ---------- Fallbacks ----------
 
 /** Rule-based awards, used when the model is unavailable or its answer is invalid. */
@@ -183,11 +174,15 @@ export function fallbackAwards(facts: PlayerFacts[]): Award[] {
   });
 }
 
-/** Local development without AWS: returns the bundled pack for any topic. */
+/**
+ * Local development without AWS: answers custom topics with a random mix from the question bank.
+ * For preset topics it declines, so a used-up bank starts a new cycle instead of mixing topics.
+ */
 export class MockHostAi implements HostAi {
-  async writeQuestions(): Promise<Question[]> {
+  async writeQuestions(topic: string, difficulty: Difficulty): Promise<Question[]> {
+    if (bankPool(topic, difficulty)) throw new Error('Mock AI does not write preset topics');
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    return SPACE_FOR_KIDS;
+    return pickGame(QUESTION_BANK, [])!.questions;
   }
   async writeAwards(_topic: string, facts: PlayerFacts[]): Promise<Award[]> {
     return fallbackAwards(facts);

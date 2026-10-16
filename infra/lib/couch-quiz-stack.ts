@@ -38,20 +38,28 @@ export class CouchQuizStack extends Stack {
     });
 
     // ---------- Phone controller (static site) ----------
-    const siteBucket = new Bucket(this, 'ControllerBucket', {
-      blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
-      enforceSSL: true,
-      removalPolicy: RemovalPolicy.DESTROY,
-      autoDeleteObjects: true,
-    });
-    const distribution = new Distribution(this, 'ControllerDistribution', {
-      defaultBehavior: {
-        origin: S3BucketOrigin.withOriginAccessControl(siteBucket),
-        viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-      },
-      defaultRootObject: 'index.html',
-    });
-    const controllerUrl = `https://${distribution.distributionDomainName}/`;
+    // `-c site=false -c controllerUrl=http://<lan-ip>:5173/` skips S3 + CloudFront (e.g. while a new AWS account
+    // is not yet allowed to create CloudFront distributions) and points the QR code at a locally served page.
+    const withSite = String(this.node.tryGetContext('site') ?? 'true') !== 'false';
+    let site: { bucket: Bucket; distribution: Distribution } | undefined;
+    let controllerUrl: string = this.node.tryGetContext('controllerUrl') ?? 'http://localhost:5173/';
+    if (withSite) {
+      const bucket = new Bucket(this, 'ControllerBucket', {
+        blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+        enforceSSL: true,
+        removalPolicy: RemovalPolicy.DESTROY,
+        autoDeleteObjects: true,
+      });
+      const distribution = new Distribution(this, 'ControllerDistribution', {
+        defaultBehavior: {
+          origin: S3BucketOrigin.withOriginAccessControl(bucket),
+          viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
+        },
+        defaultRootObject: 'index.html',
+      });
+      site = { bucket, distribution };
+      controllerUrl = `https://${distribution.distributionDomainName}/`;
+    }
 
     // ---------- Lambdas ----------
     const fn = (name: string, handler: string, extra: Partial<NodejsFunctionProps> = {}) =>
@@ -130,15 +138,17 @@ export class CouchQuizStack extends Stack {
     // ---------- Upload the controller with its runtime config ----------
     const httpUrl = httpApi.apiEndpoint;
     const wsUrl = webSocketStage.url;
-    new BucketDeployment(this, 'DeployController', {
-      destinationBucket: siteBucket,
-      sources: [
-        Source.asset(path.join(REPO_ROOT, 'apps', 'controller', 'dist')),
-        Source.jsonData('config.json', { httpUrl, wsUrl }),
-      ],
-      distribution,
-      distributionPaths: ['/*'],
-    });
+    if (site) {
+      new BucketDeployment(this, 'DeployController', {
+        destinationBucket: site.bucket,
+        sources: [
+          Source.asset(path.join(REPO_ROOT, 'apps', 'controller', 'dist')),
+          Source.jsonData('config.json', { httpUrl, wsUrl }),
+        ],
+        distribution: site.distribution,
+        distributionPaths: ['/*'],
+      });
+    }
 
     new CfnOutput(this, 'HttpApiUrl', { value: httpUrl });
     new CfnOutput(this, 'WebSocketUrl', { value: wsUrl });

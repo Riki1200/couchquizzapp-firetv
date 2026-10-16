@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useMemo, useReducer, useRef } from 'react';
 import { createGameClient } from './createGameClient';
 import { GameClient, GameClientEvent } from './GameClient';
-import { Award, Difficulty, GenerationStatus, Player, PlayerResult, Question, Room } from './types';
+import { Award, Difficulty, GenerationStatus, Player, PlayerResult, Question, QuestionSource, Room } from './types';
 
 export interface GameState {
   room: Room | null;
@@ -11,6 +11,7 @@ export interface GameState {
   difficulty: Difficulty | null;
   generation: GenerationStatus;
   questions: Question[];
+  questionSource: QuestionSource | null;
   questionIndex: number;
   answeredIds: string[];
   /** Results of the current question once revealed. */
@@ -33,6 +34,7 @@ const initialState: GameState = {
   difficulty: null,
   generation: 'idle',
   questions: [],
+  questionSource: null,
   questionIndex: 0,
   answeredIds: [],
   results: null,
@@ -54,7 +56,7 @@ function reducer(state: GameState, action: Action): GameState {
     case 'players':
       return { ...state, players: action.players };
     case 'generation':
-      return { ...state, generation: action.status, questions: action.questions ?? [] };
+      return { ...state, generation: action.status, questions: action.questions ?? [], questionSource: action.source ?? null };
     case 'answerProgress':
       return action.index === state.questionIndex ? { ...state, answeredIds: action.answeredPlayerIds } : state;
     case 'reveal':

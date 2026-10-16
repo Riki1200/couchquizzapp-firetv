@@ -17,6 +17,7 @@ const TTL_SECONDS = 24 * 60 * 60; // rooms and connections expire after a day
  *   pk=ROOM#ABCD  sk=PLAYER#<id>           player
  *   pk=ROOM#ABCD  sk=ANSWER#03#<playerId>  answer to question 3 (conditional put = one answer each)
  *   pk=CONN#<id>  sk=META                  WebSocket connection → room/role/player
+ *   pk=PLAYED     sk=space#easy            bank questions from completed games (no TTL)
  */
 export class DynamoStore implements Store {
   private db = DynamoDBDocumentClient.from(new DynamoDBClient({}), { marshallOptions: { removeUndefinedValues: true } });
@@ -100,6 +101,15 @@ export class DynamoStore implements Store {
 
   async deleteConnection(connId: string) {
     await this.db.send(new DeleteCommand({ TableName: this.table, Key: { pk: `CONN#${connId}`, sk: 'META' } }));
+  }
+
+  async getPlayed(bankKey: string) {
+    const { Item } = await this.db.send(new GetCommand({ TableName: this.table, Key: { pk: 'PLAYED', sk: bankKey } }));
+    return (Item?.ids as string[] | undefined) ?? [];
+  }
+
+  async setPlayed(bankKey: string, ids: string[]) {
+    await this.db.send(new PutCommand({ TableName: this.table, Item: { pk: 'PLAYED', sk: bankKey, ids } }));
   }
 
   private async query(pk: string, skPrefix: string) {

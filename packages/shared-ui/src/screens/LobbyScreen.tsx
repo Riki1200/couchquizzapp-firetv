@@ -19,7 +19,7 @@ interface Props {
 
 export default function LobbyScreen({ onChangeTopic, onStart, onRetryGeneration }: Props) {
   const { state } = useGame();
-  const { room, players, generation, topic } = state;
+  const { room, players, generation, topic, questionSource } = state;
 
   useBackHandler(onChangeTopic);
 
@@ -53,7 +53,9 @@ export default function LobbyScreen({ onChangeTopic, onStart, onRetryGeneration 
             </View>
             <Text style={[styles.status, generation === 'failed' && styles.statusError]}>
               {generation === 'ready'
-                ? `✓ ${QUESTION_COUNT} questions about “${topic}” are ready`
+                ? questionSource === 'ai'
+                  ? `✓ The AI host wrote ${QUESTION_COUNT} questions about “${topic}”`
+                  : `✓ ${QUESTION_COUNT} questions about “${topic}” are ready`
                 : generation === 'failed'
                   ? room
                     ? '✗ The AI host could not write the questions.'

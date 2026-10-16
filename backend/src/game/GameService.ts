@@ -15,6 +15,10 @@ import {
   PlayerEvent,
   PlayerResult,
   Question,
+  QuestionSource,
+  bankKey,
+  bankPool,
+  pickGame,
   pointsFor,
   randomRoomCode,
   timeLimitMs,
@@ -37,6 +41,14 @@ export interface GameDeps {
   /** Base URL of the phone controller page; the room code is added as ?room=. */
   controllerUrl: string;
   now?: () => number;
+}
+
+/** A finished set of questions for a room. */
+interface GameQuestions {
+  questions: Question[];
+  source: QuestionSource;
+  bankKey?: string;
+  bankQuestionIds?: string[];
 }
 
 export interface GenerationJob {
@@ -79,6 +91,9 @@ export class GameService {
         generation: 'idle',
         generationId: null,
         questions: [],
+        questionSource: null,
+        bankKey: null,
+        bankQuestionIds: [],
         questionIndex: 0,
         questionStartedAt: null,
         questionDeadline: null,
@@ -192,6 +207,7 @@ export class GameService {
       status: room.generation,
       topic: room.topic ?? undefined,
       questions: room.generation === 'ready' ? room.questions : undefined,
+      source: room.questionSource ?? undefined,
     });
   }
 
@@ -210,27 +226,59 @@ export class GameService {
     await this.sendToHost(updated, { type: 'generation', status: 'pending', topic: cleanTopic });
     await this.sendPlayersToHost(updated);
     await this.toPlayers(room.roomCode, { type: 'lobby', topic: cleanTopic });
-    await this.deps.startGeneration({ roomCode: room.roomCode, generationId, topic: cleanTopic, difficulty });
+
+    const job = { roomCode: room.roomCode, generationId, topic: cleanTopic, difficulty };
+    // Preset topics come from the question bank, skipping questions of games already completed.
+    // Custom topics, and preset topics whose bank is used up, go to the AI host.
+    const bankGame = await this.pickBankGame(cleanTopic, difficulty, false);
+    if (bankGame) return this.completeGeneration(job, bankGame);
+    await this.deps.startGeneration(job);
   }
 
-  /** Called when a generation job finishes (successfully or not). */
-  async completeGeneration(job: GenerationJob, questions: Question[] | null): Promise<void> {
+  /** A bank game that was not completed yet; with `newCycle`, forgets completed games once the bank is used up. */
+  private async pickBankGame(topic: string, difficulty: Difficulty, newCycle: boolean): Promise<GameQuestions | null> {
+    const pool = bankPool(topic, difficulty);
+    if (!pool) return null;
+    const key = bankKey(topic, difficulty);
+    let game = pickGame(pool, await this.deps.store.getPlayed(key));
+    if (!game && newCycle) {
+      await this.deps.store.setPlayed(key, []);
+      game = pickGame(pool, []);
+    }
+    return game && { questions: game.questions, source: 'bank', bankKey: key, bankQuestionIds: game.ids };
+  }
+
+  /** Stores the questions for the room (or the failure) and tells the TV. */
+  private async completeGeneration(job: GenerationJob, game: GameQuestions | null): Promise<void> {
     const room = await this.deps.store.getRoom(job.roomCode);
     if (!room || room.generationId !== job.generationId) return; // superseded by a newer configure
-    const status = questions ? 'ready' : 'failed';
-    await this.deps.store.updateRoom(room.roomCode, { generation: status, questions: questions ?? [] });
-    await this.sendToHost(room, { type: 'generation', status, topic: job.topic, questions: questions ?? undefined });
+    const status = game ? 'ready' : 'failed';
+    await this.deps.store.updateRoom(room.roomCode, {
+      generation: status,
+      questions: game?.questions ?? [],
+      questionSource: game?.source ?? null,
+      bankKey: game?.bankKey ?? null,
+      bankQuestionIds: game?.bankQuestionIds ?? [],
+    });
+    await this.sendToHost(room, {
+      type: 'generation',
+      status,
+      topic: job.topic,
+      questions: game?.questions,
+      source: game?.source,
+    });
   }
 
-  /** The generation job itself: ask the AI, report the outcome. */
+  /** The generation job: ask the AI; for preset topics fall back to a new cycle of the bank. */
   async runGeneration(job: GenerationJob): Promise<void> {
-    let questions: Question[] | null = null;
+    let game: GameQuestions | null = null;
     try {
-      questions = await this.deps.ai.writeQuestions(job.topic, job.difficulty);
+      game = { questions: await this.deps.ai.writeQuestions(job.topic, job.difficulty), source: 'ai' };
     } catch (error) {
-      console.error('[generation] failed', error);
+      console.warn(`[generation] AI failed for "${job.topic}": ${error instanceof Error ? error.message : error}`);
+      game = await this.pickBankGame(job.topic, job.difficulty, true);
     }
-    await this.completeGeneration(job, questions);
+    await this.completeGeneration(job, game);
   }
 
   private async startQuestion(room: RoomRecord, index: number) {
@@ -304,6 +352,11 @@ export class GameService {
   private async endGame(room: RoomRecord) {
     if (room.phase === 'podium') return;
     await this.deps.store.updateRoom(room.roomCode, { phase: 'podium' });
+    // The game was completed: don't serve these bank questions again until the bank is used up.
+    if (room.bankKey && room.bankQuestionIds.length) {
+      const played = new Set([...(await this.deps.store.getPlayed(room.bankKey)), ...room.bankQuestionIds]);
+      await this.deps.store.setPlayed(room.bankKey, [...played]);
+    }
     const players = await this.deps.store.getPlayers(room.roomCode);
     const ranked = [...players].sort((a, b) => b.score - a.score);
     const facts: PlayerFacts[] = ranked.map((p, i) => ({
