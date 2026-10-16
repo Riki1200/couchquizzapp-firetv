@@ -42,7 +42,10 @@ export default function QuestionScreen({ navActive, onReveal, onBack }: Props) {
     const timer = setInterval(() => {
       const left = Math.max(0, limit - (Date.now() - startedAt));
       setTimeLeft(left);
-      if (left === 0) revealOnce();
+      if (left === 0 && !revealedRef.current) {
+        playSound('timesup');
+        revealOnce();
+      }
     }, 250);
     return () => clearInterval(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -59,10 +62,9 @@ export default function QuestionScreen({ navActive, onReveal, onBack }: Props) {
   }, [allAnswered]);
 
   const seconds = timeLeft === null ? null : Math.ceil(timeLeft / 1000);
-  // Tick during the last five seconds, buzz when time runs out.
+  // Tick during the last five seconds ("time's up" plays in the countdown above).
   useEffect(() => {
-    if (seconds === null || seconds > 5 || revealedRef.current) return;
-    playSound(seconds === 0 ? 'timesup' : 'tick');
+    if (seconds !== null && seconds >= 1 && seconds <= 5 && !revealedRef.current) playSound('tick');
   }, [seconds]);
 
   if (!question) return null;

@@ -127,6 +127,19 @@ Severity: **High** (blocked progress) · **Medium** (cost > 30 min or needed a w
 
 ---
 
+## 10. `AudioPlayer` does not play again after it reaches the end
+
+- **Date:** 2026-10-16
+- **Task:** Replay short sound effects (a "lock-in" click for every answer) with `AudioPlayer`.
+- **Steps:** Play a sound to the end, then `audio.currentTime = 0; audio.play();` — or `audio.load(); audio.play();`.
+- **Expected:** The sound plays again, like `HTMLAudioElement` in browsers.
+- **Actual:** `play()` resolves and `seeked`/`ended` fire right away, but there is no `playing` event and no sound. Only the first play of each player was audible, so the game "went quiet" after the first round. Measured on the VVD: same player + `load()` → 1 of 3 plays; a new player per play → 3 of 3 (first start ~800 ms, then ~250–350 ms).
+- **Severity:** High (sound effects silently stop working)
+- **Workaround:** Use a fresh `AudioPlayer` for every play, keep one preloaded per sound to hide the start-up delay, and `deinitialize()` it on `ended`.
+- **Suggestion:** Make replay after `ended` work as in the HTML spec (or document the one-shot behavior), and consider a lightweight API for short UI sounds.
+
+---
+
 <!-- Template
 ## N. Title
 
