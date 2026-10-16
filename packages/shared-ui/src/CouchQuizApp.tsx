@@ -9,12 +9,13 @@ import LobbyScreen from './screens/LobbyScreen';
 import PodiumScreen from './screens/PodiumScreen';
 import QuestionScreen from './screens/QuestionScreen';
 import RevealScreen from './screens/RevealScreen';
+import SettingsScreen from './screens/SettingsScreen';
 import SetupScreen, { PRESET_TOPICS } from './screens/SetupScreen';
 import { colors } from './theme/colors';
 
 // The game is a short linear flow, so a screen switch is simpler than a navigation stack
 // and behaves the same on Vega, Android TV and web.
-type Screen = 'setup' | 'customTopic' | 'lobby' | 'question' | 'reveal' | 'podium';
+type Screen = 'setup' | 'settings' | 'customTopic' | 'lobby' | 'question' | 'reveal' | 'podium';
 
 function Screens() {
   const game = useGame();
@@ -44,12 +45,15 @@ function Screens() {
         <SetupScreen
           initialFocus={setupFocus}
           onCustomTopic={() => setScreen('customTopic')}
+          onSettings={() => setScreen('settings')}
           onCreateRoom={() => {
             game.openLobby();
             setScreen('lobby');
           }}
         />
       );
+    case 'settings':
+      return <SettingsScreen onDone={goToSetup} />;
     case 'customTopic':
       return (
         <CustomTopicScreen
@@ -123,11 +127,11 @@ function useGameSounds() {
 }
 
 function ConnectionBanner() {
-  const { state } = useGame();
+  const { state, t } = useGame();
   if (state.connected) return null;
   return (
     <View style={styles.banner}>
-      <Text style={styles.bannerText}>Reconnecting to the game server…</Text>
+      <Text style={styles.bannerText}>{t('banner.reconnecting')}</Text>
     </View>
   );
 }

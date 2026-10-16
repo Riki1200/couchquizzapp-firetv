@@ -1,0 +1,2107 @@
+{
+ "version": 1,
+ "language": "es",
+ "note": "Spanish bank. The correct answer is listed first; choices are shuffled when a game is built.",
+ "questions": [
+  {
+   "id": "space-easy-01",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cuál es la estrella más cercana a la Tierra?",
+   "choices": [
+    "El Sol",
+    "La Estrella Polar",
+    "Sirio",
+    "La Luna"
+   ],
+   "correctIndex": 0,
+   "quip": "Dato caliente: es el Sol. Literalmente."
+  },
+  {
+   "id": "space-easy-02",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta es conocido como el Planeta Rojo?",
+   "choices": [
+    "Marte",
+    "Venus",
+    "Júpiter",
+    "Mercurio"
+   ],
+   "correctIndex": 0,
+   "quip": "Marte: oxidado, polvoriento y muy rojo."
+  },
+  {
+   "id": "space-easy-03",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cuál es el planeta más grande del sistema solar?",
+   "choices": [
+    "Júpiter",
+    "Saturno",
+    "La Tierra",
+    "Neptuno"
+   ],
+   "correctIndex": 0,
+   "quip": "En Júpiter cabrían más de 1.000 Tierras. ¡Qué casota!"
+  },
+  {
+   "id": "space-easy-04",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cuántos planetas hay en nuestro sistema solar?",
+   "choices": [
+    "8",
+    "7",
+    "9",
+    "10"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Ocho! Lo siento, Plutón: para nosotros sigues siendo una estrella."
+  },
+  {
+   "id": "space-easy-05",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué usan los astronautas para respirar en el espacio?",
+   "choices": [
+    "Un traje espacial",
+    "Un impermeable",
+    "Un pijama",
+    "Un esnórquel"
+   ],
+   "correctIndex": 0,
+   "quip": "El pijama es cómodo, pero no fabrica oxígeno."
+  },
+  {
+   "id": "space-easy-06",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta tiene los anillos más famosos?",
+   "choices": [
+    "Saturno",
+    "Marte",
+    "La Tierra",
+    "Venus"
+   ],
+   "correctIndex": 0,
+   "quip": "Saturno se puso un anillo. Bueno, muchos anillos."
+  },
+  {
+   "id": "space-easy-07",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿De qué está cubierta principalmente la Luna?",
+   "choices": [
+    "Roca y polvo",
+    "Queso",
+    "Agua",
+    "Pasto"
+   ],
+   "correctIndex": 0,
+   "quip": "Lo siento, amantes del queso: solo roca y polvo."
+  },
+  {
+   "id": "space-easy-08",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué fuerza hace que las cosas caigan al suelo?",
+   "choices": [
+    "La gravedad",
+    "El viento",
+    "La luz",
+    "Los imanes"
+   ],
+   "correctIndex": 0,
+   "quip": "La gravedad: mantiene tus snacks en la mesa desde siempre."
+  },
+  {
+   "id": "space-easy-09",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta está más cerca del Sol?",
+   "choices": [
+    "Mercurio",
+    "Venus",
+    "La Tierra",
+    "Marte"
+   ],
+   "correctIndex": 0,
+   "quip": "Mercurio está tan cerca del Sol que necesita mucho bloqueador."
+  },
+  {
+   "id": "space-easy-10",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cómo se llama un grupo de estrellas que forma una figura en el cielo?",
+   "choices": [
+    "Una constelación",
+    "Un cometa",
+    "Una galaxia",
+    "Un planeta"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Unir los puntos, versión cósmica!"
+  },
+  {
+   "id": "space-medium-01",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta gira de lado, como una pelota rodando?",
+   "choices": [
+    "Urano",
+    "Marte",
+    "Venus",
+    "Mercurio"
+   ],
+   "correctIndex": 0,
+   "quip": "Urano: el rodador profesional del sistema solar."
+  },
+  {
+   "id": "space-medium-02",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cómo se llama la galaxia en la que vivimos?",
+   "choices": [
+    "La Vía Láctea",
+    "Andrómeda",
+    "El Remolino",
+    "El Sombrero"
+   ],
+   "correctIndex": 0,
+   "quip": "Hogar, dulce espiral."
+  },
+  {
+   "id": "space-medium-03",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Quién fue la primera persona en caminar sobre la Luna?",
+   "choices": [
+    "Neil Armstrong",
+    "Buzz Aldrin",
+    "Yuri Gagarin",
+    "John Glenn"
+   ],
+   "correctIndex": 0,
+   "quip": "Un pequeño paso para un jugador, un gran salto para tus puntos."
+  },
+  {
+   "id": "space-medium-04",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tiene el año más corto?",
+   "choices": [
+    "Mercurio",
+    "Venus",
+    "La Tierra",
+    "Marte"
+   ],
+   "correctIndex": 0,
+   "quip": "Mercurio cumple años cada 88 días. ¡Cuánto pastel!"
+  },
+  {
+   "id": "space-medium-05",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es el planeta más caliente del sistema solar?",
+   "choices": [
+    "Venus",
+    "Mercurio",
+    "Marte",
+    "Júpiter"
+   ],
+   "correctIndex": 0,
+   "quip": "Venus: nubes espesas, calor atrapado y cero frescura."
+  },
+  {
+   "id": "space-medium-06",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Por qué la Luna parece cambiar de forma durante el mes?",
+   "choices": [
+    "Vemos distintas partes de su lado iluminado",
+    "La sombra de la Tierra la tapa",
+    "Las nubes la cubren",
+    "La Luna se encoge y crece"
+   ],
+   "correctIndex": 0,
+   "quip": "La sombra de la Tierra solo aparece en los eclipses."
+  },
+  {
+   "id": "space-medium-07",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuánto tarda la luz del Sol en llegar a la Tierra?",
+   "choices": [
+    "Unos 8 minutos",
+    "Unos 8 segundos",
+    "Unas 8 horas",
+    "Unos 8 días"
+   ],
+   "correctIndex": 0,
+   "quip": "Tu luz de sol tiene unos 8 minutos. ¡Todavía fresca!"
+  },
+  {
+   "id": "space-medium-08",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es el volcán más grande del sistema solar?",
+   "choices": [
+    "Monte Olimpo",
+    "Mauna Kea",
+    "Monte Everest",
+    "Vesubio"
+   ],
+   "correctIndex": 0,
+   "quip": "El Monte Olimpo, en Marte, es unas 2,5 veces más alto que el Everest."
+  },
+  {
+   "id": "space-medium-09",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tiene la Gran Mancha Roja, una tormenta gigante?",
+   "choices": [
+    "Júpiter",
+    "Marte",
+    "Saturno",
+    "Neptuno"
+   ],
+   "correctIndex": 0,
+   "quip": "Una tormenta más grande que la Tierra, activa por siglos. Lleva paraguas."
+  },
+  {
+   "id": "space-medium-10",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cómo se llama una roca espacial que se quema en el cielo?",
+   "choices": [
+    "Un meteoro",
+    "Un cometa",
+    "Un planeta",
+    "Una nebulosa"
+   ],
+   "correctIndex": 0,
+   "quip": "Rápido, pide un deseo: ¡es un meteoro!"
+  },
+  {
+   "id": "space-hard-01",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es la luna más grande del sistema solar?",
+   "choices": [
+    "Ganímedes",
+    "Titán",
+    "Europa",
+    "Calisto"
+   ],
+   "correctIndex": 0,
+   "quip": "Ganímedes es incluso más grande que el planeta Mercurio."
+  },
+  {
+   "id": "space-hard-02",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué nave fue la primera en salir de la heliosfera?",
+   "choices": [
+    "Voyager 1",
+    "Pioneer 10",
+    "New Horizons",
+    "Voyager 2"
+   ],
+   "correctIndex": 0,
+   "quip": "Lanzada en 1977 y todavía manda postales."
+  },
+  {
+   "id": "space-hard-03",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cómo se llama la luna más grande de Saturno?",
+   "choices": [
+    "Titán",
+    "Ganímedes",
+    "Ío",
+    "Tritón"
+   ],
+   "correctIndex": 0,
+   "quip": "Titán tiene lagos… de metano líquido. No ideal para nadar."
+  },
+  {
+   "id": "space-hard-04",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Aproximadamente cuántos días terrestres tarda Marte en dar la vuelta al Sol?",
+   "choices": [
+    "Unos 687",
+    "Unos 365",
+    "Unos 225",
+    "Unos 88"
+   ],
+   "correctIndex": 0,
+   "quip": "Un año marciano es casi dos terrestres. ¿Doble vacaciones?"
+  },
+  {
+   "id": "space-hard-05",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es el sistema estelar más cercano a nuestro Sol?",
+   "choices": [
+    "Alfa Centauri",
+    "Sirio",
+    "Betelgeuse",
+    "Vega"
+   ],
+   "correctIndex": 0,
+   "quip": "Solo a unos 4,4 años luz. ¡Casi vecinos!"
+  },
+  {
+   "id": "space-hard-06",
+   "topic": "Space",
+   "level": "hard",
+   "text": "Ío, el lugar más volcánico conocido, es una luna de…",
+   "choices": [
+    "Júpiter",
+    "Saturno",
+    "Neptuno",
+    "Marte"
+   ],
+   "correctIndex": 0,
+   "quip": "Ío tiene cientos de volcanes activos. Un lugar muy caliente."
+  },
+  {
+   "id": "space-hard-07",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿En qué se convertirá nuestro Sol cerca del final de su vida?",
+   "choices": [
+    "Una gigante roja",
+    "Un agujero negro",
+    "Una estrella de neutrones",
+    "Una gigante azul"
+   ],
+   "correctIndex": 0,
+   "quip": "Primero gigante roja, luego enana blanca. Faltan miles de millones de años."
+  },
+  {
+   "id": "space-hard-08",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cómo se llama el borde de un agujero negro del que nada escapa?",
+   "choices": [
+    "El horizonte de sucesos",
+    "El cinturón de asteroides",
+    "La capa de ozono",
+    "El cinturón de Kuiper"
+   ],
+   "correctIndex": 0,
+   "quip": "Pasado el horizonte de sucesos, ni la luz puede salir."
+  },
+  {
+   "id": "space-hard-09",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué planeta enano es el objeto más grande del cinturón de asteroides?",
+   "choices": [
+    "Ceres",
+    "Plutón",
+    "Eris",
+    "Haumea"
+   ],
+   "correctIndex": 0,
+   "quip": "Ceres: el campeón de peso pesado del cinturón."
+  },
+  {
+   "id": "space-hard-10",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué telescopio espacial, lanzado en 2021, observa en infrarrojo?",
+   "choices": [
+    "James Webb",
+    "Hubble",
+    "Kepler",
+    "Spitzer"
+   ],
+   "correctIndex": 0,
+   "quip": "Se estacionó a 1,5 millones de km para mantenerse frío."
+  },
+  {
+   "id": "animals-easy-01",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuál es el animal más grande de la Tierra?",
+   "choices": [
+    "La ballena azul",
+    "El elefante africano",
+    "La jirafa",
+    "El tiburón blanco"
+   ],
+   "correctIndex": 0,
+   "quip": "Más larga que un autobús y más pesada que una manada de elefantes."
+  },
+  {
+   "id": "animals-easy-02",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal puede cambiar el color de su piel?",
+   "choices": [
+    "El camaleón",
+    "La jirafa",
+    "La cebra",
+    "El búho"
+   ],
+   "correctIndex": 0,
+   "quip": "Ahora lo ves, ahora lo… sigues viendo un poco."
+  },
+  {
+   "id": "animals-easy-03",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuántas patas tiene una araña?",
+   "choices": [
+    "8",
+    "6",
+    "10",
+    "12"
+   ],
+   "correctIndex": 0,
+   "quip": "Ocho patas y ningún cordón que atar."
+  },
+  {
+   "id": "animals-easy-04",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué alimento dulce hacen las abejas?",
+   "choices": [
+    "Miel",
+    "Leche",
+    "Mermelada",
+    "Dulces"
+   ],
+   "correctIndex": 0,
+   "quip": "Abejas: pequeñas, zumbonas y muy dulces."
+  },
+  {
+   "id": "animals-easy-05",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuál es el animal más alto del mundo?",
+   "choices": [
+    "La jirafa",
+    "El elefante",
+    "El caballo",
+    "El camello"
+   ],
+   "correctIndex": 0,
+   "quip": "Gran vista allá arriba, largo camino para tragar."
+  },
+  {
+   "id": "animals-easy-06",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cómo se llama la cría del canguro?",
+   "choices": [
+    "Joey",
+    "Cachorro",
+    "Ternero",
+    "Potro"
+   ],
+   "correctIndex": 0,
+   "quip": "El joey viaja en la bolsa de mamá. El mejor asiento."
+  },
+  {
+   "id": "animals-easy-07",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué ave puede girar la cabeza casi por completo?",
+   "choices": [
+    "El búho",
+    "El pingüino",
+    "El flamenco",
+    "El loro"
+   ],
+   "correctIndex": 0,
+   "quip": "Los búhos giran la cabeza unos 270 grados. ¡No lo intentes en casa!"
+  },
+  {
+   "id": "animals-easy-08",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuál es el animal terrestre más rápido?",
+   "choices": [
+    "El guepardo",
+    "El león",
+    "El caballo",
+    "La gacela"
+   ],
+   "correctIndex": 0,
+   "quip": "De cero a velocidad de autopista en unos tres segundos."
+  },
+  {
+   "id": "animals-easy-09",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal africano parece un caballo con rayas blancas y negras?",
+   "choices": [
+    "La cebra",
+    "La jirafa",
+    "El rinoceronte",
+    "El antílope"
+   ],
+   "correctIndex": 0,
+   "quip": "Las rayas de cada cebra son únicas, como una huella."
+  },
+  {
+   "id": "animals-easy-10",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿En qué se convierten las orugas?",
+   "choices": [
+    "Mariposas o polillas",
+    "Abejas",
+    "Arañas",
+    "Escarabajos"
+   ],
+   "correctIndex": 0,
+   "quip": "De muy hambrienta a muy elegante."
+  },
+  {
+   "id": "animals-medium-01",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué mamífero puede volar de verdad?",
+   "choices": [
+    "El murciélago",
+    "La ardilla voladora",
+    "El avestruz",
+    "El pingüino"
+   ],
+   "correctIndex": 0,
+   "quip": "Las ardillas voladoras planean. ¡Los murciélagos vuelan!"
+  },
+  {
+   "id": "animals-medium-02",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuántos corazones tiene un pulpo?",
+   "choices": [
+    "Tres",
+    "Uno",
+    "Dos",
+    "Ocho"
+   ],
+   "correctIndex": 0,
+   "quip": "Tres corazones y sangre azul. Muy de la realeza."
+  },
+  {
+   "id": "animals-medium-03",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cómo se llama un grupo de leones?",
+   "choices": [
+    "Una manada",
+    "Una piara",
+    "Una bandada",
+    "Un cardumen"
+   ],
+   "correctIndex": 0,
+   "quip": "Una manada de leones… y lo saben."
+  },
+  {
+   "id": "animals-medium-04",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál es el felino más grande?",
+   "choices": [
+    "El tigre",
+    "El león",
+    "El jaguar",
+    "El leopardo"
+   ],
+   "correctIndex": 0,
+   "quip": "El gatito más grande del planeta. No lo acaricies."
+  },
+  {
+   "id": "animals-medium-05",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué comen principalmente los pandas gigantes?",
+   "choices": [
+    "Bambú",
+    "Pescado",
+    "Fruta",
+    "Insectos"
+   ],
+   "correctIndex": 0,
+   "quip": "Los pandas mastican bambú hasta 14 horas al día."
+  },
+  {
+   "id": "animals-medium-06",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales NO es un mamífero?",
+   "choices": [
+    "El tiburón",
+    "El delfín",
+    "La ballena",
+    "El murciélago"
+   ],
+   "correctIndex": 0,
+   "quip": "Los tiburones son peces; delfines y ballenas son mamíferos."
+  },
+  {
+   "id": "animals-medium-07",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cómo obtienen las ranas la mayor parte del agua que necesitan?",
+   "choices": [
+    "A través de la piel",
+    "Con la lengua",
+    "Nunca necesitan agua",
+    "Por las orejas"
+   ],
+   "correctIndex": 0,
+   "quip": "Sin vasos: las ranas la absorben por la piel."
+  },
+  {
+   "id": "animals-medium-08",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cómo se llama la cría de la cabra?",
+   "choices": [
+    "Cabrito",
+    "Cordero",
+    "Potrillo",
+    "Cachorro"
+   ],
+   "correctIndex": 0,
+   "quip": "Un cabrito muy travieso, seguro."
+  },
+  {
+   "id": "animals-medium-09",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué ave pone los huevos más grandes?",
+   "choices": [
+    "El avestruz",
+    "El águila",
+    "El emú",
+    "El cisne"
+   ],
+   "correctIndex": 0,
+   "quip": "Un huevo de avestruz alcanza para la tortilla de toda la familia."
+  },
+  {
+   "id": "animals-medium-10",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal encuentra comida en la oscuridad usando ecos?",
+   "choices": [
+    "El murciélago",
+    "El búho",
+    "El gato",
+    "El conejo"
+   ],
+   "correctIndex": 0,
+   "quip": "Los murciélagos gritan y escuchan el eco. ¡Sonar natural!"
+  },
+  {
+   "id": "animals-hard-01",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué mamífero pone huevos y tiene pico de pato?",
+   "choices": [
+    "El ornitorrinco",
+    "El armadillo",
+    "La zarigüeya",
+    "El perezoso"
+   ],
+   "correctIndex": 0,
+   "quip": "El ornitorrinco: el proyecto de mezclar y combinar de la naturaleza."
+  },
+  {
+   "id": "animals-hard-02",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuántos compartimentos tiene el estómago de una vaca?",
+   "choices": [
+    "Cuatro",
+    "Uno",
+    "Dos",
+    "Seis"
+   ],
+   "correctIndex": 0,
+   "quip": "Cuatro compartimentos, un almuerzo muy largo."
+  },
+  {
+   "id": "animals-hard-03",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal tiene huellas dactilares casi idénticas a las humanas?",
+   "choices": [
+    "El koala",
+    "El canguro",
+    "El panda",
+    "El perezoso"
+   ],
+   "correctIndex": 0,
+   "quip": "Las huellas del koala engañarían a un detective. ¡Sospechoso!"
+  },
+  {
+   "id": "animals-hard-04",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál es el ave más rápida en picada?",
+   "choices": [
+    "El halcón peregrino",
+    "El águila calva",
+    "El avestruz",
+    "El colibrí"
+   ],
+   "correctIndex": 0,
+   "quip": "Más de 300 km/h en picada. ¿Límite de velocidad? Ni idea."
+  },
+  {
+   "id": "animals-hard-05",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué ave puede volar hacia atrás?",
+   "choices": [
+    "El colibrí",
+    "El pingüino",
+    "El avestruz",
+    "La gallina"
+   ],
+   "correctIndex": 0,
+   "quip": "Marcha atrás: desbloqueada."
+  },
+  {
+   "id": "animals-hard-06",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal tiene los ojos más grandes del reino animal?",
+   "choices": [
+    "El calamar colosal",
+    "La ballena azul",
+    "El elefante",
+    "El avestruz"
+   ],
+   "correctIndex": 0,
+   "quip": "Ojos del tamaño de un plato. Ideales para ver bocadillos."
+  },
+  {
+   "id": "animals-hard-07",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal puede dormir hasta 20 horas al día?",
+   "choices": [
+    "El koala",
+    "El perro",
+    "El caballo",
+    "La jirafa"
+   ],
+   "correctIndex": 0,
+   "quip": "Koalas: campeones invictos de la siesta."
+  },
+  {
+   "id": "animals-hard-08",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal tiene la mordida más fuerte que se ha medido?",
+   "choices": [
+    "El cocodrilo de agua salada",
+    "El tiburón blanco",
+    "El león",
+    "El hipopótamo"
+   ],
+   "correctIndex": 0,
+   "quip": "Más de 1.600 kg de fuerza. Mejor salúdalo de lejos."
+  },
+  {
+   "id": "animals-hard-09",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué anfibio puede regenerar patas e incluso partes del corazón?",
+   "choices": [
+    "El ajolote",
+    "La tortuga",
+    "La rana",
+    "La serpiente"
+   ],
+   "correctIndex": 0,
+   "quip": "Ajolotes: los superhéroes regeneradores del estanque."
+  },
+  {
+   "id": "animals-hard-10",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál de estos animales es un marsupial?",
+   "choices": [
+    "El canguro",
+    "El oso",
+    "El mono",
+    "El delfín"
+   ],
+   "correctIndex": 0,
+   "quip": "Los marsupiales llevan a sus crías en una bolsa. ¡Mochila natural!"
+  },
+  {
+   "id": "oceans-easy-01",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Cuál es el océano más grande de la Tierra?",
+   "choices": [
+    "Pacífico",
+    "Atlántico",
+    "Índico",
+    "Ártico"
+   ],
+   "correctIndex": 0,
+   "quip": "El Pacífico es más grande que toda la tierra firme junta."
+  },
+  {
+   "id": "oceans-easy-02",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Por qué el agua del mar sabe salada?",
+   "choices": [
+    "Tiene sal",
+    "Tiene azúcar",
+    "Los peces la salan",
+    "La arena la sala"
+   ],
+   "correctIndex": 0,
+   "quip": "Buena para las olas, terrible para la limonada."
+  },
+  {
+   "id": "oceans-easy-03",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino tiene ocho brazos?",
+   "choices": [
+    "El pulpo",
+    "El cangrejo",
+    "El delfín",
+    "El tiburón"
+   ],
+   "correctIndex": 0,
+   "quip": "Ocho brazos: perfecto para abrazos grupales."
+  },
+  {
+   "id": "oceans-easy-04",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Cómo se llama una ola gigante causada por un terremoto?",
+   "choices": [
+    "Un tsunami",
+    "Una marea",
+    "Una onda",
+    "Una corriente"
+   ],
+   "correctIndex": 0,
+   "quip": "Los científicos vigilan los océanos para avisar a tiempo."
+  },
+  {
+   "id": "oceans-easy-05",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino es un mamífero que respira aire?",
+   "choices": [
+    "El delfín",
+    "El tiburón",
+    "El atún",
+    "La medusa"
+   ],
+   "correctIndex": 0,
+   "quip": "Los delfines suben a respirar… y a recibir aplausos."
+  },
+  {
+   "id": "oceans-easy-06",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué pez vive seguro entre los tentáculos de las anémonas?",
+   "choices": [
+    "El pez payaso",
+    "El pez dorado",
+    "El pez espada",
+    "El bagre"
+   ],
+   "correctIndex": 0,
+   "quip": "Una capa de moco lo protege. Asqueroso, pero genial."
+  },
+  {
+   "id": "oceans-easy-07",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué cubre la mayor parte de la superficie de la Tierra?",
+   "choices": [
+    "El agua",
+    "La arena",
+    "Los bosques",
+    "El hielo"
+   ],
+   "correctIndex": 0,
+   "quip": "Un 71 % es agua. ¡Deberíamos llamarlo Planeta Océano!"
+  },
+  {
+   "id": "oceans-easy-08",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué cangrejo se muda a conchas vacías más grandes al crecer?",
+   "choices": [
+    "El cangrejo ermitaño",
+    "El cangrejo azul",
+    "El cangrejo real",
+    "El cangrejo araña"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Día de mudanza cada vez que crece!"
+  },
+  {
+   "id": "oceans-easy-09",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué estructura submarina colorida construyen animales diminutos?",
+   "choices": [
+    "Un arrecife de coral",
+    "Un barco hundido",
+    "Un bosque de algas",
+    "Una duna de arena"
+   ],
+   "correctIndex": 0,
+   "quip": "Los arrecifes los construyen animalitos llamados pólipos."
+  },
+  {
+   "id": "oceans-easy-10",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué reptil marino pone sus huevos en playas de arena?",
+   "choices": [
+    "La tortuga marina",
+    "La foca",
+    "El pingüino",
+    "El pulpo"
+   ],
+   "correctIndex": 0,
+   "quip": "Las tortuguitas corren al mar apenas nacen."
+  },
+  {
+   "id": "oceans-medium-01",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál es el punto más profundo conocido del océano?",
+   "choices": [
+    "El abismo Challenger",
+    "El Gran Cañón",
+    "El mar Muerto",
+    "La Gran Barrera de Coral"
+   ],
+   "correctIndex": 0,
+   "quip": "Casi 11 km de profundidad. El Everest cabría de sobra."
+  },
+  {
+   "id": "oceans-medium-02",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál es el pez más grande del océano?",
+   "choices": [
+    "El tiburón ballena",
+    "La ballena azul",
+    "El tiburón blanco",
+    "La mantarraya"
+   ],
+   "correctIndex": 0,
+   "quip": "Pez enorme, menú diminuto: come plancton."
+  },
+  {
+   "id": "oceans-medium-03",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué causa principalmente las mareas?",
+   "choices": [
+    "La gravedad de la Luna",
+    "El viento",
+    "Las ballenas nadando",
+    "Los terremotos"
+   ],
+   "correctIndex": 0,
+   "quip": "La Luna tira y el océano la sigue. El Sol ayuda un poco."
+  },
+  {
+   "id": "oceans-medium-04",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál es el océano más pequeño de la Tierra?",
+   "choices": [
+    "Ártico",
+    "Índico",
+    "Atlántico",
+    "Pacífico"
+   ],
+   "correctIndex": 0,
+   "quip": "El más pequeño, el más helado y el más cool."
+  },
+  {
+   "id": "oceans-medium-05",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cómo respiran los peces bajo el agua?",
+   "choices": [
+    "Con branquias",
+    "Con pulmones",
+    "Por las aletas",
+    "Por la cola"
+   ],
+   "correctIndex": 0,
+   "quip": "Las branquias sacan el oxígeno directo del agua."
+  },
+  {
+   "id": "oceans-medium-06",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cómo se llama un grupo de peces que nadan juntos?",
+   "choices": [
+    "Un cardumen",
+    "Una bandada",
+    "Una manada",
+    "Una piara"
+   ],
+   "correctIndex": 0,
+   "quip": "Un cardumen: nadar en equipo es más seguro."
+  },
+  {
+   "id": "oceans-medium-07",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué animal marino suelta tinta para escapar del peligro?",
+   "choices": [
+    "El calamar",
+    "La foca",
+    "El delfín",
+    "La tortuga marina"
+   ],
+   "correctIndex": 0,
+   "quip": "Chorro, remolino y… ¡puf! Desapareció."
+  },
+  {
+   "id": "oceans-medium-08",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué criatura marina no tiene cerebro, ni corazón, ni huesos?",
+   "choices": [
+    "La medusa",
+    "El pulpo",
+    "El tiburón",
+    "El caballito de mar"
+   ],
+   "correctIndex": 0,
+   "quip": "Y lleva más de 500 millones de años flotando por ahí."
+  },
+  {
+   "id": "oceans-medium-09",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "En los caballitos de mar, ¿quién lleva los huevos hasta que nacen?",
+   "choices": [
+    "El papá",
+    "La mamá",
+    "Se turnan",
+    "Ninguno"
+   ],
+   "correctIndex": 0,
+   "quip": "Papás caballito de mar: expertos en embarazos."
+  },
+  {
+   "id": "oceans-medium-10",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál es el sistema de arrecifes de coral más grande del mundo?",
+   "choices": [
+    "La Gran Barrera de Coral",
+    "La Barrera de Belice",
+    "El arrecife del mar Rojo",
+    "El arrecife de Florida"
+   ],
+   "correctIndex": 0,
+   "quip": "Es tan grande que se ve desde el espacio."
+  },
+  {
+   "id": "oceans-hard-01",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué zona del océano, desde unos 1.000 m, no recibe luz solar?",
+   "choices": [
+    "La zona de medianoche",
+    "La zona de luz",
+    "La zona crepuscular",
+    "La zona de mareas"
+   ],
+   "correctIndex": 0,
+   "quip": "Tan oscura que muchos animales fabrican su propia luz."
+  },
+  {
+   "id": "oceans-hard-02",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Cómo se llaman los seres vivos que producen su propia luz?",
+   "choices": [
+    "Bioluminiscentes",
+    "Fotosintéticos",
+    "Nocturnos",
+    "Magnéticos"
+   ],
+   "correctIndex": 0,
+   "quip": "Brillan en la oscuridad sin pilas."
+  },
+  {
+   "id": "oceans-hard-03",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué corriente lleva agua cálida del golfo de México hacia Europa?",
+   "choices": [
+    "La corriente del Golfo",
+    "La corriente de Humboldt",
+    "La corriente de Kuroshio",
+    "La corriente de Agulhas"
+   ],
+   "correctIndex": 0,
+   "quip": "Ayuda a que partes de Europa sean más templadas."
+  },
+  {
+   "id": "oceans-hard-04",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué porcentaje del agua de la Tierra está en los océanos?",
+   "choices": [
+    "Cerca del 97 %",
+    "Cerca del 50 %",
+    "Cerca del 75 %",
+    "Cerca del 85 %"
+   ],
+   "correctIndex": 0,
+   "quip": "Solo un 3 % es agua dulce. ¡Cuídala!"
+  },
+  {
+   "id": "oceans-hard-05",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Cómo se llama la larga cordillera submarina en medio del Atlántico?",
+   "choices": [
+    "La dorsal mesoatlántica",
+    "Los Andes",
+    "Los montes Urales",
+    "La Gran Cordillera Divisoria"
+   ],
+   "correctIndex": 0,
+   "quip": "La cordillera más larga del planeta está casi toda bajo el agua."
+  },
+  {
+   "id": "oceans-hard-06",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué pez puede caminar en tierra usando sus aletas?",
+   "choices": [
+    "El saltarín del fango",
+    "El atún",
+    "El pez payaso",
+    "El pez dorado"
+   ],
+   "correctIndex": 0,
+   "quip": "Mitad pez, mitad aficionado al senderismo."
+  },
+  {
+   "id": "oceans-hard-07",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué gas liberan las algas marinas que nosotros respiramos?",
+   "choices": [
+    "Oxígeno",
+    "Dióxido de carbono",
+    "Helio",
+    "Nitrógeno"
+   ],
+   "correctIndex": 0,
+   "quip": "Las algas diminutas producen gran parte del aire que respiramos."
+  },
+  {
+   "id": "oceans-hard-08",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Cómo se llama el océano que rodea la Antártida?",
+   "choices": [
+    "El océano Austral",
+    "El océano Ártico",
+    "El océano Índico",
+    "El mar Antártico"
+   ],
+   "correctIndex": 0,
+   "quip": "El quinto océano oficial… y bastante frío."
+  },
+  {
+   "id": "oceans-hard-09",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué tiburón es el pez depredador más grande?",
+   "choices": [
+    "El tiburón blanco",
+    "El tiburón ballena",
+    "El tiburón martillo",
+    "El tiburón tigre"
+   ],
+   "correctIndex": 0,
+   "quip": "Grande, con muchos dientes y muy incomprendido."
+  },
+  {
+   "id": "oceans-hard-10",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Cuánto puede aguantar la respiración un cachalote?",
+   "choices": [
+    "Unos 90 minutos",
+    "Unos 5 minutos",
+    "Un día",
+    "Una semana"
+   ],
+   "correctIndex": 0,
+   "quip": "Noventa minutos con un respiro. No lo intentes en la tina."
+  },
+  {
+   "id": "dinosaurs-easy-01",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué significa la palabra «dinosaurio»?",
+   "choices": [
+    "Lagarto terrible",
+    "Pájaro grande",
+    "Dragón antiguo",
+    "Diente gigante"
+   ],
+   "correctIndex": 0,
+   "quip": "Lagarto terrible… aunque muchos eran tranquilos vegetarianos."
+  },
+  {
+   "id": "dinosaurs-easy-02",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía tres cuernos en la cara?",
+   "choices": [
+    "Triceratops",
+    "Stegosaurus",
+    "Velociraptor",
+    "Brachiosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "Tres cuernos: uno para cada mal día de pelo."
+  },
+  {
+   "id": "dinosaurs-easy-03",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía grandes placas en la espalda?",
+   "choices": [
+    "Stegosaurus",
+    "Tyrannosaurus rex",
+    "Triceratops",
+    "Diplodocus"
+   ],
+   "correctIndex": 0,
+   "quip": "Stegosaurus: una cerca con picos que camina."
+  },
+  {
+   "id": "dinosaurs-easy-04",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "El Tyrannosaurus rex tenía muy cortos los…",
+   "choices": [
+    "Brazos",
+    "Patas",
+    "Dientes",
+    "Cola"
+   ],
+   "correctIndex": 0,
+   "quip": "Dientes enormes, brazos diminutos. Chocar los cinco era difícil."
+  },
+  {
+   "id": "dinosaurs-easy-05",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio se llama «rey lagarto tirano»?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Triceratops",
+    "Stegosaurus",
+    "Iguanodon"
+   ],
+   "correctIndex": 0,
+   "quip": "Un título real para un gran mordelón."
+  },
+  {
+   "id": "dinosaurs-easy-06",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cómo sabemos hoy sobre los dinosaurios?",
+   "choices": [
+    "Por los fósiles",
+    "Por fotos antiguas",
+    "Por videos",
+    "Por pinturas rupestres"
+   ],
+   "correctIndex": 0,
+   "quip": "Los fósiles son las cápsulas del tiempo de la naturaleza."
+  },
+  {
+   "id": "dinosaurs-easy-07",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio de cuello largo alcanzaba la copa de los árboles?",
+   "choices": [
+    "Brachiosaurus",
+    "Triceratops",
+    "Ankylosaurus",
+    "Velociraptor"
+   ],
+   "correctIndex": 0,
+   "quip": "El Brachiosaurus nunca necesitó escalera."
+  },
+  {
+   "id": "dinosaurs-easy-08",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Los dinosaurios y las personas vivieron al mismo tiempo?",
+   "choices": [
+    "No",
+    "Sí",
+    "Solo en cuevas",
+    "Solo en islas"
+   ],
+   "correctIndex": 0,
+   "quip": "Los dinosaurios desaparecieron 66 millones de años antes que nosotros."
+  },
+  {
+   "id": "dinosaurs-easy-09",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué reptil volador vivió en la época de los dinosaurios?",
+   "choices": [
+    "Pteranodon",
+    "El loro",
+    "El águila",
+    "El murciélago"
+   ],
+   "correctIndex": 0,
+   "quip": "Técnicamente no era dinosaurio… ¡pero volaba genial!"
+  },
+  {
+   "id": "dinosaurs-easy-10",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "Las crías de dinosaurio nacían de…",
+   "choices": [
+    "Huevos",
+    "Semillas",
+    "Vainas",
+    "Capullos"
+   ],
+   "correctIndex": 0,
+   "quip": "Algunos huevos de dinosaurio eran tan grandes como un melón."
+  },
+  {
+   "id": "dinosaurs-medium-01",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Hace cuánto desaparecieron la mayoría de los dinosaurios?",
+   "choices": [
+    "66 millones de años",
+    "66 mil años",
+    "6.600 años",
+    "660 millones de años"
+   ],
+   "correctIndex": 0,
+   "quip": "Una roca espacial tuvo un mal día… y los dinosaurios también."
+  },
+  {
+   "id": "dinosaurs-medium-02",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cómo se llama el científico que estudia los fósiles?",
+   "choices": [
+    "Paleontólogo",
+    "Arqueólogo",
+    "Astrónomo",
+    "Geólogo"
+   ],
+   "correctIndex": 0,
+   "quip": "Los arqueólogos estudian a los humanos; los paleontólogos, a los dinos."
+  },
+  {
+   "id": "dinosaurs-medium-03",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué animales actuales descienden de los dinosaurios?",
+   "choices": [
+    "Las aves",
+    "Las ranas",
+    "Los gatos",
+    "Los peces"
+   ],
+   "correctIndex": 0,
+   "quip": "La próxima vez que veas una paloma, saluda a un mini dinosaurio."
+  },
+  {
+   "id": "dinosaurs-medium-04",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía un mazo de hueso al final de la cola?",
+   "choices": [
+    "Ankylosaurus",
+    "Stegosaurus",
+    "Spinosaurus",
+    "Iguanodon"
+   ],
+   "correctIndex": 0,
+   "quip": "Construido como un tanque, batea como un profesional."
+  },
+  {
+   "id": "dinosaurs-medium-05",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿De qué tamaño era un Velociraptor real?",
+   "choices": [
+    "Como un pavo",
+    "Como un autobús",
+    "Como una casa",
+    "Como un elefante"
+   ],
+   "correctIndex": 0,
+   "quip": "Las películas los agrandaron. Los reales eran como pavos… ¡con plumas!"
+  },
+  {
+   "id": "dinosaurs-medium-06",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía una gran vela en la espalda y comía peces?",
+   "choices": [
+    "Spinosaurus",
+    "Triceratops",
+    "Brachiosaurus",
+    "Stegosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "Spinosaurus: mitad dinosaurio, mitad velero."
+  },
+  {
+   "id": "dinosaurs-medium-07",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿En qué período vivió el Tyrannosaurus rex?",
+   "choices": [
+    "Cretácico",
+    "Jurásico",
+    "Triásico",
+    "Edad de Hielo"
+   ],
+   "correctIndex": 0,
+   "quip": "El T. rex vivió casi al final de la era de los dinosaurios."
+  },
+  {
+   "id": "dinosaurs-medium-08",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cómo se llaman las huellas de dinosaurio conservadas en la roca?",
+   "choices": [
+    "Icnofósiles",
+    "Arte rupestre",
+    "Combustibles fósiles",
+    "Cristales"
+   ],
+   "correctIndex": 0,
+   "quip": "Las huellas hasta dicen qué tan rápido caminaban."
+  },
+  {
+   "id": "dinosaurs-medium-09",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué grupo de dinosaurios de cuello largo fueron los animales terrestres más grandes?",
+   "choices": [
+    "Saurópodos",
+    "Raptores",
+    "Ceratópsidos",
+    "Anquilosaurios"
+   ],
+   "correctIndex": 0,
+   "quip": "Cuello largo, cola larga y almuerzo larguísimo."
+  },
+  {
+   "id": "dinosaurs-medium-10",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Para qué usaba probablemente el Triceratops sus cuernos?",
+   "choices": [
+    "Defenderse y lucirse",
+    "Cavar hoyos",
+    "Trepar árboles",
+    "Pescar"
+   ],
+   "correctIndex": 0,
+   "quip": "Mitad escudo, mitad presumir."
+  },
+  {
+   "id": "dinosaurs-hard-01",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio fue el primero en recibir nombre científico, en 1824?",
+   "choices": [
+    "Megalosaurus",
+    "Iguanodon",
+    "Tyrannosaurus rex",
+    "Stegosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "Tuvo nombre antes de que existiera la palabra «dinosaurio»."
+  },
+  {
+   "id": "dinosaurs-hard-02",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Cómo se llama el evento que acabó con los dinosaurios?",
+   "choices": [
+    "Extinción K-Pg",
+    "Extinción del Pérmico",
+    "La Edad de Hielo",
+    "El Big Bang"
+   ],
+   "correctIndex": 0,
+   "quip": "Un asteroide de unos 10 km terminó con 165 millones de años de reinado."
+  },
+  {
+   "id": "dinosaurs-hard-03",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué país está el cráter del asteroide que extinguió a los dinosaurios?",
+   "choices": [
+    "México",
+    "Australia",
+    "Egipto",
+    "Canadá"
+   ],
+   "correctIndex": 0,
+   "quip": "El cráter de Chicxulub está enterrado bajo la península de Yucatán."
+  },
+  {
+   "id": "dinosaurs-hard-04",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué período de la era de los dinosaurios fue el primero?",
+   "choices": [
+    "Triásico",
+    "Jurásico",
+    "Cretácico",
+    "Paleógeno"
+   ],
+   "correctIndex": 0,
+   "quip": "Triásico, Jurásico, Cretácico: la trilogía original."
+  },
+  {
+   "id": "dinosaurs-hard-05",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué tenía de especial el pequeño Microraptor?",
+   "choices": [
+    "Tenía cuatro alas",
+    "Tenía seis patas",
+    "Vivía bajo el agua",
+    "No tenía dientes"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Cuatro alas con plumas! La naturaleza probó un biplano."
+  },
+  {
+   "id": "dinosaurs-hard-06",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Cómo se llama un famoso esqueleto de T. rex casi completo?",
+   "choices": [
+    "Sue",
+    "Lucy",
+    "Dolly",
+    "Rexy"
+   ],
+   "correctIndex": 0,
+   "quip": "Sue está completa en un 90 %. Nada mal para 67 millones de años."
+  },
+  {
+   "id": "dinosaurs-hard-07",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "El Pachycephalosaurus debe su nombre a su grueso…",
+   "choices": [
+    "Cráneo",
+    "Cuello",
+    "Garras",
+    "Cola"
+   ],
+   "correctIndex": 0,
+   "quip": "Lagarto cabezota. Es un cumplido, de verdad."
+  },
+  {
+   "id": "dinosaurs-hard-08",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Más o menos cuánto tiempo vivieron los dinosaurios no aviares?",
+   "choices": [
+    "Unos 165 millones de años",
+    "Un millón de años",
+    "Unos 10.000 años",
+    "Unos 4.000 millones de años"
+   ],
+   "correctIndex": 0,
+   "quip": "Los humanos llevamos una mínima parte de ese tiempo."
+  },
+  {
+   "id": "dinosaurs-hard-09",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué supercontinente existía cuando aparecieron los dinosaurios?",
+   "choices": [
+    "Pangea",
+    "Atlántida",
+    "Zealandia",
+    "Rodinia"
+   ],
+   "correctIndex": 0,
+   "quip": "Todos los continentes juntos. ¡Viaje por carretera!"
+  },
+  {
+   "id": "dinosaurs-hard-10",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué es un coprolito?",
+   "choices": [
+    "Caca fosilizada",
+    "Un diente de dinosaurio",
+    "Un tipo de huevo",
+    "Una cría de dinosaurio"
+   ],
+   "correctIndex": 0,
+   "quip": "Sí, los científicos estudian caca fósil. ¡Qué glamour!"
+  },
+  {
+   "id": "food-easy-01",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es amarilla y curva?",
+   "choices": [
+    "El plátano",
+    "La manzana",
+    "La uva",
+    "La cereza"
+   ],
+   "correctIndex": 0,
+   "quip": "El plátano: el snack original con envoltura incluida."
+  },
+  {
+   "id": "food-easy-02",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué verdura naranja y crujiente les encanta a los conejos?",
+   "choices": [
+    "La zanahoria",
+    "La papa",
+    "El chícharo",
+    "La cebolla"
+   ],
+   "correctIndex": 0,
+   "quip": "Crujiente, naranja y buena para la vista."
+  },
+  {
+   "id": "food-easy-03",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Cuál es el ingrediente principal del guacamole?",
+   "choices": [
+    "El aguacate",
+    "El tomate",
+    "El limón",
+    "El chile"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Santo guacamole, acertaste!"
+  },
+  {
+   "id": "food-easy-04",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué bebida obtenemos de las vacas?",
+   "choices": [
+    "Leche",
+    "Jugo de naranja",
+    "Limonada",
+    "Té"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Respuesta de mu-cho nivel!"
+  },
+  {
+   "id": "food-easy-05",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿De qué país viene originalmente la pizza?",
+   "choices": [
+    "Italia",
+    "Francia",
+    "México",
+    "Japón"
+   ],
+   "correctIndex": 0,
+   "quip": "Mamma mia, ¡correcto!"
+  },
+  {
+   "id": "food-easy-06",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué obtienes al calentar granos de maíz hasta que revientan?",
+   "choices": [
+    "Palomitas",
+    "Hojuelas de maíz",
+    "Sopa de elote",
+    "Tortillas"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Pop, pop, hurra!"
+  },
+  {
+   "id": "food-easy-07",
+   "topic": "Food",
+   "level": "easy",
+   "text": "Según un dicho famoso, ¿qué fruta al día aleja al médico?",
+   "choices": [
+    "La manzana",
+    "La pera",
+    "El plátano",
+    "El kiwi"
+   ],
+   "correctIndex": 0,
+   "quip": "Una manzana al día… y un quiz cada noche."
+  },
+  {
+   "id": "food-easy-08",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿De qué color suele ser el interior de una sandía?",
+   "choices": [
+    "Rojo o rosado",
+    "Azul",
+    "Morado",
+    "Negro"
+   ],
+   "correctIndex": 0,
+   "quip": "Tiene más de 90 % de agua. ¡Puro refresco!"
+  },
+  {
+   "id": "food-easy-09",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento nos dan las gallinas?",
+   "choices": [
+    "Huevos",
+    "Queso",
+    "Miel",
+    "Mantequilla"
+   ],
+   "correctIndex": 0,
+   "quip": "¿Qué fue primero? No importa: acertaste."
+  },
+  {
+   "id": "food-easy-10",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Cómo se llama el postre congelado hecho de leche o crema y azúcar?",
+   "choices": [
+    "Helado",
+    "Pudín",
+    "Gelatina",
+    "Hot cakes"
+   ],
+   "correctIndex": 0,
+   "quip": "El dolor de cabeza por frío vale la pena."
+  },
+  {
+   "id": "food-medium-01",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué especia es la más cara por peso?",
+   "choices": [
+    "El azafrán",
+    "La pimienta negra",
+    "La canela",
+    "La sal"
+   ],
+   "correctIndex": 0,
+   "quip": "Los hilos de azafrán se recogen de flores a mano."
+  },
+  {
+   "id": "food-medium-02",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿De qué país viene el sushi?",
+   "choices": [
+    "Japón",
+    "China",
+    "Corea",
+    "Tailandia"
+   ],
+   "correctIndex": 0,
+   "quip": "Arroz, pescado y mucha habilidad."
+  },
+  {
+   "id": "food-medium-03",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿De qué está hecho el tofu?",
+   "choices": [
+    "Soya",
+    "Arroz",
+    "Leche",
+    "Trigo"
+   ],
+   "correctIndex": 0,
+   "quip": "Leche de soya cuajada y prensada. ¡Ciencia rica!"
+  },
+  {
+   "id": "food-medium-04",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruto seco se usa para hacer mazapán?",
+   "choices": [
+    "La almendra",
+    "El cacahuate",
+    "La nuez",
+    "El anacardo"
+   ],
+   "correctIndex": 0,
+   "quip": "Almendras y azúcar: esculturas comestibles."
+  },
+  {
+   "id": "food-medium-05",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué hace que la masa del pan suba y quede esponjosa?",
+   "choices": [
+    "La levadura",
+    "La sal",
+    "El azúcar",
+    "La mantequilla"
+   ],
+   "correctIndex": 0,
+   "quip": "La levadura hace burbujas. El pan te lo agradece."
+  },
+  {
+   "id": "food-medium-06",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruta tiene las semillas por fuera?",
+   "choices": [
+    "La fresa",
+    "El arándano",
+    "La cereza",
+    "La naranja"
+   ],
+   "correctIndex": 0,
+   "quip": "Unas 200 semillas por fresa. Cuéntalas después."
+  },
+  {
+   "id": "food-medium-07",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Cuál es el ingrediente principal del hummus?",
+   "choices": [
+    "Garbanzos",
+    "Lentejas",
+    "Arroz",
+    "Papas"
+   ],
+   "correctIndex": 0,
+   "quip": "Garbanzos convertidos en algo maravilloso."
+  },
+  {
+   "id": "food-medium-08",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué verdura puede hacerte llorar al cortarla?",
+   "choices": [
+    "La cebolla",
+    "La zanahoria",
+    "La lechuga",
+    "El pepino"
+   ],
+   "correctIndex": 0,
+   "quip": "Cebolla: daño emocional, resultado delicioso."
+  },
+  {
+   "id": "food-medium-09",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿De qué país es la famosa paella?",
+   "choices": [
+    "España",
+    "Italia",
+    "México",
+    "India"
+   ],
+   "correctIndex": 0,
+   "quip": "Se cocina en una sartén ancha y se comparte con todos."
+  },
+  {
+   "id": "food-medium-10",
+   "topic": "Food",
+   "level": "medium",
+   "text": "Científicamente, ¿cuál de estos es una fruta?",
+   "choices": [
+    "El tomate",
+    "La zanahoria",
+    "La papa",
+    "La lechuga"
+   ],
+   "correctIndex": 0,
+   "quip": "Tomate: fruta para la ciencia, verdura para la ensalada."
+  },
+  {
+   "id": "food-hard-01",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Cuál es la hierba verde principal del pesto clásico?",
+   "choices": [
+    "Albahaca",
+    "Perejil",
+    "Menta",
+    "Cilantro"
+   ],
+   "correctIndex": 0,
+   "quip": "Albahaca, ajo, piñones, queso y aceite. Magia verde."
+  },
+  {
+   "id": "food-hard-02",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué arroz se usa tradicionalmente para el risotto?",
+   "choices": [
+    "Arroz arborio",
+    "Arroz basmati",
+    "Arroz salvaje",
+    "Arroz jazmín"
+   ],
+   "correctIndex": 0,
+   "quip": "El arborio suelta almidón y queda cremoso."
+  },
+  {
+   "id": "food-hard-03",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué enfermedad causa la falta de vitamina C?",
+   "choices": [
+    "El escorbuto",
+    "Las quemaduras de sol",
+    "El hipo",
+    "Las pecas"
+   ],
+   "correctIndex": 0,
+   "quip": "Los marineros de antes lo aprendieron por las malas."
+  },
+  {
+   "id": "food-hard-04",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué alimento puede durar miles de años y seguir siendo comestible?",
+   "choices": [
+    "La miel",
+    "El pan",
+    "El queso",
+    "La leche"
+   ],
+   "correctIndex": 0,
+   "quip": "Se ha encontrado miel antiquísima ¡todavía buena!"
+  },
+  {
+   "id": "food-hard-05",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿De qué país es el kimchi, un plato fermentado?",
+   "choices": [
+    "Corea",
+    "Japón",
+    "Vietnam",
+    "China"
+   ],
+   "correctIndex": 0,
+   "quip": "Picante, ácido y lleno de bacterias buenas."
+  },
+  {
+   "id": "food-hard-06",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿De qué planta se obtienen los granos para hacer chocolate?",
+   "choices": [
+    "El cacao",
+    "El café",
+    "La vainilla",
+    "La soya"
+   ],
+   "correctIndex": 0,
+   "quip": "En Mesoamérica se bebía chocolate hace miles de años."
+  },
+  {
+   "id": "food-hard-07",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué mide la escala Scoville?",
+   "choices": [
+    "El picante de los chiles",
+    "Lo dulce de la fruta",
+    "Lo salado de la sopa",
+    "Lo ácido del limón"
+   ],
+   "correctIndex": 0,
+   "quip": "Del cero del pimiento a «¡llamen a los bomberos!»."
+  },
+  {
+   "id": "food-hard-08",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué país produce más café en el mundo?",
+   "choices": [
+    "Brasil",
+    "Colombia",
+    "Etiopía",
+    "Vietnam"
+   ],
+   "correctIndex": 0,
+   "quip": "Brasil lleva más de 150 años como el mayor productor."
+  },
+  {
+   "id": "food-hard-09",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Con qué verdura se hace el chucrut?",
+   "choices": [
+    "Repollo",
+    "Pepino",
+    "Zanahoria",
+    "Betabel"
+   ],
+   "correctIndex": 0,
+   "quip": "Repollo fermentado: crujiente y ácido."
+  },
+  {
+   "id": "food-hard-10",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿En qué región montañosa se cultivó primero la quinoa?",
+   "choices": [
+    "Los Andes",
+    "Los Alpes",
+    "El Himalaya",
+    "Las Rocosas"
+   ],
+   "correctIndex": 0,
+   "quip": "Los incas la llamaban «la madre de todos los granos»."
+  }
+ ]
+}

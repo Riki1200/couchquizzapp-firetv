@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Player, PlayerEvent, PlayerMessage } from '@couch-quiz/protocol';
+import { Language, Player, PlayerEvent, PlayerMessage } from '@couch-quiz/protocol';
 
 /**
  * Backend URLs. In AWS they come from /config.json (written by the CDK deployment);
@@ -21,7 +21,7 @@ export type View =
 const playerKey = (room: string) => `couchquiz:player:${room}`;
 
 /** One WebSocket per phone. Reconnects automatically and rejoins with the saved player id. */
-export function useGameSocket(room: string) {
+export function useGameSocket(room: string, onLanguage: (language: Language) => void) {
   const [view, setView] = useState<View>({ kind: 'join' });
   const [player, setPlayer] = useState<Player | null>(null);
   const [connected, setConnected] = useState(false);
@@ -60,6 +60,7 @@ export function useGameSocket(room: string) {
           setError(null);
           break;
         case 'lobby':
+          onLanguage(event.language);
           setView({ kind: 'lobby', topic: event.topic });
           break;
         case 'question':

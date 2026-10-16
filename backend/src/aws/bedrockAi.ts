@@ -1,5 +1,5 @@
 import { BedrockRuntimeClient, ConverseCommand } from '@aws-sdk/client-bedrock-runtime';
-import { Award, Difficulty, Question } from '@couch-quiz/protocol';
+import { Award, Difficulty, Language, Question } from '@couch-quiz/protocol';
 import {
   AWARDS_SYSTEM_PROMPT,
   AWARDS_TOOL,
@@ -31,16 +31,17 @@ export class BedrockHostAi implements HostAi {
   private client = new BedrockRuntimeClient({ maxAttempts: 4, retryMode: 'adaptive' });
   private modelId = process.env.MODEL_ID ?? DEFAULT_MODEL_ID;
 
-  writeQuestions(topic: string, difficulty: Difficulty): Promise<Question[]> {
+  writeQuestions(topic: string, difficulty: Difficulty, language: Language, count: number): Promise<Question[]> {
     return withValidationRetry(
-      (feedback) => this.callTool(QUESTIONS_SYSTEM_PROMPT, questionsUserPrompt(topic, difficulty), QUESTIONS_TOOL, feedback, 4000),
-      parseQuestions,
+      (feedback) =>
+        this.callTool(QUESTIONS_SYSTEM_PROMPT, questionsUserPrompt(topic, difficulty, language, count), QUESTIONS_TOOL, feedback, 4000),
+      (input) => parseQuestions(input, count),
     );
   }
 
-  writeAwards(topic: string, facts: PlayerFacts[]): Promise<Award[]> {
+  writeAwards(topic: string, facts: PlayerFacts[], language: Language): Promise<Award[]> {
     return withValidationRetry(
-      (feedback) => this.callTool(AWARDS_SYSTEM_PROMPT, awardsUserPrompt(topic, facts), AWARDS_TOOL, feedback, 1500),
+      (feedback) => this.callTool(AWARDS_SYSTEM_PROMPT, awardsUserPrompt(topic, facts, language), AWARDS_TOOL, feedback, 1500),
       (input) => parseAwards(input, facts),
       2,
     );

@@ -6,6 +6,7 @@ schema-version = 1
 
 [package]
 title = "Couch Quiz"
+icon = "@image/icon.png"
 version = "0.1.0"
 id = "com.romeodev.couchquiz"
 

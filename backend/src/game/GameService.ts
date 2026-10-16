@@ -8,20 +8,25 @@ import {
   Difficulty,
   GetRoomResponse,
   HostEvent,
+  Language,
   MAX_NAME_LENGTH,
   MAX_PLAYERS,
   MAX_TOPIC_LENGTH,
   Player,
   PlayerEvent,
   PlayerResult,
+  QUESTION_COUNT,
+  QUESTION_COUNT_OPTIONS,
   Question,
   QuestionSource,
   bankKey,
   bankPool,
+  isLanguage,
   pickGame,
   pointsFor,
   randomRoomCode,
   timeLimitMs,
+  translate,
 } from '@couch-quiz/protocol';
 import { HostAi, PlayerFacts, fallbackAwards } from './ai';
 import { ConnectionRecord, PlayerRecord, RoomRecord, Store } from './store';
@@ -56,6 +61,8 @@ export interface GenerationJob {
   generationId: string;
   topic: string;
   difficulty: Difficulty;
+  language: Language;
+  questionCount: number;
 }
 
 export interface ConnectParams {
@@ -88,6 +95,8 @@ export class GameService {
         phase: 'lobby',
         topic: null,
         difficulty: 'easy',
+        language: 'en',
+        questionCount: QUESTION_COUNT,
         generation: 'idle',
         generationId: null,
         questions: [],
@@ -109,8 +118,9 @@ export class GameService {
 
   async getRoom(roomCode: string): Promise<GetRoomResponse> {
     const room = await this.deps.store.getRoom(roomCode.toUpperCase());
-    if (!room) return { exists: false, playerCount: 0 };
-    return { exists: true, playerCount: (await this.deps.store.getPlayers(room.roomCode)).length };
+    if (!room) return { exists: false, playerCount: 0, language: 'en' };
+    const playerCount = (await this.deps.store.getPlayers(room.roomCode)).length;
+    return { exists: true, playerCount, language: room.language };
   }
 
   // ---------- WebSocket lifecycle ----------
@@ -178,7 +188,7 @@ export class GameService {
         case 'sync':
           return this.syncHost(room, connId);
         case 'configure':
-          return this.configure(room, msg.topic, msg.difficulty);
+          return this.configure(room, msg.topic, msg.difficulty, msg.language, msg.questionCount);
         case 'startQuestion':
           return this.startQuestion(room, msg.index);
         case 'reveal':
@@ -211,12 +221,23 @@ export class GameService {
     });
   }
 
-  private async configure(room: RoomRecord, topic: string, difficulty: Difficulty) {
+  private async configure(room: RoomRecord, topic: string, difficulty: Difficulty, language: Language, questionCount: number) {
     const cleanTopic = String(topic ?? '').trim().slice(0, MAX_TOPIC_LENGTH);
     if (!cleanTopic || !DIFFICULTIES.includes(difficulty)) return;
+    const lang: Language = isLanguage(language) ? language : 'en';
+    const count = (QUESTION_COUNT_OPTIONS as readonly number[]).includes(questionCount) ? questionCount : QUESTION_COUNT;
 
     const generationId = randomUUID();
-    const patch = { topic: cleanTopic, difficulty, generation: 'pending' as const, generationId, questions: [], phase: 'lobby' as const };
+    const patch = {
+      topic: cleanTopic,
+      difficulty,
+      language: lang,
+      questionCount: count,
+      generation: 'pending' as const,
+      generationId,
+      questions: [],
+      phase: 'lobby' as const,
+    };
     await this.deps.store.updateRoom(room.roomCode, patch);
     const players = await this.deps.store.getPlayers(room.roomCode);
     for (const p of players) {
@@ -225,25 +246,25 @@ export class GameService {
     const updated = { ...room, ...patch };
     await this.sendToHost(updated, { type: 'generation', status: 'pending', topic: cleanTopic });
     await this.sendPlayersToHost(updated);
-    await this.toPlayers(room.roomCode, { type: 'lobby', topic: cleanTopic });
+    await this.toPlayers(room.roomCode, { type: 'lobby', topic: cleanTopic, language: lang });
 
-    const job = { roomCode: room.roomCode, generationId, topic: cleanTopic, difficulty };
+    const job: GenerationJob = { roomCode: room.roomCode, generationId, topic: cleanTopic, difficulty, language: lang, questionCount: count };
     // Preset topics come from the question bank, skipping questions of games already completed.
     // Custom topics, and preset topics whose bank is used up, go to the AI host.
-    const bankGame = await this.pickBankGame(cleanTopic, difficulty, false);
+    const bankGame = await this.pickBankGame(job, false);
     if (bankGame) return this.completeGeneration(job, bankGame);
     await this.deps.startGeneration(job);
   }
 
   /** A bank game that was not completed yet; with `newCycle`, forgets completed games once the bank is used up. */
-  private async pickBankGame(topic: string, difficulty: Difficulty, newCycle: boolean): Promise<GameQuestions | null> {
-    const pool = bankPool(topic, difficulty);
+  private async pickBankGame(job: GenerationJob, newCycle: boolean): Promise<GameQuestions | null> {
+    const pool = bankPool(job.topic, job.difficulty, job.language);
     if (!pool) return null;
-    const key = bankKey(topic, difficulty);
-    let game = pickGame(pool, await this.deps.store.getPlayed(key));
+    const key = bankKey(job.topic, job.difficulty, job.language);
+    let game = pickGame(pool, await this.deps.store.getPlayed(key), job.questionCount);
     if (!game && newCycle) {
       await this.deps.store.setPlayed(key, []);
-      game = pickGame(pool, []);
+      game = pickGame(pool, [], job.questionCount);
     }
     return game && { questions: game.questions, source: 'bank', bankKey: key, bankQuestionIds: game.ids };
   }
@@ -273,10 +294,11 @@ export class GameService {
   async runGeneration(job: GenerationJob): Promise<void> {
     let game: GameQuestions | null = null;
     try {
-      game = { questions: await this.deps.ai.writeQuestions(job.topic, job.difficulty), source: 'ai' };
+      const questions = await this.deps.ai.writeQuestions(job.topic, job.difficulty, job.language, job.questionCount);
+      game = { questions, source: 'ai' };
     } catch (error) {
       console.warn(`[generation] AI failed for "${job.topic}": ${error instanceof Error ? error.message : error}`);
-      game = await this.pickBankGame(job.topic, job.difficulty, true);
+      game = await this.pickBankGame(job, true);
     }
     await this.completeGeneration(job, game);
   }
@@ -374,14 +396,16 @@ export class GameService {
     }));
 
     let awards: Award[];
+    let source: 'ai' | 'rules' = 'ai';
     try {
-      awards = await this.deps.ai.writeAwards(room.topic ?? 'trivia', facts);
+      awards = await this.deps.ai.writeAwards(room.topic ?? 'trivia', facts, room.language);
     } catch (error) {
-      console.error('[awards] falling back to rule-based awards', error);
-      awards = fallbackAwards(facts);
+      console.warn(`[awards] using rule-based awards: ${error instanceof Error ? error.message : error}`);
+      awards = fallbackAwards(facts, room.language);
+      source = 'rules';
     }
 
-    await this.sendToHost(room, { type: 'gameOver', awards });
+    await this.sendToHost(room, { type: 'gameOver', awards, source });
     for (const [i, p] of ranked.entries()) {
       if (p.connId) {
         await this.deps.send(p.connId, {
@@ -409,9 +433,9 @@ export class GameService {
   private async join(room: RoomRecord, conn: ConnectionRecord, name: string, avatar: string) {
     if (conn.playerId) return this.syncPlayer(room, conn);
     const cleanName = String(name ?? '').trim().slice(0, MAX_NAME_LENGTH);
-    if (!cleanName) return this.deps.send(conn.connId, { type: 'error', message: 'Please enter a name.' });
+    if (!cleanName) return this.deps.send(conn.connId, { type: 'error', message: translate(room.language, 'error.name') });
     const players = await this.deps.store.getPlayers(room.roomCode);
-    if (players.length >= MAX_PLAYERS) return this.deps.send(conn.connId, { type: 'error', message: 'This room is full.' });
+    if (players.length >= MAX_PLAYERS) return this.deps.send(conn.connId, { type: 'error', message: translate(room.language, 'error.full') });
 
     const player: PlayerRecord = {
       id: randomUUID(),
@@ -460,7 +484,7 @@ export class GameService {
         timeLeftMs,
       });
     } else {
-      await this.deps.send(connId, { type: 'lobby', topic: room.topic });
+      await this.deps.send(connId, { type: 'lobby', topic: room.topic, language: room.language });
     }
   }
 

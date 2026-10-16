@@ -1,4 +1,4 @@
-import { Difficulty, GenerationStatus, Player, Question, QuestionSource } from '@couch-quiz/protocol';
+import { Difficulty, GenerationStatus, Language, Player, Question, QuestionSource } from '@couch-quiz/protocol';
 
 export type Phase = 'lobby' | 'question' | 'reveal' | 'podium';
 
@@ -9,6 +9,8 @@ export interface RoomRecord {
   phase: Phase;
   topic: string | null;
   difficulty: Difficulty;
+  language: Language;
+  questionCount: number;
   generation: GenerationStatus;
   /** Ignores results of a generation that was superseded by a newer configure. */
   generationId: string | null;

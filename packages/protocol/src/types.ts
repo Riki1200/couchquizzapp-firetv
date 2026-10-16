@@ -1,4 +1,5 @@
 // Shared by the TV app, the phone controller and the backend (local server and Lambdas).
+import type { Language } from './i18n';
 
 export type Difficulty = 'easy' | 'medium' | 'hard' | 'kids';
 
@@ -47,11 +48,15 @@ export interface CreateRoomResponse {
 export interface GetRoomResponse {
   exists: boolean;
   playerCount: number;
+  language: Language;
 }
+
+/** Where the end-of-game awards came from: the AI host, or rules when the AI is unavailable. */
+export type AwardSource = 'ai' | 'rules';
 
 // ---- WebSocket messages: TV (host) → server ----
 export type HostMessage =
-  | { action: 'configure'; topic: string; difficulty: Difficulty }
+  | { action: 'configure'; topic: string; difficulty: Difficulty; language: Language; questionCount: number }
   | { action: 'startQuestion'; index: number }
   | { action: 'reveal'; index: number }
   | { action: 'endGame' };
@@ -70,12 +75,12 @@ export type HostEvent =
   | { type: 'generation'; status: GenerationStatus; topic?: string; questions?: Question[]; source?: QuestionSource }
   | { type: 'answerProgress'; index: number; answeredPlayerIds: string[] }
   | { type: 'reveal'; index: number; results: PlayerResult[] }
-  | { type: 'gameOver'; awards: Award[] };
+  | { type: 'gameOver'; awards: Award[]; source: AwardSource };
 
 // ---- WebSocket events: server → phone ----
 export type PlayerEvent =
   | { type: 'joined'; player: Player }
-  | { type: 'lobby'; topic: string | null }
+  | { type: 'lobby'; topic: string | null; language: Language }
   | {
       type: 'question';
       index: number;

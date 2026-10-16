@@ -1,20 +1,35 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useRef } from 'react';
+import { Animated, StyleSheet, Text, View } from 'react-native';
 import { ANSWER_STYLES, Player } from '../game/types';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
+import { FadeIn, PopIn, nativeDriver } from './Motion';
 
 type AnswerState = 'normal' | 'correct' | 'dimmed';
 
-/** One of the four answers on the TV (not focusable — players answer on their phones). */
+/**
+ * One of the four answers on the TV (not focusable — players answer on their phones).
+ * On reveal the correct card bounces up and the others fade back.
+ */
 export function AnswerCard({ index, text, state = 'normal' }: { index: number; text: string; state?: AnswerState }) {
   const style = ANSWER_STYLES[index];
+  const opacity = useRef(new Animated.Value(1)).current;
+  const scale = useRef(new Animated.Value(1)).current;
+  useEffect(() => {
+    Animated.timing(opacity, { toValue: state === 'dimmed' ? 0.22 : 1, duration: 450, useNativeDriver: nativeDriver }).start();
+    if (state === 'correct') {
+      scale.setValue(0.92);
+      Animated.spring(scale, { toValue: 1.04, friction: 4, tension: 120, useNativeDriver: nativeDriver }).start();
+    } else {
+      Animated.spring(scale, { toValue: 1, useNativeDriver: nativeDriver }).start();
+    }
+  }, [state, opacity, scale]);
+
   return (
-    <View
+    <Animated.View
       style={[
         styles.answer,
-        { backgroundColor: style.color },
-        state === 'dimmed' && styles.dimmed,
+        { backgroundColor: style.color, opacity, transform: [{ scale }] },
         state === 'correct' && styles.correct,
       ]}
     >
@@ -24,34 +39,43 @@ export function AnswerCard({ index, text, state = 'normal' }: { index: number; t
       <Text style={styles.answerText} numberOfLines={2}>
         {text}
       </Text>
-      {state === 'correct' ? <Text style={styles.answerMark}>✓</Text> : null}
-    </View>
+      {state === 'correct' ? (
+        <PopIn delay={150}>
+          <Text style={styles.answerMark}>✓</Text>
+        </PopIn>
+      ) : null}
+    </Animated.View>
   );
 }
 
+/** The four answers; they slide in one after another. */
 export function AnswerGrid({ choices, correctIndex }: { choices: string[]; correctIndex?: number }) {
   const stateFor = (i: number): AnswerState =>
     correctIndex === undefined ? 'normal' : i === correctIndex ? 'correct' : 'dimmed';
   return (
     <View style={styles.grid}>
       {choices.map((choice, i) => (
-        <AnswerCard key={i} index={i} text={choice} state={stateFor(i)} />
+        <FadeIn key={i} delay={correctIndex === undefined ? 120 + i * 90 : 0} duration={correctIndex === undefined ? 380 : 1}>
+          <AnswerCard index={i} text={choice} state={stateFor(i)} />
+        </FadeIn>
       ))}
     </View>
   );
 }
 
-/** The AI host's line. */
-export function HostBubble({ text }: { text: string }) {
+/** The AI host's line, sliding in like a speech bubble. */
+export function HostBubble({ text, delay = 350 }: { text: string; delay?: number }) {
   return (
-    <View style={styles.bubble}>
-      <Text style={styles.bubbleIcon}>🎙️</Text>
-      <Text style={styles.bubbleText}>{text}</Text>
-    </View>
+    <FadeIn delay={delay} distance={30}>
+      <View style={styles.bubble}>
+        <Text style={styles.bubbleIcon}>🎙️</Text>
+        <Text style={styles.bubbleText}>{text}</Text>
+      </View>
+    </FadeIn>
   );
 }
 
-/** Small avatar with an optional badge (✓ answered, +points…). */
+/** Small avatar with an optional badge (✓ answered, +points…) that pops in when it changes. */
 export function MiniAvatar({ player, badge, badgeColor }: { player: Player; badge?: string; badgeColor?: string }) {
   return (
     <View style={[styles.mini, !player.connected && styles.disconnected]}>
@@ -61,7 +85,11 @@ export function MiniAvatar({ player, badge, badgeColor }: { player: Player; badg
       <Text style={styles.miniName} numberOfLines={1}>
         {player.name}
       </Text>
-      {badge ? <Text style={[styles.miniBadge, badgeColor ? { color: badgeColor } : null]}>{badge}</Text> : null}
+      {badge ? (
+        <PopIn key={badge}>
+          <Text style={[styles.miniBadge, badgeColor ? { color: badgeColor } : null]}>{badge}</Text>
+        </PopIn>
+      ) : null}
     </View>
   );
 }
@@ -71,15 +99,21 @@ const styles = StyleSheet.create({
   answer: {
     width: scaledPixels(828),
     height: scaledPixels(150),
-    borderRadius: scaledPixels(20),
+    borderRadius: scaledPixels(22),
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: scaledPixels(28),
     borderWidth: scaledPixels(6),
     borderColor: 'transparent',
   },
-  dimmed: { opacity: 0.25 },
-  correct: { borderColor: colors.text, transform: [{ scale: 1.03 }] },
+  correct: {
+    borderColor: colors.text,
+    shadowColor: colors.text,
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.6,
+    shadowRadius: scaledPixels(26),
+    elevation: 12,
+  },
   letter: {
     width: scaledPixels(80),
     height: scaledPixels(80),
@@ -95,8 +129,10 @@ const styles = StyleSheet.create({
   bubble: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: colors.cardRaised,
-    borderRadius: scaledPixels(24),
+    backgroundColor: 'rgba(37, 45, 94, 0.92)',
+    borderRadius: scaledPixels(28),
+    borderWidth: scaledPixels(3),
+    borderColor: 'rgba(255, 210, 63, 0.35)',
     paddingVertical: scaledPixels(24),
     paddingHorizontal: scaledPixels(32),
   },

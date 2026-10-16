@@ -140,6 +140,19 @@ Severity: **High** (blocked progress) · **Medium** (cost > 30 min or needed a w
 
 ---
 
+## 11. The multi-TV sample still uses the deprecated `build-kepler` command
+
+- **Date:** 2026-10-16
+- **Task:** Build the Vega app with the sample's scripts.
+- **Steps:** `yarn build:vega:debug` (runs `react-native build-kepler`).
+- **Expected:** A clean build.
+- **Actual:** Works, but warns: "This command is deprecated … Please replace usage with 'build-vega' instead."
+- **Severity:** Low
+- **Workaround:** Use `react-native build-vega` in `apps/vega/package.json`.
+- **Suggestion:** Update the sample's scripts and README.
+
+---
+
 <!-- Template
 ## N. Title
 

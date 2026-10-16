@@ -1,6 +1,7 @@
 // TV sound effects on web (HTML <audio>). Vega uses sounds.vega.ts. The files are streamed
 // from the game backend (GET /sounds/{name}.m4a); without a backend the game is silent.
 import { SOUNDS_URL } from '../config';
+import { audioOptions } from './options';
 
 export type SoundName = 'join' | 'lock' | 'tick' | 'timesup' | 'reveal' | 'podium';
 
@@ -35,6 +36,7 @@ export function preloadSounds() {
 }
 
 export function playSound(name: SoundName) {
+  if (!audioOptions.effects) return;
   const audio = element(name);
   if (!audio) return;
   audio.currentTime = 0;
@@ -42,6 +44,7 @@ export function playSound(name: SoundName) {
 }
 
 export function startMusic() {
+  if (!audioOptions.music) return;
   element('music')?.play().catch(() => {});
 }
 

@@ -1,29 +1,34 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { DefaultFocus, SpatialNavigationRoot, SpatialNavigationView } from 'react-tv-space-navigation';
+import { useGame } from '../game/GameContext';
 import { useBackHandler } from '../hooks/useBackHandler';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
 import { FocusableButton } from './Focusable';
+import { FadeIn, PopIn } from './Motion';
 
 /** Overlay with its own navigation root; the screen underneath is deactivated while it is open. */
 export function QuitDialog({ onKeepPlaying, onQuit }: { onKeepPlaying: () => void; onQuit: () => void }) {
+  const { t } = useGame();
   useBackHandler(onKeepPlaying);
   return (
-    <View style={styles.scrim}>
+    <FadeIn distance={0} duration={200} style={styles.scrim}>
       <SpatialNavigationRoot>
-        <View style={styles.card}>
-          <Text style={styles.title}>Quit this game?</Text>
-          <Text style={styles.text}>Scores will be lost. Players stay in the room.</Text>
-          <SpatialNavigationView direction="horizontal" style={styles.buttons}>
-            <DefaultFocus>
-              <FocusableButton label="Keep playing" onSelect={onKeepPlaying} />
-            </DefaultFocus>
-            <FocusableButton label="Quit to setup" onSelect={onQuit} />
-          </SpatialNavigationView>
-        </View>
+        <PopIn>
+          <View style={styles.card}>
+            <Text style={styles.title}>{t('quit.title')}</Text>
+            <Text style={styles.text}>{t('quit.text')}</Text>
+            <SpatialNavigationView direction="horizontal" style={styles.buttons}>
+              <DefaultFocus>
+                <FocusableButton label={t('quit.keep')} onSelect={onKeepPlaying} />
+              </DefaultFocus>
+              <FocusableButton label={t('quit.quit')} onSelect={onQuit} />
+            </SpatialNavigationView>
+          </View>
+        </PopIn>
       </SpatialNavigationRoot>
-    </View>
+    </FadeIn>
   );
 }
 
@@ -40,7 +45,9 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: colors.card,
-    borderRadius: scaledPixels(24),
+    borderRadius: scaledPixels(28),
+    borderWidth: scaledPixels(3),
+    borderColor: 'rgba(255, 210, 63, 0.35)',
     padding: scaledPixels(56),
     alignItems: 'center',
   },

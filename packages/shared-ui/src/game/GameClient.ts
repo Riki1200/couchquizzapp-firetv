@@ -1,4 +1,4 @@
-import { Difficulty, HostEvent, Room } from './types';
+import { Difficulty, HostEvent, Language, Room } from './types';
 
 /** Server events plus the client's own connection state. */
 export type GameClientEvent = HostEvent | { type: 'connection'; connected: boolean };
@@ -11,7 +11,7 @@ export type GameClientEvent = HostEvent | { type: 'connection'; connected: boole
 export interface GameClient {
   createRoom(): Promise<Room>;
   /** Sets the topic, resets scores and starts question generation in the background. */
-  configure(topic: string, difficulty: Difficulty): void;
+  configure(topic: string, difficulty: Difficulty, language: Language, questionCount: number): void;
   startQuestion(index: number): void;
   reveal(index: number): void;
   endGame(): void;

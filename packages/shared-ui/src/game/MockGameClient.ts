@@ -5,7 +5,8 @@ import {
   Player,
   PlayerResult,
   Question,
-  QUESTION_BANK,
+  Language,
+  QUESTION_BANKS,
   QuestionSource,
   Room,
   bankKey,
@@ -14,6 +15,7 @@ import {
   pointsFor,
   randomRoomCode,
   timeLimitMs,
+  translate,
 } from './types';
 
 const BOTS: Array<Pick<Player, 'id' | 'name' | 'avatar'> & { joinAfterMs: number }> = [
@@ -35,6 +37,7 @@ export class MockGameClient implements GameClient {
   private game: { key: string; ids: string[] } | null = null;
   private played = new Map<string, string[]>(); // like the server, but only for this session
   private difficulty: Difficulty = 'easy';
+  private language: Language = 'en';
   private answers = new Map<string, { choice: number; ms: number }>();
   private correctMs = new Map<string, number[]>();
   private currentIndex = -1;
@@ -50,8 +53,9 @@ export class MockGameClient implements GameClient {
     return { roomCode, joinUrl: `https://couchquiz.example/join?room=${roomCode}` };
   }
 
-  configure(topic: string, difficulty: Difficulty): void {
+  configure(topic: string, difficulty: Difficulty, language: Language, questionCount: number): void {
     this.difficulty = difficulty;
+    this.language = language;
     this.players.forEach((p) => (p.score = 0));
     this.correctMs.clear();
     this.emitPlayers();
@@ -60,12 +64,12 @@ export class MockGameClient implements GameClient {
 
     // Preset topic: a bank game not completed yet (new cycle when used up). Custom topic: a random mix
     // from the bank stands in for the AI host.
-    const pool = bankPool(topic, difficulty);
-    const key = bankKey(topic, difficulty);
-    let game = pool ? pickGame(pool, this.played.get(key) ?? []) : pickGame(QUESTION_BANK, []);
+    const pool = bankPool(topic, difficulty, language);
+    const key = bankKey(topic, difficulty, language);
+    let game = pool ? pickGame(pool, this.played.get(key) ?? [], questionCount) : pickGame(QUESTION_BANKS[language], [], questionCount);
     if (pool && !game) {
       this.played.set(key, []); // every game of this topic was completed: start a new cycle
-      game = pickGame(pool, []);
+      game = pickGame(pool, [], questionCount);
     }
     this.questions = game!.questions;
     this.source = pool ? 'bank' : 'ai';
@@ -118,12 +122,15 @@ export class MockGameClient implements GameClient {
       return times.length ? times.reduce((sum, t) => sum + t, 0) / times.length : Infinity;
     };
     const fastest = [...this.players].sort((a, b) => average(a.id) - average(b.id))[0];
+    const t = (key: Parameters<typeof translate>[1], vars?: Record<string, string | number>) => translate(this.language, key, vars);
     const awards: Award[] = ranked.map((player, i) => {
-      if (i === 0) return { playerId: player.id, title: 'Quiz Champion', line: 'The galaxy bows to your brain.' };
-      if (player.id === fastest?.id) return { playerId: player.id, title: 'Fastest Finger', line: 'Faster than a shooting star.' };
-      return { playerId: player.id, title: 'Good Sport', line: 'Every astronaut starts somewhere!' };
+      const correct = this.correctMs.get(player.id)?.length ?? 0;
+      if (i === 0) return { playerId: player.id, title: t('award.champion'), line: t('award.championLine', { count: correct }) };
+      if (player.id === fastest?.id)
+        return { playerId: player.id, title: t('award.fastest'), line: t('award.fastestLine', { seconds: (average(player.id) / 1000).toFixed(1) }) };
+      return { playerId: player.id, title: t('award.sport'), line: t('award.sportLine') };
     });
-    this.emit({ type: 'gameOver', awards });
+    this.emit({ type: 'gameOver', awards, source: 'rules' });
   }
 
   subscribe(listener: (event: GameClientEvent) => void): () => void {

@@ -1,5 +1,5 @@
 import { GameClient, GameClientEvent } from './GameClient';
-import { CreateRoomResponse, Difficulty, HostEvent, HostMessage, Room } from './types';
+import { CreateRoomResponse, Difficulty, HostEvent, HostMessage, Language, Room } from './types';
 
 const RECONNECT_DELAYS_MS = [500, 1000, 2000, 4000];
 const PING_INTERVAL_MS = 60000; // keeps idle connections alive (API Gateway drops them after 10 min)
@@ -26,8 +26,8 @@ export class WsGameClient implements GameClient {
     return { roomCode: this.room!.roomCode, joinUrl: this.room!.joinUrl };
   }
 
-  configure(topic: string, difficulty: Difficulty) {
-    this.send({ action: 'configure', topic, difficulty });
+  configure(topic: string, difficulty: Difficulty, language: Language, questionCount: number) {
+    this.send({ action: 'configure', topic, difficulty, language, questionCount });
   }
   startQuestion(index: number) {
     this.send({ action: 'startQuestion', index });

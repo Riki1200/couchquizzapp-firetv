@@ -1,6 +1,8 @@
 import { Difficulty } from './types';
 
+/** Default questions per game; the host can pick any of QUESTION_COUNT_OPTIONS in Settings. */
 export const QUESTION_COUNT = 10;
+export const QUESTION_COUNT_OPTIONS = [5, 10] as const;
 export const MAX_PLAYERS = 8;
 export const MAX_NAME_LENGTH = 12;
 export const MAX_TOPIC_LENGTH = 60;

@@ -1,14 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Animated, StyleSheet, Text, View } from 'react-native';
 import { DefaultFocus, SpatialNavigationRoot } from 'react-tv-space-navigation';
-import { FocusableButton } from '../components/Focusable';
 import { playSound } from '../audio/sounds';
+import { FocusableButton } from '../components/Focusable';
 import { AnswerGrid, MiniAvatar } from '../components/GamePieces';
+import { CountdownBar, FadeIn, usePulse } from '../components/Motion';
+import { Screen } from '../components/Screen';
 import { useGame } from '../game/GameContext';
-import { timeLimitMs } from '../game/types';
+import { TextKey, timeLimitMs } from '../game/types';
 import { useBackHandler } from '../hooks/useBackHandler';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
+import { PRESET_TOPICS } from './SetupScreen';
 
 const ALL_ANSWERED_PAUSE_MS = 800;
 
@@ -20,12 +23,13 @@ interface Props {
 }
 
 export default function QuestionScreen({ navActive, onReveal, onBack }: Props) {
-  const { state } = useGame();
+  const { state, t } = useGame();
   const { questions, questionIndex, players, answeredIds, difficulty, topic } = state;
   const question = questions[questionIndex];
   const limit = timeLimitMs(difficulty ?? 'easy');
   const [timeLeft, setTimeLeft] = useState(limit);
   const revealedRef = useRef(false);
+  const topicLabel = PRESET_TOPICS.some((preset) => preset.label === topic) ? t(`topic.${topic}` as TextKey) : topic;
 
   useBackHandler(onBack);
 
@@ -35,7 +39,7 @@ export default function QuestionScreen({ navActive, onReveal, onBack }: Props) {
     onReveal();
   };
 
-  // Countdown (not in kids mode).
+  // Seconds counter (the bar itself animates on its own, see CountdownBar).
   useEffect(() => {
     if (limit === null) return;
     const startedAt = Date.now();
@@ -46,7 +50,7 @@ export default function QuestionScreen({ navActive, onReveal, onBack }: Props) {
         playSound('timesup');
         revealOnce();
       }
-    }, 250);
+    }, 200);
     return () => clearInterval(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [limit]);
@@ -62,6 +66,8 @@ export default function QuestionScreen({ navActive, onReveal, onBack }: Props) {
   }, [allAnswered]);
 
   const seconds = timeLeft === null ? null : Math.ceil(timeLeft / 1000);
+  const urgent = seconds !== null && seconds <= 5;
+  const timerScale = usePulse(seconds, urgent);
   // Tick during the last five seconds ("time's up" plays in the countdown above).
   useEffect(() => {
     if (seconds !== null && seconds >= 1 && seconds <= 5 && !revealedRef.current) playSound('tick');
@@ -71,51 +77,46 @@ export default function QuestionScreen({ navActive, onReveal, onBack }: Props) {
 
   return (
     <SpatialNavigationRoot isActive={navActive}>
-      <View style={styles.container}>
+      <Screen style={styles.screen}>
         <View style={styles.header}>
           <Text style={styles.counter}>
-            Question {questionIndex + 1} / {questions.length} · {topic}
+            {t('question.counter', { index: questionIndex + 1, total: questions.length })} · {topicLabel}
           </Text>
           {seconds === null ? (
-            <Text style={styles.kids}>🧸 Take your time!</Text>
+            <Text style={styles.kids}>{t('question.noTimer')}</Text>
           ) : (
-            <View style={[styles.timer, seconds <= 5 && styles.timerUrgent]}>
+            <Animated.View style={[styles.timer, urgent && styles.timerUrgent, { transform: [{ scale: timerScale }] }]}>
               <Text style={styles.timerText}>{seconds}</Text>
-            </View>
+            </Animated.View>
           )}
         </View>
 
-        {limit !== null && timeLeft !== null ? (
-          <View style={styles.barTrack}>
-            <View style={[styles.bar, { width: `${(timeLeft / limit) * 100}%` }]} />
-          </View>
+        {limit !== null ? (
+          <CountdownBar durationMs={limit} style={styles.barTrack} fillStyle={[styles.bar, urgent && styles.barUrgent]} />
         ) : null}
 
-        <Text style={styles.question}>{question.text}</Text>
+        <FadeIn delay={60} distance={18}>
+          <Text style={styles.question}>{question.text}</Text>
+        </FadeIn>
         <AnswerGrid choices={question.choices} />
 
         <View style={styles.footer}>
           <View style={styles.players}>
             {players.map((p) => (
-              <MiniAvatar key={p.id} player={p} badge={answeredIds.includes(p.id) ? '✓ locked in' : '…'} />
+              <MiniAvatar key={p.id} player={p} badge={answeredIds.includes(p.id) ? t('question.locked') : '…'} />
             ))}
           </View>
           <DefaultFocus>
-            <FocusableButton label="Reveal now ▶" onSelect={revealOnce} />
+            <FocusableButton label={t('question.revealNow')} onSelect={revealOnce} />
           </DefaultFocus>
         </View>
-      </View>
+      </Screen>
     </SpatialNavigationRoot>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    paddingHorizontal: scaledPixels(120),
-    paddingVertical: scaledPixels(50),
-  },
+  screen: { paddingVertical: scaledPixels(48) },
   header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   counter: { color: colors.textSecondary, fontSize: scaledPixels(32), fontWeight: 'bold' },
   kids: { color: colors.focus, fontSize: scaledPixels(36), fontWeight: 'bold' },
@@ -130,13 +131,13 @@ const styles = StyleSheet.create({
   timerUrgent: { backgroundColor: colors.error },
   timerText: { color: colors.text, fontSize: scaledPixels(52), fontWeight: 'bold' },
   barTrack: {
-    height: scaledPixels(12),
-    backgroundColor: colors.card,
-    borderRadius: scaledPixels(6),
+    height: scaledPixels(14),
+    backgroundColor: 'rgba(255,255,255,0.1)',
+    borderRadius: scaledPixels(7),
     marginTop: scaledPixels(20),
-    overflow: 'hidden',
   },
-  bar: { height: '100%', backgroundColor: colors.focus },
+  bar: { backgroundColor: colors.focus, borderRadius: scaledPixels(7) },
+  barUrgent: { backgroundColor: colors.error },
   question: {
     color: colors.text,
     fontSize: scaledPixels(60),

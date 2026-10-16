@@ -14,7 +14,9 @@ An AI-hosted family trivia game for Fire TV (Vega OS). The TV is the game board,
 
 Phones that lose the connection rejoin automatically with their name and score.
 
-**Question bank.** [`question-bank.json`](packages/protocol/src/question-bank.json) holds 150 questions (5 topics × easy/medium/hard × 10, each with a host quip; Kids mode uses the easy ones). Questions of a **completed** game (one that reached the podium) are not served again for that topic and level; an abandoned game can come back. When a topic is used up, the AI host writes a fresh game (or, without AI, a new cycle starts). `yarn workspace @couch-quiz/backend expand-bank` grows the bank with Bedrock-written games, validated like live ones.
+**Question bank.** [`question-bank.json`](packages/protocol/src/question-bank.json) holds 150 questions (5 topics × easy/medium/hard × 10, each with a host quip; Kids mode uses the easy ones), and [`question-bank.es.json`](packages/protocol/src/question-bank.es.json) 150 more in Spanish. Questions of a **completed** game (one that reached the podium) are not served again for that topic and level; an abandoned game can come back. When a topic is used up, the AI host writes a fresh game (or, without AI, a new cycle starts). `yarn workspace @couch-quiz/backend expand-bank` grows the bank with Bedrock-written games, validated like live ones.
+
+**Settings.** From the Setup screen (⚙): language (English or Spanish — applies to the TV, the phones, the question bank and the AI host), questions per game (5 or 10), sound effects and music on/off.
 
 **Sound.** The TV plays lobby music and effects (player joined, answer locked in, last-seconds ticks, time's up, reveal, podium fanfare). All sounds are original, synthesized by [`make-sounds.py`](backend/scripts/make-sounds.py), and streamed from the backend (`GET /sounds/{name}.m4a`). Phones stay silent so the room isn't a cacophony.
 

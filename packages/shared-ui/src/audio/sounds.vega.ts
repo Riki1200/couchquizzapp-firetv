@@ -7,6 +7,7 @@
 //   loaded in advance and released when it finishes.
 import { AudioPlayer } from '@amazon-devices/react-native-w3cmedia';
 import { SOUNDS_URL } from '../config';
+import { audioOptions } from './options';
 import type { SoundName } from './sounds';
 
 type Name = SoundName | 'music';
@@ -82,7 +83,7 @@ export function preloadSounds() {
 }
 
 export function playSound(name: SoundName) {
-  if (!SOUNDS_URL) return;
+  if (!SOUNDS_URL || !audioOptions.effects) return;
   take(name).then((audio) => {
     if (!audio) return;
     audio.addEventListener('ended' as never, () => release(audio));
@@ -91,7 +92,7 @@ export function playSound(name: SoundName) {
 }
 
 export function startMusic() {
-  if (!SOUNDS_URL || music) return;
+  if (!SOUNDS_URL || !audioOptions.music || music) return;
   music = take('music').then((audio) => {
     audio?.play();
     return audio;

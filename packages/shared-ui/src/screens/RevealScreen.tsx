@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 import { DefaultFocus, SpatialNavigationRoot } from 'react-tv-space-navigation';
 import { FocusableButton } from '../components/Focusable';
 import { AnswerGrid, HostBubble, MiniAvatar } from '../components/GamePieces';
+import { FadeIn } from '../components/Motion';
+import { Screen } from '../components/Screen';
 import { useGame } from '../game/GameContext';
 import { useBackHandler } from '../hooks/useBackHandler';
 import { scaledPixels } from '../hooks/useScale';
@@ -15,7 +17,7 @@ interface Props {
 }
 
 export default function RevealScreen({ navActive, onNext, onBack }: Props) {
-  const { state } = useGame();
+  const { state, t } = useGame();
   const { questions, questionIndex, players, results } = state;
   const question = questions[questionIndex];
   const isLast = questionIndex === questions.length - 1;
@@ -27,10 +29,8 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
 
   return (
     <SpatialNavigationRoot isActive={navActive}>
-      <View style={styles.container}>
-        <Text style={styles.counter}>
-          Question {questionIndex + 1} / {questions.length}
-        </Text>
+      <Screen style={styles.screen}>
+        <Text style={styles.counter}>{t('question.counter', { index: questionIndex + 1, total: questions.length })}</Text>
         <Text style={styles.question}>{question.text}</Text>
         <AnswerGrid choices={question.choices} correctIndex={question.correctIndex} />
 
@@ -41,7 +41,7 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
         <View style={styles.footer}>
           <View style={styles.players}>
             {results === null ? (
-              <Text style={styles.counting}>Counting answers…</Text>
+              <Text style={styles.counting}>{t('reveal.counting')}</Text>
             ) : (
               players.map((p) => {
                 const result = results.find((r) => r.playerId === p.id);
@@ -60,32 +60,29 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
           <View style={styles.side}>
             <View style={styles.standings}>
               {standings.map((p, i) => (
-                <Text key={p.id} style={styles.standing}>
-                  {i + 1}. {p.avatar} {p.name} — {p.score}
-                </Text>
+                <FadeIn key={p.id} delay={500 + i * 120} distance={12}>
+                  <Text style={styles.standing}>
+                    {i + 1}. {p.avatar} {p.name} — {p.score}
+                  </Text>
+                </FadeIn>
               ))}
             </View>
             <DefaultFocus>
               <FocusableButton
-                label={isLast ? 'See results ▶' : 'Next question ▶'}
+                label={isLast ? t('reveal.results') : t('reveal.next')}
                 disabled={results === null}
                 onSelect={onNext}
               />
             </DefaultFocus>
           </View>
         </View>
-      </View>
+      </Screen>
     </SpatialNavigationRoot>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-    paddingHorizontal: scaledPixels(120),
-    paddingVertical: scaledPixels(50),
-  },
+  screen: { paddingVertical: scaledPixels(48) },
   counter: { color: colors.textSecondary, fontSize: scaledPixels(32), fontWeight: 'bold' },
   question: { color: colors.text, fontSize: scaledPixels(48), fontWeight: 'bold', marginVertical: scaledPixels(24) },
   bubble: { marginTop: scaledPixels(28) },

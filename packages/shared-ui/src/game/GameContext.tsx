@@ -1,7 +1,30 @@
 import React, { createContext, useContext, useEffect, useMemo, useReducer, useRef } from 'react';
 import { createGameClient } from './createGameClient';
 import { GameClient, GameClientEvent } from './GameClient';
-import { Award, Difficulty, GenerationStatus, Player, PlayerResult, Question, QuestionSource, Room } from './types';
+import { audioOptions } from '../audio/options';
+import { stopMusic } from '../audio/sounds';
+import {
+  Award,
+  AwardSource,
+  Difficulty,
+  GenerationStatus,
+  Language,
+  Player,
+  PlayerResult,
+  QUESTION_COUNT,
+  Question,
+  QuestionSource,
+  Room,
+  TextKey,
+  translate,
+} from './types';
+
+export interface Settings {
+  language: Language;
+  questionCount: number;
+  effects: boolean;
+  music: boolean;
+}
 
 export interface GameState {
   room: Room | null;
@@ -17,6 +40,8 @@ export interface GameState {
   /** Results of the current question once revealed. */
   results: PlayerResult[] | null;
   awards: Award[] | null;
+  awardSource: AwardSource | null;
+  settings: Settings;
 }
 
 type Action =
@@ -24,6 +49,7 @@ type Action =
   | { type: 'setTopic'; topic: string }
   | { type: 'setDifficulty'; difficulty: Difficulty }
   | { type: 'questionStarted'; index: number }
+  | { type: 'settings'; settings: Partial<Settings> }
   | GameClientEvent;
 
 const initialState: GameState = {
@@ -39,6 +65,8 @@ const initialState: GameState = {
   answeredIds: [],
   results: null,
   awards: null,
+  awardSource: null,
+  settings: { language: 'en', questionCount: QUESTION_COUNT, effects: true, music: true },
 };
 
 function reducer(state: GameState, action: Action): GameState {
@@ -50,7 +78,9 @@ function reducer(state: GameState, action: Action): GameState {
     case 'setDifficulty':
       return { ...state, difficulty: action.difficulty };
     case 'questionStarted':
-      return { ...state, questionIndex: action.index, answeredIds: [], results: null, awards: null };
+      return { ...state, questionIndex: action.index, answeredIds: [], results: null, awards: null, awardSource: null };
+    case 'settings':
+      return { ...state, settings: { ...state.settings, ...action.settings } };
     case 'connection':
       return { ...state, connected: action.connected };
     case 'players':
@@ -62,7 +92,7 @@ function reducer(state: GameState, action: Action): GameState {
     case 'reveal':
       return action.index === state.questionIndex ? { ...state, results: action.results } : state;
     case 'gameOver':
-      return { ...state, awards: action.awards };
+      return { ...state, awards: action.awards, awardSource: action.source };
   }
 }
 
@@ -75,6 +105,9 @@ interface GameContextValue {
   startQuestion: (index: number) => void;
   reveal: () => void;
   endGame: () => void;
+  updateSettings: (settings: Partial<Settings>) => void;
+  /** Text in the host's language. */
+  t: (key: TextKey, vars?: Record<string, string | number>) => string;
 }
 
 const GameContext = createContext<GameContextValue | null>(null);
@@ -101,7 +134,8 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       openLobby: async () => {
         try {
           if (!state.room) dispatch({ type: 'roomCreated', room: await client.createRoom() });
-          client.configure(state.topic!, state.difficulty!);
+          const { language, questionCount } = state.settings;
+          client.configure(state.topic!, state.difficulty!, language, questionCount);
         } catch (error) {
           console.warn('[game] could not open the lobby', error);
           dispatch({ type: 'generation', status: 'failed' }); // the lobby offers "Try again"
@@ -113,6 +147,15 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
       },
       reveal: () => client.reveal(state.questionIndex),
       endGame: () => client.endGame(),
+      updateSettings: (settings) => {
+        if (settings.effects !== undefined) audioOptions.effects = settings.effects;
+        if (settings.music !== undefined) {
+          audioOptions.music = settings.music;
+          if (!settings.music) stopMusic();
+        }
+        dispatch({ type: 'settings', settings });
+      },
+      t: (key, vars) => translate(state.settings.language, key, vars),
     };
   }, [state]);
 

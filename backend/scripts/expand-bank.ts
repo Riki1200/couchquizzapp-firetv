@@ -8,10 +8,13 @@
 // questions whose text already exists in the bank are skipped.
 import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
-import { BankLevel, BankQuestion, QUESTION_COUNT } from '@couch-quiz/protocol';
+import { BankLevel, BankQuestion, Language, QUESTION_COUNT } from '@couch-quiz/protocol';
 import { BedrockHostAi } from '../src/aws/bedrockAi';
 
-const BANK_PATH = join(__dirname, '..', '..', 'packages', 'protocol', 'src', 'question-bank.json');
+// --lang es grows question-bank.es.json instead of the English bank.
+const langArg = process.argv.indexOf('--lang');
+const LANGUAGE = (langArg > 0 ? process.argv[langArg + 1] : 'en') as Language;
+const BANK_PATH = join(__dirname, '..', '..', 'packages', 'protocol', 'src', LANGUAGE === 'en' ? 'question-bank.json' : `question-bank.${LANGUAGE}.json`);
 const LEVELS: BankLevel[] = ['easy', 'medium', 'hard'];
 const gamesArg = process.argv.indexOf('--games');
 const GAMES = gamesArg > 0 ? Number(process.argv[gamesArg + 1]) : 6;
@@ -26,7 +29,7 @@ async function main() {
     for (const level of LEVELS) {
       for (let game = 1; game <= GAMES; game++) {
         const existing = bank.questions.filter((q) => q.topic === topic && q.level === level);
-        const questions = await ai.writeQuestions(topic, level);
+        const questions = await ai.writeQuestions(topic, level, LANGUAGE, QUESTION_COUNT);
         let added = 0;
         for (const q of questions) {
           if (seen.has(q.text.toLowerCase())) continue;
