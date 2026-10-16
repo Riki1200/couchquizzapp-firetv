@@ -119,6 +119,9 @@ export const AWARDS_TOOL = {
 
 // ---------- Validation ----------
 
+/** The model answered, but not in the shape we asked for (worth retrying with feedback). */
+export class InvalidModelOutput extends Error {}
+
 const QuestionSchema = z
   .object({
     text: z.string().trim().min(5).max(140),
@@ -142,7 +145,7 @@ export function parseAwards(input: unknown, facts: PlayerFacts[]): Award[] {
     .parse(input);
   const ids = new Set(awards.map((a) => a.playerId));
   if (ids.size !== facts.length || facts.some((f) => !ids.has(f.playerId))) {
-    throw new Error('awards must contain exactly one entry per playerId from the facts');
+    throw new InvalidModelOutput('awards must contain exactly one entry per playerId from the facts');
   }
   return awards;
 }
@@ -150,6 +153,7 @@ export function parseAwards(input: unknown, facts: PlayerFacts[]): Award[] {
 /**
  * Calls the model, validates its output and retries with the validation error as feedback.
  * `call` receives the feedback of the previous failed attempt (undefined on the first try).
+ * Service errors (access denied, throttling after the SDK's own retries…) are not retried here.
  */
 export async function withValidationRetry<T>(
   call: (feedback?: string) => Promise<unknown>,
@@ -161,7 +165,9 @@ export async function withValidationRetry<T>(
     try {
       return parse(await call(feedback));
     } catch (error) {
-      const message = error instanceof z.ZodError ? z.prettifyError(error) : String(error);
+      const invalidOutput = error instanceof z.ZodError || error instanceof InvalidModelOutput;
+      if (!invalidOutput) throw error;
+      const message = error instanceof z.ZodError ? z.prettifyError(error) : error.message;
       console.warn(`[ai] attempt ${attempt} invalid: ${message}`);
       if (attempt >= attempts) throw error;
       feedback = `Your previous answer was invalid:\n${message}\nCall the tool again with a complete, corrected answer.`;

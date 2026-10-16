@@ -4,6 +4,7 @@ import {
   AWARDS_SYSTEM_PROMPT,
   AWARDS_TOOL,
   HostAi,
+  InvalidModelOutput,
   PlayerFacts,
   QUESTIONS_SYSTEM_PROMPT,
   QUESTIONS_TOOL,
@@ -73,7 +74,7 @@ export class BedrockHostAi implements HostAi {
       `in=${response.usage?.inputTokens} out=${response.usage?.outputTokens}`,
     );
     const toolUse = response.output?.message?.content?.find((block) => block.toolUse)?.toolUse;
-    if (!toolUse) throw new Error(`Model did not call ${tool.name} (stopReason: ${response.stopReason})`);
+    if (!toolUse) throw new InvalidModelOutput(`Model did not call ${tool.name} (stopReason: ${response.stopReason})`);
     return toolUse.input;
   }
 }

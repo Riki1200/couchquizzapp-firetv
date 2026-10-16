@@ -5,7 +5,6 @@ module.exports = {
   project: {
     android: {},
   },
-  // Disable new architecture temporarily due to drawer navigator compatibility issues
-  // TODO: Re-enable once @amazon-devices packages are fully Fabric-compatible
+  // Same setting as the multi-TV sample this app started from.
   newArchEnabled: false,
 };

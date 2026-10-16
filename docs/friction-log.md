@@ -153,6 +153,19 @@ Severity: **High** (blocked progress) · **Medium** (cost > 30 min or needed a w
 
 ---
 
+## 12. The build edits `manifest.toml` and never removes what it added
+
+- **Date:** 2026-10-16
+- **Task:** Clean up the manifest after removing the sample's unused native modules (navigation, gesture handler, reanimated…).
+- **Steps:** `yarn build:vega:debug`, then `git diff apps/vega/manifest.toml`; later remove dependencies and build again.
+- **Expected:** The source manifest is left alone, or generated entries are kept in sync with the dependencies.
+- **Actual:** The build appends a `[[needs.module]]` entry to the **source** `manifest.toml` for each native module it bundles (plus blank lines). After the dependencies were removed, the old entries stayed until we deleted them by hand.
+- **Severity:** Low
+- **Workaround:** Review `manifest.toml` diffs after builds; remove stale `needs.module` entries manually.
+- **Suggestion:** Generate those entries into the build output (or mark a generated section and rewrite it on every build).
+
+---
+
 <!-- Template
 ## N. Title
 

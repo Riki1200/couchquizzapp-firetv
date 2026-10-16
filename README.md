@@ -4,13 +4,19 @@ An AI-hosted family trivia game for Fire TV (Vega OS). The TV is the game board,
 
 > Built for the Build, Ship, Shape: Amazon Developer Hackathon (Fire TV track).
 
+| Setup (D-pad) | Lobby (QR join) | Question |
+|---|---|---|
+| ![Setup screen: topic and difficulty tiles with a yellow focus ring](docs/images/tv-setup.png) | ![Lobby: QR code, room code and the players who joined](docs/images/tv-lobby.png) | ![Question with countdown and answer tiles](docs/images/tv-question.png) |
+| **Reveal** | **Podium** | **Phones** |
+| ![Reveal: correct answer, host quip, streak badges and leaderboard](docs/images/tv-reveal.png) | ![Podium with confetti and awards](docs/images/tv-podium.png) | <img src="docs/images/phone-join.png" width="31%" alt="Phone: join with name and avatar"> <img src="docs/images/phone-answer.png" width="31%" alt="Phone: four answer buttons"> <img src="docs/images/phone-result.png" width="31%" alt="Phone: correct answer with streak"> |
+
 ## How a game works
 
 1. **Setup (TV):** pick a topic (or type your own) and a difficulty — Easy, Medium, Hard or Kids (simpler questions, no timer).
 2. **Lobby (TV + phones):** the TV shows a QR code and a 4-letter room code. Each player scans it, types a name and picks an avatar; they appear on the TV live. Preset topics come from the built-in question bank instantly; for a custom topic the AI host writes 10 questions while players join.
 3. **Questions:** a short "Question N" intro, then the TV shows the question and a countdown while phones show four big answer buttons. Faster correct answers score more (500–1000 points; a flat 1000 in Kids mode). The **final question is worth double points**. The question ends when everyone has answered or time runs out.
 4. **Reveal:** the TV highlights the answer, shows the host's quip, everyone's points, 🔥 streak badges (3+ correct in a row) and an animated leaderboard where players slide to their new rank. The game moves on by itself after a few seconds (or right away with the remote).
-5. **Podium:** final ranking plus an AI-written award for every player ("Fastest Finger", "Comeback Kid"…).
+5. **Podium:** final ranking with confetti, plus an award for every player ("Fastest Finger", "Comeback Kid"…) written by the AI host from real game stats (rule-based when the AI is unavailable).
 
 Phones that lose the connection rejoin automatically with their name and score.
 
@@ -22,26 +28,32 @@ Phones that lose the connection rejoin automatically with their name and score.
 
 ## Architecture
 
-```
- Fire TV (Vega)                      Phones (browser)
- React Native for Vega               React (Vite) page from the QR code
-      │  HTTP: create room                │  HTTP: check room
-      │  WebSocket: game events           │  WebSocket: join / answer
-      ▼                                   ▼
- ┌──────────────── Amazon API Gateway ────────────────┐      ┌──────────────────────────┐
- │  HTTP API (/rooms)    WebSocket API ($connect,      │      │ Amazon CloudFront + S3   │
- │                       $disconnect, $default)        │      │ (serves the phone page)  │
- └──────────┬──────────────────────┬───────────────────┘      └──────────────────────────┘
-            ▼                      ▼
-     AWS Lambda (http)      AWS Lambda (ws) ──async invoke──▶ AWS Lambda (generate)
-            │                      │   │                              │
-            ▼                      ▼   └──────────┐                   ▼
-       ┌──────────── Amazon DynamoDB ─────────────┐│        Amazon Bedrock (Amazon Nova)
-       │ rooms · players · answers · connections  ││        questions + quips, awards
-       └───────────────────────────────────────────┘└──────────────▶
+```mermaid
+flowchart LR
+  TV["Fire TV app<br/>React Native for Vega"] -- "HTTP: create room" --> HTTP["API Gateway<br/>HTTP API"]
+  TV -- "WebSocket: game events" --> WS["API Gateway<br/>WebSocket API"]
+  Phone["Phones<br/>React page from the QR code"] -- "WebSocket: join / answer" --> WS
+  Phone -. "page" .- CF["CloudFront + S3"]
+  HTTP --> LH["Lambda: http"]
+  WS --> LW["Lambda: ws"]
+  LW -- "async invoke" --> LG["Lambda: generate"]
+  LH & LW & LG --> DB[("DynamoDB<br/>rooms · players · answers")]
+  LG -- "questions + quips" --> BR["Amazon Bedrock<br/>Amazon Nova"]
+  LW -- "awards" --> BR
+  LW & LG -- "PostToConnection" --> WS
 ```
 
 All game rules live in one transport-independent class, [`GameService`](backend/src/game/GameService.ts). The Lambda handlers and the local development server are thin adapters around it, so what you test locally is what runs in AWS. The TV is the source of truth for the game phase (start question, reveal, end game); the backend stores state, timestamps and scores answers, and fans events out to the TV and the phones.
+
+## Built for Vega
+
+- **10-foot UI on the D-pad:** every screen is navigable with up/down/left/right/select/back ([react-tv-space-navigation](https://github.com/bamlab/react-tv-space-navigation)). Focus is a yellow ring with glow and a springy scale; "selected" is a purple fill with a check, so the two are never confused. Selecting a topic moves focus to difficulty, then to "Create room".
+- **Back** goes one step back on every screen, opens a "Quit this game?" dialog during a game, and exits the app from the first screen.
+- **TV keyboard** for custom topics, with a hint for closing it (on Vega's keyboard Select types the highlighted key).
+- **Animations** use the native driver (smooth countdown bar, focus springs, staggered answers, sliding leaderboard, confetti).
+- **Sound** with the W3C media `AudioPlayer`; it only plays HTTPS sources and does not replay after `ended`, so every effect uses a fresh preloaded player ([`sounds.vega.ts`](packages/shared-ui/src/audio/sounds.vega.ts)).
+- **Saved settings** with the Vega port of AsyncStorage.
+- Everything we tripped over is in the [friction log](docs/friction-log.md).
 
 ## AWS integrations
 
@@ -53,7 +65,7 @@ Everything is defined with AWS CDK (TypeScript) in [`infra/lib/couch-quiz-stack.
 | **Amazon API Gateway — WebSocket API** | Real-time channel for the TV and every phone. `$connect` authenticates (host token / room code), `$disconnect` marks players offline, `$default` carries all game messages. The backend pushes events with `PostToConnection`. | [`handlers.ts` → `ws`](backend/src/aws/handlers.ts) |
 | **AWS Lambda** (Node.js 22, arm64) | Three functions bundled with esbuild from the same entry file: `http`, `ws` and `generate`. Question generation takes seconds, so `ws` invokes `generate` asynchronously (`InvocationType: Event`) and returns immediately; `generate` pushes the result to the TV when it is ready. | [`handlers.ts`](backend/src/aws/handlers.ts) |
 | **Amazon DynamoDB** | One on-demand table (`pk`/`sk`) with TTL (24 h). Items: room `ROOM#ABCD/META`, players `ROOM#ABCD/PLAYER#id`, answers `ROOM#ABCD/ANSWER#03#playerId` (a conditional put guarantees one answer per player per question), connections `CONN#id/META`, and bank questions from completed games `PLAYED/space#easy`. | [`dynamoStore.ts`](backend/src/aws/dynamoStore.ts) |
-| **Amazon Bedrock** — Amazon Nova 2 Lite (`us.amazon.nova-2-lite-v1:0`, cross-region inference profile) | Converse API with forced tool use: the model must call `submit_questions` / `submit_awards` with a JSON schema. The output is validated with zod (10 questions, 4 unique short choices, one correct answer, length limits for TV readability) and retried up to 3 times with the validation errors as feedback. Choices are shuffled server-side so the right answer isn't always in the same slot. Awards are grounded in computed facts (rank, speed, streak, places climbed); if Bedrock fails, rule-based awards are used. | [`bedrockAi.ts`](backend/src/aws/bedrockAi.ts), [`ai.ts`](backend/src/game/ai.ts) |
+| **Amazon Bedrock** — Amazon Nova 2 Lite (`us.amazon.nova-2-lite-v1:0`, cross-region inference profile) | Converse API with forced tool use: the model must call `submit_questions` / `submit_awards` with a JSON schema. The output is validated with zod (10 questions, 4 unique short choices, one correct answer, length limits for TV readability) and retried up to 3 times with the validation errors as feedback. Choices are shuffled server-side so the right answer isn't always in the same slot. Awards are grounded in computed facts (rank, speed, streak, places climbed); if Bedrock fails, rule-based awards are used. Preset topics play from the built-in bank without Bedrock; custom topics need model access in the account. | [`bedrockAi.ts`](backend/src/aws/bedrockAi.ts), [`ai.ts`](backend/src/game/ai.ts) |
 | **Amazon S3 + Amazon CloudFront** | Private bucket (Origin Access Control) served over HTTPS by CloudFront: the phone page the QR code points to. CDK also writes a `config.json` next to it with the API URLs, so the page needs no rebuild per deployment. | [stack](infra/lib/couch-quiz-stack.ts) |
 | **AWS IAM** | Least-privilege grants from CDK: table read/write, `execute-api:ManageConnections` on the WebSocket stage, `lambda:InvokeFunction` on `generate` only, and `bedrock:InvokeModel` scoped to the Nova inference profile and its foundation model. | [stack](infra/lib/couch-quiz-stack.ts) |
 | **Amazon CloudWatch Logs** | One log group per function, one-week retention; Bedrock latency and token usage are logged per call. | [stack](infra/lib/couch-quiz-stack.ts) |
@@ -71,6 +83,8 @@ Everything is defined with AWS CDK (TypeScript) in [`infra/lib/couch-quiz-stack.
 | `infra` | AWS CDK app |
 | `docs/friction-log.md` | Issues found in the Vega SDK, docs and tooling while building this |
 | `docs/demo-script.md` | Script for the 3-minute demo video |
+| `docs/devpost.md` | Project description for the Devpost submission |
+| `docs/images/` | Screenshots used in this README |
 
 ## Running it locally
 
