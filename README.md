@@ -71,6 +71,12 @@ Requires Node.js 22 LTS and Yarn 4 (`corepack enable`). No AWS account is needed
 
 ```sh
 yarn install
+yarn play             # all of the below in one terminal
+```
+
+Or one by one:
+
+```sh
 yarn dev:server       # game server on :8787 (in-memory, bundled questions)
 yarn dev:controller   # phone page on :5173 (also on your Wi-Fi IP, which the QR code uses)
 
