@@ -7,6 +7,7 @@ import { BedrockHostAi } from './bedrockAi';
 import { MantleHostAi } from './mantleAi';
 import { DynamoStore } from './dynamoStore';
 import { readSound } from '../game/sounds';
+import { readControllerFile } from './controllerPage';
 
 const { TABLE_NAME, WS_ENDPOINT, GENERATE_FUNCTION, CONTROLLER_URL, PUBLIC_HTTP_URL, PUBLIC_WS_URL } = process.env;
 
@@ -34,7 +35,7 @@ const game = new GameService({
   },
 });
 
-/** HTTP API: POST /rooms, GET /rooms/{code}. */
+/** HTTP API: rooms, the TV's sounds and (without CloudFront) the phone controller page. */
 export async function http(event: APIGatewayProxyEventV2): Promise<APIGatewayProxyResultV2> {
   const json = (statusCode: number, body: unknown) => ({
     statusCode,
@@ -51,6 +52,19 @@ export async function http(event: APIGatewayProxyEventV2): Promise<APIGatewayPro
         statusCode: 200,
         headers: { 'Content-Type': 'audio/mp4', 'Cache-Control': 'public, max-age=86400' },
         body: audio.toString('base64'),
+        isBase64Encoded: true,
+      };
+    }
+  }
+  if (event.routeKey === 'GET /config.json') return json(200, { httpUrl: PUBLIC_HTTP_URL, wsUrl: PUBLIC_WS_URL });
+  if (event.routeKey === 'GET /' || event.routeKey === 'GET /assets/{file}') {
+    // The built controller is copied next to the bundled handler (see the stack's bundling hooks).
+    const page = readControllerFile(__dirname + '/controller', event.pathParameters?.file ?? 'index.html');
+    if (page) {
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': page.type, 'Cache-Control': page.cache },
+        body: page.body.toString('base64'),
         isBase64Encoded: true,
       };
     }

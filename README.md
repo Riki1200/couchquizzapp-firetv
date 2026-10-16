@@ -33,7 +33,7 @@ flowchart LR
   TV["Fire TV app<br/>React Native for Vega"] -- "HTTP: create room" --> HTTP["API Gateway<br/>HTTP API"]
   TV -- "WebSocket: game events" --> WS["API Gateway<br/>WebSocket API"]
   Phone["Phones<br/>React page from the QR code"] -- "WebSocket: join / answer" --> WS
-  Phone -. "page" .- CF["CloudFront + S3"]
+  Phone -. "page (GET /)" .- HTTP
   HTTP --> LH["Lambda: http"]
   WS --> LW["Lambda: ws"]
   LW -- "async invoke" --> LG["Lambda: generate"]
@@ -61,12 +61,12 @@ Everything is defined with AWS CDK (TypeScript) in [`infra/lib/couch-quiz-stack.
 
 | Service | What it does in Couch Quiz | Code |
 |---|---|---|
-| **Amazon API Gateway — HTTP API** | `POST /rooms` creates a room (code, host token, join URL); `GET /rooms/{code}` lets a phone check a code before joining; `GET /sounds/{file}` streams the TV's sound effects over HTTPS (Vega's media player requires HTTPS). CORS enabled for the phone page. | [`handlers.ts` → `http`](backend/src/aws/handlers.ts) |
+| **Amazon API Gateway — HTTP API** | `POST /rooms` creates a room (code, host token, join URL); `GET /rooms/{code}` lets a phone check a code before joining; `GET /sounds/{file}` streams the TV's sound effects over HTTPS (Vega's media player requires HTTPS); `GET /`, `GET /assets/{file}` and `GET /config.json` serve the phone page the QR code opens (the built Vite app ships inside the function). CORS enabled for the phone page. | [`handlers.ts` → `http`](backend/src/aws/handlers.ts) |
 | **Amazon API Gateway — WebSocket API** | Real-time channel for the TV and every phone. `$connect` authenticates (host token / room code), `$disconnect` marks players offline, `$default` carries all game messages. The backend pushes events with `PostToConnection`. | [`handlers.ts` → `ws`](backend/src/aws/handlers.ts) |
 | **AWS Lambda** (Node.js 22, arm64) | Three functions bundled with esbuild from the same entry file: `http`, `ws` and `generate`. Question generation takes seconds, so `ws` invokes `generate` asynchronously (`InvocationType: Event`) and returns immediately; `generate` pushes the result to the TV when it is ready. | [`handlers.ts`](backend/src/aws/handlers.ts) |
 | **Amazon DynamoDB** | One on-demand table (`pk`/`sk`) with TTL (24 h). Items: room `ROOM#ABCD/META`, players `ROOM#ABCD/PLAYER#id`, answers `ROOM#ABCD/ANSWER#03#playerId` (a conditional put guarantees one answer per player per question), connections `CONN#id/META`, and bank questions from completed games `PLAYED/space#easy`. | [`dynamoStore.ts`](backend/src/aws/dynamoStore.ts) |
 | **Amazon Bedrock** — Mistral Large 3 (`mistral.mistral-large-3-675b-instruct`) through the OpenAI-compatible `bedrock-mantle` endpoint | Chat Completions with `response_format: json_schema` (`submit_questions` / `submit_awards`), signed with SigV4 by the Lambda role — no API keys. The model is one CDK context value (`modelId` in [`cdk.json`](infra/cdk.json); we compared Gemma 3 27B, Qwen3 235B, DeepSeek V3.1 and Mistral Large 3 and kept Mistral for accuracy and speed, ~6 s for 10 questions); the Converse API (e.g. Amazon Nova, with forced tool use) is supported too (`aiApi: converse`). The output is validated with zod (10 questions, 4 unique short choices, one correct answer, length limits for TV readability) and retried up to 3 times with the validation errors as feedback. Choices are shuffled server-side so the right answer isn't always in the same slot. Awards are grounded in computed facts (rank, speed, streak, places climbed); if Bedrock fails, rule-based awards are used. Preset topics play from the built-in bank without Bedrock; custom topics need model access in the account. | [`mantleAi.ts`](backend/src/aws/mantleAi.ts), [`bedrockAi.ts`](backend/src/aws/bedrockAi.ts), [`ai.ts`](backend/src/game/ai.ts) |
-| **Amazon S3 + Amazon CloudFront** | Private bucket (Origin Access Control) served over HTTPS by CloudFront: the phone page the QR code points to. CDK also writes a `config.json` next to it with the API URLs, so the page needs no rebuild per deployment. | [stack](infra/lib/couch-quiz-stack.ts) |
+| **Amazon S3 + Amazon CloudFront** (optional, `site: cloudfront`) | Alternative host for the phone page: private bucket (Origin Access Control) served over HTTPS by CloudFront, with a `config.json` written by CDK next to it. Not used by default because new AWS accounts must be verified by AWS Support before they can create CloudFront distributions. | [stack](infra/lib/couch-quiz-stack.ts) |
 | **AWS IAM** | Least-privilege grants from CDK: table read/write, `execute-api:ManageConnections` on the WebSocket stage, `lambda:InvokeFunction` on `generate` only, and `bedrock-mantle:CreateInference` limited to the configured model (`bedrock-mantle:Model` condition; `bedrock:InvokeModel` on the model's inference profile with the Converse API). | [stack](infra/lib/couch-quiz-stack.ts) |
 | **Amazon CloudWatch Logs** | One log group per function, one-week retention; Bedrock latency and token usage are logged per call. | [stack](infra/lib/couch-quiz-stack.ts) |
 
@@ -139,14 +139,13 @@ yarn deploy              # builds the phone page, then cdk deploy
 
 The stack prints `HttpApiUrl`, `WebSocketUrl` and `ControllerUrl`. Put the first two in `AWS_SERVER` in `config.ts` (and in the `play:aws` script for web), then rebuild the TV app. The Bedrock model and API are the `modelId` and `aiApi` context values in [`infra/cdk.json`](infra/cdk.json).
 
-New AWS accounts can't create CloudFront distributions until AWS verifies them. In that case deploy without the hosted phone page and serve it from your machine:
+The phone page is served by the HTTP API itself, so `ControllerUrl` is the API's root URL and any phone can join from anywhere. The `site` context value in [`infra/cdk.json`](infra/cdk.json) chooses who serves it:
 
-```sh
-yarn workspace @couch-quiz/controller build
-npx cdk deploy -c site=false -c controllerUrl=http://<your-LAN-IP>:5173/
-```
-
-The game itself runs in AWS; only the phone page is served by `yarn dev:controller`. If your machine's IP changes, deploy again with the new `controllerUrl`.
+| `site` | Phone page served by |
+|---|---|
+| `lambda` (default) | The HTTP API + Lambda (`GET /`). Works on any account. |
+| `cloudfront` | S3 + CloudFront. New AWS accounts must be verified by AWS Support first. |
+| `local` | Your machine: `npx cdk deploy -c site=local -c controllerUrl=http://<your-LAN-IP>:5173/` with `yarn dev:controller` running. |
 
 ## Credits
 

@@ -21,7 +21,8 @@ const REPO_ROOT = path.join(__dirname, '..', '..');
  *  - API Gateway HTTP API → Lambda: create/check rooms
  *  - API Gateway WebSocket API → Lambda: real-time game between the TV and the phones
  *  - Lambda (async) → Amazon Bedrock: question generation
- *  - S3 + CloudFront: the phone controller page opened from the QR code
+ *  - The phone controller page opened from the QR code: served by the HTTP API (site=lambda) or by
+ *    S3 + CloudFront (site=cloudfront)
  */
 export class CouchQuizStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -40,12 +41,14 @@ export class CouchQuizStack extends Stack {
     });
 
     // ---------- Phone controller (static site) ----------
-    // `-c site=false -c controllerUrl=http://<lan-ip>:5173/` skips S3 + CloudFront (e.g. while a new AWS account
-    // is not yet allowed to create CloudFront distributions) and points the QR code at a locally served page.
-    const withSite = String(this.node.tryGetContext('site') ?? 'true') !== 'false';
+    // Context `site` picks who serves the page the QR code opens:
+    //   "lambda"     the HTTP API itself (GET /, /assets/*, /config.json) — no CloudFront needed;
+    //   "cloudfront" S3 + CloudFront (new AWS accounts must be verified by AWS Support first);
+    //   "local"      a page served from your machine: `-c site=local -c controllerUrl=http://<lan-ip>:5173/`.
+    const siteMode: string = this.node.tryGetContext('site') ?? 'lambda';
     let site: { bucket: Bucket; distribution: Distribution } | undefined;
-    let controllerUrl: string = this.node.tryGetContext('controllerUrl') ?? 'http://localhost:5173/';
-    if (withSite) {
+    let controllerUrl: string | undefined = siteMode === 'local' ? this.node.tryGetContext('controllerUrl') : undefined;
+    if (siteMode === 'cloudfront') {
       const bucket = new Bucket(this, 'ControllerBucket', {
         blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
         enforceSSL: true,
@@ -78,12 +81,13 @@ export class CouchQuizStack extends Stack {
           minify: true,
           sourceMap: true,
           target: 'node22',
-          // Ship the TV's sound effects with the function (served at GET /sounds/{file}).
+          // Ship the TV's sound effects (GET /sounds/{file}) and the built phone page (GET /) with the function.
           commandHooks: {
             beforeBundling: () => [],
             beforeInstall: () => [],
             afterBundling: (inputDir: string, outputDir: string) => [
               `cp -r "${inputDir}/backend/assets/sounds" "${outputDir}/sounds"`,
+              `cp -r "${inputDir}/apps/controller/dist" "${outputDir}/controller"`,
             ],
           },
         },
@@ -91,7 +95,6 @@ export class CouchQuizStack extends Stack {
         ...extra,
         environment: {
           TABLE_NAME: table.tableName,
-          CONTROLLER_URL: controllerUrl,
           MODEL_ID: modelId,
           AI_API: aiApi,
           NODE_OPTIONS: '--enable-source-maps',
@@ -159,6 +162,9 @@ export class CouchQuizStack extends Stack {
     httpApi.addRoutes({ path: '/rooms', methods: [HttpMethod.POST], integration: httpIntegration });
     httpApi.addRoutes({ path: '/rooms/{code}', methods: [HttpMethod.GET], integration: httpIntegration });
     httpApi.addRoutes({ path: '/sounds/{file}', methods: [HttpMethod.GET], integration: httpIntegration });
+    httpApi.addRoutes({ path: '/', methods: [HttpMethod.GET], integration: httpIntegration });
+    httpApi.addRoutes({ path: '/assets/{file}', methods: [HttpMethod.GET], integration: httpIntegration });
+    httpApi.addRoutes({ path: '/config.json', methods: [HttpMethod.GET], integration: httpIntegration });
 
     // ---------- Upload the controller with its runtime config ----------
     const httpUrl = httpApi.apiEndpoint;
@@ -166,6 +172,8 @@ export class CouchQuizStack extends Stack {
     // Rooms are created by the HTTP function; it puts these URLs into the join link (QR code).
     httpFn.addEnvironment('PUBLIC_HTTP_URL', httpUrl);
     httpFn.addEnvironment('PUBLIC_WS_URL', wsUrl);
+    controllerUrl ??= `${httpUrl}/`;
+    for (const f of [generateFn, socketFn, httpFn]) f.addEnvironment('CONTROLLER_URL', controllerUrl);
     if (site) {
       new BucketDeployment(this, 'DeployController', {
         destinationBucket: site.bucket,
