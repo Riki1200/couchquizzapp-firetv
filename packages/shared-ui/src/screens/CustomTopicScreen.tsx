@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import { Platform, StyleSheet, Text, TextInput, View } from 'react-native';
 import {
   DefaultFocus,
   SpatialNavigationFocusableView,
@@ -7,11 +7,10 @@ import {
   SpatialNavigationView,
 } from 'react-tv-space-navigation';
 import { FocusableButton } from '../components/Focusable';
+import { MAX_TOPIC_LENGTH } from '../game/types';
 import { useBackHandler } from '../hooks/useBackHandler';
 import { scaledPixels } from '../hooks/useScale';
 import { colors } from '../theme/colors';
-
-const MAX_TOPIC_LENGTH = 60;
 
 interface Props {
   initialTopic: string;
@@ -59,10 +58,15 @@ export default function CustomTopicScreen({ initialTopic, onDone, onCancel }: Pr
           </DefaultFocus>
 
           <SpatialNavigationView direction="horizontal" style={styles.buttons}>
-            <FocusableButton label="Cancel" onSelect={onCancel} />
             <FocusableButton label="Use this topic ▶" disabled={!trimmed} onSelect={submit} />
+            <FocusableButton label="Cancel" onSelect={onCancel} />
           </SpatialNavigationView>
         </SpatialNavigationView>
+
+        {Platform.OS !== 'web' ? (
+          // On TV keyboards Select types the highlighted key, so explain how to get back to the buttons.
+          <Text style={styles.keyboardHint}>Done typing? Press Back to close the keyboard, then select “Use this topic”.</Text>
+        ) : null}
       </View>
     </SpatialNavigationRoot>
   );
@@ -90,4 +94,5 @@ const styles = StyleSheet.create({
   },
   inputFocused: { borderColor: colors.focus },
   buttons: { flexDirection: 'row', gap: scaledPixels(32) },
+  keyboardHint: { color: colors.focus, fontSize: scaledPixels(30), marginTop: scaledPixels(48) },
 });

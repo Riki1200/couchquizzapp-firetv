@@ -33,9 +33,11 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "prepare": "husky",
     "dev:server": "yarn workspace @couch-quiz/backend dev",
-    "dev:controller": "yarn workspace @couch-quiz/controller dev"
+    "dev:controller": "yarn workspace @couch-quiz/controller dev",
+    "play": "concurrently -k -n server,phone,tv -c yellow,magenta,cyan \"yarn dev:server\" \"yarn dev:controller\" \"EXPO_PUBLIC_HTTP_URL=http://localhost:8787 EXPO_PUBLIC_WS_URL=ws://localhost:8787 yarn dev:web\""
   },
   "devDependencies": {
+    "concurrently": "^9",
     "esbuild": "^0.28.2",
     "husky": "^9.1.6",
     "prettier": "^3.3.3"

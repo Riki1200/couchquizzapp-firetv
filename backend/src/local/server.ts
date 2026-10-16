@@ -78,7 +78,13 @@ wss.on('connection', (socket, req) => {
       console.log(`${params.role} connected to ${params.room}`);
     } else socket.close(4001, 'Room not found or not allowed');
   });
-  socket.on('message', (data) => enqueue(() => game.message(connId, data.toString())));
+  socket.on('message', (data) => {
+    const text = data.toString();
+    const action = /"action":"(\w+)"/.exec(text)?.[1];
+    const topic = action === 'configure' ? ` "${/"topic":"([^"]*)"/.exec(text)?.[1]}"` : '';
+    if (action && action !== 'ping' && action !== 'sync') console.log(`${params.role} ${params.room}: ${action}${topic}`);
+    enqueue(() => game.message(connId, text));
+  });
   socket.on('close', () =>
     enqueue(async () => {
       sockets.delete(connId);

@@ -53,7 +53,7 @@ Severity: **High** (blocked progress) · **Medium** (cost > 30 min or needed a w
 - **Expected:** A documented `vega device` command (e.g. `send-key`) with the key names used by `TVEventHandler` (`select`, `up`, `back`…).
 - **Actual:** `vega device run-cmd --command 'inputd-cli button_press KEY_ENTER'` works, but `select` / `dpad_center` are rejected (“invalid button value”); the valid names are Linux key codes (`KEY_ENTER`, …), which differ from the `eventType` names the app receives.
 - **Severity:** Low
-- **Workaround:** `inputd-cli button_press KEY_ENTER` (verified). Other keys presumably use the same Linux names (`KEY_DOWN`, …); not verified yet.
+- **Workaround:** `inputd-cli button_press KEY_ENTER` / `KEY_UP` / `KEY_DOWN` / `KEY_LEFT` / `KEY_RIGHT` / `KEY_BACK` (all verified), and `inputd-cli send_text 'some text'` to type into a focused text field.
 - **Suggestion:** Document `inputd-cli` (or wrap it as `vega device send-key`) with a table mapping key codes to `TVEventHandler` event types.
 
 ---
@@ -81,6 +81,23 @@ Severity: **High** (blocked progress) · **Medium** (cost > 30 min or needed a w
 - **Severity:** Low
 - **Workaround:** Follow the examples, not the option descriptions.
 - **Suggestion:** Fix the option descriptions in the CLI help.
+
+---
+
+## 7. TV keyboard: no quick way to confirm, and `focus()` is deprecated in favor of a Vega-only API
+
+- **Date:** 2026-10-15
+- **Task:** Let the host type a custom quiz topic with the remote.
+- **Steps:** Focus a `TextInput` (`ref.focus()`), type with the on-screen keyboard, try to confirm.
+- **Expected:** Select/Enter confirms the text (fires `onSubmitEditing`), like `returnKeyType="done"` suggests; a cross-platform way to focus a text field.
+- **Actual:**
+  - The keyboard opens automatically and typing works, but Select types the highlighted key (we got "beach" → "beacha"); `onSubmitEditing` never fired in our tests.
+  - The first Back closes the keyboard without reaching the app; a second Back reaches the app's `BackHandler`.
+  - `ref.focus()` logs: "ref.current?.focus() is currently deprecated … Use requestTVFocus instead." `requestTVFocus` is not part of React Native, so shared code would need a platform branch. `focus()` still works.
+  - `onChangeText` fires twice per character.
+- **Severity:** Medium (UX design + time to discover by trial)
+- **Workaround:** On TV, show a hint ("Press Back to close the keyboard, then select Use this topic") and put the confirm button first so Down lands on it.
+- **Suggestion:** Document keyboard confirm/dismiss behavior for TV; make `returnKeyType="done"` map to a reachable Done key that fires `onSubmitEditing`; keep `focus()` working (or provide a shim) for cross-platform code.
 
 ---
 
