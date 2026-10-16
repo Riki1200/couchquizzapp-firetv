@@ -5,15 +5,20 @@
   "scripts": {
     "dev": "tsx watch src/local/server.ts",
     "typecheck": "tsc --noEmit",
-    "expand-bank": "tsx scripts/expand-bank.ts"
+    "expand-bank": "tsx scripts/expand-bank.ts",
+    "try-ai": "tsx scripts/try-ai.ts"
   },
   "dependencies": {
+    "@aws-crypto/sha256-js": "^5.2.0",
     "@aws-sdk/client-apigatewaymanagementapi": "^3.1152.0",
     "@aws-sdk/client-bedrock-runtime": "^3.1152.0",
     "@aws-sdk/client-dynamodb": "^3.1152.0",
     "@aws-sdk/client-lambda": "^3.1152.0",
+    "@aws-sdk/credential-provider-node": "^3.972.86",
     "@aws-sdk/lib-dynamodb": "^3.1152.0",
     "@couch-quiz/protocol": "workspace:*",
+    "@smithy/protocol-http": "^5.6.2",
+    "@smithy/signature-v4": "^5.7.4",
     "ws": "^8.22.0",
     "zod": "^4.6.7"
   },

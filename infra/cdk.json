@@ -1,6 +1,7 @@
 {
   "app": "npx tsx bin/app.ts",
   "context": {
-    "modelId": "us.amazon.nova-2-lite-v1:0"
+    "modelId": "google.gemma-3-27b-it",
+    "aiApi": "mantle"
   }
 }

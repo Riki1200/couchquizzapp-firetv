@@ -38,7 +38,7 @@ flowchart LR
   WS --> LW["Lambda: ws"]
   LW -- "async invoke" --> LG["Lambda: generate"]
   LH & LW & LG --> DB[("DynamoDB<br/>rooms · players · answers")]
-  LG -- "questions + quips" --> BR["Amazon Bedrock<br/>Amazon Nova"]
+  LG -- "questions + quips" --> BR["Amazon Bedrock<br/>Google Gemma"]
   LW -- "awards" --> BR
   LW & LG -- "PostToConnection" --> WS
 ```
@@ -65,9 +65,9 @@ Everything is defined with AWS CDK (TypeScript) in [`infra/lib/couch-quiz-stack.
 | **Amazon API Gateway — WebSocket API** | Real-time channel for the TV and every phone. `$connect` authenticates (host token / room code), `$disconnect` marks players offline, `$default` carries all game messages. The backend pushes events with `PostToConnection`. | [`handlers.ts` → `ws`](backend/src/aws/handlers.ts) |
 | **AWS Lambda** (Node.js 22, arm64) | Three functions bundled with esbuild from the same entry file: `http`, `ws` and `generate`. Question generation takes seconds, so `ws` invokes `generate` asynchronously (`InvocationType: Event`) and returns immediately; `generate` pushes the result to the TV when it is ready. | [`handlers.ts`](backend/src/aws/handlers.ts) |
 | **Amazon DynamoDB** | One on-demand table (`pk`/`sk`) with TTL (24 h). Items: room `ROOM#ABCD/META`, players `ROOM#ABCD/PLAYER#id`, answers `ROOM#ABCD/ANSWER#03#playerId` (a conditional put guarantees one answer per player per question), connections `CONN#id/META`, and bank questions from completed games `PLAYED/space#easy`. | [`dynamoStore.ts`](backend/src/aws/dynamoStore.ts) |
-| **Amazon Bedrock** — Amazon Nova 2 Lite (`us.amazon.nova-2-lite-v1:0`, cross-region inference profile) | Converse API with forced tool use: the model must call `submit_questions` / `submit_awards` with a JSON schema. The output is validated with zod (10 questions, 4 unique short choices, one correct answer, length limits for TV readability) and retried up to 3 times with the validation errors as feedback. Choices are shuffled server-side so the right answer isn't always in the same slot. Awards are grounded in computed facts (rank, speed, streak, places climbed); if Bedrock fails, rule-based awards are used. Preset topics play from the built-in bank without Bedrock; custom topics need model access in the account. | [`bedrockAi.ts`](backend/src/aws/bedrockAi.ts), [`ai.ts`](backend/src/game/ai.ts) |
+| **Amazon Bedrock** — Google Gemma 3 27B (`google.gemma-3-27b-it`) through the OpenAI-compatible `bedrock-mantle` endpoint | Chat Completions with `response_format: json_schema` (`submit_questions` / `submit_awards`), signed with SigV4 by the Lambda role — no API keys. The model is a CDK context value; the Converse API (e.g. Amazon Nova, with forced tool use) is supported too (`aiApi: converse`). The output is validated with zod (10 questions, 4 unique short choices, one correct answer, length limits for TV readability) and retried up to 3 times with the validation errors as feedback. Choices are shuffled server-side so the right answer isn't always in the same slot. Awards are grounded in computed facts (rank, speed, streak, places climbed); if Bedrock fails, rule-based awards are used. Preset topics play from the built-in bank without Bedrock; custom topics need model access in the account. | [`mantleAi.ts`](backend/src/aws/mantleAi.ts), [`bedrockAi.ts`](backend/src/aws/bedrockAi.ts), [`ai.ts`](backend/src/game/ai.ts) |
 | **Amazon S3 + Amazon CloudFront** | Private bucket (Origin Access Control) served over HTTPS by CloudFront: the phone page the QR code points to. CDK also writes a `config.json` next to it with the API URLs, so the page needs no rebuild per deployment. | [stack](infra/lib/couch-quiz-stack.ts) |
-| **AWS IAM** | Least-privilege grants from CDK: table read/write, `execute-api:ManageConnections` on the WebSocket stage, `lambda:InvokeFunction` on `generate` only, and `bedrock:InvokeModel` scoped to the Nova inference profile and its foundation model. | [stack](infra/lib/couch-quiz-stack.ts) |
+| **AWS IAM** | Least-privilege grants from CDK: table read/write, `execute-api:ManageConnections` on the WebSocket stage, `lambda:InvokeFunction` on `generate` only, and `bedrock-mantle:CreateInference` limited to the configured model (`bedrock-mantle:Model` condition; `bedrock:InvokeModel` on the model's inference profile with the Converse API). | [stack](infra/lib/couch-quiz-stack.ts) |
 | **Amazon CloudWatch Logs** | One log group per function, one-week retention; Bedrock latency and token usage are logged per call. | [stack](infra/lib/couch-quiz-stack.ts) |
 
 ## Repository layout
@@ -108,7 +108,7 @@ EXPO_PUBLIC_HTTP_URL=http://localhost:8787 EXPO_PUBLIC_WS_URL=ws://localhost:878
 
 Open http://localhost:8082, create a room, and scan the QR code with phones on the same Wi-Fi. Without the two `EXPO_PUBLIC_*` variables the web TV plays against three built-in bots.
 
-To use Amazon Bedrock from the local server with your AWS credentials: `AI=bedrock yarn dev:server` (optionally `MODEL_ID=...`).
+To use Amazon Bedrock from the local server with your AWS credentials: `AI=mantle yarn dev:server` (Google Gemma; `AI=bedrock` for the Converse API, optionally `MODEL_ID=...`). `yarn workspace @couch-quiz/backend try-ai "volcanoes" easy en 10` prints a generated game.
 
 ### Against the AWS backend
 
@@ -137,7 +137,7 @@ npx cdk bootstrap        # once per account/region
 yarn deploy              # builds the phone page, then cdk deploy
 ```
 
-The stack prints `HttpApiUrl`, `WebSocketUrl` and `ControllerUrl`. Put the first two in `AWS_SERVER` in `config.ts` (and in the `play:aws` script for web), then rebuild the TV app. The Bedrock model is the `modelId` context value in [`infra/cdk.json`](infra/cdk.json).
+The stack prints `HttpApiUrl`, `WebSocketUrl` and `ControllerUrl`. Put the first two in `AWS_SERVER` in `config.ts` (and in the `play:aws` script for web), then rebuild the TV app. The Bedrock model and API are the `modelId` and `aiApi` context values in [`infra/cdk.json`](infra/cdk.json).
 
 New AWS accounts can't create CloudFront distributions until AWS verifies them. In that case deploy without the hosted phone page and serve it from your machine:
 

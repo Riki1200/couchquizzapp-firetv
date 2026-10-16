@@ -4,6 +4,7 @@ import { InvokeCommand, LambdaClient } from '@aws-sdk/client-lambda';
 import type { APIGatewayProxyEventV2, APIGatewayProxyResultV2, APIGatewayProxyWebsocketEventV2 } from 'aws-lambda';
 import { GameService, GenerationJob } from '../game/GameService';
 import { BedrockHostAi } from './bedrockAi';
+import { MantleHostAi } from './mantleAi';
 import { DynamoStore } from './dynamoStore';
 import { readSound } from '../game/sounds';
 
@@ -14,7 +15,8 @@ const lambda = new LambdaClient({});
 
 const game = new GameService({
   store: new DynamoStore(TABLE_NAME!),
-  ai: new BedrockHostAi(),
+  // AI_API=mantle: OpenAI-compatible bedrock-mantle endpoint (e.g. Google Gemma); otherwise the Converse API.
+  ai: process.env.AI_API === 'mantle' ? new MantleHostAi() : new BedrockHostAi(),
   controllerUrl: CONTROLLER_URL ?? '',
   publicUrls: { httpUrl: PUBLIC_HTTP_URL ?? '', wsUrl: PUBLIC_WS_URL ?? '' },
   send: async (connId, event) => {

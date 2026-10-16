@@ -19,9 +19,9 @@ Game night at home breaks down at the controller: one person plays, everyone els
 
 - **TV app:** React Native for Vega, starting from the multi-TV sample (one codebase for Vega, Android TV and web). D-pad focus with react-tv-space-navigation; animations on the native driver; sound with the W3C media `AudioPlayer`; settings with the Vega port of AsyncStorage. We built the UI on web first and verified on the Vega Virtual Device at every milestone — including fully automated game runs with remote presses injected through `inputd-cli`.
 - **Phones:** a small Vite + React page. The QR code's link carries the backend URLs, so a phone always talks to the backend that created the room.
-- **Backend (AWS, CDK in TypeScript):** API Gateway HTTP API (rooms, sounds) and WebSocket API (real-time game), three Lambda functions (Node.js 22, arm64), DynamoDB (single table with TTL; conditional writes guarantee one answer per player per question), Amazon Bedrock (Amazon Nova) for questions, quips and awards, S3 + CloudFront for the phone page.
+- **Backend (AWS, CDK in TypeScript):** API Gateway HTTP API (rooms, sounds) and WebSocket API (real-time game), three Lambda functions (Node.js 22, arm64), DynamoDB (single table with TTL; conditional writes guarantee one answer per player per question), Amazon Bedrock (Google Gemma through the OpenAI-compatible bedrock-mantle endpoint, SigV4-signed by the Lambda role) for questions, quips and awards, S3 + CloudFront for the phone page.
 - **One game engine, two adapters:** all rules live in a transport-independent `GameService`. The Lambda handlers and a local Node server are thin adapters, so what we test locally on the couch is exactly what runs in AWS.
-- **Reliable AI output:** the model must answer through a tool with a JSON schema; the result is validated with zod (lengths that fit a TV, four unique choices, one correct answer), retried with the validation errors as feedback, and the choices are shuffled server-side. Awards are grounded in computed facts so the host never invents them.
+- **Reliable AI output:** the model must answer with JSON that matches a schema; the result is validated with zod (lengths that fit a TV, four unique choices, one correct answer), retried with the validation errors as feedback, and the choices are shuffled server-side. Awards are grounded in computed facts so the host never invents them.
 
 ## Challenges we ran into
 
@@ -51,4 +51,4 @@ Game night at home breaks down at the controller: one person plays, everyone els
 
 ## Built with
 
-React Native for Vega · Vega SDK · TypeScript · React · Vite · Amazon API Gateway (HTTP + WebSocket) · AWS Lambda · Amazon DynamoDB · Amazon Bedrock (Amazon Nova) · Amazon S3 · Amazon CloudFront · AWS CDK · zod
+React Native for Vega · Vega SDK · TypeScript · React · Vite · Amazon API Gateway (HTTP + WebSocket) · AWS Lambda · Amazon DynamoDB · Amazon Bedrock (Google Gemma) · Amazon S3 · Amazon CloudFront · AWS CDK · zod

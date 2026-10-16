@@ -3,7 +3,8 @@
 // on the same Wi-Fi play without AWS.
 //
 //   yarn dev:server                 mock AI (bundled "Space for kids" questions)
-//   AI=bedrock yarn dev:server      Amazon Bedrock with your local AWS credentials
+//   AI=mantle yarn dev:server       Amazon Bedrock, Google Gemma via bedrock-mantle (local AWS credentials)
+//   AI=bedrock yarn dev:server      Amazon Bedrock Converse API (e.g. Amazon Nova)
 import { randomUUID } from 'crypto';
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { networkInterfaces } from 'os';
@@ -14,6 +15,7 @@ import { GameService } from '../game/GameService';
 import { MemoryStore } from '../game/store';
 import { readSound } from '../game/sounds';
 import { BedrockHostAi } from '../aws/bedrockAi';
+import { MantleHostAi } from '../aws/mantleAi';
 
 const PORT = Number(process.env.PORT ?? 8787);
 const lanIp =
@@ -22,7 +24,8 @@ const lanIp =
     .find((i) => i && i.family === 'IPv4' && !i.internal)?.address ?? 'localhost';
 const CONTROLLER_URL = process.env.CONTROLLER_URL ?? `http://${lanIp}:5173/`;
 
-const ai: HostAi = process.env.AI === 'bedrock' ? new BedrockHostAi() : new MockHostAi();
+const ai: HostAi =
+  process.env.AI === 'mantle' ? new MantleHostAi() : process.env.AI === 'bedrock' ? new BedrockHostAi() : new MockHostAi();
 const sockets = new Map<string, WebSocket>();
 const soundsServed = new Set<string>();
 
@@ -106,6 +109,6 @@ wss.on('connection', (socket, req) => {
 
 server.listen(PORT, () => {
   console.log(`Couch Quiz local server on http://localhost:${PORT} (LAN: http://${lanIp}:${PORT})`);
-  console.log(`AI: ${process.env.AI === 'bedrock' ? 'Amazon Bedrock' : 'mock (bundled questions)'}`);
+  console.log(`AI: ${process.env.AI ? `Amazon Bedrock (${process.env.AI}, ${process.env.MODEL_ID ?? 'default model'})` : 'mock (bundled questions)'}`);
   console.log(`Phones join at: ${CONTROLLER_URL}`);
 });

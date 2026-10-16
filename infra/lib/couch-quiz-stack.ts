@@ -27,6 +27,8 @@ export class CouchQuizStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
     super(scope, id, props);
     const modelId: string = this.node.tryGetContext('modelId');
+    // "mantle": OpenAI-compatible bedrock-mantle endpoint (Google Gemma…); "converse": Bedrock Converse API (Amazon Nova…).
+    const aiApi: string = this.node.tryGetContext('aiApi') ?? 'converse';
 
     // ---------- Storage ----------
     const table = new Table(this, 'GameTable', {
@@ -91,19 +93,29 @@ export class CouchQuizStack extends Stack {
           TABLE_NAME: table.tableName,
           CONTROLLER_URL: controllerUrl,
           MODEL_ID: modelId,
+          AI_API: aiApi,
           NODE_OPTIONS: '--enable-source-maps',
           ...extra.environment,
         },
       });
 
-    // Bedrock: the cross-region inference profile plus the model in every region it can route to.
-    const bedrockPolicy = new PolicyStatement({
-      actions: ['bedrock:InvokeModel'],
-      resources: [
-        `arn:aws:bedrock:${this.region}:${this.account}:inference-profile/${modelId}`,
-        `arn:aws:bedrock:*::foundation-model/${modelId.replace(/^(us|eu|apac|global)\./, '')}`,
-      ],
-    });
+    // Bedrock access for the configured model only.
+    const bedrockPolicy =
+      aiApi === 'mantle'
+        ? // bedrock-mantle authorizes inference with CreateInference, narrowed to the model.
+          new PolicyStatement({
+            actions: ['bedrock-mantle:CreateInference'],
+            resources: ['*'],
+            conditions: { StringEquals: { 'bedrock-mantle:Model': modelId } },
+          })
+        : // Converse: the cross-region inference profile plus the model in every region it can route to.
+          new PolicyStatement({
+            actions: ['bedrock:InvokeModel'],
+            resources: [
+              `arn:aws:bedrock:${this.region}:${this.account}:inference-profile/${modelId}`,
+              `arn:aws:bedrock:*::foundation-model/${modelId.replace(/^(us|eu|apac|global)\./, '')}`,
+            ],
+          });
 
     const webSocketApi = new WebSocketApi(this, 'GameSocketApi');
     const webSocketStage = new WebSocketStage(this, 'GameSocketStage', {

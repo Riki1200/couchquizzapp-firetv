@@ -10,6 +10,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { BankLevel, BankQuestion, Language, QUESTION_COUNT } from '@couch-quiz/protocol';
 import { BedrockHostAi } from '../src/aws/bedrockAi';
+import { MantleHostAi } from '../src/aws/mantleAi';
 
 // --lang es grows question-bank.es.json instead of the English bank.
 const langArg = process.argv.indexOf('--lang');
@@ -22,7 +23,8 @@ const GAMES = gamesArg > 0 ? Number(process.argv[gamesArg + 1]) : 6;
 async function main() {
   const bank = JSON.parse(readFileSync(BANK_PATH, 'utf8')) as { questions: BankQuestion[] };
   const topics = [...new Set(bank.questions.map((q) => q.topic))];
-  const ai = new BedrockHostAi();
+  // Same AI as the deployed game: Gemma via bedrock-mantle unless AI_API=converse.
+  const ai = process.env.AI_API === 'converse' ? new BedrockHostAi() : new MantleHostAi();
   const seen = new Set(bank.questions.map((q) => q.text.toLowerCase()));
 
   for (const topic of topics) {
