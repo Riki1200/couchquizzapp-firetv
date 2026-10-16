@@ -53,7 +53,6 @@ const en = {
   // Question / reveal
   'question.counter': 'Question {index} / {total}',
   'question.noTimer': '🧸 Take your time!',
-  'question.locked': '✓ locked in',
   'question.revealNow': 'Reveal now ▶',
   'reveal.counting': 'Counting answers…',
   'reveal.next': 'Next question ▶',
@@ -162,7 +161,6 @@ const es: Record<TextKey, string> = {
   'lobby.waitingPlayers': 'Esperando jugadores…',
   'question.counter': 'Pregunta {index} / {total}',
   'question.noTimer': '🧸 ¡Sin prisa!',
-  'question.locked': '✓ lista',
   'question.revealNow': 'Revelar ▶',
   'reveal.counting': 'Contando respuestas…',
   'reveal.next': 'Siguiente ▶',

@@ -1,17 +1,23 @@
 import { Platform } from 'react-native';
 
 /**
- * Where the TV app finds the game backend. When no URLs are set, the TV plays against
- * built-in bots (MockGameClient) and needs no server.
+ * Where the TV app finds the game backend.
  *
- * - Web: set EXPO_PUBLIC_HTTP_URL / EXPO_PUBLIC_WS_URL when starting `yarn dev:web`.
- * - Vega: edit VEGA_SERVER below (Metro for Vega does not inline EXPO_PUBLIC_* variables).
- *
- * Local server (`yarn dev:server`): http://localhost:8787 and ws://localhost:8787.
- * The VVD reaches it after `vega device start-port-forwarding --device VirtualDevice -p 8787 --forward false`.
- * AWS: the HttpApiUrl / WebSocketUrl outputs of `cdk deploy`.
+ * - AWS_SERVER: the deployed backend (HttpApiUrl / WebSocketUrl outputs of `cdk deploy`).
+ * - LOCAL_SERVER: `yarn dev:server` on this machine; the VVD reaches it after
+ *   `vega device start-port-forwarding --device VirtualDevice -p 8787 --forward false`.
+ * - Web: set EXPO_PUBLIC_HTTP_URL / EXPO_PUBLIC_WS_URL (see `yarn play` and `yarn play:aws`);
+ *   without them the web TV plays against built-in bots.
+ * The phones always follow the TV: the join link in the QR code carries the backend's URLs.
  */
-const VEGA_SERVER: { httpUrl: string; wsUrl: string } | null = { httpUrl: 'http://localhost:8787', wsUrl: 'ws://localhost:8787' };
+export const AWS_SERVER = {
+  httpUrl: 'https://dsl07dvuch.execute-api.us-east-1.amazonaws.com',
+  wsUrl: 'wss://s6wd1rjqo2.execute-api.us-east-1.amazonaws.com/prod',
+};
+export const LOCAL_SERVER = { httpUrl: 'http://localhost:8787', wsUrl: 'ws://localhost:8787' };
+
+/** Backend used by the Vega (and Android TV) app. Switch to LOCAL_SERVER for offline development. */
+const VEGA_SERVER: { httpUrl: string; wsUrl: string } | null = AWS_SERVER;
 
 // Written as literal `process.env.EXPO_PUBLIC_*` so Expo can inline them at build time.
 declare const process: { env: Record<string, string | undefined> } | undefined;
@@ -26,7 +32,7 @@ export const GAME_SERVER: { httpUrl: string; wsUrl: string } | null =
  * Vega's media player only plays HTTPS sources, so on Vega the sounds come from the AWS HTTP API
  * (HttpApiUrl output of `cdk deploy`) even while the game itself runs on the local server.
  */
-const VEGA_SOUNDS_URL: string | null = 'https://dsl07dvuch.execute-api.us-east-1.amazonaws.com';
+const VEGA_SOUNDS_URL: string | null = AWS_SERVER.httpUrl;
 
 export const SOUNDS_URL: string | null =
   Platform.OS === 'web' ? (GAME_SERVER?.httpUrl ?? null) : (VEGA_SOUNDS_URL ?? GAME_SERVER?.httpUrl ?? null);

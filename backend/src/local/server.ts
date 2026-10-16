@@ -30,6 +30,7 @@ const game: GameService = new GameService({
   store: new MemoryStore(),
   ai,
   controllerUrl: CONTROLLER_URL,
+  publicUrls: { httpUrl: `http://${lanIp}:${PORT}`, wsUrl: `ws://${lanIp}:${PORT}` },
   send: async (connId, event) => {
     const socket = sockets.get(connId);
     if (socket?.readyState === WebSocket.OPEN) socket.send(JSON.stringify(event));
@@ -53,7 +54,7 @@ const server = createServer(async (req: IncomingMessage, res: ServerResponse) =>
   try {
     if (req.method === 'POST' && url.pathname === '/rooms') {
       const room = await game.createRoom();
-      console.log(`room ${room.roomCode} created → ${room.joinUrl}`);
+      console.log(`room ${room.roomCode} created → ${room.joinUrl.split('&')[0]}`);
       return json(200, room);
     }
     const sound = url.pathname.match(/^\/sounds\/([a-z]+\.m4a)$/);

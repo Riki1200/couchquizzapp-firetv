@@ -75,19 +75,39 @@ export function HostBubble({ text, delay = 350 }: { text: string; delay?: number
   );
 }
 
-/** Small avatar with an optional badge (✓ answered, +points…) that pops in when it changes. */
-export function MiniAvatar({ player, badge, badgeColor }: { player: Player; badge?: string; badgeColor?: string }) {
+/**
+ * Small avatar. `answered` shows a green check on the avatar (no text, so it fits in any language);
+ * `badge` is a short line under the name (+points / ✗) that pops in when it changes.
+ */
+export function MiniAvatar({
+  player,
+  answered,
+  badge,
+  badgeColor,
+}: {
+  player: Player;
+  answered?: boolean;
+  badge?: string;
+  badgeColor?: string;
+}) {
   return (
     <View style={[styles.mini, !player.connected && styles.disconnected]}>
-      <View style={styles.miniCircle}>
+      <View style={[styles.miniCircle, answered === false && styles.waiting, answered && styles.answeredRing]}>
         <Text style={styles.miniEmoji}>{player.avatar}</Text>
+        {answered ? (
+          <PopIn style={styles.check}>
+            <Text style={styles.checkText}>✓</Text>
+          </PopIn>
+        ) : null}
       </View>
       <Text style={styles.miniName} numberOfLines={1}>
         {player.name}
       </Text>
       {badge ? (
         <PopIn key={badge}>
-          <Text style={[styles.miniBadge, badgeColor ? { color: badgeColor } : null]}>{badge}</Text>
+          <Text style={[styles.miniBadge, badgeColor ? { color: badgeColor } : null]} numberOfLines={1}>
+            {badge}
+          </Text>
         </PopIn>
       ) : null}
     </View>
@@ -149,6 +169,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   miniEmoji: { fontSize: scaledPixels(48) },
+  waiting: { opacity: 0.55 },
+  answeredRing: { borderWidth: scaledPixels(4), borderColor: colors.success },
+  check: {
+    position: 'absolute',
+    right: -scaledPixels(6),
+    bottom: -scaledPixels(6),
+    width: scaledPixels(40),
+    height: scaledPixels(40),
+    borderRadius: scaledPixels(20),
+    backgroundColor: colors.success,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  checkText: { color: colors.text, fontSize: scaledPixels(26), fontWeight: 'bold' },
   miniName: { color: colors.text, fontSize: scaledPixels(24), fontWeight: 'bold', marginTop: scaledPixels(6) },
   miniBadge: { color: colors.success, fontSize: scaledPixels(28), fontWeight: 'bold' },
 });

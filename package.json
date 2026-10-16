@@ -34,7 +34,8 @@
     "prepare": "husky",
     "dev:server": "yarn workspace @couch-quiz/backend dev",
     "dev:controller": "yarn workspace @couch-quiz/controller dev",
-    "play": "concurrently -k -n server,phone,tv -c yellow,magenta,cyan \"yarn dev:server\" \"yarn dev:controller\" \"EXPO_PUBLIC_HTTP_URL=http://localhost:8787 EXPO_PUBLIC_WS_URL=ws://localhost:8787 yarn dev:web\""
+    "play": "concurrently -k -n server,phone,tv -c yellow,magenta,cyan \"yarn dev:server\" \"yarn dev:controller\" \"EXPO_PUBLIC_HTTP_URL=http://localhost:8787 EXPO_PUBLIC_WS_URL=ws://localhost:8787 yarn dev:web\"",
+    "play:aws": "concurrently -k -n phone,tv -c magenta,cyan \"yarn dev:controller\" \"EXPO_PUBLIC_HTTP_URL=https://dsl07dvuch.execute-api.us-east-1.amazonaws.com EXPO_PUBLIC_WS_URL=wss://s6wd1rjqo2.execute-api.us-east-1.amazonaws.com/prod yarn dev:web\""
   },
   "devDependencies": {
     "concurrently": "^9",

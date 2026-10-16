@@ -103,7 +103,7 @@ export default function QuestionScreen({ navActive, onReveal, onBack }: Props) {
         <View style={styles.footer}>
           <View style={styles.players}>
             {players.map((p) => (
-              <MiniAvatar key={p.id} player={p} badge={answeredIds.includes(p.id) ? t('question.locked') : '…'} />
+              <MiniAvatar key={p.id} player={p} answered={answeredIds.includes(p.id)} />
             ))}
           </View>
           <DefaultFocus>

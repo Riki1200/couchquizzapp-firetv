@@ -96,9 +96,13 @@ Open http://localhost:8082, create a room, and scan the QR code with phones on t
 
 To use Amazon Bedrock from the local server with your AWS credentials: `AI=bedrock yarn dev:server` (optionally `MODEL_ID=...`).
 
+### Against the AWS backend
+
+`yarn play:aws` starts the phone page and the web TV pointed at the deployed backend (no local game server). The join link in the QR code carries the backend's URLs (`?room=…&api=…&ws=…`), so phones always talk to the backend that created the room.
+
 ### On the Vega Virtual Device
 
-`VEGA_SERVER` in [`packages/shared-ui/src/config.ts`](packages/shared-ui/src/config.ts) points the Vega app at the local server (`localhost:8787`, reached through port forwarding).
+`VEGA_SERVER` in [`packages/shared-ui/src/config.ts`](packages/shared-ui/src/config.ts) picks the backend for the Vega app: `AWS_SERVER` (default) or `LOCAL_SERVER` (`yarn dev:server`, reached through port forwarding on 8787).
 
 ```sh
 vega virtual-device start
@@ -119,7 +123,7 @@ npx cdk bootstrap        # once per account/region
 yarn deploy              # builds the phone page, then cdk deploy
 ```
 
-The stack prints `HttpApiUrl`, `WebSocketUrl` and `ControllerUrl`. Put the first two in `VEGA_SERVER` (or the `EXPO_PUBLIC_*` variables for web) and `HttpApiUrl` in `VEGA_SOUNDS_URL`, then rebuild the TV app. The Bedrock model is the `modelId` context value in [`infra/cdk.json`](infra/cdk.json).
+The stack prints `HttpApiUrl`, `WebSocketUrl` and `ControllerUrl`. Put the first two in `AWS_SERVER` in `config.ts` (and in the `play:aws` script for web), then rebuild the TV app. The Bedrock model is the `modelId` context value in [`infra/cdk.json`](infra/cdk.json).
 
 New AWS accounts can't create CloudFront distributions until AWS verifies them. In that case deploy without the hosted phone page and serve it from your machine:
 
@@ -127,6 +131,8 @@ New AWS accounts can't create CloudFront distributions until AWS verifies them. 
 yarn workspace @couch-quiz/controller build
 npx cdk deploy -c site=false -c controllerUrl=http://<your-LAN-IP>:5173/
 ```
+
+The game itself runs in AWS; only the phone page is served by `yarn dev:controller`. If your machine's IP changes, deploy again with the new `controllerUrl`.
 
 ## Credits
 

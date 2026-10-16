@@ -151,6 +151,9 @@ export class CouchQuizStack extends Stack {
     // ---------- Upload the controller with its runtime config ----------
     const httpUrl = httpApi.apiEndpoint;
     const wsUrl = webSocketStage.url;
+    // Rooms are created by the HTTP function; it puts these URLs into the join link (QR code).
+    httpFn.addEnvironment('PUBLIC_HTTP_URL', httpUrl);
+    httpFn.addEnvironment('PUBLIC_WS_URL', wsUrl);
     if (site) {
       new BucketDeployment(this, 'DeployController', {
         destinationBucket: site.bucket,

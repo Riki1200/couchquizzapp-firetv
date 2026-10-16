@@ -7,7 +7,7 @@ import { BedrockHostAi } from './bedrockAi';
 import { DynamoStore } from './dynamoStore';
 import { readSound } from '../game/sounds';
 
-const { TABLE_NAME, WS_ENDPOINT, GENERATE_FUNCTION, CONTROLLER_URL } = process.env;
+const { TABLE_NAME, WS_ENDPOINT, GENERATE_FUNCTION, CONTROLLER_URL, PUBLIC_HTTP_URL, PUBLIC_WS_URL } = process.env;
 
 const sockets = new ApiGatewayManagementApiClient({ endpoint: WS_ENDPOINT });
 const lambda = new LambdaClient({});
@@ -16,6 +16,7 @@ const game = new GameService({
   store: new DynamoStore(TABLE_NAME!),
   ai: new BedrockHostAi(),
   controllerUrl: CONTROLLER_URL ?? '',
+  publicUrls: { httpUrl: PUBLIC_HTTP_URL ?? '', wsUrl: PUBLIC_WS_URL ?? '' },
   send: async (connId, event) => {
     try {
       await sockets.send(new PostToConnectionCommand({ ConnectionId: connId, Data: JSON.stringify(event) }));

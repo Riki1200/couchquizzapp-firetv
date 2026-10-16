@@ -45,6 +45,11 @@ export interface GameDeps {
   startGeneration: (job: GenerationJob) => Promise<void>;
   /** Base URL of the phone controller page; the room code is added as ?room=. */
   controllerUrl: string;
+  /**
+   * This backend's public HTTP and WebSocket URLs. They go into the join link (QR code) so the
+   * phone talks to the same backend that created the room, wherever its page is served from.
+   */
+  publicUrls: { httpUrl: string; wsUrl: string };
   now?: () => number;
 }
 
@@ -109,7 +114,8 @@ export class GameService {
         createdAt: this.now(),
       };
       if (await this.deps.store.createRoom(room)) {
-        const joinUrl = `${this.deps.controllerUrl}?room=${room.roomCode}`;
+        const { httpUrl, wsUrl } = this.deps.publicUrls;
+        const joinUrl = `${this.deps.controllerUrl}?room=${room.roomCode}&api=${encodeURIComponent(httpUrl)}&ws=${encodeURIComponent(wsUrl)}`;
         return { roomCode: room.roomCode, hostToken: room.hostToken, joinUrl };
       }
     }

@@ -37,7 +37,8 @@ export function useGameSocket(room: string, onLanguage: (language: Language) => 
 
     const open = () => {
       const savedId = localStorage.getItem(playerKey(room));
-      const socket = new WebSocket(`${endpoints.wsUrl}?room=${room}&role=player${savedId ? `&playerId=${savedId}` : ''}`);
+      const base = /^wss?:\/\/[^/]+$/.test(endpoints.wsUrl) ? `${endpoints.wsUrl}/` : endpoints.wsUrl;
+      const socket = new WebSocket(`${base}?room=${room}&role=player${savedId ? `&playerId=${savedId}` : ''}`);
       socketRef.current = socket;
       socket.onopen = () => {
         attempt = 0;
