@@ -4,6 +4,8 @@ An AI-hosted family trivia game for Fire TV (Vega OS). The TV is the game board,
 
 > Built for the Build, Ship, Shape: Amazon Developer Hackathon (Fire TV track).
 
+▶️ **[Watch the demo video (2:48)](https://youtu.be/niDcQKdPz00)**: a full game on the Vega Virtual Device against the AWS backend.
+
 | Setup (D-pad) | Lobby (QR join) | Question |
 |---|---|---|
 | ![Setup screen: topic and difficulty tiles with a yellow focus ring](docs/images/tv-setup.png) | ![Lobby: QR code, room code, players in two teams and a topic suggested from a phone](docs/images/tv-lobby.png) | ![Question with countdown and answer tiles](docs/images/tv-question.png) |

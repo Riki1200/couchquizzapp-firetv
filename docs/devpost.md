@@ -11,7 +11,7 @@ Everything to paste into the Devpost form. Long answers live in their own files:
 | **Primary track** | Fire TV (Vega OS). Priority categories: family entertainment, multi-modal UX, AI-enhanced viewing. |
 | **Mini challenges** | AWS Builder (Amazon Bedrock, API Gateway WebSocket + HTTP APIs, AWS Lambda, Amazon DynamoDB, AWS CDK; see Product Feedback and the README's "AWS integrations"). |
 | **Code repository** | https://github.com/Riki1200/couchquizzapp-firetv (public, MIT license; setup and run instructions in the README) |
-| **Demo video** | *(YouTube or Vimeo link, public, under 3 minutes, in English)* |
+| **Demo video** | https://youtu.be/niDcQKdPz00 |
 | **Built with** | React Native for Vega, Vega SDK, Vega Virtual Device, TypeScript, Amazon Bedrock, Amazon API Gateway, AWS Lambda, Amazon DynamoDB, AWS CDK, React, Vite, zod |
 | **Product feedback** | Paste [product-feedback.md](product-feedback.md); it covers every tool, API and SDK, including how each AWS service is used. |
 | **Feature requests (optional)** | Paste [feature-requests.md](feature-requests.md). |
