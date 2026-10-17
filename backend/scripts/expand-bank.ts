@@ -11,6 +11,9 @@
 //    (flagged questions first). Approve with `merge-bank` after reviewing.
 //
 //   expand-bank --recheck --lang en   only re-runs the fact-check on the existing candidates file.
+//   CHECKER_MODEL=deepseek.v3.1 expand-bank --recheck --second-opinion --lang en
+//                                     checks only the questions that passed, with another model, and keeps
+//                                     earlier flags: a question is merged only if every checker passed it.
 import { mkdirSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import { BankLevel, BankQuestion, Language, LANGUAGE_NAMES, QUESTION_COUNT } from '@couch-quiz/protocol';
@@ -60,11 +63,11 @@ async function pool(jobs: Array<() => Promise<void>>, limit: number) {
 }
 
 /** Re-runs the fact-check on an existing candidates file, 10 questions per call. */
-async function recheck(language: Language) {
+async function recheck(language: Language, secondOpinion: boolean) {
   const file = join(OUT_DIR, `candidates.${language}.json`);
   const { questions } = JSON.parse(readFileSync(file, 'utf8')) as { questions: Candidate[] };
   const groups: Candidate[][] = [];
-  for (const q of questions) {
+  for (const q of secondOpinion ? questions.filter((c) => c.review.ok) : questions) {
     const last = groups[groups.length - 1];
     if (last && last.length < QUESTION_COUNT && last[0].topic === q.topic && last[0].level === q.level) last.push(q);
     else groups.push([q]);
@@ -73,7 +76,7 @@ async function recheck(language: Language) {
   await pool(
     groups.map((group) => async () => {
       const reviews = await checkGame(group, language, group[0].level);
-      group.forEach((q, i) => (q.review = reviews[i]));
+      group.forEach((q, i) => (q.review = secondOpinion && reviews[i].ok ? q.review : reviews[i]));
       if (++done % 10 === 0) console.log(`${language}: rechecked ${done}/${groups.length} groups`);
     }),
     CONCURRENCY,
@@ -92,7 +95,7 @@ async function main() {
   mkdirSync(OUT_DIR, { recursive: true });
   for (const language of LANGS) {
     if (process.argv.includes('--recheck')) {
-      await recheck(language);
+      await recheck(language, process.argv.includes('--second-opinion'));
       continue;
     }
     const bank = (JSON.parse(readFileSync(bankPath(language), 'utf8')) as { questions: BankQuestion[] }).questions;

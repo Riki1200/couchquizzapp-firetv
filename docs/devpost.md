@@ -14,7 +14,7 @@ Game night at home breaks down at the controller: one person plays, everyone els
 - **The finale:** a podium with confetti and an award for every player ("Fastest Finger", "Comeback Kid"…), based on real game stats. **Rematch** keeps everyone in the room for another round on the same topic with fresh questions.
 - **Families, not just players:** play in **two teams** (red vs. blue, balanced automatically), and every finished game adds to the **family scores** kept per TV — who has the most wins this month?
 - **Everyone can pick the topic:** players **suggest topics from their phones** and the TV plays one with a click; or press **"Surprise me"** for three AI ideas — no typing with the remote.
-- **The AI host (Amazon Bedrock):** writes 10 questions and a one-liner per answer for any custom topic, and the end-of-game awards. A **second model fact-checks** every AI game before it is played and swaps out anything wrong or ambiguous. Preset topics play instantly from a built-in, hand-written bank of 150 questions (plus 150 in Spanish) that doesn't repeat games you already finished.
+- **The AI host (Amazon Bedrock):** writes 10 questions and a one-liner per answer for any custom topic, and the end-of-game awards. A **second model fact-checks** every AI game before it is played and swaps out anything wrong or ambiguous. Preset topics play instantly from a built-in bank of about 1,450 questions in English and Spanish that doesn't repeat games you already finished — 300 written by hand, the rest written by AI and kept only after two fact-checking models and a human review agreed.
 - **Polish:** English and Spanish (TV, phones and questions), 5 or 10 questions per game, original synthesized music and sound effects, saved settings, automatic reconnection for phones that drop off Wi-Fi.
 
 ## How we built it
@@ -30,6 +30,7 @@ Game night at home breaks down at the controller: one person plays, everyone els
 - **Audio on Vega:** `AudioPlayer` silently refused `http://` sources (an empty "not supported" error, no request ever made) and never replayed a sound once it had ended — so the game "went quiet" after round one. We serve sounds over HTTPS and use a fresh, preloaded player per effect.
 - **Native WebSocket quirks:** a URL without a path before the query string never connected on Vega, while browsers accepted it.
 - **The TV keyboard:** Select types the highlighted key instead of confirming, so we redesigned the custom-topic screen around closing the keyboard with Back.
+- **AI trivia is confidently wrong more often than you'd think:** about 1 in 10 generated questions had a wrong answer, a myth ("hippo milk is pink") or two defensible answers. A second model catches many but not all — even questions approved by two different checker models still needed a human pass. Live games use a writer + an independent checker with spare questions; the built-in bank adds a manual review on top.
 - **Fairness on a shared screen:** phones receive each question only after the TV's intro, so nobody answers before seeing it on the TV; answers are timed by the server, not by phone clocks.
 - All of these (13 entries) are documented with steps and suggestions in our friction log.
 

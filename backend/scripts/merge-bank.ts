@@ -24,7 +24,8 @@ let added = 0;
 for (const c of candidates) {
   if (!(c.review?.ok || c.approved) || seen.has(c.text.toLowerCase())) continue;
   const n = bank.questions.filter((q) => q.topic === c.topic && q.level === c.level).length + 1;
-  const { topic, level, text, choices, correctIndex, quip } = c;
+  const { topic, level, text, correctIndex, quip } = c;
+  const choices = c.choices.map((x) => x.replace(/^[A-D][.)]\s+/, '')) as BankQuestion['choices'];
   bank.questions.push({ id: `${topic.toLowerCase()}-${level}-${String(n).padStart(2, '0')}`, topic, level, text, choices, correctIndex, quip });
   seen.add(text.toLowerCase());
   added++;

@@ -1,24 +1,27 @@
 # Demo video script (3 minutes)
 
-**Story:** a family of four on the couch plays a round of "Space" in Kids mode. Everyone uses their own phone; the TV runs in the Vega Virtual Device.
+**Story:** a family of four on the couch. The TV (Vega Virtual Device) runs Couch Quiz against the AWS backend; everyone joins from their own phone. Round 1 is a preset topic in two teams; round 2 is a topic one of the kids suggests from their phone, written and fact-checked by the AI host.
 
 **Setup before recording**
-- `yarn play` (server, phone page, web TV) and the Vega app in the VVD (see README → "On the Vega Virtual Device").
-- 1 real phone + 3 browser windows in mobile size (Chrome DevTools device mode), each in a separate profile or incognito window so they count as different players.
-- Screen layout: VVD large on the left, the phones in a column on the right. System audio recorded (lobby music and effects).
-- Start in the Setup screen with no topic selected.
+- AWS backend deployed (`cd infra && yarn deploy`); the Vega app in the VVD (README → "On the Vega Virtual Device"; it uses the AWS backend by default). Nothing needs to run on your machine besides the VVD.
+- 2 real phones + 2 browser windows in mobile size (Chrome DevTools device mode, each in its own incognito window or profile so they count as different players). The QR link works on Wi-Fi or mobile data.
+- On the TV: **Settings → Questions per game: 5, Teams: 2 teams**. Start on the Setup screen with no topic selected.
+- Play one short game before recording, so the family scores table is not empty.
+- Screen layout: VVD large on the left, the phones in a column on the right. Record the TV audio (lobby music and effects).
 
 | Time | On screen | Voice-over |
 |---|---|---|
-| 0:00–0:15 | Title card: Couch Quiz logo over the lobby screen | "Game night, but nobody wants to pass a controller around. Couch Quiz turns your Fire TV into a game show — and every phone in the room into a buzzer." |
-| 0:15–0:40 | Remote in hand: pick **Space** → focus jumps to difficulty → **Kids** → Create room. Show the yellow focus ring vs. the purple "selected" state. | "Everything on the TV works with the D-pad. Pick a topic — or type your own — choose a difficulty, and create a room." |
-| 0:40–1:05 | Lobby: QR code and room code. Real phone scans it; name "Mia" + 🦊; the avatar pops onto the TV with the join sound. The other three join from the browser windows. Lobby music playing. | "No app to install: scan the code, pick a name and an avatar, and you're on the TV." |
-| 1:05–1:50 | Start game. Question on the TV, four colored buttons on the phones. Two players answer fast, one slow; "locked in" avatars appear on the TV. Reveal: correct answer highlighted, the host's quip, points per player. Play two questions. | "Faster right answers score more. In Kids mode there's no timer pressure. After every answer, the AI host drops a one-liner." |
-| 1:50–2:10 | Disconnect one phone (turn on airplane mode for 5 s); its avatar dims on the TV; it comes back with the same score. | "Phones drop off Wi-Fi all the time. Couch Quiz reconnects them automatically, score intact." |
-| 2:10–2:35 | Skip to the last question (the rest of the round, sped up). Podium with medals and the AI awards ("Fastest Finger", "Comeback Kid"…). Fanfare. | "At the end: a podium, and an award for every player — the host celebrates everyone, not just the winner." |
-| 2:35–3:00 | Architecture diagram from the README: Vega app + phones → API Gateway (HTTP + WebSocket) → Lambda → DynamoDB and Amazon Bedrock; the HTTP API also serves the phone page. | "Under the hood: React Native for Vega on the TV, and a serverless AWS backend — API Gateway WebSockets, Lambda, DynamoDB, and Amazon Bedrock as the AI host. Couch Quiz: the whole family, one screen, zero controllers." |
+| 0:00–0:12 | Title card: Couch Quiz logo over the lobby screen. | "Game night, but nobody wants to pass a controller around. Couch Quiz turns your Fire TV into a game show — and every phone in the room into a buzzer." |
+| 0:12–0:30 | Remote in hand: **Space** → focus jumps to difficulty → **Easy** → Create room. Show the yellow focus ring vs. the purple "selected" check. | "Everything on the TV works with the D-pad: pick a topic, a difficulty, and create a room." |
+| 0:30–0:55 | Lobby: QR code and room code. A real phone scans it: name "Mia" + 🦊 — the avatar pops onto the TV with a red team ring, and the phone says "You're on the 🔴 Red team". The others join; teams balance automatically. | "No app to install: scan, pick a name and an avatar. Tonight it's red team against blue team." |
+| 0:55–1:30 | Start game. Question on the TV, four colored buttons on the phones; avatars light up as players lock in; "Everyone answered!". Reveal: the correct answer, the host's quip, points, and the **team bars** next to the leaderboard. Play two questions, then speed up to the end. | "Faster right answers score more, and the last question is worth double. After every answer the AI host drops a one-liner." |
+| 1:30–1:50 | Podium: "🔴 Red team wins!", medals, confetti, an AI award for every player. Press **🏆 Family scores**: the table of wins and points kept on this TV. Back. | "At the end, a podium, a winning team and an award for everyone — and the family table remembers who's ahead this month." |
+| 1:50–2:25 | Press **New topic** → back in the lobby with everyone still in. On a phone, type **"Volcanoes"** in "Suggest a topic" → it appears on the TV → select it with the remote. Status: "The AI host wrote 5 questions about Volcanoes and a second AI fact-checked them". Show one AI-written question and its reveal. | "Anyone can pick the topic from their phone. The AI host on Amazon Bedrock writes a fresh game in seconds — and a second model fact-checks every question before you play it." |
+| 2:25–2:35 | Quick cut: Custom topic screen → the three **"Surprise me"** ideas, picked with the D-pad. | "No ideas? Ask the host — no typing with the remote." |
+| 2:35–3:00 | Architecture diagram from the README: Vega app + phones → API Gateway (HTTP + WebSocket) → Lambda → DynamoDB and Amazon Bedrock (writer + fact-checker); the HTTP API also serves the phone page. | "Under the hood: React Native for Vega on the TV, and a serverless AWS backend — API Gateway WebSockets, Lambda, DynamoDB, and two models on Amazon Bedrock. Couch Quiz: the whole family, one screen, zero controllers." |
 
 **Tips**
 - Keep the remote presses visible (overlay a small D-pad graphic or call them out) — the 10-foot UI is part of the judging.
 - Record the TV audio; the music and the lock-in sounds make the game feel alive.
-- If Bedrock is enabled by recording time, use a custom topic for one round (e.g. "Our family trip to the beach") to show AI-written questions; otherwise the preset topics come from the built-in question bank.
+- To show reconnection, turn on airplane mode on one phone for 5 s during the lobby: its avatar dims and comes back with the same name and score.
+- A custom topic takes about 6–10 s to write and check; start it while the players are still joining, or cut the wait in editing.

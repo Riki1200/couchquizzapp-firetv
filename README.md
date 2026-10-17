@@ -6,9 +6,11 @@ An AI-hosted family trivia game for Fire TV (Vega OS). The TV is the game board,
 
 | Setup (D-pad) | Lobby (QR join) | Question |
 |---|---|---|
-| ![Setup screen: topic and difficulty tiles with a yellow focus ring](docs/images/tv-setup.png) | ![Lobby: QR code, room code and the players who joined](docs/images/tv-lobby.png) | ![Question with countdown and answer tiles](docs/images/tv-question.png) |
+| ![Setup screen: topic and difficulty tiles with a yellow focus ring](docs/images/tv-setup.png) | ![Lobby: QR code, room code, players in two teams and a topic suggested from a phone](docs/images/tv-lobby.png) | ![Question with countdown and answer tiles](docs/images/tv-question.png) |
 | **Reveal** | **Podium** | **Phones** |
-| ![Reveal: correct answer, host quip, streak badges and leaderboard](docs/images/tv-reveal.png) | ![Podium with confetti and awards](docs/images/tv-podium.png) | <img src="docs/images/phone-join.png" width="31%" alt="Phone: join with name and avatar"> <img src="docs/images/phone-answer.png" width="31%" alt="Phone: four answer buttons"> <img src="docs/images/phone-result.png" width="31%" alt="Phone: correct answer with streak"> |
+| ![Reveal: correct answer, host quip, streak badges, team totals and leaderboard](docs/images/tv-reveal.png) | ![Podium with the winning team, confetti, awards and the Rematch button](docs/images/tv-podium.png) | <img src="docs/images/phone-join.png" width="31%" alt="Phone: join with name and avatar"> <img src="docs/images/phone-answer.png" width="31%" alt="Phone: four answer buttons"> <img src="docs/images/phone-result.png" width="31%" alt="Phone: correct answer with streak"> |
+| **"Surprise me" ideas** | **Family scores** | **Phone in the lobby** |
+| ![Custom topic screen with three AI topic ideas picked with the D-pad](docs/images/tv-ideas.png) | ![Family scores table: wins, games, points and best game per person](docs/images/tv-family.png) | <img src="docs/images/phone-lobby.png" width="45%" alt="Phone: team badge and Suggest a topic form"> |
 
 ## How a game works
 
@@ -24,7 +26,7 @@ Phones that lose the connection rejoin automatically with their name and score.
 
 **Family scores.** Every finished game adds to a family table kept per TV (wins, games, points and best game per person, matched by name), stored in DynamoDB under a random family id the TV creates on first run. Open it from Setup (🏆 Family) or the podium.
 
-**Question bank.** [`question-bank.json`](packages/protocol/src/question-bank.json) holds 150 questions (5 topics × easy/medium/hard × 10, each with a host quip; Kids mode uses the easy ones), and [`question-bank.es.json`](packages/protocol/src/question-bank.es.json) 150 more in Spanish. Questions of a **completed** game (one that reached the podium) are not served again for that topic and level; an abandoned game can come back. When a topic is used up, the AI host writes a fresh game (or, without AI, a new cycle starts). To grow the bank, `yarn workspace @couch-quiz/backend expand-bank` writes new games with Bedrock (Mistral Large 3, told to avoid the questions already in the bank) and has a second model (Qwen3 235B) fact-check every question. Nothing is added directly: the candidates land in `bank-review/` with a `review.<lang>.md` that lists flagged questions first; after reviewing, `yarn workspace @couch-quiz/backend merge-bank --lang en` adds the ones that passed (and any flagged ones you marked `"approved": true`).
+**Question bank.** [`question-bank.json`](packages/protocol/src/question-bank.json) holds 747 questions (5 topics × easy/medium/hard, at least 30 per topic and level, each with a host quip; Kids mode uses the easy ones — about 74 ten-question games), and [`question-bank.es.json`](packages/protocol/src/question-bank.es.json) 710 in Spanish (about 71 games). 150 per language were written by hand; the rest were written by AI and kept only after **two fact-checking models and a manual review** agreed (see below). Questions of a **completed** game (one that reached the podium) are not served again for that topic and level; an abandoned game can come back. When a topic is used up, the AI host writes a fresh game (or, without AI, a new cycle starts). To grow the bank, `yarn workspace @couch-quiz/backend expand-bank` writes new games with Bedrock (Mistral Large 3, told to avoid the questions already in the bank) and has a second model (Qwen3 235B) fact-check every question; `expand-bank --recheck --second-opinion` (with `CHECKER_MODEL=deepseek.v3.1`) asks a third model about the ones that passed. Nothing is added directly: the candidates land in `bank-review/` with a `review.<lang>.md` that lists flagged questions first; after reviewing, `yarn workspace @couch-quiz/backend merge-bank --lang en` adds the ones that passed (and any flagged ones you marked `"approved": true`). In our run, 1,625 candidates → 1,352 passed both checkers → 1,157 kept after the manual review (wrong facts, myths, questions with two defensible answers and alcohol-related questions were dropped).
 
 **Settings.** From the Setup screen (⚙): language (English or Spanish — applies to the TV, the phones, the question bank and the AI host), questions per game (5 or 10), teams (off or 2 teams), sound effects and music on/off. Settings are saved on the TV (AsyncStorage on Vega, localStorage on web).
 
@@ -132,6 +134,13 @@ vega run-app apps/vega/build/aarch64-debug/vega_aarch64.vpkg com.romeodev.couchq
 ```
 
 Use the `x86_64` package on Intel Macs.
+
+For a standalone build (no Metro; this is the one to demo or record), build the release package and install it the same way:
+
+```sh
+yarn build:vega
+vega run-app apps/vega/build/aarch64-release/vega_aarch64.vpkg com.romeodev.couchquiz.main -d VirtualDevice
+```
 
 ## Deploying to AWS
 

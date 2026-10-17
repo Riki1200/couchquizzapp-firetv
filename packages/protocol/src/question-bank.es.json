@@ -2102,6 +2102,7846 @@
    ],
    "correctIndex": 0,
    "quip": "Los incas la llamaban «la madre de todos los granos»."
+  },
+  {
+   "id": "animals-easy-11",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene rayas y vive en la sabana?",
+   "choices": [
+    "Jirafa",
+    "Tigre",
+    "Cebra",
+    "Elefante"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Exacto! La cebra es como un caballo con pijama a rayas."
+  },
+  {
+   "id": "animals-easy-12",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuál de estos animales pone huevos?",
+   "choices": [
+    "Caballo",
+    "Ornitorrinco",
+    "Perro",
+    "Gato"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Así es! El ornitorrinco es mitad pato, mitad mamífero… ¡y 100% curioso!"
+  },
+  {
+   "id": "animals-easy-13",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuál de estos animales vive en el agua y en la tierra?",
+   "choices": [
+    "Tiburón",
+    "Medusa",
+    "Pulpo",
+    "Cocodrilo"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Bien! El cocodrilo es el rey de dos mundos: agua y tierra."
+  },
+  {
+   "id": "animals-easy-14",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene ocho brazos?",
+   "choices": [
+    "Langosta",
+    "Araña",
+    "Pulpo",
+    "Cangrejo"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Correcto! El pulpo podría ser el mejor octo-mano del océano."
+  },
+  {
+   "id": "animals-easy-15",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuál de estos animales hiberna en invierno?",
+   "choices": [
+    "Ciervo",
+    "Oso",
+    "Conejo",
+    "Zorro"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Bien! El oso se toma un sueño largo… ¡como unas vacaciones de nieve!"
+  },
+  {
+   "id": "animals-easy-16",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene una trompa larga?",
+   "choices": [
+    "Jirafa",
+    "Hipopótamo",
+    "Elefante",
+    "Rinoceronte"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Exacto! Con esa trompa hasta podría tocar la trompeta, pero prefiere ducharse con agua."
+  },
+  {
+   "id": "animals-easy-17",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal maúlla?",
+   "choices": [
+    "Vaca",
+    "Gato",
+    "Perro",
+    "Pato"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Correcto! Aunque a veces parece que está cantando ópera a las 3 a.m."
+  },
+  {
+   "id": "animals-easy-18",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal construye presas con ramas?",
+   "choices": [
+    "Castor",
+    "Zorro",
+    "Oso",
+    "Mono"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Sí! Los castores son los ingenieros de la naturaleza, ¡y no necesitan martillo!"
+  },
+  {
+   "id": "animals-easy-19",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal es conocido por su lana?",
+   "choices": [
+    "Vaca",
+    "Oveja",
+    "Cabra",
+    "Cerdo"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Bien! Aunque después de un corte de pelo, se ven un poco desnudas."
+  },
+  {
+   "id": "animals-easy-20",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal salta muy alto y vive en Australia?",
+   "choices": [
+    "Ornitorrinco",
+    "Emu",
+    "Koala",
+    "Canguro"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Correcto! Si tuvieran carrera, ¡ganarían todas las medallas de salto!"
+  },
+  {
+   "id": "animals-easy-21",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene plumas y canta por la mañana?",
+   "choices": [
+    "Pato",
+    "Gallina",
+    "Pavo",
+    "Gallo"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Sí! Es el despertador natural más ruidoso del mundo."
+  },
+  {
+   "id": "animals-easy-22",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal vive en el hielo y es blanco?",
+   "choices": [
+    "Foca",
+    "Morsa",
+    "Pingüino",
+    "Oso polar"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Correcto! Y si se baña mucho, podría confundirse con un muñeco de nieve."
+  },
+  {
+   "id": "animals-easy-23",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal dice 'guau'?",
+   "choices": [
+    "Pájaro",
+    "Perro",
+    "Caballo",
+    "Gato"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Bien! Aunque algunos hablan tanto que parecen un discurso político."
+  },
+  {
+   "id": "animals-easy-24",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal es el rey de la selva?",
+   "choices": [
+    "Oso",
+    "León",
+    "Elefante",
+    "Tigre"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Y también el más elegante con su melena!"
+  },
+  {
+   "id": "animals-easy-25",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene un cuello muy largo?",
+   "choices": [
+    "Rinoceronte",
+    "Jirafa",
+    "Hipopótamo",
+    "Cebra"
+   ],
+   "correctIndex": 1,
+   "quip": "Perfecto para alcanzar las hojas más altas, como un columpio natural."
+  },
+  {
+   "id": "animals-easy-26",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal ladra?",
+   "choices": [
+    "Perro",
+    "Gato",
+    "Conejo",
+    "Loro"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y también es el mejor amigo del humano!"
+  },
+  {
+   "id": "animals-easy-27",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal hace 'oink'?",
+   "choices": [
+    "Caballo",
+    "Vaca",
+    "Oveja",
+    "Cerdo"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y es experto en revolcarse en el lodo!"
+  },
+  {
+   "id": "animals-easy-28",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene rayas negras y blancas y vive en China?",
+   "choices": [
+    "Tigre",
+    "Cebra",
+    "Oso polar",
+    "Panda gigante"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y además le encanta comer bambú sin parar!"
+  },
+  {
+   "id": "animals-easy-29",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal es conocido por llevar su casa a cuestas?",
+   "choices": [
+    "Caracol",
+    "Conejo",
+    "Mariposa",
+    "Caballo"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Siempre de mudanza, pero nunca se va del todo!"
+  },
+  {
+   "id": "animals-easy-30",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuál de estos animales es un reptil?",
+   "choices": [
+    "Rana",
+    "Tortuga",
+    "Pingüino",
+    "Murciélago"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Lleva su escudo incorporado desde hace millones de años!"
+  },
+  {
+   "id": "animals-easy-31",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuál de estos animales es un anfibio?",
+   "choices": [
+    "Tiburón",
+    "Salamandra",
+    "Serpiente",
+    "Aguila"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Vive entre dos mundos, como un aventurero acuático!"
+  },
+  {
+   "id": "animals-easy-32",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene la capacidad de regenerar su cola?",
+   "choices": [
+    "Lagartija",
+    "Rata",
+    "Erizo",
+    "Cocodrilo"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Si la pierde, no hay problema, le vuelve a crecer!"
+  },
+  {
+   "id": "animals-easy-33",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Cuál de estos animales es un roedor?",
+   "choices": [
+    "Ardilla",
+    "Conejo",
+    "Perro",
+    "Gato"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y guarda nueces como si fueran tesoros secretos!"
+  },
+  {
+   "id": "animals-easy-34",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene rayas y es pariente del caballo?",
+   "choices": [
+    "Jirafa",
+    "Cebra",
+    "Tigre",
+    "Búfalo"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Exacto! La cebra es el 'caballo a rayas' de la sabana."
+  },
+  {
+   "id": "animals-easy-35",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal es conocido por comer bambú?",
+   "choices": [
+    "Panda",
+    "Koala",
+    "Oso polar",
+    "Tigre"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Correcto! El panda no puede resistirse a un buen banquete de bambú."
+  },
+  {
+   "id": "animals-easy-36",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal es el único mamífero que vuela?",
+   "choices": [
+    "Águila",
+    "Colibrí",
+    "Mariposa",
+    "Murciélago"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Así es! Los murciélagos son los únicos mamíferos con alas de verdad."
+  },
+  {
+   "id": "animals-easy-37",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal es conocido como el 'rey de la selva'?",
+   "choices": [
+    "Elefante",
+    "Rinoceronte",
+    "León",
+    "Tigre"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Bien! Aunque en realidad vive en la sabana, el león es el rey."
+  },
+  {
+   "id": "animals-easy-38",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal puede vivir más de 100 años?",
+   "choices": [
+    "Tortuga gigante",
+    "Cocodrilo",
+    "Ballena azul",
+    "Perro"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Exacto! Algunas tortugas gigantes viven más que los humanos."
+  },
+  {
+   "id": "animals-easy-39",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene una joroba para almacenar grasa?",
+   "choices": [
+    "Búfalo",
+    "Reno",
+    "Caballo",
+    "Camello"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Correcto! El camello usa su joroba como despensa para sobrevivir en el desierto."
+  },
+  {
+   "id": "animals-easy-40",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal es famoso por hacer 'spins' en el agua?",
+   "choices": [
+    "Ballena",
+    "Pingüino",
+    "Tiburón",
+    "Delfín"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Bien! Los delfines hacen piruetas como verdaderos acróbatas marinos."
+  },
+  {
+   "id": "animals-easy-41",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal da saltos de hasta 3 metros de altura?",
+   "choices": [
+    "Rana",
+    "Caballo",
+    "Conejo",
+    "Canguro"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y sin necesidad de trampolín! Saltan como campeones olímpicos."
+  },
+  {
+   "id": "animals-easy-42",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene una cola que puede agarrarse a las ramas?",
+   "choices": [
+    "Koala",
+    "Mono araña",
+    "Oso perezoso",
+    "Ardilla"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Es como tener un quinto brazo! Perfecto para colgarse en la selva."
+  },
+  {
+   "id": "animals-easy-43",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene rayas y vive en África?",
+   "choices": [
+    "León",
+    "Jirafa",
+    "Cebra",
+    "Tigre"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Su pijama a rayas es el más elegante de la sabana!"
+  },
+  {
+   "id": "animals-easy-44",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal es famoso por nadar sobre su espalda?",
+   "choices": [
+    "Nutria",
+    "Tiburón",
+    "Delfín",
+    "Foca"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Hasta en el agua toma el sol como si estuviera en la playa!"
+  },
+  {
+   "id": "animals-easy-45",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal tiene un pelaje que cambia con las estaciones?",
+   "choices": [
+    "Liebre ártica",
+    "Pingüino",
+    "Oso polar",
+    "Lobo"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Blanca en invierno y marrón en verano! Es la reina del camuflaje."
+  },
+  {
+   "id": "animals-easy-46",
+   "topic": "Animals",
+   "level": "easy",
+   "text": "¿Qué animal construye nidos con barro y saliva?",
+   "choices": [
+    "Golondrina",
+    "Colibrí",
+    "Águila",
+    "Loro"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Su casa es una obra de arte con materiales reciclados! Arquitectura natural."
+  },
+  {
+   "id": "animals-hard-11",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal marino produce el sonido más fuerte registrado?",
+   "choices": [
+    "Ballena azul",
+    "Tiburón ballena",
+    "Delfín nariz de botella",
+    "Cachalote"
+   ],
+   "correctIndex": 3,
+   "quip": "El cachalote hace 'clics' tan potentes que podrían romper tímpanos humanos... ¡mejor no invitarlo a karaoke!"
+  },
+  {
+   "id": "animals-hard-12",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal puede cambiar de sexo durante su vida?",
+   "choices": [
+    "Salmón",
+    "Caballito de mar",
+    "Tortuga marina",
+    "Pez payaso"
+   ],
+   "correctIndex": 3,
+   "quip": "El pez payaso hace magia: hoy señor, mañana señora, ¡y nadie habla de cirugía!"
+  },
+  {
+   "id": "animals-hard-13",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál es el único mamífero capaz de volar activamente?",
+   "choices": [
+    "Petauro del azúcar",
+    "Ardilla voladora",
+    "Colugo",
+    "Murciélago"
+   ],
+   "correctIndex": 3,
+   "quip": "Los murciélagos son los únicos mamíferos con alas de verdad... ¡y no necesitan pasaporte!"
+  },
+  {
+   "id": "animals-hard-14",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál de estos animales puede reconocer su reflejo en un espejo?",
+   "choices": [
+    "Perro",
+    "Delfín",
+    "Cocodrilo",
+    "Gato"
+   ],
+   "correctIndex": 1,
+   "quip": "Los delfines se miran al espejo y dicen: '¡Qué guapo soy!'... ¡y tienen razón!"
+  },
+  {
+   "id": "animals-hard-15",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál de estos animales tiene dientes en el estómago?",
+   "choices": [
+    "Caracol de agua dulce",
+    "Langosta",
+    "Tiburón",
+    "Esturión"
+   ],
+   "correctIndex": 1,
+   "quip": "La langosta mastica su comida dos veces: ¡una con los dientes y otra con el estómago!"
+  },
+  {
+   "id": "animals-hard-16",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal puede correr sobre el agua sin hundirse?",
+   "choices": [
+    "Cocodrilo",
+    "Basilisco",
+    "Guepardo",
+    "Pato"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El basilisco es el único que hace honor a su nombre de 'lagarto Jesús'!"
+  },
+  {
+   "id": "animals-hard-17",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál es el único felino que no puede retraer sus garras?",
+   "choices": [
+    "Tigre",
+    "León",
+    "Guepardo",
+    "Leopardo"
+   ],
+   "correctIndex": 2,
+   "quip": "El guepardo las necesita siempre listas para acelerar como un rayo."
+  },
+  {
+   "id": "animals-hard-18",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal puede vivir sin cabeza durante semanas?",
+   "choices": [
+    "Cucaracha",
+    "Hormiga",
+    "Araña",
+    "Ciempiés"
+   ],
+   "correctIndex": 0,
+   "quip": "La cucaracha respira por pequeños agujeros en su cuerpo, ¡incluso sin cabeza!"
+  },
+  {
+   "id": "animals-hard-19",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal puede saltar hasta 50 veces su altura?",
+   "choices": [
+    "Saltamontes",
+    "Rana arborícola",
+    "Pulga",
+    "Canguro"
+   ],
+   "correctIndex": 2,
+   "quip": "Las pulgas serían campeonas olímpicas si existiera esa categoría."
+  },
+  {
+   "id": "animals-hard-20",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál de estos animales puede regenerar su cola?",
+   "choices": [
+    "Gecko",
+    "Lagartija",
+    "Salamandra",
+    "Todos"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Parece que a estos animales les encanta el reciclaje extremo!"
+  },
+  {
+   "id": "animals-hard-21",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal puede sobrevivir sin agua durante años?",
+   "choices": [
+    "Serpiente de cascabel",
+    "Camello",
+    "Rata canguro",
+    "Tardígrado"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El tardígrado es el campeón de la resistencia!"
+  },
+  {
+   "id": "animals-hard-22",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal puede vivir hasta 500 años?",
+   "choices": [
+    "Ballena azul",
+    "Pez koi",
+    "Tiburón de Groenlandia",
+    "Tortuga gigante"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Este tiburón es más viejo que muchos países!"
+  },
+  {
+   "id": "animals-hard-23",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal marino usa sus brazos para saborear lo que toca?",
+   "choices": [
+    "Tiburón ballena",
+    "Estrella de mar",
+    "Medusa",
+    "Pulpo"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El pulpo es el chef del océano: prueba con los brazos antes de comer!"
+  },
+  {
+   "id": "animals-hard-24",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál de estos animales duerme con un ojo abierto?",
+   "choices": [
+    "Koala",
+    "Búho",
+    "Delfín",
+    "Murciélago"
+   ],
+   "correctIndex": 2,
+   "quip": "El delfín hace multitasking: duerme y vigila al mismo tiempo."
+  },
+  {
+   "id": "animals-hard-25",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál de estos animales tiene dientes en la garganta?",
+   "choices": [
+    "Tiburón martillo",
+    "Morsa",
+    "Cocodrilo",
+    "Pez loro"
+   ],
+   "correctIndex": 3,
+   "quip": "El pez loro tritura su comida dos veces: ¡primero en la boca y luego en la garganta!"
+  },
+  {
+   "id": "animals-hard-26",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál de estos animales puede detectar campos eléctricos débiles?",
+   "choices": [
+    "Canguro",
+    "Águila",
+    "Leon marino",
+    "Ornitorrinco"
+   ],
+   "correctIndex": 3,
+   "quip": "El ornitorrinco es el único detective con pico que resuelve casos… ¡sin moverse!"
+  },
+  {
+   "id": "animals-hard-27",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal puede mover sus ojos en direcciones opuestas al mismo tiempo?",
+   "choices": [
+    "Pez globo",
+    "Camaleón",
+    "Búho",
+    "Mantis religiosa"
+   ],
+   "correctIndex": 1,
+   "quip": "Dos ojos, dos miradas... ¡y un solo cerebro para descifrarlas!"
+  },
+  {
+   "id": "animals-hard-28",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál de estos animales tiene un órgano llamado 'espiráculo'?",
+   "choices": [
+    "Serpiente cascabel",
+    "Pulpo",
+    "Rana toro",
+    "Tiburón"
+   ],
+   "correctIndex": 3,
+   "quip": "El espiráculo: el 'aire acondicionado' de los tiburones."
+  },
+  {
+   "id": "animals-hard-29",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Cuál de estos animales tiene una cola prensil?",
+   "choices": [
+    "Perezoso",
+    "Canguro",
+    "Mono araña",
+    "Koala"
+   ],
+   "correctIndex": 2,
+   "quip": "La cola prensil: el quinto brazo de los monos araña."
+  },
+  {
+   "id": "animals-hard-30",
+   "topic": "Animals",
+   "level": "hard",
+   "text": "¿Qué animal puede vivir sin beber agua en toda su vida?",
+   "choices": [
+    "Rata canguro",
+    "Escorpión del desierto",
+    "Camello",
+    "Suricata"
+   ],
+   "correctIndex": 0,
+   "quip": "La rata canguro extrae agua de su comida: ¡magia bioquímica!"
+  },
+  {
+   "id": "animals-medium-11",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal duerme la mayor parte del día?",
+   "choices": [
+    "Jirafa",
+    "Elefante",
+    "Canguro",
+    "Koala"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El koala es el campeón del sueño, hasta 20 horas al día! ¡Mejor que cualquier siesta!"
+  },
+  {
+   "id": "animals-medium-12",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales NO es un roedor?",
+   "choices": [
+    "Conejo",
+    "Ratón",
+    "Ardilla",
+    "Hamster"
+   ],
+   "correctIndex": 0,
+   "quip": "El conejo prefiere saltar a roer, aunque a veces confunda las dos cosas."
+  },
+  {
+   "id": "animals-medium-13",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal usa su cola como un quinto miembro?",
+   "choices": [
+    "Mono araña",
+    "Canguro",
+    "Zorro",
+    "Castor"
+   ],
+   "correctIndex": 0,
+   "quip": "El mono araña tiene cola de superhéroe, ¡hasta para colgarse!"
+  },
+  {
+   "id": "animals-medium-14",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal puede girar su cabeza casi 270 grados?",
+   "choices": [
+    "Búho",
+    "Colibrí",
+    "Pelícano",
+    "Cuervo"
+   ],
+   "correctIndex": 0,
+   "quip": "El búho tiene el cuello de gimnasta, ¡casi da la vuelta completa!"
+  },
+  {
+   "id": "animals-medium-15",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales NO es ovíparo?",
+   "choices": [
+    "Murciélago",
+    "Pingüino",
+    "Ornitorrinco",
+    "Equidna"
+   ],
+   "correctIndex": 0,
+   "quip": "El murciélago prefiere nacer volando, no desde un huevo."
+  },
+  {
+   "id": "animals-medium-16",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales puede cambiar de sexo?",
+   "choices": [
+    "Delfín",
+    "Pez payaso",
+    "Tiburón blanco",
+    "Pulpo"
+   ],
+   "correctIndex": 1,
+   "quip": "El pez payaso hace magia: si la hembra falta, ¡un macho toma su lugar!"
+  },
+  {
+   "id": "animals-medium-17",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales hiberna durante el invierno?",
+   "choices": [
+    "Elefante",
+    "Murciélago",
+    "Pingüino",
+    "Delfín"
+   ],
+   "correctIndex": 1,
+   "quip": "Los murciélagos prefieren soñar con mosquitos en lugar de cazarlos en invierno."
+  },
+  {
+   "id": "animals-medium-18",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal puede regenerar partes de su cuerpo?",
+   "choices": [
+    "Tortuga",
+    "Avestruz",
+    "Canguro",
+    "Estrella de mar"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Las estrellas de mar son las reinas del 'recorta y pega' natural!"
+  },
+  {
+   "id": "animals-medium-19",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal tiene el embarazo más largo?",
+   "choices": [
+    "Ballena azul",
+    "Elefante",
+    "Rinoceronte",
+    "Jirafa"
+   ],
+   "correctIndex": 1,
+   "quip": "Los elefantes esperan casi dos años... ¡como un embarazo en cámara lenta!"
+  },
+  {
+   "id": "animals-medium-20",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales respira por branquias?",
+   "choices": [
+    "Morsa",
+    "Pingüino",
+    "Foca",
+    "Tiburón"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Los tiburones no necesitan snorkel, llevan sus branquias de serie!"
+  },
+  {
+   "id": "animals-medium-21",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales es herbívoro?",
+   "choices": [
+    "León",
+    "Vaca",
+    "Oso polar",
+    "Cocodrilo"
+   ],
+   "correctIndex": 1,
+   "quip": "Las vacas son las únicas que prefieren la ensalada al filete."
+  },
+  {
+   "id": "animals-medium-22",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal construye presas en los ríos?",
+   "choices": [
+    "Castor",
+    "Cisne",
+    "Pato",
+    "Nutria"
+   ],
+   "correctIndex": 0,
+   "quip": "Los castores son los ingenieros hidráulicos del reino animal."
+  },
+  {
+   "id": "animals-medium-23",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales es un invertebrado?",
+   "choices": [
+    "Canguro",
+    "Pingüino",
+    "Medusa",
+    "Salmón"
+   ],
+   "correctIndex": 2,
+   "quip": "Las medusas flotan sin huesos... ¡como un globo de agua viviente!"
+  },
+  {
+   "id": "animals-medium-24",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal puede vivir sin cabeza por semanas?",
+   "choices": [
+    "Grillo",
+    "Hormiga",
+    "Cucaracha",
+    "Araña"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Las cucarachas son las campeonas de la supervivencia extrema!"
+  },
+  {
+   "id": "animals-medium-25",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal tiene la capacidad de caminar sobre el agua?",
+   "choices": [
+    "Pato",
+    "Rana toro",
+    "Castor",
+    "Lagartija basilisco"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Parece que tomó clases de Jesús!"
+  },
+  {
+   "id": "animals-medium-26",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales es el más ruidoso del mundo?",
+   "choices": [
+    "Mono aullador",
+    "Elefante",
+    "León",
+    "Ballena azul"
+   ],
+   "correctIndex": 3,
+   "quip": "Su canto se escucha a más de 800 km de distancia."
+  },
+  {
+   "id": "animals-medium-27",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales NO es un marsupial?",
+   "choices": [
+    "Koala",
+    "Erizo",
+    "Canguro",
+    "Wombat"
+   ],
+   "correctIndex": 1,
+   "quip": "El erizo prefirió su propia bolsa... ¡de espinas!"
+  },
+  {
+   "id": "animals-medium-28",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal puede saltar hasta 50 veces su propia altura?",
+   "choices": [
+    "Canguro",
+    "Rana",
+    "Pulga",
+    "Saltamontes"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Si los humanos saltáramos así, llegaríamos al techo!"
+  },
+  {
+   "id": "animals-medium-29",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales es el más rápido en tierra?",
+   "choices": [
+    "León",
+    "Avestruz",
+    "Ñu",
+    "Guepardo"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El guepardo corre tan rápido que casi gana una medalla olímpica!"
+  },
+  {
+   "id": "animals-medium-30",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales vive en colonias llamadas 'guarderías'?",
+   "choices": [
+    "Abejas",
+    "Pingüinos",
+    "Hormigas",
+    "Lobos"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Los pingüinos son los reyes del trabajo en equipo, como una gran familia!"
+  },
+  {
+   "id": "animals-medium-31",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Qué animal puede caminar sobre el agua gracias a sus patas largas?",
+   "choices": [
+    "Mosquito",
+    "Zapatero",
+    "Libélula",
+    "Rana"
+   ],
+   "correctIndex": 1,
+   "quip": "El zapatero parece un patinador sobre hielo, pero en charcos."
+  },
+  {
+   "id": "animals-medium-32",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales es conocido por su 'canto' bajo el agua?",
+   "choices": [
+    "Ballena jorobada",
+    "Delfín",
+    "Pulpo",
+    "Tiburón"
+   ],
+   "correctIndex": 0,
+   "quip": "Las ballenas jorobadas tienen el karaoke más impresionante del océano."
+  },
+  {
+   "id": "animals-medium-33",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales puede ver colores que los humanos no?",
+   "choices": [
+    "Perro",
+    "Caballo",
+    "Gato",
+    "Mariposa"
+   ],
+   "correctIndex": 3,
+   "quip": "Las mariposas ven un arcoíris que nosotros ni imaginamos."
+  },
+  {
+   "id": "animals-medium-34",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales puede vivir en agua dulce y salada?",
+   "choices": [
+    "Medusa",
+    "Salmón",
+    "Tiburón blanco",
+    "Pulpo"
+   ],
+   "correctIndex": 1,
+   "quip": "El salmón es como un viajero que no necesita pasaporte para cambiar de océano."
+  },
+  {
+   "id": "animals-medium-35",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales pone huevos pero no es un ave?",
+   "choices": [
+    "Ornitorrinco",
+    "Pinguino",
+    "Murciélago",
+    "Koala"
+   ],
+   "correctIndex": 0,
+   "quip": "El ornitorrinco es el único mamífero con superpoderes: ¡pone huevos y tiene pico!"
+  },
+  {
+   "id": "animals-medium-36",
+   "topic": "Animals",
+   "level": "medium",
+   "text": "¿Cuál de estos animales tiene una joroba para almacenar grasa?",
+   "choices": [
+    "Elefante",
+    "Camello",
+    "Bisonte",
+    "Rinoceronte"
+   ],
+   "correctIndex": 1,
+   "quip": "El camello guarda su merienda en la joroba, ¡como un refrigerador del desierto!"
+  },
+  {
+   "id": "dinosaurs-easy-11",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuál de estos dinosaurios era herbívoro?",
+   "choices": [
+    "Triceratops",
+    "Velociraptor",
+    "Spinosaurus",
+    "Tyrannosaurus rex"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El Triceratops era el jardinero prehistórico, comiendo hojas todo el día!"
+  },
+  {
+   "id": "dinosaurs-easy-12",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía una gran vela en la espalda?",
+   "choices": [
+    "Brachiosaurus",
+    "Ankylosaurus",
+    "Spinosaurus",
+    "Stegosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "El Spinosaurus usaba su vela como un abanico… ¡pero no para el calor!"
+  },
+  {
+   "id": "dinosaurs-easy-13",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía un pico como el de un pato?",
+   "choices": [
+    "Allosaurus",
+    "Pteranodon",
+    "Carnotaurus",
+    "Edmontosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "El Edmontosaurus usaba su pico para cortar plantas, ¡como una tijera prehistórica!"
+  },
+  {
+   "id": "dinosaurs-easy-14",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuál de estos dinosaurios es conocido por ser muy rápido?",
+   "choices": [
+    "Ankylosaurus",
+    "Gallimimus",
+    "Triceratops",
+    "Brachiosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "El Gallimimus corría como un avestruz… ¡pero sin plumas!"
+  },
+  {
+   "id": "dinosaurs-easy-15",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía placas óseas redondas en todo el cuerpo?",
+   "choices": [
+    "Stegosaurus",
+    "Ankylosaurus",
+    "Velociraptor",
+    "Parasaurolophus"
+   ],
+   "correctIndex": 1,
+   "quip": "El Ankylosaurus era como un tanque con patas… ¡y sin cañón!"
+  },
+  {
+   "id": "dinosaurs-easy-16",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuál de estos dinosaurios era carnívoro?",
+   "choices": [
+    "Pachycephalosaurus",
+    "Allosaurus",
+    "Apatosaurus",
+    "Styracosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "El Allosaurus era el cazador estrella de su época… ¡como un león prehistórico!"
+  },
+  {
+   "id": "dinosaurs-easy-17",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía una cresta en forma de tubo en la cabeza?",
+   "choices": [
+    "Pterodactylus",
+    "Parasaurolophus",
+    "Triceratops",
+    "Tyrannosaurus rex"
+   ],
+   "correctIndex": 1,
+   "quip": "El Parasaurolophus tocaba su cresta como un trompetista… ¡pero sin música!"
+  },
+  {
+   "id": "dinosaurs-easy-18",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuál de estos dinosaurios vivió en el período Jurásico?",
+   "choices": [
+    "Triceratops",
+    "Stegosaurus",
+    "Tyrannosaurus rex",
+    "Velociraptor"
+   ],
+   "correctIndex": 1,
+   "quip": "El Stegosaurus fue uno de los primeros influencers del Jurásico… ¡con sus placas!"
+  },
+  {
+   "id": "dinosaurs-easy-19",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio era el más grande que ha existido?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Argentinosaurus",
+    "Brachiosaurus",
+    "Spinosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "El Argentinosaurus era tan grande que ¡hasta su sombra daba miedo!"
+  },
+  {
+   "id": "dinosaurs-easy-20",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía dientes afilados y brazos muy pequeños?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Brachiosaurus",
+    "Triceratops",
+    "Stegosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Parece que su entrenador de gimnasio no le insistió lo suficiente con los brazos!"
+  },
+  {
+   "id": "dinosaurs-easy-21",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio usaba su cola con púas como arma?",
+   "choices": [
+    "Diplodocus",
+    "Velociraptor",
+    "Stegosaurus",
+    "Ankylosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Nadie se atrevía a molestarlo con esa cola de «no molestar»!"
+  },
+  {
+   "id": "dinosaurs-easy-22",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía un cuello tan largo que podía comer de las copas de los árboles?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Allosaurus",
+    "Brachiosaurus",
+    "Compsognathus"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Con ese cuello, no necesitaba escalera para llegar a los mejores banquetes!"
+  },
+  {
+   "id": "dinosaurs-easy-23",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía un cuerpo cubierto de plumas?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Velociraptor",
+    "Pteranodon",
+    "Triceratops"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Hasta los dinosaurios tenían días de mal pelo… o plumas!"
+  },
+  {
+   "id": "dinosaurs-easy-24",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio se parecía a un avestruz gigante?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Gallimimus",
+    "Stegosaurus",
+    "Ankylosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Corría tan rápido que hasta olvidaba que no podía volar!"
+  },
+  {
+   "id": "dinosaurs-easy-25",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía una gran cresta en la cabeza?",
+   "choices": [
+    "Carnotaurus",
+    "Brachiosaurus",
+    "Allosaurus",
+    "Parasaurolophus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Con esa cresta, era el rey de los peinados prehistóricos!"
+  },
+  {
+   "id": "dinosaurs-easy-26",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía garras en forma de hoz?",
+   "choices": [
+    "Stegosaurus",
+    "Deinonychus",
+    "Brachiosaurus",
+    "Ankylosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "Con esas garras, ¡hasta cortaba el cupón de la prehistoria!"
+  },
+  {
+   "id": "dinosaurs-easy-27",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuántos dedos tenía el Tyrannosaurus rex en cada mano?",
+   "choices": [
+    "Tres",
+    "Cuatro",
+    "Dos",
+    "Cinco"
+   ],
+   "correctIndex": 2,
+   "quip": "Con dos dedos no escribía cartas, pero sí agarraba la cena."
+  },
+  {
+   "id": "dinosaurs-easy-28",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio era pariente cercano de las aves actuales?",
+   "choices": [
+    "Pteranodon",
+    "Spinosaurus",
+    "Archaeopteryx",
+    "Diplodocus"
+   ],
+   "correctIndex": 2,
+   "quip": "El abuelo con plumas que nunca usó corbata."
+  },
+  {
+   "id": "dinosaurs-easy-29",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía una cola con forma de garrote?",
+   "choices": [
+    "Ankylosaurus",
+    "Allosaurus",
+    "Carnotaurus",
+    "Giganotosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "Su cola era el bate oficial del equipo prehistórico."
+  },
+  {
+   "id": "dinosaurs-easy-30",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía un cerebro del tamaño de una nuez?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Stegosaurus",
+    "Velociraptor",
+    "Apatosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "Pero su corazón era tan grande como su placa dorsal."
+  },
+  {
+   "id": "dinosaurs-easy-31",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio medía aproximadamente el tamaño de un pollo?",
+   "choices": [
+    "Brachiosaurus",
+    "Stegosaurus",
+    "Triceratops",
+    "Compsognathus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Así que el más pequeño de la fiesta era del tamaño de tu cena!"
+  },
+  {
+   "id": "dinosaurs-easy-32",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿En qué era geológica vivieron los dinosaurios?",
+   "choices": [
+    "Precámbrica",
+    "Mesozoica",
+    "Paleozoica",
+    "Cenozoica"
+   ],
+   "correctIndex": 1,
+   "quip": "¡La era mesozoica fue el 'boom' inmobiliario de los dinosaurios!"
+  },
+  {
+   "id": "dinosaurs-easy-33",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía un pico similar al de un loro?",
+   "choices": [
+    "Ankylosaurus",
+    "Velociraptor",
+    "Psittacosaurus",
+    "Parasaurolophus"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Sí, este dinosaurio podría haber pedido un biscuit en el veterinario!"
+  },
+  {
+   "id": "dinosaurs-easy-34",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuál de estos dinosaurios era conocido por su velocidad?",
+   "choices": [
+    "Diplodocus",
+    "Gallimimus",
+    "Spinosaurus",
+    "Apatosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Corría tan rápido que podía escaparse de su propia sombra!"
+  },
+  {
+   "id": "dinosaurs-easy-35",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio es famoso por su largo cuello y cola?",
+   "choices": [
+    "Brontosaurus",
+    "Allosaurus",
+    "Tyrannosaurus rex",
+    "Pteranodon"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Este cuello podría ser la envidia de cualquier jirafa!"
+  },
+  {
+   "id": "dinosaurs-easy-36",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuál de estos no era un dinosaurio, sino un reptil marino?",
+   "choices": [
+    "Plesiosaurus",
+    "Stegosaurus",
+    "Triceratops",
+    "Raptor"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Este amigo nadaba más que caminaba!"
+  },
+  {
+   "id": "dinosaurs-easy-37",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía una gran cresta hueca en la cabeza?",
+   "choices": [
+    "Carnotaurus",
+    "Parasaurolophus",
+    "Tyrannosaurus rex",
+    "Styracosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Con esa cresta, podría haber dado los conciertos más épicos!"
+  },
+  {
+   "id": "dinosaurs-easy-38",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía espinas largas y delgadas en su cola?",
+   "choices": [
+    "Velociraptor",
+    "Stegosaurus",
+    "Triceratops",
+    "Spinosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Este dinosaurio sabía defenderse como nadie con su 'cola-arma'!"
+  },
+  {
+   "id": "dinosaurs-easy-39",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio del período Cretácico es conocido por sus plumas?",
+   "choices": [
+    "Brachiosaurus",
+    "Allosaurus",
+    "Yutyrannus",
+    "Tyrannosaurus rex"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Un dinosaurio con estilo, abrigado como un pingüino!"
+  },
+  {
+   "id": "dinosaurs-easy-40",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿En qué período vivió el Brachiosaurus?",
+   "choices": [
+    "Triásico",
+    "Cretácico",
+    "Jurásico",
+    "Paleógeno"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Un gigante que disfrutaba del sol del Jurásico, como en una postal prehistórica!"
+  },
+  {
+   "id": "dinosaurs-easy-41",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía un nombre que significa «ladrón veloz»?",
+   "choices": [
+    "Pteranodon",
+    "Tyrannosaurus",
+    "Diplodocus",
+    "Velociraptor"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y vaya que cumplía con su nombre! Corría más rápido que algunos atletas hoy."
+  },
+  {
+   "id": "dinosaurs-easy-42",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía una cabeza con forma de domo?",
+   "choices": [
+    "Allosaurus",
+    "Spinosaurus",
+    "Parasaurolophus",
+    "Pachycephalosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Como si llevara un casco de fútbol prehistórico! Perfecto para cabezazos."
+  },
+  {
+   "id": "dinosaurs-easy-43",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuál de estos dinosaurios era más pequeño que un humano?",
+   "choices": [
+    "Brontosaurus",
+    "Diplodocus",
+    "Compsognathus",
+    "Tyrannosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Tan pequeño que cabría en una mochila! Aunque no lo recomiendo."
+  },
+  {
+   "id": "dinosaurs-easy-44",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía espinas en su lomo que parecían velas?",
+   "choices": [
+    "Spinosaurus",
+    "Carnotaurus",
+    "Iguanodon",
+    "Styracosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Una vela gigante para navegar por los ríos prehistóricos!"
+  },
+  {
+   "id": "dinosaurs-easy-45",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía garras enormes en forma de hoz?",
+   "choices": [
+    "Tyrannosaurus",
+    "Ankylosaurus",
+    "Velociraptor",
+    "Brachiosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "El Velociraptor usaba sus garras como navajas... ¡pero no para cortar el césped!"
+  },
+  {
+   "id": "dinosaurs-easy-46",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuál de estos dinosaurios era el más pequeño?",
+   "choices": [
+    "Tyrannosaurus",
+    "Brontosaurus",
+    "Compsognathus",
+    "Stegosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "El Compsognathus era tan chiquito que cabría en tu mochila... ¡si no tuviera dientes!"
+  },
+  {
+   "id": "dinosaurs-easy-47",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía un cerebro muy pequeño en comparación con su cuerpo?",
+   "choices": [
+    "Stegosaurus",
+    "Troodon",
+    "Pteranodon",
+    "Velociraptor"
+   ],
+   "correctIndex": 0,
+   "quip": "El Stegosaurus llevaba su cerebro en modo 'ahorro de espacio', ¡como un teléfono antiguo!"
+  },
+  {
+   "id": "dinosaurs-easy-48",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio era un depredador con plumas?",
+   "choices": [
+    "Ankylosaurus",
+    "Yutyrannus",
+    "Triceratops",
+    "Tyrannosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "El Yutyrannus tenía plumas... ¡pero no por eso era menos temible!"
+  },
+  {
+   "id": "dinosaurs-easy-49",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Cuál de estos dinosaurios no era herbívoro?",
+   "choices": [
+    "Triceratops",
+    "Stegosaurus",
+    "Spinosaurus",
+    "Brontosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "El Spinosaurus prefería pescado... ¡y no compartía su almuerzo!"
+  },
+  {
+   "id": "dinosaurs-easy-50",
+   "topic": "Dinosaurs",
+   "level": "easy",
+   "text": "¿Qué dinosaurio tenía un pico parecido al de un loro?",
+   "choices": [
+    "Tyrannosaurus",
+    "Psittacosaurus",
+    "Allosaurus",
+    "Giganotosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "El Psittacosaurus tenía un pico de loro... ¡pero no repetía lo que decías!"
+  },
+  {
+   "id": "dinosaurs-hard-11",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué período vivió el Triceratops?",
+   "choices": [
+    "Triásico",
+    "Pérmico",
+    "Cretácico",
+    "Jurásico"
+   ],
+   "correctIndex": 2,
+   "quip": "El Triceratops era el rey del Cretácico, ¡con estilo!"
+  },
+  {
+   "id": "dinosaurs-hard-12",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio tenía una vela dorsal grande en su lomo?",
+   "choices": [
+    "Tyrannosaurus",
+    "Spinosaurus",
+    "Brachiosaurus",
+    "Stegosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El Spinosaurus usaba su vela para navegar en modo fashion!"
+  },
+  {
+   "id": "dinosaurs-hard-13",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Cuál de estos dinosaurios es el más antiguo conocido?",
+   "choices": [
+    "Brontosaurus",
+    "Eoraptor",
+    "Triceratops",
+    "Tyrannosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "El Eoraptor llegó primero, ¡como un pionero!"
+  },
+  {
+   "id": "dinosaurs-hard-14",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué continente NO se han encontrado fósiles de dinosaurios?",
+   "choices": [
+    "África",
+    "Antártida",
+    "Europa",
+    "Ninguno, están en todos"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Los dinosaurios dejaron su huella en cada rincón del planeta!"
+  },
+  {
+   "id": "dinosaurs-hard-15",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio tenía tres cuernos grandes en la cara?",
+   "choices": [
+    "Stegosaurus",
+    "Ankylosaurus",
+    "Triceratops",
+    "Velociraptor"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Tres cuernos para gobernarlos a todos! Bueno, al menos para defenderse."
+  },
+  {
+   "id": "dinosaurs-hard-16",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio era conocido por su cuello extremadamente largo?",
+   "choices": [
+    "Parasaurolophus",
+    "Tyrannosaurus rex",
+    "Mamenchisaurus",
+    "Allosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "Con ese cuello, seguro que llegaba a las ramas más altas del menú."
+  },
+  {
+   "id": "dinosaurs-hard-17",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio tenía placas óseas en su lomo y púas en su cola?",
+   "choices": [
+    "Stegosaurus",
+    "Iguanodon",
+    "Pachycephalosaurus",
+    "Ankylosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "Placas en el lomo y moda prehistórica, todo en uno."
+  },
+  {
+   "id": "dinosaurs-hard-18",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Cuál dinosaurio tenía una mordida tan poderosa que podía triturar huesos?",
+   "choices": [
+    "Gallimimus",
+    "Tyrannosaurus rex",
+    "Compsognathus",
+    "Velociraptor"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Una mordida que hasta los huesos decían 'ouch'!"
+  },
+  {
+   "id": "dinosaurs-hard-19",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio tenía un cerebro del tamaño de una nuez pero pesaba 5 toneladas?",
+   "choices": [
+    "Triceratops",
+    "Ankylosaurus",
+    "Brachiosaurus",
+    "Stegosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Parece que su cerebro era más pequeño que su apetito por las plantas!"
+  },
+  {
+   "id": "dinosaurs-hard-20",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué período apareció el Archaeopteryx, considerado un eslabón entre dinosaurios y aves?",
+   "choices": [
+    "Jurásico",
+    "Cretácico",
+    "Triásico",
+    "Pérmico"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Un verdadero pájaro prehistórico con estilo jurásico!"
+  },
+  {
+   "id": "dinosaurs-hard-21",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Cuál de estos dinosaurios era un terópodo carnívoro pequeño y veloz?",
+   "choices": [
+    "Tyrannosaurus",
+    "Allosaurus",
+    "Velociraptor",
+    "Gallimimus"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Más rápido que un corredor olímpico, pero con dientes afilados!"
+  },
+  {
+   "id": "dinosaurs-hard-22",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio tenía un cuello tan largo que alcanzaba los 15 metros?",
+   "choices": [
+    "Argentinosaurus",
+    "Mamenchisaurus",
+    "Brachiosaurus",
+    "Apatosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Con ese cuello, podía alcanzar las hojas más altas del árbol!"
+  },
+  {
+   "id": "dinosaurs-hard-23",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué continente se encontró el primer fósil de Carnotaurus?",
+   "choices": [
+    "Europa",
+    "América del Sur",
+    "África",
+    "Asia"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Un toro con cuernos que recorrió las tierras sudamericanas!"
+  },
+  {
+   "id": "dinosaurs-hard-24",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Cuál de estos dinosaurios tenía brazos tan cortos que casi no le servían?",
+   "choices": [
+    "Triceratops",
+    "Stegosaurus",
+    "Tyrannosaurus rex",
+    "Brachiosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Parece que el T. rex quería ser un influencer de brazos cortos, pero se quedó en leyenda!"
+  },
+  {
+   "id": "dinosaurs-hard-25",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio tenía el nombre que significa 'lagarto tirano emplumado'?",
+   "choices": [
+    "Allosaurus",
+    "Velociraptor",
+    "Spinosaurus",
+    "Yutyrannus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y pensar que este gigante peludo nos hizo replantearnos todo sobre los tiranosaurios!"
+  },
+  {
+   "id": "dinosaurs-hard-26",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio herbívoro tenía una fila de placas óseas en forma de abanico en su lomo?",
+   "choices": [
+    "Ankylosaurus",
+    "Stegosaurus",
+    "Parasaurolophus",
+    "Diplodocus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Sus placas eran tan únicas que parecían un diseño de moda prehistórico!"
+  },
+  {
+   "id": "dinosaurs-hard-27",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué período vivió el dinosaurio Argentinosaurus?",
+   "choices": [
+    "Triásico",
+    "Cretácico",
+    "Devónico",
+    "Jurásico"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El Cretácico fue la época dorada para los gigantes, literalmente!"
+  },
+  {
+   "id": "dinosaurs-hard-28",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Cuál de estos dinosaurios NO era un saurópodo?",
+   "choices": [
+    "Apatosaurus",
+    "Carnotaurus",
+    "Diplodocus",
+    "Brachiosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El Carnotaurus prefirió ser el terror de los carnívoros antes que un gigante pacífico!"
+  },
+  {
+   "id": "dinosaurs-hard-29",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué continente se encontraron fósiles del dinosaurio Therizinosaurus?",
+   "choices": [
+    "África",
+    "Europa",
+    "Asia",
+    "América del Sur"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Asia guardaba este misterio con garras de hasta un metro de largo!"
+  },
+  {
+   "id": "dinosaurs-hard-30",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué período vivió el Spinosaurus, el mayor dinosaurio carnívoro?",
+   "choices": [
+    "Cretácico",
+    "Triásico",
+    "Jurásico",
+    "Pérmico"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El Cretácico fue la época de los nadadores… y de los que se ahogaban en tierra!"
+  },
+  {
+   "id": "dinosaurs-hard-31",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio tenía patas traseras tan largas que corría en dos piernas?",
+   "choices": [
+    "Gallimimus",
+    "Sauropelta",
+    "Edmontonia",
+    "Iguanodon"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El Gallimimus corría tan rápido que hasta se le olvidaba bajar las alas!"
+  },
+  {
+   "id": "dinosaurs-hard-32",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué continente se encontraron fósiles del Saltasaurus, un saurópodo acorazado?",
+   "choices": [
+    "Europa",
+    "América del Sur",
+    "Asia",
+    "África"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El Saltasaurus demostró que en Sudamérica hasta los gigantes llevaban armadura!"
+  },
+  {
+   "id": "dinosaurs-hard-33",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué período vivió el Stegosaurus?",
+   "choices": [
+    "Triásico",
+    "Jurásico",
+    "Paleógeno",
+    "Cretácico"
+   ],
+   "correctIndex": 1,
+   "quip": "El Stegosaurus se paseaba en el Jurásico como si fuera su jardín."
+  },
+  {
+   "id": "dinosaurs-hard-34",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio tenía el tamaño aproximado de un pavo?",
+   "choices": [
+    "Oviraptor",
+    "Velociraptor",
+    "Gallimimus",
+    "Compsognathus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El Compsognathus era el pavo del Jurásico, pero sin relleno!"
+  },
+  {
+   "id": "dinosaurs-hard-35",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio es conocido por tener una garra gigante en forma de guadaña?",
+   "choices": [
+    "Deinonychus",
+    "Baryonyx",
+    "Allosaurus",
+    "Therizinosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "El Therizinosaurus cortaba vegetación como si fuera un chef con un sable."
+  },
+  {
+   "id": "dinosaurs-hard-36",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Cuál de estos dinosaurios era un anquilosaurio?",
+   "choices": [
+    "Styracosaurus",
+    "Ankylosaurus",
+    "Parasaurolophus",
+    "Carnotaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "El Ankylosaurus era el tanque blindado del Cretácico."
+  },
+  {
+   "id": "dinosaurs-hard-37",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿En qué continente se encontró el fósil de Australovenator?",
+   "choices": [
+    "América del Sur",
+    "Antártida",
+    "África",
+    "Australia"
+   ],
+   "correctIndex": 3,
+   "quip": "El Australovenator cazaba en Australia antes que los canguros."
+  },
+  {
+   "id": "dinosaurs-hard-38",
+   "topic": "Dinosaurs",
+   "level": "hard",
+   "text": "¿Qué dinosaurio es considerado el más inteligente?",
+   "choices": [
+    "Brachiosaurus",
+    "Triceratops",
+    "Troodon",
+    "Stegosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "El Troodon era el Einstein de los dinosaurios."
+  },
+  {
+   "id": "dinosaurs-medium-11",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía un pico parecido al de un pato?",
+   "choices": [
+    "Allosaurus",
+    "Stegosaurus",
+    "Brachiosaurus",
+    "Edmontosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y no solo el pico! También era un experto en comer hojas sin parar."
+  },
+  {
+   "id": "dinosaurs-medium-12",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios NO era carnívoro?",
+   "choices": [
+    "Velociraptor",
+    "Spinosaurus",
+    "Giganotosaurus",
+    "Ankylosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Este armadillo gigante prefería las ensaladas a los filetes!"
+  },
+  {
+   "id": "dinosaurs-medium-13",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía plumas como las de un ave?",
+   "choices": [
+    "Microraptor",
+    "Triceratops",
+    "Tyrannosaurus rex",
+    "Diplodocus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Imagínate un dinosaurio planeando entre los árboles como un pájaro!"
+  },
+  {
+   "id": "dinosaurs-medium-14",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál era la función más probable de la cresta del Parasaurolophus?",
+   "choices": [
+    "Respirar bajo el agua",
+    "Almacenar comida",
+    "Atraer parejas",
+    "Defenderse de depredadores"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Era su megáfono prehistórico para conquistar corazones!"
+  },
+  {
+   "id": "dinosaurs-medium-15",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía el cerebro más grande en proporción a su cuerpo?",
+   "choices": [
+    "Brachiosaurus",
+    "Tyrannosaurus rex",
+    "Stegosaurus",
+    "Troodon"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Tan listo que casi inventa el sudoku antes que nosotros!"
+  },
+  {
+   "id": "dinosaurs-medium-16",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cómo se reproducían los dinosaurios?",
+   "choices": [
+    "Ponían huevos",
+    "Daban a luz crías vivas",
+    "Se dividían en dos",
+    "Nacían de plantas"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y algunos nidos eran tan grandes como una piscina inflable!"
+  },
+  {
+   "id": "dinosaurs-medium-17",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio es conocido como el 'lagarto con tejado'?",
+   "choices": [
+    "Pteranodon",
+    "Iguanodon",
+    "Stegosaurus",
+    "Ankylosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Sus placas eran el techo más original del Jurásico!"
+  },
+  {
+   "id": "dinosaurs-medium-18",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios vivió en el período Triásico?",
+   "choices": [
+    "Triceratops",
+    "Tyrannosaurus rex",
+    "Apatosaurus",
+    "Coelophysis"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Era rápido, pequeño y listo para comenzar la era de los dinosaurios!"
+  },
+  {
+   "id": "dinosaurs-medium-19",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía una garra en forma de hoz en cada pata?",
+   "choices": [
+    "Deinonychus",
+    "Baryonyx",
+    "Pachycephalosaurus",
+    "Carnotaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Era su navaja suiza del Cretácico para cazar con precisión!"
+  },
+  {
+   "id": "dinosaurs-medium-20",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios tenía placas óseas en la espalda?",
+   "choices": [
+    "Allosaurus",
+    "Diplodocus",
+    "Stegosaurus",
+    "Pteranodon"
+   ],
+   "correctIndex": 2,
+   "quip": "¡El Stegosaurus llevaba su propio juego de platos... óseos!"
+  },
+  {
+   "id": "dinosaurs-medium-21",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía el cuello más largo en proporción a su cuerpo?",
+   "choices": [
+    "Apatosaurus",
+    "Saltasaurus",
+    "Brachiosaurus",
+    "Mamenchisaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El Mamenchisaurus estiraba el cuello como nadie!"
+  },
+  {
+   "id": "dinosaurs-medium-22",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios vivió durante el período Jurásico?",
+   "choices": [
+    "Styracosaurus",
+    "Dilophosaurus",
+    "Tyrannosaurus rex",
+    "Corythosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El Dilophosaurus era el rey del Jurásico... antes de los reyes!"
+  },
+  {
+   "id": "dinosaurs-medium-23",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía brazos tan cortos que casi no le servían?",
+   "choices": [
+    "Stegosaurus",
+    "Triceratops",
+    "Brachiosaurus",
+    "Tyrannosaurus rex"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Parece que el T-Rex hacía dieta de brazos... pero no le funcionó!"
+  },
+  {
+   "id": "dinosaurs-medium-24",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios era bípedo, es decir, caminaba en dos patas?",
+   "choices": [
+    "Stegosaurus",
+    "Gallimimus",
+    "Ankylosaurus",
+    "Diplodocus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Corría tan rápido que parecía un avestruz con armadura!"
+  },
+  {
+   "id": "dinosaurs-medium-25",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía una cabeza con forma de cúpula ósea?",
+   "choices": [
+    "Iguanodon",
+    "Spinosaurus",
+    "Allosaurus",
+    "Pachycephalosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Su cabeza era tan dura que hasta podía jugar al fútbol con ella!"
+  },
+  {
+   "id": "dinosaurs-medium-26",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía el nombre que significa 'lagarto de tres cuernos'?",
+   "choices": [
+    "Pentaceratops",
+    "Protoceratops",
+    "Triceratops",
+    "Styracosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Tres cuernos y actitud de superestrella!"
+  },
+  {
+   "id": "dinosaurs-medium-27",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio es conocido por tener una fila de espinas en la espalda?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Spinosaurus",
+    "Brachiosaurus",
+    "Ankylosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Parecía un velero... pero con dientes afilados!"
+  },
+  {
+   "id": "dinosaurs-medium-28",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía una cola con púas afiladas para defenderse?",
+   "choices": [
+    "Giganotosaurus",
+    "Stegosaurus",
+    "Diplodocus",
+    "Tyrannosaurus rex"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Su cola era como un látigo con navajas!"
+  },
+  {
+   "id": "dinosaurs-medium-29",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios vivió más cerca de la época actual?",
+   "choices": [
+    "Triceratops",
+    "Plateosaurus",
+    "Apatosaurus",
+    "Allosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Casi pudo conocer a los primeros humanos... pero no hubo suerte!"
+  },
+  {
+   "id": "dinosaurs-medium-30",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía el cerebro más pequeño en relación a su tamaño?",
+   "choices": [
+    "Tyrannosaurus rex",
+    "Brachiosaurus",
+    "Velociraptor",
+    "Stegosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Su cerebro era del tamaño de una nuez... pero su cuerpo, enorme!"
+  },
+  {
+   "id": "dinosaurs-medium-31",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía un nombre que significa 'ladrón rápido'?",
+   "choices": [
+    "Ankylosaurus",
+    "Brachiosaurus",
+    "Stegosaurus",
+    "Velociraptor"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y vaya que vivía a la velocidad de un rayo en el Cretácico!"
+  },
+  {
+   "id": "dinosaurs-medium-32",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios NO tenía cuernos?",
+   "choices": [
+    "Pentaceratops",
+    "Styracosaurus",
+    "Diplodocus",
+    "Triceratops"
+   ],
+   "correctIndex": 2,
+   "quip": "Aunque su cuello largo era su mejor accesorio, ¡no necesitaba cuernos!"
+  },
+  {
+   "id": "dinosaurs-medium-33",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio es famoso por tener una fila de placas óseas en la espalda?",
+   "choices": [
+    "Stegosaurus",
+    "Tyrannosaurus",
+    "Allosaurus",
+    "Spinosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y esas placas no eran solo para decoración, sino para impresionar!"
+  },
+  {
+   "id": "dinosaurs-medium-34",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿En qué continente se han encontrado fósiles de dinosaurios?",
+   "choices": [
+    "En todos los continentes",
+    "Solo en Europa y Oceanía",
+    "Solo en América",
+    "Solo en África y Asia"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Hasta en la Antártida dejaron huellas estos gigantes!"
+  },
+  {
+   "id": "dinosaurs-medium-35",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía un nombre que significa 'lagarto espinoso'?",
+   "choices": [
+    "Baryonyx",
+    "Ankylosaurus",
+    "Stegosaurus",
+    "Spinosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y vaya que esas espinas lo hacían parecer aún más temible!"
+  },
+  {
+   "id": "dinosaurs-medium-36",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios caminaba en cuatro patas?",
+   "choices": [
+    "Tyrannosaurus",
+    "Deinonychus",
+    "Velociraptor",
+    "Brachiosaurus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Con ese cuello, necesitaba cuatro patas para mantener el equilibrio!"
+  },
+  {
+   "id": "dinosaurs-medium-37",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio es conocido por tener una garra grande en forma de hoz?",
+   "choices": [
+    "Utahraptor",
+    "Allosaurus",
+    "Apatosaurus",
+    "Dilophosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Una herramienta perfecta para dar un 'corte' a sus presas!"
+  },
+  {
+   "id": "dinosaurs-medium-38",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios vivió en el período Cretácico?",
+   "choices": [
+    "Triceratops",
+    "Allosaurus",
+    "Plateosaurus",
+    "Diplodocus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El Cretácico fue su época de gloria, junto a los T-Rex!"
+  },
+  {
+   "id": "dinosaurs-medium-39",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía un cuello tan largo que podía alcanzar los árboles altos?",
+   "choices": [
+    "Brachiosaurus",
+    "Ankylosaurus",
+    "Triceratops",
+    "Compsognathus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Con ese cuello, era el 'girafa' del Jurásico!"
+  },
+  {
+   "id": "dinosaurs-medium-40",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio era conocido por su armadura de placas óseas y cola con púas?",
+   "choices": [
+    "Argentinosaurus",
+    "Stegosaurus",
+    "Allosaurus",
+    "Gallimimus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Con esa armadura, era el tanque de su época!"
+  },
+  {
+   "id": "dinosaurs-medium-41",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio era pequeño, rápido y cazaba en grupo?",
+   "choices": [
+    "Apatosaurus",
+    "Deinonychus",
+    "Pterodáctilo",
+    "Brontosaurus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Este pequeño era el líder de la manada de cazadores!"
+  },
+  {
+   "id": "dinosaurs-medium-42",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía un nombre que significa 'lagarto de doble viga'?",
+   "choices": [
+    "Tyrannosaurus",
+    "Carnotaurus",
+    "Styracosaurus",
+    "Diplodocus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y las vigas eran sus enormes huesos de la espalda!"
+  },
+  {
+   "id": "dinosaurs-medium-43",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía dientes afilados en forma de sierra para cortar carne?",
+   "choices": [
+    "Brachiosaurus",
+    "Allosaurus",
+    "Maiasaura",
+    "Triceratops"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Con esos dientes, cortaba la carne como un cuchillo caliente!"
+  },
+  {
+   "id": "dinosaurs-medium-44",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio era conocido por tener un cuello extremadamente largo?",
+   "choices": [
+    "Diplodocus",
+    "Stegosaurus",
+    "Tyrannosaurus",
+    "Triceratops"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Con ese cuello, podía desayunar en las copas de los árboles sin moverse!"
+  },
+  {
+   "id": "dinosaurs-medium-45",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios NO ponía huevos?",
+   "choices": [
+    "Todos ponían huevos",
+    "Oviraptor",
+    "Brachiosaurus",
+    "Maiasaura"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Hasta los más feroces empezaron como un huevito!"
+  },
+  {
+   "id": "dinosaurs-medium-46",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía una cabeza con forma de pico de loro?",
+   "choices": [
+    "Psittacosaurus",
+    "Ankylosaurus",
+    "Pteranodon",
+    "Allosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y pensar que no podía repetir lo que escuchaba!"
+  },
+  {
+   "id": "dinosaurs-medium-47",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿En qué período vivió el Allosaurus?",
+   "choices": [
+    "Jurásico",
+    "Cretácico",
+    "Triásico",
+    "Paleógeno"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El rey del Jurásico antes de que llegara el T-Rex!"
+  },
+  {
+   "id": "dinosaurs-medium-48",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía una cola rígida que usaba como arma?",
+   "choices": [
+    "Ankylosaurus",
+    "Spinosaurus",
+    "Velociraptor",
+    "Compsognathus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Un golpe de cola y adiós, depredadores!"
+  },
+  {
+   "id": "dinosaurs-medium-49",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Qué dinosaurio tenía cinco dedos en cada mano?",
+   "choices": [
+    "Styracosaurus",
+    "Carnotaurus",
+    "Iguanodon",
+    "Tyrannosaurus"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Manos perfectas para decir 'cinco' en lenguaje de dinosaurio!"
+  },
+  {
+   "id": "dinosaurs-medium-50",
+   "topic": "Dinosaurs",
+   "level": "medium",
+   "text": "¿Cuál de estos dinosaurios era omnívoro?",
+   "choices": [
+    "Oviraptor",
+    "Tyrannosaurus",
+    "Triceratops",
+    "Giganotosaurus"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Un dinosaurio con paladar aventurero: le gustaba de todo!"
+  },
+  {
+   "id": "food-easy-11",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué especia de color amarillo se usa mucho en la cocina india?",
+   "choices": [
+    "Pimienta",
+    "Pimentón",
+    "Comino",
+    "Cúrcuma"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Con cúrcuma hasta el arroz se viste de fiesta!"
+  },
+  {
+   "id": "food-easy-12",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué tipo de pan se usa tradicionalmente para un sándwich cubano?",
+   "choices": [
+    "Baguette",
+    "Pan cubano",
+    "Ciabatta",
+    "Pan de molde"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El pan cubano es el único que sabe bailar salsa!"
+  },
+  {
+   "id": "food-easy-13",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué tipo de queso se usa en una auténtica pizza margarita?",
+   "choices": [
+    "Gouda",
+    "Cheddar",
+    "Mozzarella",
+    "Parmesano"
+   ],
+   "correctIndex": 2,
+   "quip": "¡La mozzarella es la magia que hace volar la pizza!"
+  },
+  {
+   "id": "food-easy-14",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué grano es la base principal de la dieta de más de la mitad del mundo?",
+   "choices": [
+    "Trigo",
+    "Arroz",
+    "Cebada",
+    "Maíz"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El arroz alimenta más gente que un abrazo grupal!"
+  },
+  {
+   "id": "food-easy-15",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué bebida se hace con hojas de la planta Camellia sinensis?",
+   "choices": [
+    "Mate",
+    "Café",
+    "Chocolate caliente",
+    "Té"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Esa planta es la mamá de todas las tazas de té!"
+  },
+  {
+   "id": "food-easy-16",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué tipo de pasta tiene forma de pequeños tubos?",
+   "choices": [
+    "Lasaña",
+    "Espagueti",
+    "Fusilli",
+    "Macarrones"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Los macarrones son como tubitos de felicidad!"
+  },
+  {
+   "id": "food-easy-17",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es conocida como 'el rey de las frutas'?",
+   "choices": [
+    "Mango",
+    "Piña",
+    "Manzana",
+    "Uva"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y también es el rey de los postres tropicales!"
+  },
+  {
+   "id": "food-easy-18",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se elabora con cacao?",
+   "choices": [
+    "Chocolate",
+    "Pan",
+    "Mermelada",
+    "Queso"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Un dulce que hasta los dioses disfrutarían!"
+  },
+  {
+   "id": "food-easy-19",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué tipo de comida es el gazpacho?",
+   "choices": [
+    "Pastel",
+    "Ensalada",
+    "Sopa fría",
+    "Postre"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Ideal para días calurosos, como un abrazo fresco!"
+  },
+  {
+   "id": "food-easy-20",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta tiene una cáscara dura y agua dulce en su interior?",
+   "choices": [
+    "Durazno",
+    "Coco",
+    "Pera",
+    "Plátano"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Y su agua es como un viaje a la playa!"
+  },
+  {
+   "id": "food-easy-21",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué especia se usa para dar color amarillo al arroz?",
+   "choices": [
+    "Pimienta",
+    "Canela",
+    "Azafrán",
+    "Comino"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Más valioso que el oro en algunas cocinas!"
+  },
+  {
+   "id": "food-easy-22",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se hace con harina, agua y levadura?",
+   "choices": [
+    "Galletas",
+    "Pan",
+    "Pastel",
+    "Tortilla"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El compañero perfecto de casi cualquier comida!"
+  },
+  {
+   "id": "food-easy-23",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es pequeña, roja y crece en racimos?",
+   "choices": [
+    "Cereza",
+    "Piña",
+    "Mango",
+    "Plátano"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Parece que las cerezas son las estrellas de los racimos, como en un concierto familiar!"
+  },
+  {
+   "id": "food-easy-24",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Cuál de estos alimentos es un lácteo?",
+   "choices": [
+    "Arroz",
+    "Aceite",
+    "Queso",
+    "Pan"
+   ],
+   "correctIndex": 2,
+   "quip": "El queso tiene más agujeros que un colador, ¡pero nadie se queja!"
+  },
+  {
+   "id": "food-easy-25",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se hace con trigo molido?",
+   "choices": [
+    "Mantequilla",
+    "Mermelada",
+    "Leche",
+    "Harina"
+   ],
+   "correctIndex": 3,
+   "quip": "Con harina, hasta las manos más torpes pueden hacer magia en la cocina."
+  },
+  {
+   "id": "food-easy-26",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es conocida por ser ácida y amarilla por dentro?",
+   "choices": [
+    "Limón",
+    "Manzana",
+    "Pera",
+    "Melón"
+   ],
+   "correctIndex": 0,
+   "quip": "Si la vida te da limones, ¡haz limonada y brinda por la diversión!"
+  },
+  {
+   "id": "food-easy-27",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se usa para hacer puré?",
+   "choices": [
+    "Zanahoria",
+    "Cebolla",
+    "Papa",
+    "Tomate"
+   ],
+   "correctIndex": 2,
+   "quip": "La papa es tan versátil que hasta se disfraza de puré sin quejarse."
+  },
+  {
+   "id": "food-easy-28",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué especia se usa para dar sabor a los postres de Navidad?",
+   "choices": [
+    "Azafrán",
+    "Comino",
+    "Canela",
+    "Pimienta"
+   ],
+   "correctIndex": 2,
+   "quip": "La canela es como un abrazo cálido en cada bocado navideño."
+  },
+  {
+   "id": "food-easy-29",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es verde por fuera y tiene un hueso grande en el centro?",
+   "choices": [
+    "Sandía",
+    "Uva",
+    "Aguacate",
+    "Kiwi"
+   ],
+   "correctIndex": 2,
+   "quip": "El aguacate es tan cremoso que hasta parece mantequilla verde."
+  },
+  {
+   "id": "food-easy-30",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se hace cociendo frutas con azúcar?",
+   "choices": [
+    "Tortilla",
+    "Sopa",
+    "Ensalada",
+    "Compota"
+   ],
+   "correctIndex": 3,
+   "quip": "La compota es como un abrazo dulce para el paladar."
+  },
+  {
+   "id": "food-easy-31",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué verdura es morada y se usa en ensaladas?",
+   "choices": [
+    "Zanahoria",
+    "Remolacha",
+    "Calabaza",
+    "Pepino"
+   ],
+   "correctIndex": 1,
+   "quip": "La remolacha le da un toque de color a la ensalada, ¡como un arcoíris comestible!"
+  },
+  {
+   "id": "food-easy-32",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué vegetal es conocido por ser muy picante y pequeño?",
+   "choices": [
+    "Zanahoria",
+    "Chile",
+    "Pepino",
+    "Ajo"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Cuidado con el chile, puede darle sabor... y lágrimas a tu comida!"
+  },
+  {
+   "id": "food-easy-33",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se obtiene de la carne de res y se come en rodajas?",
+   "choices": [
+    "Salchicha",
+    "Jamón",
+    "Chorizo",
+    "Bistec"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El bistec es tan popular que hasta tiene su propio día en algunos lugares!"
+  },
+  {
+   "id": "food-easy-34",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es verde, jugosa y contiene mucha vitamina C?",
+   "choices": [
+    "Limón",
+    "Pera",
+    "Kiwi",
+    "Melón"
+   ],
+   "correctIndex": 2,
+   "quip": "¡El kiwi es tan pequeño pero tan poderoso como un superhéroe!"
+  },
+  {
+   "id": "food-easy-35",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se hace con leche cuajada y tiene muchos agujeros?",
+   "choices": [
+    "Mantequilla",
+    "Queso azul",
+    "Queso suizo",
+    "Yogur"
+   ],
+   "correctIndex": 2,
+   "quip": "¡El queso suizo es tan lleno de agujeros que hasta parece un queso con estilo!"
+  },
+  {
+   "id": "food-easy-36",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué verdura es larga, morada y tiene hojas verdes?",
+   "choices": [
+    "Pimiento",
+    "Calabacín",
+    "Zanahoria",
+    "Berenjena"
+   ],
+   "correctIndex": 3,
+   "quip": "¡La berenjena es tan versátil que hasta puede disfrazarse de carne!"
+  },
+  {
+   "id": "food-easy-37",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es roja, jugosa y tiene semillas por fuera?",
+   "choices": [
+    "Uva",
+    "Plátano",
+    "Manzana",
+    "Fresa"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Exacto! Y si la comes con chocolate, ¡doble diversión!"
+  },
+  {
+   "id": "food-easy-38",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Cuál de estos alimentos NO es un lácteo?",
+   "choices": [
+    "Yogur",
+    "Miel",
+    "Queso",
+    "Mantequilla"
+   ],
+   "correctIndex": 1,
+   "quip": "La miel viene de las abejas, ¡no de las vacas!"
+  },
+  {
+   "id": "food-easy-39",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué tipo de pan se hornea para hacer tostadas?",
+   "choices": [
+    "Pan de molde",
+    "Pan de centeno",
+    "Todas son correctas",
+    "Pan integral"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Cualquiera de estos sirve para un buen desayuno!"
+  },
+  {
+   "id": "food-easy-40",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es dulce, amarilla y tiene forma de estrella si la cortas?",
+   "choices": [
+    "Papaya",
+    "Piña",
+    "Mango",
+    "Carambola"
+   ],
+   "correctIndex": 3,
+   "quip": "¡La carambola es la estrella de las frutas!"
+  },
+  {
+   "id": "food-easy-41",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Cuál de estos alimentos es un cereal?",
+   "choices": [
+    "Lentejas",
+    "Garbanzos",
+    "Almendras",
+    "Arroz"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El arroz es el rey de los cereales en muchos platos!"
+  },
+  {
+   "id": "food-easy-42",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué postre se hace con claras de huevo y azúcar?",
+   "choices": [
+    "Tarta de queso",
+    "Gelatina",
+    "Merengue",
+    "Brownie"
+   ],
+   "correctIndex": 2,
+   "quip": "¡El merengue es ligero como una nube dulce!"
+  },
+  {
+   "id": "food-easy-43",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se elabora principalmente con harina, agua y huevo?",
+   "choices": [
+    "Galleta",
+    "Tortilla",
+    "Pasta",
+    "Pan"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Así que la pasta es la reina de la cocina italiana, y de tu plato!"
+  },
+  {
+   "id": "food-easy-44",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es conocida por su piel peluda y su interior dulce y jugoso?",
+   "choices": [
+    "Kiwi",
+    "Piña",
+    "Coco",
+    "Mango"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El kiwi es pequeño por fuera pero gigante en sabor!"
+  },
+  {
+   "id": "food-easy-45",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se obtiene de la caña de azúcar?",
+   "choices": [
+    "Chocolate",
+    "Azúcar",
+    "Vinagre",
+    "Miel"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Dulce como la victoria en este juego!"
+  },
+  {
+   "id": "food-easy-46",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué tipo de carne se usa tradicionalmente en un asado argentino?",
+   "choices": [
+    "Res",
+    "Pescado",
+    "Pollo",
+    "Cerdo"
+   ],
+   "correctIndex": 0,
+   "quip": "¡La carne de res es la estrella del asado, como tú en este quiz!"
+  },
+  {
+   "id": "food-easy-47",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué fruta es roja, pequeña y suele usarse en postres y mermeladas?",
+   "choices": [
+    "Uva",
+    "Fresa",
+    "Manzana",
+    "Pera"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Las fresas son tan dulces como tus respuestas!"
+  },
+  {
+   "id": "food-easy-48",
+   "topic": "Food",
+   "level": "easy",
+   "text": "¿Qué alimento se hace con leche y cuajo?",
+   "choices": [
+    "Queso",
+    "Helado",
+    "Yogur",
+    "Mantequilla"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El queso es el rey de la tabla, como tú en este juego!"
+  },
+  {
+   "id": "food-hard-11",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué fruta tiene la semilla más grande del mundo?",
+   "choices": [
+    "Coco de mar",
+    "Sandía",
+    "Coco",
+    "Mango"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y esa semilla puede pesar hasta 30 kilos! ¡Casi como un niño pequeño!"
+  },
+  {
+   "id": "food-hard-12",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué especia es la más cara del mundo por peso?",
+   "choices": [
+    "Vainilla",
+    "Canela",
+    "Cardamomo",
+    "Azafrán"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Se necesitan unas 150 flores para obtener solo un gramo!"
+  },
+  {
+   "id": "food-hard-13",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué fruta se conoce como 'el rey de las frutas'?",
+   "choices": [
+    "Durian",
+    "Plátano",
+    "Piña",
+    "Manzana"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y su olor es tan único que no deja indiferente a nadie!"
+  },
+  {
+   "id": "food-hard-14",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué líquido se usa para hacer ceviche?",
+   "choices": [
+    "Limón",
+    "Vinagre",
+    "Agua",
+    "Leche"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El limón cocina el pescado sin fuego... ¡magia culinaria!"
+  },
+  {
+   "id": "food-hard-15",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué tipo de queso se usa tradicionalmente en la pizza napolitana?",
+   "choices": [
+    "Feta",
+    "Mozzarella di bufala",
+    "Cheddar",
+    "Gouda"
+   ],
+   "correctIndex": 1,
+   "quip": "¡La mozzarella di bufala es tan cremosa que hasta baila en el horno!"
+  },
+  {
+   "id": "food-hard-16",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué postre se hace con capas de hojaldre y crema?",
+   "choices": [
+    "Tarta de queso",
+    "Flan",
+    "Brownie",
+    "Milhojas"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Milhojas significa 'mil hojas', pero solo necesitas paciencia para disfrutarlo!"
+  },
+  {
+   "id": "food-hard-17",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué tipo de azúcar se encuentra de forma natural en la leche?",
+   "choices": [
+    "Glucosa",
+    "Fructosa",
+    "Lactosa",
+    "Sacarosa"
+   ],
+   "correctIndex": 2,
+   "quip": "Y por eso algunos la llaman 'el dulce blanco que viene en tetrapack'."
+  },
+  {
+   "id": "food-hard-18",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué país es el mayor productor mundial de azafrán?",
+   "choices": [
+    "India",
+    "Irán",
+    "España",
+    "Italia"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Tanto oro rojo que hasta el mapa huele a especia fina!"
+  },
+  {
+   "id": "food-hard-19",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué parte de la planta del cacao se usa para hacer cacao en polvo?",
+   "choices": [
+    "Flores",
+    "Semillas",
+    "Cáscara",
+    "Raíces"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Las mismas semillas que en México llamaban 'dinero de los dioses'!"
+  },
+  {
+   "id": "food-hard-20",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué compuesto químico le da su sabor picante al wasabi?",
+   "choices": [
+    "Capsaicina",
+    "Piperina",
+    "Gingerol",
+    "Alil isotiocianato"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Ese aroma viaja más rápido que un tren bala japonés!"
+  },
+  {
+   "id": "food-hard-21",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué país es el origen del plato llamado feijoada?",
+   "choices": [
+    "México",
+    "Brasil",
+    "Colombia",
+    "Argentina"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Exacto! La feijoada es el plato nacional de Brasil, y lleva frijoles negros, ¡perfecta para un día de fiesta!"
+  },
+  {
+   "id": "food-hard-22",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué fruta es conocida como 'fruta del dragón'?",
+   "choices": [
+    "Pitaya",
+    "Guayaba",
+    "Kiwi",
+    "Mango"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Correcto! La pitaya es la fruta del dragón, ¡y su piel escamosa parece sacada de un cuento!"
+  },
+  {
+   "id": "food-hard-23",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué tipo de harina se usa para hacer pan de maíz tradicional?",
+   "choices": [
+    "Harina de avena",
+    "Harina de trigo",
+    "Harina de arroz",
+    "Harina de maíz"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Sí! La harina de maíz es la clave, ¡y le da ese sabor único a las arepas y tortillas!"
+  },
+  {
+   "id": "food-hard-24",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué especia proviene de la flor del crocus sativus?",
+   "choices": [
+    "Clavo de olor",
+    "Pimienta negra",
+    "Canela",
+    "Azafrán"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Acertaste! El azafrán es tan especial que se necesita miles de flores para hacer solo un kilo."
+  },
+  {
+   "id": "food-hard-25",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué alimento es la principal fuente de yodo en la dieta?",
+   "choices": [
+    "Huevos",
+    "Pescado",
+    "Sal yodada",
+    "Leche"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Correcto! La sal yodada es la fuente más común, ¡y ayuda a mantenernos llenos de energía!"
+  },
+  {
+   "id": "food-hard-26",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué tipo de lentejas son las más pequeñas y oscuras?",
+   "choices": [
+    "Lentejas beluga",
+    "Lentejas pardinas",
+    "Lentejas rojas",
+    "Lentejas verdes"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Exacto! Las lentejas beluga son tan pequeñas que parecen caviar, ¡pero mucho más saludables!"
+  },
+  {
+   "id": "food-hard-27",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué alimento fermentado se usa para hacer salsa de soja?",
+   "choices": [
+    "Garbanzos",
+    "Lentejas",
+    "Frijoles",
+    "Soja"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Correcto! La soja es la base, ¡y después de fermentar, se convierte en ese delicioso condimento!"
+  },
+  {
+   "id": "food-hard-28",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué fruta se usa tradicionalmente para hacer mermelada de membrillo?",
+   "choices": [
+    "Durazno",
+    "Membrillo",
+    "Manzana",
+    "Pera"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Sí! El membrillo es la fruta estrella, ¡y su mermelada es perfecta para acompañar quesos!"
+  },
+  {
+   "id": "food-hard-29",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué líquido se obtiene al cocinar lentamente huesos de animales?",
+   "choices": [
+    "Aceite",
+    "Leche",
+    "Caldo",
+    "Jugo de frutas"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Acertaste! El caldo es ese líquido mágico que le da sabor a tantas sopas y guisos."
+  },
+  {
+   "id": "food-hard-30",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué fruta tiene mayor contenido de agua?",
+   "choices": [
+    "Manzana",
+    "Plátano",
+    "Sandía",
+    "Uva"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Con la sandía hasta podrías hidratarte en un día de calor!"
+  },
+  {
+   "id": "food-hard-31",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué alimento es el principal ingrediente del hummus?",
+   "choices": [
+    "Arroz",
+    "Lentejas",
+    "Garbanzos",
+    "Frijoles negros"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Los garbanzos son los reyes del hummus, y del Medio Oriente!"
+  },
+  {
+   "id": "food-hard-32",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué tipo de nuez se usa para hacer mazapán?",
+   "choices": [
+    "Avellana",
+    "Pistacho",
+    "Nuez de nogal",
+    "Almendra"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Las almendras hacen que el mazapán sea dulce y mágico!"
+  },
+  {
+   "id": "food-hard-33",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué país es el mayor productor de vainilla?",
+   "choices": [
+    "Tailandia",
+    "México",
+    "India",
+    "Madagascar"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Madagascar le da sabor a casi todo el mundo con su vainilla!"
+  },
+  {
+   "id": "food-hard-34",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué tipo de carne se usa tradicionalmente en el goulash húngaro?",
+   "choices": [
+    "Pollo",
+    "Res",
+    "Cerdo",
+    "Cordero"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Con carne de res, el goulash es pura tradición húngara!"
+  },
+  {
+   "id": "food-hard-35",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué vitamina es abundante en los cítricos y ayuda a absorber el hierro?",
+   "choices": [
+    "Vitamina A",
+    "Vitamina D",
+    "Vitamina C",
+    "Vitamina B12"
+   ],
+   "correctIndex": 2,
+   "quip": "¡La vitamina C es la mejor amiga del hierro y de tu sistema inmune!"
+  },
+  {
+   "id": "food-hard-36",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué fruto seco es en realidad una legumbre?",
+   "choices": [
+    "Cacahuate",
+    "Avellana",
+    "Pistacho",
+    "Anacardo"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El cacahuate es el rey disfrazado de legumbre!"
+  },
+  {
+   "id": "food-hard-37",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué especia se obtiene de los estigmas secos de una flor?",
+   "choices": [
+    "Canela",
+    "Azafrán",
+    "Pimienta",
+    "Cúrcuma"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El azafrán es tan valioso que vale su peso en oro!"
+  },
+  {
+   "id": "food-hard-38",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué semilla es la base del tahini?",
+   "choices": [
+    "Calabaza",
+    "Lino",
+    "Ajonjolí",
+    "Girasol"
+   ],
+   "correctIndex": 2,
+   "quip": "Pequeñas pero poderosas, ¡como un superhéroe en miniatura!"
+  },
+  {
+   "id": "food-hard-39",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué alimento es el principal ingrediente del miso?",
+   "choices": [
+    "Trigo",
+    "Cebada",
+    "Soja",
+    "Arroz"
+   ],
+   "correctIndex": 2,
+   "quip": "Un fermentado que da sabor a la vida, ¡y a la sopa!"
+  },
+  {
+   "id": "food-hard-40",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué tipo de carne se usa en el plato francés 'Boeuf Bourguignon'?",
+   "choices": [
+    "Cordero",
+    "Cerdo",
+    "Pollo",
+    "Res"
+   ],
+   "correctIndex": 3,
+   "quip": "Un clásico que demuestra que la paciencia es un ingrediente clave."
+  },
+  {
+   "id": "food-hard-41",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué vegetal es la base del plato indio 'Saag Paneer'?",
+   "choices": [
+    "Acelga",
+    "Mostaza",
+    "Col rizada",
+    "Espinaca"
+   ],
+   "correctIndex": 3,
+   "quip": "Verde por fuera, delicioso por dentro, ¡como un camaleón culinario!"
+  },
+  {
+   "id": "food-hard-42",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué tipo de harina se usa para hacer los fideos soba japoneses?",
+   "choices": [
+    "Alforfón",
+    "Arroz",
+    "Trigo",
+    "Maíz"
+   ],
+   "correctIndex": 0,
+   "quip": "Un trigo que no es trigo, ¡pero sabe a gloria!"
+  },
+  {
+   "id": "food-hard-43",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué especia se obtiene secando los brotes florales del árbol Syzygium aromaticum?",
+   "choices": [
+    "Cardamomo",
+    "Clavo",
+    "Azafrán",
+    "Anís"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Y pensar que un clavo no sirve solo para colgar cuadros!"
+  },
+  {
+   "id": "food-hard-44",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué fruta se usa tradicionalmente para hacer el dulce de leche?",
+   "choices": [
+    "Higo",
+    "Membrillo",
+    "Ninguna",
+    "Manzana"
+   ],
+   "correctIndex": 2,
+   "quip": "¡El dulce de leche no necesita fruta, solo leche y paciencia!"
+  },
+  {
+   "id": "food-hard-45",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué vitamina predomina en el aceite de hígado de bacalao?",
+   "choices": [
+    "Vitamina C",
+    "Vitamina B12",
+    "Vitamina K",
+    "Vitamina D"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Un aceite que ilumina hasta los días más nublados!"
+  },
+  {
+   "id": "food-hard-46",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué fruto seco es el ingrediente principal del mazapán?",
+   "choices": [
+    "Anacardo",
+    "Avellana",
+    "Nuez",
+    "Almendra"
+   ],
+   "correctIndex": 3,
+   "quip": "¡La almendra es la reina dulce del taller de repostería!"
+  },
+  {
+   "id": "food-hard-47",
+   "topic": "Food",
+   "level": "hard",
+   "text": "¿Qué compuesto químico le da el color naranja a las zanahorias?",
+   "choices": [
+    "Licopeno",
+    "Antocianina",
+    "Clorofila",
+    "Betacaroteno"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Las zanahorias son básicamente soles en miniatura!"
+  },
+  {
+   "id": "food-medium-11",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué bebida se obtiene al fermentar hojas de la planta Camellia sinensis?",
+   "choices": [
+    "Té",
+    "Mate",
+    "Chocolate caliente",
+    "Café"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y pensar que todo empezó con una hoja tímida que se animó a dar el salto!"
+  },
+  {
+   "id": "food-medium-12",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruta tropical tiene una cáscara áspera y espinosa?",
+   "choices": [
+    "Maracuyá",
+    "Mango",
+    "Piña",
+    "Kiwi"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Cuidado con los dedos, que esta reina viene con armadura!"
+  },
+  {
+   "id": "food-medium-13",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué tipo de alimento es la quinoa?",
+   "choices": [
+    "Semilla",
+    "Cereal",
+    "Tubérculo",
+    "Legumbre"
+   ],
+   "correctIndex": 0,
+   "quip": "Pequeña pero poderosa: ¡una semilla que engaña hasta a los chefs!"
+  },
+  {
+   "id": "food-medium-14",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Cuál de estos ingredientes NO lleva una pizza margarita clásica?",
+   "choices": [
+    "Tomate",
+    "Albahaca",
+    "Aceitunas",
+    "Queso mozzarella"
+   ],
+   "correctIndex": 2,
+   "quip": "Las aceitunas prefieren su propia fiesta… ¡fuera del trío perfecto!"
+  },
+  {
+   "id": "food-medium-15",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué postre se hace batiendo claras de huevo con azúcar?",
+   "choices": [
+    "Merengue",
+    "Arroz con leche",
+    "Natilla",
+    "Flan"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Blanco, dulce y con altura: el único postre que desafía la gravedad!"
+  },
+  {
+   "id": "food-medium-16",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué alimento se elabora cuajando leche con cuajo?",
+   "choices": [
+    "Helado",
+    "Queso",
+    "Yogur",
+    "Mantequilla"
+   ],
+   "correctIndex": 1,
+   "quip": "De líquido a sólido: ¡la magia blanca de la leche!"
+  },
+  {
+   "id": "food-medium-17",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué especia se obtiene de la flor del azafrán?",
+   "choices": [
+    "Curry",
+    "Azafrán",
+    "Pimentón",
+    "Canela"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Cada hebra es un tesoro dorado vestido de púrpura!"
+  },
+  {
+   "id": "food-medium-18",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué alimento es la principal fuente de energía en la dieta japonesa?",
+   "choices": [
+    "Arroz",
+    "Soja",
+    "Fideos",
+    "Pescado"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El grano que alimenta a un imperio desde hace siglos!"
+  },
+  {
+   "id": "food-medium-19",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué grano es la base del couscous?",
+   "choices": [
+    "Arroz",
+    "Trigo sarraceno",
+    "Maíz",
+    "Sémola de trigo"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y pensar que con un poco de agua se convierte en un plato delicioso!"
+  },
+  {
+   "id": "food-medium-20",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruta tiene un hueso grande y es dulce y amarilla por dentro?",
+   "choices": [
+    "Mango",
+    "Piña",
+    "Manzana",
+    "Sandía"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El rey de las frutas tropicales, sin duda!"
+  },
+  {
+   "id": "food-medium-21",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué tipo de pasta tiene forma de pequeño tubo corto?",
+   "choices": [
+    "Macarrones",
+    "Fettuccine",
+    "Espagueti",
+    "Lasaña"
+   ],
+   "correctIndex": 0,
+   "quip": "Perfectos para atrapar salsa en cada bocado."
+  },
+  {
+   "id": "food-medium-22",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué lácteo se obtiene al colar la leche agria?",
+   "choices": [
+    "Requesón",
+    "Mantequilla",
+    "Queso crema",
+    "Yogur"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Un queso tan fresco que hasta baila!"
+  },
+  {
+   "id": "food-medium-23",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué hierba fresca se usa para decorar platos de comida mexicana?",
+   "choices": [
+    "Cilantro",
+    "Perejil",
+    "Albahaca",
+    "Eneldo"
+   ],
+   "correctIndex": 0,
+   "quip": "Con ella, hasta los tacos saben a fiesta."
+  },
+  {
+   "id": "food-medium-24",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué tipo de carne se usa tradicionalmente en un kebab?",
+   "choices": [
+    "Res",
+    "Pollo",
+    "Cerdo",
+    "Cordero"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El secreto para un kebab jugoso y lleno de sabor!"
+  },
+  {
+   "id": "food-medium-25",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruta es conocida por su alto contenido en vitamina C?",
+   "choices": [
+    "Naranja",
+    "Plátano",
+    "Pera",
+    "Uva"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Un cítrico que alegra hasta los días más grises!"
+  },
+  {
+   "id": "food-medium-26",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué legumbre es la base del falafel?",
+   "choices": [
+    "Lentejas",
+    "Garbanzos",
+    "Judías",
+    "Guisantes"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Croquetas veganas que enamoran!"
+  },
+  {
+   "id": "food-medium-27",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué especia da el color amarillo al curry?",
+   "choices": [
+    "Azafrán",
+    "Cúrcuma",
+    "Pimentón",
+    "Comino"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Un toque de sol en cada plato!"
+  },
+  {
+   "id": "food-medium-28",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué postre italiano se hace con capas de café, mascarpone y bizcochos?",
+   "choices": [
+    "Gelato",
+    "Cannoli",
+    "Tiramisú",
+    "Panna cotta"
+   ],
+   "correctIndex": 2,
+   "quip": "¡El tiramisú levanta el ánimo… y las capas!"
+  },
+  {
+   "id": "food-medium-29",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué tipo de pan se hace sin levadura?",
+   "choices": [
+    "Pan integral",
+    "Pan de molde",
+    "Pan de centeno",
+    "Pan ácimo"
+   ],
+   "correctIndex": 3,
+   "quip": "El pan ácimo es plano… ¡pero lleno de sabor!"
+  },
+  {
+   "id": "food-medium-30",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué alimento se obtiene al deshidratar uvas?",
+   "choices": [
+    "Ciruelas pasas",
+    "Pasas",
+    "Higos secos",
+    "Dátiles"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Las pasas son uvas con superpoderes de conservación!"
+  },
+  {
+   "id": "food-medium-31",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruta es conocida por su forma de estrella al cortarla?",
+   "choices": [
+    "Piña",
+    "Kiwi",
+    "Carambola",
+    "Manzana"
+   ],
+   "correctIndex": 2,
+   "quip": "¡La carambola es la estrella del frutero!"
+  },
+  {
+   "id": "food-medium-32",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué tipo de pasta tiene forma de cuerda delgada?",
+   "choices": [
+    "Spaghetti",
+    "Fettuccine",
+    "Penne",
+    "Farfalle"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El spaghetti es el rey de la mesa italiana!"
+  },
+  {
+   "id": "food-medium-33",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruta es verde por dentro y tiene semillas negras?",
+   "choices": [
+    "Kiwi",
+    "Melón",
+    "Sandía",
+    "Manzana"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Exacto! El kiwi es como un pequeño huevo verde con sorpresa negra."
+  },
+  {
+   "id": "food-medium-34",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué postre se hace con leche, azúcar y huevos, y se hornea?",
+   "choices": [
+    "Mousse",
+    "Helado",
+    "Flan",
+    "Gelatina"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Sí! El flan es como un abrazo dulce y tembloroso."
+  },
+  {
+   "id": "food-medium-35",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué especia se obtiene de la corteza de un árbol?",
+   "choices": [
+    "Pimienta",
+    "Azafrán",
+    "Clavo",
+    "Canela"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Exacto! La canela es como un abrazo cálido en invierno."
+  },
+  {
+   "id": "food-medium-36",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruto seco se usa para hacer leche vegetal?",
+   "choices": [
+    "Avellana",
+    "Pistacho",
+    "Nuez",
+    "Almendra"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Sí! La almendra es como una vaca mágica en miniatura."
+  },
+  {
+   "id": "food-medium-37",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué alimento se elabora con cacao, azúcar y manteca de cacao?",
+   "choices": [
+    "Galleta",
+    "Brownie",
+    "Turrón",
+    "Chocolate"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Correcto! El chocolate es el mejor amigo del alma."
+  },
+  {
+   "id": "food-medium-38",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué alimento se obtiene al fermentar té con bacterias y levaduras?",
+   "choices": [
+    "Kéfir",
+    "Vinagre",
+    "Yogur",
+    "Kombucha"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Correcto! La kombucha es como una fiesta de burbujas en tu boca."
+  },
+  {
+   "id": "food-medium-39",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruta se conoce como 'fruta del dragón'?",
+   "choices": [
+    "Maracuyá",
+    "Kiwi",
+    "Pitahaya",
+    "Mango"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Y no escupe fuego, pero sí alegra el plato!"
+  },
+  {
+   "id": "food-medium-40",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué legumbre se usa para hacer leche vegetal popular en Asia?",
+   "choices": [
+    "Garbanzos",
+    "Soja",
+    "Alubias",
+    "Lentejas"
+   ],
+   "correctIndex": 1,
+   "quip": "¡La soja es tan versátil que hasta se disfraza de leche!"
+  },
+  {
+   "id": "food-medium-41",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué tipo de arroz se usa tradicionalmente para hacer risotto?",
+   "choices": [
+    "Arborio",
+    "Integral",
+    "Basmati",
+    "Jazmín"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Arborio: el arroz que sabe abrazar cada grano de sabor!"
+  },
+  {
+   "id": "food-medium-42",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué especia se obtiene de los capullos secos de una flor?",
+   "choices": [
+    "Pimienta",
+    "Nuez moscada",
+    "Canela",
+    "Clavo"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El clavo es pequeño, pero su aroma es gigante!"
+  },
+  {
+   "id": "food-medium-43",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruto seco se usa para hacer horchata en España?",
+   "choices": [
+    "Chufas",
+    "Almendras",
+    "Anacardos",
+    "Avellanas"
+   ],
+   "correctIndex": 0,
+   "quip": "¡La chufa es pequeña, pero su sabor es un gran tesoro!"
+  },
+  {
+   "id": "food-medium-44",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué tipo de queso se usa tradicionalmente en una fondue?",
+   "choices": [
+    "Cheddar",
+    "Gouda",
+    "Mozzarella",
+    "Emmental"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El Emmental hace que la fondue sea un abrazo derretido!"
+  },
+  {
+   "id": "food-medium-45",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Cuál de estos alimentos es un tubérculo?",
+   "choices": [
+    "Zanahoria",
+    "Ajo",
+    "Cebolla",
+    "Patata"
+   ],
+   "correctIndex": 3,
+   "quip": "¡La patata es la reina bajo tierra!"
+  },
+  {
+   "id": "food-medium-46",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué fruta se usa para hacer la salsa guacamole?",
+   "choices": [
+    "Mango",
+    "Piña",
+    "Plátano",
+    "Aguacate"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Un aguacate feliz hace un guacamole perfecto!"
+  },
+  {
+   "id": "food-medium-47",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Cuál de estos quesos es de origen italiano?",
+   "choices": [
+    "Brie",
+    "Gouda",
+    "Mozzarella",
+    "Cheddar"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Mozzarella, el queso que hace bailar a la pizza!"
+  },
+  {
+   "id": "food-medium-48",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué alimento se usa para hacer el tradicional dulce de membrillo?",
+   "choices": [
+    "Membrillo",
+    "Pera",
+    "Manzana",
+    "Durazno"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El membrillo es la estrella de esta dulce historia!"
+  },
+  {
+   "id": "food-medium-49",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Qué alimento es la base principal de la arepa?",
+   "choices": [
+    "Avena",
+    "Trigo",
+    "Maíz",
+    "Arroz"
+   ],
+   "correctIndex": 2,
+   "quip": "¡El maíz es el alma de las arepas, ¡qué delicia!"
+  },
+  {
+   "id": "food-medium-50",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Cuál de estas frutas es cítrica?",
+   "choices": [
+    "Manzana",
+    "Pomelo",
+    "Plátano",
+    "Uva"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El pomelo es el sol en forma de fruta!"
+  },
+  {
+   "id": "food-medium-51",
+   "topic": "Food",
+   "level": "medium",
+   "text": "¿Cuál de estos postres lleva capas de hojaldre y crema?",
+   "choices": [
+    "Brownie",
+    "Milhojas",
+    "Tiramisú",
+    "Flan"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El milhojas es el postre con más capas que una cebolla!"
+  },
+  {
+   "id": "oceans-easy-11",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué océano está al este de África?",
+   "choices": [
+    "Océano Ártico",
+    "Océano Índico",
+    "Océano Atlántico",
+    "Océano Antártico"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Justo donde el sol despierta cada mañana!"
+  },
+  {
+   "id": "oceans-easy-12",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Cuál de estos animales NO vive en el océano?",
+   "choices": [
+    "Águila",
+    "Estrella de mar",
+    "Pulpo",
+    "Pingüino"
+   ],
+   "correctIndex": 0,
+   "quip": "Las águilas prefieren surcar los cielos, no las olas."
+  },
+  {
+   "id": "oceans-easy-13",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué fenómeno hace que suba y baje el nivel del mar?",
+   "choices": [
+    "Mareas",
+    "Vientos",
+    "Corrientes",
+    "Terremotos"
+   ],
+   "correctIndex": 0,
+   "quip": "El océano tiene su propio ritmo, ¡como un baile!"
+  },
+  {
+   "id": "oceans-easy-14",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué caparazón tienen los cangrejos ermitaños?",
+   "choices": [
+    "De plástico",
+    "De coral",
+    "El propio",
+    "De otros animales"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Son los inquilinos más ecológicos del mar!"
+  },
+  {
+   "id": "oceans-easy-15",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué gas producen los océanos y respiramos?",
+   "choices": [
+    "Nitrógeno",
+    "Hidrógeno",
+    "Oxígeno",
+    "Dióxido de carbono"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Gracias, océanos, por cada bocanada de aire!"
+  },
+  {
+   "id": "oceans-easy-16",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué zona del océano recibe luz solar?",
+   "choices": [
+    "Zona fótica",
+    "Zona hadal",
+    "Zona abisal",
+    "Zona batial"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Donde el sol y el mar hacen equipo!"
+  },
+  {
+   "id": "oceans-easy-17",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino es conocido por sus cantos?",
+   "choices": [
+    "Tiburón",
+    "Delfín",
+    "Medusa",
+    "Ballena jorobada"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Las divas más grandes del océano!"
+  },
+  {
+   "id": "oceans-easy-18",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Cuál es la montaña submarina más alta del mundo?",
+   "choices": [
+    "Kilimanjaro",
+    "Monte Pissis",
+    "Monte Everest",
+    "Mauna Kea"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Casi todo su grandeza está bajo las olas!"
+  },
+  {
+   "id": "oceans-easy-19",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué palabra describe a un grupo de peces?",
+   "choices": [
+    "Manada",
+    "Cardumen",
+    "Bandada",
+    "Colonia"
+   ],
+   "correctIndex": 1,
+   "quip": "¡En el mar, siempre mejor juntos!"
+  },
+  {
+   "id": "oceans-easy-20",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué criatura marina es famosa por cambiar de color?",
+   "choices": [
+    "Estrella de mar",
+    "Pulpo",
+    "Delfín",
+    "Tiburón"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Y no solo cambia de look, también de opinión… como en un debate familiar!"
+  },
+  {
+   "id": "oceans-easy-21",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué océano está al oeste de América del Sur?",
+   "choices": [
+    "Índico",
+    "Atlántico",
+    "Pacífico",
+    "Ártico"
+   ],
+   "correctIndex": 2,
+   "quip": "Así es, el Pacífico no solo es tranquilo… ¡también es enorme!"
+  },
+  {
+   "id": "oceans-easy-22",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino usa tinta para escapar de sus depredadores?",
+   "choices": [
+    "Calamar",
+    "Medusa",
+    "Caballito de mar",
+    "Ballena"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Un artista del escape… como esos magos que desaparecen en las fiestas!"
+  },
+  {
+   "id": "oceans-easy-23",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Cómo se llama el arrecife de coral más grande del mundo?",
+   "choices": [
+    "Gran Barrera de Coral",
+    "Arrecife de Belice",
+    "Arrecife Mesoamericano",
+    "Arrecife de las Maldivas"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Tan grande que hasta los satélites lo ven de vacaciones!"
+  },
+  {
+   "id": "oceans-easy-24",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino tiene una concha en espiral?",
+   "choices": [
+    "Cangrejo",
+    "Erizo de mar",
+    "Langosta",
+    "Caracol marino"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y si la pintas, hasta parece un caracol de exposición!"
+  },
+  {
+   "id": "oceans-easy-25",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué océano rodea la Antártida?",
+   "choices": [
+    "Índico",
+    "Océano Austral",
+    "Pacífico",
+    "Atlántico"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El único océano que le da la vuelta al mundo sin pasar por el ecuador!"
+  },
+  {
+   "id": "oceans-easy-26",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué criatura marina es conocida como el 'unicornio del mar'?",
+   "choices": [
+    "Pez globo",
+    "Narval",
+    "Medusa luna",
+    "Tiburón martillo"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Su colmillo es tan largo que hasta los magos lo envidian!"
+  },
+  {
+   "id": "oceans-easy-27",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué fenómeno causa las mareas altas y bajas?",
+   "choices": [
+    "Corrientes marinas",
+    "Vientos fuertes",
+    "Terremotos",
+    "Gravitación de la Luna"
+   ],
+   "correctIndex": 3,
+   "quip": "¡La Luna le dice al mar: '¡Hoy te toco a ti subir!'"
+  },
+  {
+   "id": "oceans-easy-28",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué zona del océano es completamente oscura?",
+   "choices": [
+    "Zona pelágica",
+    "Zona fótica",
+    "Zona afótica",
+    "Zona intermareal"
+   ],
+   "correctIndex": 2,
+   "quip": "Correcto, ahí hasta los peces necesitan linterna imaginaria."
+  },
+  {
+   "id": "oceans-easy-29",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino es el más rápido?",
+   "choices": [
+    "Tiburón blanco",
+    "Calamar",
+    "Pez vela",
+    "Delfín"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Sí! El pez vela corre más que tú en tus sueños."
+  },
+  {
+   "id": "oceans-easy-30",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué tipo de tortuga vive en el océano?",
+   "choices": [
+    "Tortuga terrestre",
+    "Tortuga marina",
+    "Tortuga de río",
+    "Tortuga de pantano"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Exacto! Las tortugas marinas son las surfistas del mar."
+  },
+  {
+   "id": "oceans-easy-31",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué fenómeno climático comienza en el océano?",
+   "choices": [
+    "Huracán",
+    "Tornado",
+    "Terremoto",
+    "Erupción volcánica"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Correcto! Los huracanes nacen donde el agua está más caliente."
+  },
+  {
+   "id": "oceans-easy-32",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué corriente oceánica calienta Europa?",
+   "choices": [
+    "Corriente de California",
+    "Corriente del Golfo",
+    "Corriente Circumpolar",
+    "Corriente de Humboldt"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Exacto! Sin ella, Europa tendría más abrigos."
+  },
+  {
+   "id": "oceans-easy-33",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino no tiene cerebro?",
+   "choices": [
+    "Pulpo",
+    "Medusa",
+    "Delfín",
+    "Tiburón"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Sí! Las medusas viven felices sin organizar pensamientos."
+  },
+  {
+   "id": "oceans-easy-34",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué océano está al sur de Asia?",
+   "choices": [
+    "Océano Ártico",
+    "Océano Índico",
+    "Océano Atlántico",
+    "Océano Pacífico"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Correcto! Es el Índico, el vecino azul de la India."
+  },
+  {
+   "id": "oceans-easy-35",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué fenómeno natural crea las olas?",
+   "choices": [
+    "Terremotos",
+    "Lluvia",
+    "Viento",
+    "Gravitación"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Sí! El viento sopla y las olas hacen surf sin tabla."
+  },
+  {
+   "id": "oceans-easy-36",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué criatura marina es conocida por su esqueleto externo?",
+   "choices": [
+    "Ballena",
+    "Cangrejo",
+    "Medusa",
+    "Pulpo"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Correcto! Aunque su 'casa' a veces parece de segunda mano, ¿verdad?"
+  },
+  {
+   "id": "oceans-easy-37",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué fenómeno oceánico transporta calor alrededor del planeta?",
+   "choices": [
+    "Tsunamis",
+    "Olas",
+    "Mareas",
+    "Corrientes marinas"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Exacto! El océano tiene su propio sistema de calefacción."
+  },
+  {
+   "id": "oceans-easy-38",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué criatura marina es transparente y gelatinosa?",
+   "choices": [
+    "Langosta",
+    "Medusa",
+    "Pez payaso",
+    "Estrella de mar"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Correcto! Tan delicada que parece hecha de agua... ¡porque casi lo está!"
+  },
+  {
+   "id": "oceans-easy-39",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué océano es el más frío del planeta?",
+   "choices": [
+    "Océano Índico",
+    "Océano Glacial Ártico",
+    "Océano Atlántico",
+    "Océano Pacífico"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Así es! Donde hasta el agua se congela para no aburrirse."
+  },
+  {
+   "id": "oceans-easy-40",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino respira por branquias?",
+   "choices": [
+    "Delfín",
+    "Pez",
+    "Ballena",
+    "Foca"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Correcto! Aunque algunas branquias parecen más viejas que otras."
+  },
+  {
+   "id": "oceans-easy-41",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué océano separa América de Europa?",
+   "choices": [
+    "Océano Pacífico",
+    "Océano Ártico",
+    "Océano Índico",
+    "Océano Atlántico"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El Atlántico es el puente líquido entre continentes!"
+  },
+  {
+   "id": "oceans-easy-42",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué criatura marina es conocida como 'la vaca del mar'?",
+   "choices": [
+    "Ballena azul",
+    "Tiburón ballena",
+    "Delfín",
+    "Manatí"
+   ],
+   "correctIndex": 3,
+   "quip": "Los manatíes son lentos y amigables, ¡como vacas nadadoras!"
+  },
+  {
+   "id": "oceans-easy-43",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué porcentaje de la Tierra está cubierto por océanos?",
+   "choices": [
+    "30%",
+    "90%",
+    "50%",
+    "70%"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Tenemos más agua que tierra, casi como un planeta acuático!"
+  },
+  {
+   "id": "oceans-easy-44",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino tiene cinco brazos y vive en el fondo?",
+   "choices": [
+    "Medusa",
+    "Estrella de mar",
+    "Pulpo",
+    "Calamar"
+   ],
+   "correctIndex": 1,
+   "quip": "Las estrellas de mar brillan… ¡pero no en el cielo!"
+  },
+  {
+   "id": "oceans-easy-45",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué gas absorben los océanos en grandes cantidades?",
+   "choices": [
+    "Hidrógeno",
+    "Dióxido de carbono",
+    "Nitrógeno",
+    "Oxígeno"
+   ],
+   "correctIndex": 1,
+   "quip": "Los océanos son los pulmones azules de nuestro planeta."
+  },
+  {
+   "id": "oceans-easy-46",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino es el más grande de la Tierra?",
+   "choices": [
+    "Ballena azul",
+    "Calamar gigante",
+    "Mantarraya",
+    "Tiburón ballena"
+   ],
+   "correctIndex": 0,
+   "quip": "La ballena azul es más grande que tres autobuses juntos."
+  },
+  {
+   "id": "oceans-easy-47",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué fenómeno crea zonas muertas en el océano?",
+   "choices": [
+    "Exceso de sal",
+    "Falta de oxígeno",
+    "Contaminación por plástico",
+    "Aumento de temperatura"
+   ],
+   "correctIndex": 1,
+   "quip": "Sin oxígeno, hasta el mar puede quedarse sin aliento."
+  },
+  {
+   "id": "oceans-easy-48",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué océano está entre África y Australia?",
+   "choices": [
+    "Océano Antártico",
+    "Océano Índico",
+    "Océano Ártico",
+    "Océano Atlántico"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El Índico es el rey de las especias, igual que del curry!"
+  },
+  {
+   "id": "oceans-easy-49",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué criatura marina es un molusco con caparazón en dos partes?",
+   "choices": [
+    "Pulpo",
+    "Almeja",
+    "Tiburón",
+    "Medusa"
+   ],
+   "correctIndex": 1,
+   "quip": "Las almejas guardan tesoros... ¡y a veces hasta perlas!"
+  },
+  {
+   "id": "oceans-easy-50",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué animal marino es conocido por saltar fuera del agua?",
+   "choices": [
+    "Langosta",
+    "Pulpo",
+    "Tiburón blanco",
+    "Delfín"
+   ],
+   "correctIndex": 3,
+   "quip": "Los delfines hacen piruetas como si el mar fuera un circo."
+  },
+  {
+   "id": "oceans-easy-51",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué capa del océano es la más profunda?",
+   "choices": [
+    "Zona batial",
+    "Zona fótica",
+    "Zona abisal",
+    "Zona intermareal"
+   ],
+   "correctIndex": 2,
+   "quip": "En la zona abisal, hasta la oscuridad tiene secretos."
+  },
+  {
+   "id": "oceans-easy-52",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué océano rodea el Polo Norte?",
+   "choices": [
+    "Océano Ártico",
+    "Océano Atlántico",
+    "Océano Pacífico",
+    "Océano Antártico"
+   ],
+   "correctIndex": 0,
+   "quip": "El Ártico es tan frío que hasta los pingüinos lo evitan (¡ups!)."
+  },
+  {
+   "id": "oceans-easy-53",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué fenómeno oceánico mueve nutrientes desde el fondo?",
+   "choices": [
+    "Marea roja",
+    "Afloramiento",
+    "Tsunami",
+    "Corriente marina"
+   ],
+   "correctIndex": 1,
+   "quip": "El afloramiento es el buffet gratis del océano."
+  },
+  {
+   "id": "oceans-easy-54",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué criatura marina produce perlas?",
+   "choices": [
+    "Calamar",
+    "Estrella de mar",
+    "Pez payaso",
+    "Ostra"
+   ],
+   "correctIndex": 3,
+   "quip": "Las ostras convierten las molestias en joyas, ¡qué talento!"
+  },
+  {
+   "id": "oceans-easy-55",
+   "topic": "Oceans",
+   "level": "easy",
+   "text": "¿Qué océano está al oeste de América del Norte?",
+   "choices": [
+    "Océano Pacífico",
+    "Océano Índico",
+    "Océano Antártico",
+    "Océano Atlántico"
+   ],
+   "correctIndex": 0,
+   "quip": "El Pacífico es tan grande que hasta los errores tienen espacio."
+  },
+  {
+   "id": "oceans-hard-11",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano es el más profundo de la Tierra?",
+   "choices": [
+    "Océano Pacífico",
+    "Océano Índico",
+    "Océano Atlántico",
+    "Océano Ártico"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y también el más ancho! Como un gigante dormido bajo las olas."
+  },
+  {
+   "id": "oceans-hard-12",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina tiene tres corazones?",
+   "choices": [
+    "Tiburón blanco",
+    "Delfín",
+    "Pulpo",
+    "Medusa"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Uno para cada tarea: comer, nadar y ser inteligente!"
+  },
+  {
+   "id": "oceans-hard-13",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Cuál es la fosa marina más profunda conocida?",
+   "choices": [
+    "Fosa de las Marianas",
+    "Fosa de las Sandwich del Sur",
+    "Fosa de Java",
+    "Fosa de Puerto Rico"
+   ],
+   "correctIndex": 0,
+   "quip": "Allí cabría el Everest... ¡y aún sobraría espacio!"
+  },
+  {
+   "id": "oceans-hard-14",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué porcentaje de la superficie terrestre cubren los océanos?",
+   "choices": [
+    "80%",
+    "52%",
+    "71%",
+    "62%"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Por eso la Tierra debería llamarse 'Planeta Agua'!"
+  },
+  {
+   "id": "oceans-hard-15",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué animal marino es conocido como 'el unicornio del mar'?",
+   "choices": [
+    "Pez vela",
+    "Caballito de mar",
+    "Tiburón martillo",
+    "Narval"
+   ],
+   "correctIndex": 3,
+   "quip": "Su colmillo es en realidad un diente... ¡y puede medir hasta 3 metros!"
+  },
+  {
+   "id": "oceans-hard-16",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano tiene la mayor cantidad de islas?",
+   "choices": [
+    "Océano Ártico",
+    "Océano Índico",
+    "Océano Atlántico",
+    "Océano Pacífico"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Más de 25.000 islas! Como un archipiélago gigante."
+  },
+  {
+   "id": "oceans-hard-17",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué tipo de agua tiene mayor densidad?",
+   "choices": [
+    "Agua dulce tibia",
+    "Agua salada tibia",
+    "Agua dulce fría",
+    "Agua salada fría"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Por eso los témpanos flotan... y los buzos se hunden!"
+  },
+  {
+   "id": "oceans-hard-18",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué arrecife de coral es el más grande del mundo?",
+   "choices": [
+    "Gran Barrera de Coral",
+    "Arrecife de Belice",
+    "Arrecife de Nueva Caledonia",
+    "Arrecife de las Maldivas"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Tan grande que se ve desde el espacio! Como un jardín submarino."
+  },
+  {
+   "id": "oceans-hard-19",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina puede cambiar de género?",
+   "choices": [
+    "Ballena jorobada",
+    "Salmón",
+    "Calamar gigante",
+    "Pez payaso"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Nemo podría haber tenido dos papás... o ninguna mamá!"
+  },
+  {
+   "id": "oceans-hard-20",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué fenómeno causa mareas altas y bajas?",
+   "choices": [
+    "Terremotos",
+    "Vientos fuertes",
+    "Gravedad lunar",
+    "Corrientes marinas"
+   ],
+   "correctIndex": 2,
+   "quip": "La Luna es la directora de orquesta de las mareas."
+  },
+  {
+   "id": "oceans-hard-21",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué organismo forma los arrecifes de coral?",
+   "choices": [
+    "Algas",
+    "Medusas",
+    "Esponjas",
+    "Pólipos"
+   ],
+   "correctIndex": 3,
+   "quip": "Los pólipos son los arquitectos del océano."
+  },
+  {
+   "id": "oceans-hard-22",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano tiene la mayor cantidad de volcanes activos?",
+   "choices": [
+    "Atlántico",
+    "Ártico",
+    "Pacífico",
+    "Índico"
+   ],
+   "correctIndex": 2,
+   "quip": "El Pacífico es el rey de los fuegos submarinos."
+  },
+  {
+   "id": "oceans-hard-23",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina tiene el cerebro más grande?",
+   "choices": [
+    "Tiburón ballena",
+    "Ballena orca",
+    "Pulpo",
+    "Cachalote"
+   ],
+   "correctIndex": 3,
+   "quip": "El cachalote piensa en grande, ¡literalmente!"
+  },
+  {
+   "id": "oceans-hard-24",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano es el más pequeño por superficie?",
+   "choices": [
+    "Atlántico",
+    "Antártico",
+    "Ártico",
+    "Índico"
+   ],
+   "correctIndex": 2,
+   "quip": "El Ártico es el océano de bolsillo."
+  },
+  {
+   "id": "oceans-hard-25",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué proceso usan algunas medusas para defenderse?",
+   "choices": [
+    "Cambio de color",
+    "Picadura urticante",
+    "Emisión de luz",
+    "Camuflaje"
+   ],
+   "correctIndex": 1,
+   "quip": "Las medusas no buscan pelea, pero su picadura es inolvidable."
+  },
+  {
+   "id": "oceans-hard-26",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano tiene la temperatura superficial promedio más alta?",
+   "choices": [
+    "Índico",
+    "Ártico",
+    "Atlántico",
+    "Pacífico"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El Índico es el jacuzzi del planeta!"
+  },
+  {
+   "id": "oceans-hard-27",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué fenómeno oceánico ocurre cuando el agua fría y rica en nutrientes sube a la superficie?",
+   "choices": [
+    "Marea roja",
+    "Termoclina",
+    "Surgencia",
+    "Corriente de resaca"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Surgencia: el ascensor de la comida marina!"
+  },
+  {
+   "id": "oceans-hard-28",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano tiene la salinidad promedio más alta?",
+   "choices": [
+    "Índico",
+    "Pacífico",
+    "Atlántico",
+    "Antártico"
+   ],
+   "correctIndex": 2,
+   "quip": "El Atlántico es el océano más salado... ¡como las lágrimas de un marinero!"
+  },
+  {
+   "id": "oceans-hard-29",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué capa del océano se extiende desde la superficie hasta unos 200 metros de profundidad?",
+   "choices": [
+    "Batial",
+    "Abisal",
+    "Mesopelágica",
+    "Epipelágica"
+   ],
+   "correctIndex": 3,
+   "quip": "La zona epipelágica: donde la fiesta del plancton nunca termina."
+  },
+  {
+   "id": "oceans-hard-30",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué fenómeno oceánico es causado por la rotación de la Tierra?",
+   "choices": [
+    "Mareas",
+    "Corrientes marinas",
+    "Olas de viento",
+    "Efecto Coriolis"
+   ],
+   "correctIndex": 3,
+   "quip": "El efecto Coriolis: ¡el giro de la Tierra poniendo orden en el océano!"
+  },
+  {
+   "id": "oceans-hard-31",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano es el segundo más grande del mundo?",
+   "choices": [
+    "Océano Antártico",
+    "Océano Atlántico",
+    "Océano Índico",
+    "Océano Ártico"
+   ],
+   "correctIndex": 1,
+   "quip": "El Atlántico es como el hermano mayor del Índico, ¡pero no tanto como el Pacífico!"
+  },
+  {
+   "id": "oceans-hard-32",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué fenómeno ocurre cuando las aguas superficiales se mezclan con aguas profundas frías?",
+   "choices": [
+    "Marea roja",
+    "Surgencia",
+    "Tsunami",
+    "El Niño"
+   ],
+   "correctIndex": 1,
+   "quip": "¡La surgencia es como el ascensor de los nutrientes del mar!"
+  },
+  {
+   "id": "oceans-hard-33",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano tiene la mayor cantidad de arrecifes de coral?",
+   "choices": [
+    "Océano Índico",
+    "Océano Antártico",
+    "Océano Atlántico",
+    "Océano Pacífico"
+   ],
+   "correctIndex": 3,
+   "quip": "El Pacífico es el jardín submarino por excelencia."
+  },
+  {
+   "id": "oceans-hard-34",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina puede vivir hasta 500 años?",
+   "choices": [
+    "Langosta americana",
+    "Pez payaso",
+    "Tiburón de Groenlandia",
+    "Ballena azul"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Este tiburón ha visto más inviernos que tu bisabuelo!"
+  },
+  {
+   "id": "oceans-hard-35",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué organismo marino forma los bosques submarinos?",
+   "choices": [
+    "Anémonas",
+    "Corales",
+    "Algas pardas",
+    "Esponjas"
+   ],
+   "correctIndex": 2,
+   "quip": "Las algas pardas son como los árboles del mar, ¡pero sin hojas!"
+  },
+  {
+   "id": "oceans-hard-36",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano tiene el punto más bajo de la Tierra?",
+   "choices": [
+    "Océano Antártico",
+    "Océano Pacífico",
+    "Océano Índico",
+    "Océano Atlántico"
+   ],
+   "correctIndex": 1,
+   "quip": "El Pacífico no solo es grande, ¡también tiene el sótano más profundo!"
+  },
+  {
+   "id": "oceans-hard-37",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina tiene un caparazón dividido en dos mitades iguales?",
+   "choices": [
+    "Almeja",
+    "Tortuga marina",
+    "Erizo de mar",
+    "Pepino de mar"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Exacto! Las almejas son las únicas con su 'armadura' en dos partes, como un sándwich viviente."
+  },
+  {
+   "id": "oceans-hard-38",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿En qué océano se encuentra el Mar de los Sargazos?",
+   "choices": [
+    "Océano Glacial Ártico",
+    "Océano Pacífico",
+    "Océano Atlántico",
+    "Océano Índico"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Correcto! El Atlántico es el único que tiene un mar sin costas, solo rodeado de corrientes."
+  },
+  {
+   "id": "oceans-hard-39",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué profundidad alcanza la zona hadal del océano?",
+   "choices": [
+    "6.000 a 11.000 metros",
+    "4.000 a 6.000 metros",
+    "1.000 a 4.000 metros",
+    "Más de 11.000 metros"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Así es! La zona hadal es el 'inframundo' marino, donde la presión aplastaría un submarino."
+  },
+  {
+   "id": "oceans-hard-40",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina filtra su alimento usando espinas en sus branquias?",
+   "choices": [
+    "Pulpo",
+    "Ballena azul",
+    "Tiburón ballena",
+    "Pez globo"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Exacto! El tiburón ballena come como si sorbiera un batido con pajita gigante."
+  },
+  {
+   "id": "oceans-hard-41",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano alberga la mayor cantidad de montañas submarinas?",
+   "choices": [
+    "Pacífico",
+    "Atlántico",
+    "Índico",
+    "Ártico"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Correcto! El Pacífico es el rey de los volcanes sumergidos, con más de 30.000."
+  },
+  {
+   "id": "oceans-hard-42",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina tiene ojos del tamaño de platos?",
+   "choices": [
+    "Calamar gigante",
+    "Pulpo dumbo",
+    "Pez luna",
+    "Medusa melena de león"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Así es! El calamar gigante ve mejor que nadie en la oscuridad eterna del océano."
+  },
+  {
+   "id": "oceans-hard-43",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina produce sonidos para comunicarse usando su vejiga natatoria?",
+   "choices": [
+    "Corvina",
+    "Pulpo",
+    "Delfín",
+    "Ballena jorobada"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Correcto! Las corvinas 'cantan' como un coro submarino en la oscuridad."
+  },
+  {
+   "id": "oceans-hard-44",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano tiene el punto más profundo de la Tierra?",
+   "choices": [
+    "Océano Pacífico",
+    "Océano Índico",
+    "Océano Atlántico",
+    "Océano Ártico"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El Pacífico no solo es grande en superficie, también en profundidad!"
+  },
+  {
+   "id": "oceans-hard-45",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina puede inflarse como un globo para defenderse?",
+   "choices": [
+    "Pez globo",
+    "Medusa",
+    "Pulpo",
+    "Tiburón ballena"
+   ],
+   "correctIndex": 0,
+   "quip": "El pez globo inflado parece un balón de fútbol acuático."
+  },
+  {
+   "id": "oceans-hard-46",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano es el único que no limita con América del Norte?",
+   "choices": [
+    "Océano Índico",
+    "Océano Atlántico",
+    "Océano Antártico",
+    "Océano Pacífico"
+   ],
+   "correctIndex": 0,
+   "quip": "El Índico prefiere mantenerse lejos de las costas norteamericanas."
+  },
+  {
+   "id": "oceans-hard-47",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué fenómeno oceánico es conocido como 'El Niño'?",
+   "choices": [
+    "Corriente fría",
+    "Tormenta tropical",
+    "Calentamiento anormal",
+    "Marea roja"
+   ],
+   "correctIndex": 2,
+   "quip": "El Niño no trae regalos, ¡trae calor al océano!"
+  },
+  {
+   "id": "oceans-hard-48",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano tiene la mayor cantidad de agua dulce que desemboca en él?",
+   "choices": [
+    "Océano Atlántico",
+    "Océano Ártico",
+    "Océano Índico",
+    "Océano Pacífico"
+   ],
+   "correctIndex": 0,
+   "quip": "El Atlántico recibe más agua dulce que ningún otro, ¡como un gigante sediento!"
+  },
+  {
+   "id": "oceans-hard-49",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina es capaz de camuflarse en segundos?",
+   "choices": [
+    "Delfín",
+    "Estrella de mar",
+    "Tiburón martillo",
+    "Pulpo"
+   ],
+   "correctIndex": 3,
+   "quip": "El pulpo es el maestro del disfraz bajo el mar."
+  },
+  {
+   "id": "oceans-hard-50",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué criatura marina produce sonidos tan fuertes como un motor a reacción?",
+   "choices": [
+    "Calamar gigante",
+    "Camarón pistola",
+    "Cangrejo",
+    "Ballena azul"
+   ],
+   "correctIndex": 1,
+   "quip": "El camarón pistola hace ¡PUM! más fuerte que una explosión."
+  },
+  {
+   "id": "oceans-hard-51",
+   "topic": "Oceans",
+   "level": "hard",
+   "text": "¿Qué océano tiene la mayor cantidad de fosas oceánicas?",
+   "choices": [
+    "Océano Pacífico",
+    "Océano Ártico",
+    "Océano Atlántico",
+    "Océano Índico"
+   ],
+   "correctIndex": 0,
+   "quip": "El Pacífico no solo es ancho, ¡también es abismal!"
+  },
+  {
+   "id": "oceans-medium-11",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano tiene el mayor número de volcanes activos bajo el agua?",
+   "choices": [
+    "Pacífico",
+    "Atlántico",
+    "Índico",
+    "Ártico"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El Pacífico está que arde… literalmente!"
+  },
+  {
+   "id": "oceans-medium-12",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué gas disuelto en el agua permite la vida marina?",
+   "choices": [
+    "Metano",
+    "Oxígeno",
+    "Dióxido de carbono",
+    "Nitrógeno"
+   ],
+   "correctIndex": 1,
+   "quip": "Sin oxígeno, hasta los peces cantarían desafinados."
+  },
+  {
+   "id": "oceans-medium-13",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué nombre recibe el estudio científico de los océanos?",
+   "choices": [
+    "Biología marina",
+    "Oceanografía",
+    "Meteorología",
+    "Geología"
+   ],
+   "correctIndex": 1,
+   "quip": "Oceanografía: donde hasta el agua tiene currículum."
+  },
+  {
+   "id": "oceans-medium-14",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál de estos animales NO es un mamífero marino?",
+   "choices": [
+    "Delfín",
+    "Tiburón blanco",
+    "Ballena azul",
+    "Orca"
+   ],
+   "correctIndex": 1,
+   "quip": "El tiburón prefiere nadar en solitario… y sin pañales."
+  },
+  {
+   "id": "oceans-medium-15",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué fenómeno oceánico transporta agua cálida hacia Europa?",
+   "choices": [
+    "Tsunami",
+    "El Niño",
+    "Corriente del Golfo",
+    "Marea roja"
+   ],
+   "correctIndex": 2,
+   "quip": "Sin la Corriente del Golfo, los european tendrían que tomar el té con guantes."
+  },
+  {
+   "id": "oceans-medium-16",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuántos brazos tiene un pulpo típico?",
+   "choices": [
+    "Diez",
+    "Doce",
+    "Ocho",
+    "Seis"
+   ],
+   "correctIndex": 2,
+   "quip": "Ocho brazos y aún así no puede abrir un frasco."
+  },
+  {
+   "id": "oceans-medium-17",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué capa del océano recibe luz solar suficiente para la fotosíntesis?",
+   "choices": [
+    "Batial",
+    "Eufótica",
+    "Abisal",
+    "Hadal"
+   ],
+   "correctIndex": 1,
+   "quip": "En la zona eufótica, hasta las algas van a tomar el sol."
+  },
+  {
+   "id": "oceans-medium-18",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué tipo de agua predomina en los océanos?",
+   "choices": [
+    "Dulce",
+    "Salada",
+    "Alcalina",
+    "Ácida"
+   ],
+   "correctIndex": 1,
+   "quip": "El océano es salado… igual que las lágrimas de quien olvida la crema solar."
+  },
+  {
+   "id": "oceans-medium-19",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué criatura marina construye arrecifes con su esqueleto?",
+   "choices": [
+    "Medusa",
+    "Estrella de mar",
+    "Erizo de mar",
+    "Coral"
+   ],
+   "correctIndex": 3,
+   "quip": "Los corales son los únicos albañiles que trabajan bajo el agua."
+  },
+  {
+   "id": "oceans-medium-20",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano separa América de Europa y África?",
+   "choices": [
+    "Ártico",
+    "Pacífico",
+    "Atlántico",
+    "Índico"
+   ],
+   "correctIndex": 2,
+   "quip": "El Atlántico lleva siglos haciendo de puente… sin cobrar peaje."
+  },
+  {
+   "id": "oceans-medium-21",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano está completamente en el hemisferio norte?",
+   "choices": [
+    "Océano Ártico",
+    "Océano Atlántico",
+    "Océano Índico",
+    "Océano Antártico"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Brrr! El Ártico es el único océano que no cruza el ecuador."
+  },
+  {
+   "id": "oceans-medium-22",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál es la corriente oceánica más larga del mundo?",
+   "choices": [
+    "Corriente del Golfo",
+    "Corriente de Humboldt",
+    "Corriente Circumpolar Antártica",
+    "Corriente de Kuroshio"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Da la vuelta al mundo sin salir del agua!"
+  },
+  {
+   "id": "oceans-medium-23",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano es el más salado en promedio?",
+   "choices": [
+    "Océano Atlántico",
+    "Océano Índico",
+    "Océano Antártico",
+    "Océano Pacífico"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El Atlántico lleva la sal en su ADN!"
+  },
+  {
+   "id": "oceans-medium-24",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano cubre aproximadamente un tercio de la superficie terrestre?",
+   "choices": [
+    "Océano Atlántico",
+    "Océano Índico",
+    "Océano Ártico",
+    "Océano Pacífico"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Sí, el Pacífico es tan grande que parece un abrazo de agua a todo el planeta!"
+  },
+  {
+   "id": "oceans-medium-25",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál de estos animales es conocido como el 'unicornio del mar'?",
+   "choices": [
+    "Delfín",
+    "Narval",
+    "Tiburón blanco",
+    "Ballena jorobada"
+   ],
+   "correctIndex": 1,
+   "quip": "El narval lleva su 'cuerno' con más estilo que cualquier caballero medieval."
+  },
+  {
+   "id": "oceans-medium-26",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué porcentaje del agua en la Tierra corresponde a los océanos?",
+   "choices": [
+    "Alrededor del 50%",
+    "Alrededor del 90%",
+    "Alrededor del 97%",
+    "Alrededor del 70%"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Somos un planeta azul, casi un 97% de agua salada!"
+  },
+  {
+   "id": "oceans-medium-27",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué fenómeno natural ocurre cuando el agua del océano se mueve en círculos?",
+   "choices": [
+    "Remolino",
+    "Corriente marina",
+    "Ola",
+    "Marea"
+   ],
+   "correctIndex": 0,
+   "quip": "Los remolinos son como los giros de un bailaor en el agua."
+  },
+  {
+   "id": "oceans-medium-28",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál es el único océano que no toca tierra en su límite norte?",
+   "choices": [
+    "Océano Índico",
+    "Océano Atlántico",
+    "Océano Antártico",
+    "Océano Pacífico"
+   ],
+   "correctIndex": 2,
+   "quip": "El Antártico es tan aventurero que rodea todo un continente sin detenerse."
+  },
+  {
+   "id": "oceans-medium-29",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué tipo de tortuga marina es la más grande del mundo?",
+   "choices": [
+    "Tortuga verde",
+    "Tortuga laúd",
+    "Tortuga boba",
+    "Tortuga carey"
+   ],
+   "correctIndex": 1,
+   "quip": "La tortuga laúd es tan grande que parece un sofá nadando."
+  },
+  {
+   "id": "oceans-medium-30",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál de estos animales marinos puede cambiar de color para camuflarse?",
+   "choices": [
+    "Estrella de mar",
+    "Medusa",
+    "Tiburón",
+    "Pulpo"
+   ],
+   "correctIndex": 3,
+   "quip": "El pulpo es el maestro del disfraz acuático, ¡como un espía del mar!"
+  },
+  {
+   "id": "oceans-medium-31",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano conecta los océanos Atlántico y Pacífico por el norte?",
+   "choices": [
+    "Mar Mediterráneo",
+    "Océano Ártico",
+    "Océano Índico",
+    "Océano Antártico"
+   ],
+   "correctIndex": 1,
+   "quip": "El Ártico es el puente de hielo entre dos gigantes."
+  },
+  {
+   "id": "oceans-medium-32",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano es el más grande de la Tierra?",
+   "choices": [
+    "Índico",
+    "Pacífico",
+    "Atlántico",
+    "Ártico"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El Pacífico es tan grande que podría caber todos los continentes juntos!"
+  },
+  {
+   "id": "oceans-medium-33",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano bordea la costa de Brasil?",
+   "choices": [
+    "Ártico",
+    "Índico",
+    "Pacífico",
+    "Atlántico"
+   ],
+   "correctIndex": 3,
+   "quip": "El Atlántico le hace compañía a Brasil mientras disfruta de sus playas."
+  },
+  {
+   "id": "oceans-medium-34",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué fenómeno ocurre cuando el agua fría rica en nutrientes sube a la superficie?",
+   "choices": [
+    "Corriente marina",
+    "Afloramiento",
+    "Marea roja",
+    "Tsunami"
+   ],
+   "correctIndex": 1,
+   "quip": "Es como un ascensor de comida para los peces, ¡bon appétit!"
+  },
+  {
+   "id": "oceans-medium-35",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano separa África de Australia?",
+   "choices": [
+    "Pacífico",
+    "Índico",
+    "Ártico",
+    "Atlántico"
+   ],
+   "correctIndex": 1,
+   "quip": "El Índico es el puente acuático entre dos continentes muy cálidos."
+  },
+  {
+   "id": "oceans-medium-36",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál de estos animales vive en el océano y es un molusco?",
+   "choices": [
+    "Tiburón",
+    "Pulpo",
+    "Delfín",
+    "Medusa"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Correcto! El pulpo tiene ocho brazos y hasta tres corazones. ¡Todo un acróbata del mar!"
+  },
+  {
+   "id": "oceans-medium-37",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál es la capa más superficial del océano?",
+   "choices": [
+    "Zona pelágica",
+    "Zona epipelágica",
+    "Zona batipelágica",
+    "Zona abisal"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Zona epipelágica! Aquí el sol brilla tanto que hasta los peces necesitan gafas de sol imaginarias."
+  },
+  {
+   "id": "oceans-medium-38",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano limita con la Antártida?",
+   "choices": [
+    "Océano Pacífico",
+    "Océano Índico",
+    "Océano Antártico",
+    "Océano Ártico"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Océano Antártico! Donde el agua es tan fría que hasta los pingüinos hacen cola para tomar un té caliente."
+  },
+  {
+   "id": "oceans-medium-39",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano separa América de Asia?",
+   "choices": [
+    "Océano Atlántico",
+    "Océano Índico",
+    "Océano Pacífico",
+    "Océano Glacial Ártico"
+   ],
+   "correctIndex": 2,
+   "quip": "¡El Pacífico! Y aunque su nombre invite a la calma, a veces tiene más olas que una fiesta en la playa."
+  },
+  {
+   "id": "oceans-medium-40",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál es el invertebrado marino más grande?",
+   "choices": [
+    "Estrella de mar",
+    "Pulpo gigante del Pacífico",
+    "Medusa gigante",
+    "Calamar colosal"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El calamar colosal! Puede medir hasta 14 metros. ¡Imagina encontrártelo en la playa!"
+  },
+  {
+   "id": "oceans-medium-41",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál de estos animales marinos es un mamífero?",
+   "choices": [
+    "Tiburón ballena",
+    "Mantarraya",
+    "Ballena jorobada",
+    "Pez payaso"
+   ],
+   "correctIndex": 2,
+   "quip": "¡La ballena jorobada! Aunque parezca un pez gigante, en realidad es un mamífero que canta bajo el agua."
+  },
+  {
+   "id": "oceans-medium-42",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué fenómeno oceánico produce energía para olas y corrientes?",
+   "choices": [
+    "Terremotos",
+    "Mareas",
+    "Vientos",
+    "Eclipses"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Los vientos soplan y las olas bailan, así funciona el mar!"
+  },
+  {
+   "id": "oceans-medium-43",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Cuál es el océano con la mayor biodiversidad de corales?",
+   "choices": [
+    "Índico",
+    "Pacífico",
+    "Ártico",
+    "Atlántico"
+   ],
+   "correctIndex": 1,
+   "quip": "El Pacífico es el rey de los arrecifes, ¡como un jardín submarino!"
+  },
+  {
+   "id": "oceans-medium-44",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué nombre recibe la capa más profunda del océano?",
+   "choices": [
+    "Hadal",
+    "Abisal",
+    "Epipelágica",
+    "Batial"
+   ],
+   "correctIndex": 0,
+   "quip": "Hadal, como el Hades, ¡pero bajo el agua!"
+  },
+  {
+   "id": "oceans-medium-45",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué criatura marina es conocida por tener bioluminiscencia?",
+   "choices": [
+    "Medusa",
+    "Tiburón blanco",
+    "Pulpo",
+    "Ballena azul"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Las medusas brillan más que una fiesta bajo el mar!"
+  },
+  {
+   "id": "oceans-medium-46",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué océano limita con la costa este de África?",
+   "choices": [
+    "Pacífico",
+    "Índico",
+    "Atlántico",
+    "Antártico"
+   ],
+   "correctIndex": 1,
+   "quip": "El Índico es el vecino africano, ¡como un abrazo de agua!"
+  },
+  {
+   "id": "oceans-medium-47",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué fenómeno ocurre cuando el agua del mar se congela?",
+   "choices": [
+    "Glaciar",
+    "Iceberg",
+    "Nieve marina",
+    "Hielo marino"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El hielo marino es el helado favorito del Ártico!"
+  },
+  {
+   "id": "oceans-medium-48",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué animal marino es conocido por su ecolocalización?",
+   "choices": [
+    "Cangrejo",
+    "Tortuga marina",
+    "Pez payaso",
+    "Delfín"
+   ],
+   "correctIndex": 3,
+   "quip": "Los delfines tienen un GPS natural, ¡y es muy preciso!"
+  },
+  {
+   "id": "oceans-medium-49",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué nombre recibe el movimiento horizontal del agua del océano?",
+   "choices": [
+    "Corriente",
+    "Maremoto",
+    "Ola",
+    "Marea"
+   ],
+   "correctIndex": 0,
+   "quip": "Las corrientes son como autopistas bajo el mar, ¡sin peajes!"
+  },
+  {
+   "id": "oceans-medium-50",
+   "topic": "Oceans",
+   "level": "medium",
+   "text": "¿Qué criatura marina es famosa por su canto?",
+   "choices": [
+    "Estrella de mar",
+    "Pez globo",
+    "Ballena jorobada",
+    "Tiburón ballena"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Las ballenas cantan mejor que algunos en la ducha!"
+  },
+  {
+   "id": "space-easy-11",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta es conocido por sus hermosos anillos?",
+   "choices": [
+    "Júpiter",
+    "Venus",
+    "Saturno",
+    "Marte"
+   ],
+   "correctIndex": 2,
+   "quip": "Saturno no solo tiene estilo, ¡tiene anillos de campeonato!"
+  },
+  {
+   "id": "space-easy-12",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué fenómeno ocurre cuando la Luna cubre al Sol?",
+   "choices": [
+    "Eclipse solar",
+    "Marea alta",
+    "Aurora boreal",
+    "Lluvia de estrellas"
+   ],
+   "correctIndex": 0,
+   "quip": "¡La Luna le robó el protagonismo al Sol por un ratito!"
+  },
+  {
+   "id": "space-easy-13",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cuál es el único satélite natural de la Tierra?",
+   "choices": [
+    "Luna",
+    "Europa",
+    "Titán",
+    "Ganímedes"
+   ],
+   "correctIndex": 0,
+   "quip": "La Luna es la compañera fiel de la Tierra, ¡noche tras noche!"
+  },
+  {
+   "id": "space-easy-14",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué gas es el más abundante en el Sol?",
+   "choices": [
+    "Nitrógeno",
+    "Oxígeno",
+    "Helio",
+    "Hidrógeno"
+   ],
+   "correctIndex": 3,
+   "quip": "El Sol es básicamente una bola gigante de hidrógeno con estilo."
+  },
+  {
+   "id": "space-easy-15",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué objeto celeste pierde parte de su cola al acercarse al Sol?",
+   "choices": [
+    "Asteroide",
+    "Estrella fugaz",
+    "Cometa",
+    "Planeta"
+   ],
+   "correctIndex": 2,
+   "quip": "Los cometas son como los magos: ¡pierden cosas pero siempre vuelven!"
+  },
+  {
+   "id": "space-easy-16",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe una estrella que explota?",
+   "choices": [
+    "Agujero negro",
+    "Supernova",
+    "Púlsar",
+    "Nebulosa"
+   ],
+   "correctIndex": 1,
+   "quip": "Las supernovas son las despedidas más espectaculares del universo."
+  },
+  {
+   "id": "space-easy-17",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué instrumento usan los astrónomos para observar estrellas?",
+   "choices": [
+    "Microscopio",
+    "Cámara",
+    "Binoculares",
+    "Telescopio"
+   ],
+   "correctIndex": 3,
+   "quip": "Con un telescopio, ¡el cielo ya no tiene secretos!"
+  },
+  {
+   "id": "space-easy-18",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cuál es el nombre de nuestra galaxia?",
+   "choices": [
+    "Nube de Magallanes",
+    "Triángulo",
+    "Andrómeda",
+    "Vía Láctea"
+   ],
+   "correctIndex": 3,
+   "quip": "La Vía Láctea es el barrio cósmico donde vivimos."
+  },
+  {
+   "id": "space-easy-19",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta tiene una gran mancha roja?",
+   "choices": [
+    "Marte",
+    "Urano",
+    "Júpiter",
+    "Saturno"
+   ],
+   "correctIndex": 2,
+   "quip": "Esa mancha roja es una tormenta más grande que la Tierra. ¡Impresionante!"
+  },
+  {
+   "id": "space-easy-20",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta es conocido como el lucero del alba?",
+   "choices": [
+    "Marte",
+    "Saturno",
+    "Júpiter",
+    "Venus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Brilla tanto que hasta los gallos se confunden de hora!"
+  },
+  {
+   "id": "space-easy-21",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe la nave que llevó al primer hombre a la Luna?",
+   "choices": [
+    "Discovery",
+    "Apolo 11",
+    "Voyager 1",
+    "Sputnik 1"
+   ],
+   "correctIndex": 1,
+   "quip": "Un pequeño paso para el hombre, un gran salto para los aciertos en este juego."
+  },
+  {
+   "id": "space-easy-22",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué fenómeno ocurre cuando la Tierra pasa entre el Sol y la Luna?",
+   "choices": [
+    "Eclipse lunar",
+    "Eclipse solar",
+    "Aurora boreal",
+    "Lluvia de estrellas"
+   ],
+   "correctIndex": 0,
+   "quip": "La Luna se pone roja de vergüenza al verse en sombras."
+  },
+  {
+   "id": "space-easy-23",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cuál es el planeta más pequeño del sistema solar?",
+   "choices": [
+    "Mercurio",
+    "Marte",
+    "Plutón",
+    "Tierra"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Pequeño pero con mucha velocidad!"
+  },
+  {
+   "id": "space-easy-24",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe una estrella fugaz?",
+   "choices": [
+    "Asteroide",
+    "Meteoro",
+    "Satélite",
+    "Cometa"
+   ],
+   "correctIndex": 1,
+   "quip": "Si pides un deseo rápido, ¡hoy se cumple en este programa!"
+  },
+  {
+   "id": "space-easy-25",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué capa protege a la Tierra de los rayos del Sol?",
+   "choices": [
+    "Ionosfera",
+    "Troposfera",
+    "Estratosfera",
+    "Capa de ozono"
+   ],
+   "correctIndex": 3,
+   "quip": "Sin ella, ¡hasta el helado se derretiría en segundos!"
+  },
+  {
+   "id": "space-easy-26",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe el camino que sigue un planeta alrededor del Sol?",
+   "choices": [
+    "Órbita",
+    "Trayectoria",
+    "Vía",
+    "Ruta"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Como un carrusel, pero sin tickets!"
+  },
+  {
+   "id": "space-easy-27",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué gas hace que Urano y Neptuno sean azules?",
+   "choices": [
+    "Nitrógeno",
+    "Metano",
+    "Oxígeno",
+    "Hidrógeno"
+   ],
+   "correctIndex": 1,
+   "quip": "El metano les da un toque de color... ¡y de olor!"
+  },
+  {
+   "id": "space-easy-28",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué objeto celeste es el centro de nuestro sistema solar?",
+   "choices": [
+    "El Sol",
+    "La Luna",
+    "Marte",
+    "La Tierra"
+   ],
+   "correctIndex": 0,
+   "quip": "Sin él, ¡hasta los horóscopos perderían sentido!"
+  },
+  {
+   "id": "space-easy-29",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué cuerpo celeste brilla con luz propia en el cielo nocturno?",
+   "choices": [
+    "Un planeta",
+    "La Luna",
+    "Un cometa",
+    "Una estrella"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Exacto! Las estrellas son las bombillas del universo."
+  },
+  {
+   "id": "space-easy-30",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué astronauta fue el primero en caminar sobre la Luna?",
+   "choices": [
+    "Buzz Aldrin",
+    "Yuri Gagarin",
+    "Neil Armstrong",
+    "John Glenn"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Un pequeño paso para el hombre, un gran paso para la familia!"
+  },
+  {
+   "id": "space-easy-31",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué fenómeno natural hace que veamos la Luna de diferentes formas?",
+   "choices": [
+    "Las estaciones",
+    "Los eclipses",
+    "Las mareas",
+    "Las fases lunares"
+   ],
+   "correctIndex": 3,
+   "quip": "¡La Luna siempre está cambiando de look!"
+  },
+  {
+   "id": "space-easy-32",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cuál es el segundo planeta más cercano al Sol?",
+   "choices": [
+    "Mercurio",
+    "Tierra",
+    "Marte",
+    "Venus"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Venus es tan brillante que a veces parece una estrella!"
+  },
+  {
+   "id": "space-easy-33",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe el grupo de planetas que giran alrededor del Sol?",
+   "choices": [
+    "Sistema solar",
+    "Constelación",
+    "Galaxia",
+    "Universo"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y todos bailan al ritmo del Sol!"
+  },
+  {
+   "id": "space-easy-34",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué instrumento usan los científicos para estudiar el espacio desde la Tierra?",
+   "choices": [
+    "Telescopio",
+    "Cámara",
+    "Binoculares",
+    "Microscopio"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Con él podemos ver lo invisible!"
+  },
+  {
+   "id": "space-easy-35",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué evento ocurre cuando la Tierra bloquea la luz del Sol sobre la Luna?",
+   "choices": [
+    "Eclipse solar",
+    "Eclipse lunar",
+    "Marea alta",
+    "Luna llena"
+   ],
+   "correctIndex": 1,
+   "quip": "¡La Luna se pone de mal humor y se oscurece!"
+  },
+  {
+   "id": "space-easy-36",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe un objeto hecho por el humano que orbita la Tierra?",
+   "choices": [
+    "Cometa",
+    "Satélite artificial",
+    "Asteroide",
+    "Estrella"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Y nos ayuda a ver la tele desde el sofá!"
+  },
+  {
+   "id": "space-easy-37",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta es conocido como el gemelo de la Tierra?",
+   "choices": [
+    "Neptuno",
+    "Mercurio",
+    "Venus",
+    "Marte"
+   ],
+   "correctIndex": 2,
+   "quip": "Venus es casi del mismo tamaño, ¡pero no invites a un picnic allí!"
+  },
+  {
+   "id": "space-easy-38",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe la explosión inicial que formó el universo?",
+   "choices": [
+    "Nebulosa",
+    "Supernova",
+    "Agujero negro",
+    "Big Bang"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y el universo dijo: 'Que comience el espectáculo'!"
+  },
+  {
+   "id": "space-easy-39",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cuál es el único planeta que gira de lado?",
+   "choices": [
+    "Urano",
+    "Júpiter",
+    "Plutón",
+    "Saturno"
+   ],
+   "correctIndex": 0,
+   "quip": "Urano gira como si estuviera tomando una siesta cósmica."
+  },
+  {
+   "id": "space-easy-40",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué fenómeno ocurre cuando una estrella colapsa?",
+   "choices": [
+    "Galaxia",
+    "Eclipse",
+    "Agujero negro",
+    "Cometa"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Es como si la estrella dijera: 'Me rindo, me hago invisible'!"
+  },
+  {
+   "id": "space-easy-41",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe la capa de gas que rodea a la Tierra?",
+   "choices": [
+    "Troposfera",
+    "Ionosfera",
+    "Atmósfera",
+    "Estratosfera"
+   ],
+   "correctIndex": 2,
+   "quip": "Sin ella, estaríamos respirando... ¡nada!"
+  },
+  {
+   "id": "space-easy-42",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta es el más caliente del sistema solar?",
+   "choices": [
+    "Venus",
+    "Júpiter",
+    "Marte",
+    "Mercurio"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Venus tiene un efecto invernadero que ni en el desierto!"
+  },
+  {
+   "id": "space-easy-43",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe un planeta que gira alrededor de otra estrella?",
+   "choices": [
+    "Asteroide",
+    "Satélite",
+    "Exoplaneta",
+    "Planeta enano"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Como un primo lejano que vive en otra galaxia!"
+  },
+  {
+   "id": "space-easy-44",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué objeto celeste es una bola de hielo y polvo?",
+   "choices": [
+    "Cometa",
+    "Meteoro",
+    "Asteroide",
+    "Estrella"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Es como un muñeco de nieve que viaja por el espacio!"
+  },
+  {
+   "id": "space-easy-45",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe la distancia que recorre la luz en un año?",
+   "choices": [
+    "Año luz",
+    "Unidad astronómica",
+    "Parsec",
+    "Megametro"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Y pensabas que tu viaje al trabajo era largo!"
+  },
+  {
+   "id": "space-easy-46",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta tiene el día más corto del sistema solar?",
+   "choices": [
+    "Tierra",
+    "Júpiter",
+    "Mercurio",
+    "Saturno"
+   ],
+   "correctIndex": 1,
+   "quip": "Júpiter gira tan rápido que casi pierde el sombrero."
+  },
+  {
+   "id": "space-easy-47",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta es conocido como el gigante de hielo?",
+   "choices": [
+    "Saturno",
+    "Marte",
+    "Júpiter",
+    "Neptuno"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Neptuno es el frío rey de los hielos espaciales!"
+  },
+  {
+   "id": "space-easy-48",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué cuerpo celeste es una galaxia vecina de la Vía Láctea?",
+   "choices": [
+    "Andrómeda",
+    "Plutón",
+    "Osa Mayor",
+    "Sirio"
+   ],
+   "correctIndex": 0,
+   "quip": "Andrómeda y la Vía Láctea están en rumbo de colisión… ¡pero tranquilos, falta mucho!"
+  },
+  {
+   "id": "space-easy-49",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué gas protege a la Tierra de la radiación ultravioleta?",
+   "choices": [
+    "Nitrógeno",
+    "Oxígeno",
+    "Ozono",
+    "Dióxido de carbono"
+   ],
+   "correctIndex": 2,
+   "quip": "El ozono es como el bloqueador solar de nuestro planeta."
+  },
+  {
+   "id": "space-easy-50",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Cuál es el planeta con el volcán más grande del sistema solar?",
+   "choices": [
+    "Mercurio",
+    "Marte",
+    "Tierra",
+    "Venus"
+   ],
+   "correctIndex": 1,
+   "quip": "El Monte Olimpo en Marte es tan grande que su base es del tamaño de Arizona."
+  },
+  {
+   "id": "space-easy-51",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta gira más rápido sobre su eje?",
+   "choices": [
+    "Júpiter",
+    "Tierra",
+    "Urano",
+    "Saturno"
+   ],
+   "correctIndex": 0,
+   "quip": "Júpiter gira tan rápido que tiene días de solo 10 horas… ¡como un día de escuela!"
+  },
+  {
+   "id": "space-easy-52",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta es conocido como el planeta azul?",
+   "choices": [
+    "Venus",
+    "Júpiter",
+    "Marte",
+    "La Tierra"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Y vaya que tenemos suerte de vivir en él, con tanta agua y vida!"
+  },
+  {
+   "id": "space-easy-53",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta tiene el año más largo del sistema solar?",
+   "choices": [
+    "Neptuno",
+    "Saturno",
+    "Mercurio",
+    "Urano"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Neptuno tarda tanto en dar la vuelta al Sol que hasta las modas cambian!"
+  },
+  {
+   "id": "space-easy-54",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué capa de la atmósfera terrestre refleja las ondas de radio?",
+   "choices": [
+    "Estratosfera",
+    "Ionosfera",
+    "Mesosfera",
+    "Troposfera"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Sin la ionosfera, tu programa de radio favorito se perdería en el espacio!"
+  },
+  {
+   "id": "space-easy-55",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe un objeto que entra en la atmósfera terrestre y se quema?",
+   "choices": [
+    "Meteoro",
+    "Cometa",
+    "Satélite",
+    "Asteroide"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Es como una estrella fugaz, pero con más prisa por desaparecer!"
+  },
+  {
+   "id": "space-easy-56",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta tiene tormentas con forma de hexágono?",
+   "choices": [
+    "Júpiter",
+    "Urano",
+    "Saturno",
+    "Neptuno"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Saturno debe tener un diseñador de tormentas muy geométrico!"
+  },
+  {
+   "id": "space-easy-57",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe el punto más lejano de la órbita de un planeta?",
+   "choices": [
+    "Afelio",
+    "Eclíptica",
+    "Zenit",
+    "Perihelio"
+   ],
+   "correctIndex": 0,
+   "quip": "¡En el afelio, hasta el Sol parece más pequeño y tímido!"
+  },
+  {
+   "id": "space-easy-58",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué planeta tiene una luna llamada Titán?",
+   "choices": [
+    "Neptuno",
+    "Júpiter",
+    "Urano",
+    "Saturno"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Titán es tan grande que hasta tiene lagos de metano! ¿Alguien dijo vacaciones exóticas?"
+  },
+  {
+   "id": "space-easy-59",
+   "topic": "Space",
+   "level": "easy",
+   "text": "¿Qué nombre recibe el polvo y gas que forma nuevas estrellas?",
+   "choices": [
+    "Galaxia",
+    "Cúmulo",
+    "Agujero negro",
+    "Nebulosa"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Las nebulosas son como las guarderías del universo, llenas de estrellas bebé!"
+  },
+  {
+   "id": "space-hard-11",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué planeta tiene el día más largo del sistema solar?",
+   "choices": [
+    "Venus",
+    "Tierra",
+    "Mercurio",
+    "Júpiter"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Venus gira tan lento que un día allí dura más que un año en la Tierra!"
+  },
+  {
+   "id": "space-hard-12",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál de estos elementos es el más abundante en la atmósfera de Neptuno?",
+   "choices": [
+    "Helio",
+    "Metano",
+    "Hidrógeno",
+    "Oxígeno"
+   ],
+   "correctIndex": 2,
+   "quip": "Neptuno es tan gaseoso que hasta su nombre suena a 'hidrógeno gigante'."
+  },
+  {
+   "id": "space-hard-13",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué misión espacial fue la primera en aterrizar en un cometa?",
+   "choices": [
+    "New Horizons",
+    "Apolo 11",
+    "Rosetta",
+    "Voyager 2"
+   ],
+   "correctIndex": 2,
+   "quip": "Rosetta y su módulo Philae hicieron historia... ¡y ni siquiera llevaban paracaídas!"
+  },
+  {
+   "id": "space-hard-14",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué fenómeno astronómico ocurre cuando la Luna cubre al Sol?",
+   "choices": [
+    "Lluvia de estrellas",
+    "Eclipse solar",
+    "Eclipse lunar",
+    "Tránsito de Venus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡La Luna siempre roba el show cuando el Sol intenta brillar!"
+  },
+  {
+   "id": "space-hard-15",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es la temperatura promedio en la superficie de Plutón?",
+   "choices": [
+    "-100°C",
+    "-180°C",
+    "-230°C",
+    "-50°C"
+   ],
+   "correctIndex": 2,
+   "quip": "En Plutón hace tanto frío que hasta el hielo se congela dos veces."
+  },
+  {
+   "id": "space-hard-16",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué nave espacial llevó al primer humano a la Luna?",
+   "choices": [
+    "Gemini 4",
+    "Vostok 1",
+    "Apolo 11",
+    "Sputnik 1"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Un pequeño paso para el hombre, pero un gran paso para la humanidad... y para el turismo lunar!"
+  },
+  {
+   "id": "space-hard-17",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál de estos planetas no tiene anillos?",
+   "choices": [
+    "Urano",
+    "Marte",
+    "Neptuno",
+    "Júpiter"
+   ],
+   "correctIndex": 1,
+   "quip": "Marte prefiere los barrancos a los anillos, ¡es un planeta sin glamour!"
+  },
+  {
+   "id": "space-hard-18",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué estrella es la más cercana a la Tierra después del Sol?",
+   "choices": [
+    "Próxima Centauri",
+    "Alfa Centauri A",
+    "Betelgeuse",
+    "Sirio"
+   ],
+   "correctIndex": 0,
+   "quip": "Próxima Centauri está tan cerca que casi podríamos mandarle una carta... en código morse."
+  },
+  {
+   "id": "space-hard-19",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuántos planetas enanos hay oficialmente en nuestro sistema solar?",
+   "choices": [
+    "7",
+    "9",
+    "3",
+    "5"
+   ],
+   "correctIndex": 3,
+   "quip": "Cinco planetas enanos, pero ninguno quiere ser el más pequeño de la clase."
+  },
+  {
+   "id": "space-hard-20",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué planeta tiene la montaña más alta del sistema solar?",
+   "choices": [
+    "Venus",
+    "Tierra",
+    "Júpiter",
+    "Marte"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El Monte Olimpo en Marte es tan alto que casi toca las estrellas!"
+  },
+  {
+   "id": "space-hard-21",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es el único planeta del sistema solar que gira de lado?",
+   "choices": [
+    "Saturno",
+    "Mercurio",
+    "Neptuno",
+    "Urano"
+   ],
+   "correctIndex": 3,
+   "quip": "Urano rueda por el espacio como una pelota gigante."
+  },
+  {
+   "id": "space-hard-22",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es el elemento más abundante en el Sol?",
+   "choices": [
+    "Helio",
+    "Hidrógeno",
+    "Carbono",
+    "Oxígeno"
+   ],
+   "correctIndex": 1,
+   "quip": "El Sol es básicamente una bola gigante de gas... ¡y fiesta de hidrógeno!"
+  },
+  {
+   "id": "space-hard-23",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué planeta tiene vientos más rápidos en el sistema solar?",
+   "choices": [
+    "Neptuno",
+    "Saturno",
+    "Urano",
+    "Júpiter"
+   ],
+   "correctIndex": 0,
+   "quip": "En Neptuno, ¡hasta los vientos tienen prisa!"
+  },
+  {
+   "id": "space-hard-24",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es la sonda espacial que ha viajado más lejos de la Tierra?",
+   "choices": [
+    "Voyager 2",
+    "Pioneer 10",
+    "Voyager 1",
+    "New Horizons"
+   ],
+   "correctIndex": 2,
+   "quip": "Voyager 1 lleva un mensaje para extraterrestres... ¡y mucho estilo!"
+  },
+  {
+   "id": "space-hard-25",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué luna de Saturno tiene lagos de metano líquido?",
+   "choices": [
+    "Rea",
+    "Titán",
+    "Encélado",
+    "Mimas"
+   ],
+   "correctIndex": 1,
+   "quip": "En Titán, hasta los lagos tienen químicos interesantes."
+  },
+  {
+   "id": "space-hard-26",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuántas lunas tiene Plutón?",
+   "choices": [
+    "3",
+    "1",
+    "7",
+    "5"
+   ],
+   "correctIndex": 3,
+   "quip": "Plutón puede ser pequeño, pero tiene una familia lunar numerosa."
+  },
+  {
+   "id": "space-hard-27",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué planeta tiene los anillos más brillantes del sistema solar?",
+   "choices": [
+    "Júpiter",
+    "Neptuno",
+    "Saturno",
+    "Urano"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Saturno brilla tanto que hasta los anillos quieren destacar en la fiesta del sistema solar!"
+  },
+  {
+   "id": "space-hard-28",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es el único planeta conocido con vida?",
+   "choices": [
+    "Tierra",
+    "Mercurio",
+    "Venus",
+    "Marte"
+   ],
+   "correctIndex": 0,
+   "quip": "La Tierra es el 'Airbnb' del universo: todos quieren vivir aquí."
+  },
+  {
+   "id": "space-hard-29",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué nave espacial llevó al primer humano al espacio?",
+   "choices": [
+    "Sputnik 1",
+    "Vostok 1",
+    "Gemini 4",
+    "Apolo 11"
+   ],
+   "correctIndex": 1,
+   "quip": "Vostok 1: el viaje que hizo que Yuri Gagarin pasara a la historia como el primer turista espacial."
+  },
+  {
+   "id": "space-hard-30",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es la estrella central de nuestro sistema solar?",
+   "choices": [
+    "Polaris",
+    "Sol",
+    "Sirio",
+    "Alfa Centauri"
+   ],
+   "correctIndex": 1,
+   "quip": "El Sol es el 'influencer' más brillante del sistema solar, ¡sin filtro!"
+  },
+  {
+   "id": "space-hard-31",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué planeta es conocido como el 'planeta rojo'?",
+   "choices": [
+    "Saturno",
+    "Júpiter",
+    "Venus",
+    "Marte"
+   ],
+   "correctIndex": 3,
+   "quip": "Marte lleva siempre su 'bronceado' natural gracias al óxido de hierro."
+  },
+  {
+   "id": "space-hard-32",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es el segundo planeta más grande del sistema solar?",
+   "choices": [
+    "Urano",
+    "Tierra",
+    "Saturno",
+    "Júpiter"
+   ],
+   "correctIndex": 2,
+   "quip": "Saturno es el gigante que siempre lleva su accesorio favorito: los anillos."
+  },
+  {
+   "id": "space-hard-33",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué misión espacial confirmó la existencia de agua en la Luna?",
+   "choices": [
+    "Voyager 1",
+    "Cassini",
+    "Apolo 11",
+    "LCROSS"
+   ],
+   "correctIndex": 3,
+   "quip": "LCROSS descubrió que hasta la Luna guarda secretos en forma de hielo."
+  },
+  {
+   "id": "space-hard-34",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué fenómeno astronómico ocurre cuando la Tierra pasa entre el Sol y la Luna?",
+   "choices": [
+    "Eclipse lunar",
+    "Eclipse solar",
+    "Tránsito",
+    "Conjunción"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El eclipse lunar es como una noche de cine con la Tierra de protagonista!"
+  },
+  {
+   "id": "space-hard-35",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué planeta tiene la tormenta más grande conocida del sistema solar?",
+   "choices": [
+    "Marte",
+    "Júpiter",
+    "Saturno",
+    "Neptuno"
+   ],
+   "correctIndex": 1,
+   "quip": "La Gran Mancha Roja de Júpiter lleva siglos soplando más fuerte que cualquier huracán terrestre."
+  },
+  {
+   "id": "space-hard-36",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuántos satélites naturales tiene Venus?",
+   "choices": [
+    "Dos",
+    "Tres",
+    "Cero",
+    "Uno"
+   ],
+   "correctIndex": 2,
+   "quip": "Venus y Mercurio son los únicos planetas del sistema solar sin lunas, ¡qué soledad!"
+  },
+  {
+   "id": "space-hard-37",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es el planeta con el año más corto del sistema solar?",
+   "choices": [
+    "Marte",
+    "Tierra",
+    "Mercurio",
+    "Venus"
+   ],
+   "correctIndex": 2,
+   "quip": "Mercurio da vueltas al Sol tan rápido que su año dura solo 88 días terrestres."
+  },
+  {
+   "id": "space-hard-38",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué fenómeno crea las auroras en los polos de la Tierra?",
+   "choices": [
+    "La luna llena",
+    "Los rayos cósmicos",
+    "El viento solar",
+    "La luz zodiacal"
+   ],
+   "correctIndex": 2,
+   "quip": "El viento solar pinta los cielos polares con luces danzantes, ¡como un festival de partículas!"
+  },
+  {
+   "id": "space-hard-39",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué luna de Neptuno es la más grande y orbita en dirección opuesta?",
+   "choices": [
+    "Tritón",
+    "Ganímedes",
+    "Titán",
+    "Europa"
+   ],
+   "correctIndex": 0,
+   "quip": "Tritón va contracorriente: ¡es la única luna grande que orbita al revés!"
+  },
+  {
+   "id": "space-hard-40",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué sonda espacial estudió Plutón de cerca por primera vez en 2015?",
+   "choices": [
+    "New Horizons",
+    "Cassini",
+    "Voyager 2",
+    "Pioneer 10"
+   ],
+   "correctIndex": 0,
+   "quip": "New Horizons reveló que Plutón tiene un corazón helado, literalmente."
+  },
+  {
+   "id": "space-hard-41",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es el único planeta del sistema solar con tectónica de placas activa?",
+   "choices": [
+    "Venus",
+    "Marte",
+    "Mercurio",
+    "Tierra"
+   ],
+   "correctIndex": 3,
+   "quip": "La Tierra es el único planeta que recicla su corteza, ¡como un rompecabezas en movimiento!"
+  },
+  {
+   "id": "space-hard-42",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué fenómeno causa los géiseres de vapor en Encélado, luna de Saturno?",
+   "choices": [
+    "Actividad volcánica",
+    "Fricción de mareas",
+    "Calentamiento solar",
+    "Impactos de meteoritos"
+   ],
+   "correctIndex": 1,
+   "quip": "Saturno le da un masaje gravitacional a Encélado, ¡y el vapor sale disparado!"
+  },
+  {
+   "id": "space-hard-43",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es el único satélite natural del sistema solar con atmósfera densa?",
+   "choices": [
+    "Titán",
+    "Europa",
+    "Luna",
+    "Ganímedes"
+   ],
+   "correctIndex": 0,
+   "quip": "Titán tiene ríos y lagos, ¡pero de metano! Perfecto para un chapuzón… si aguantas el frío."
+  },
+  {
+   "id": "space-hard-44",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué elemento compone principalmente los anillos de Saturno?",
+   "choices": [
+    "Polvo",
+    "Rocas",
+    "Hielo de agua",
+    "Hierro"
+   ],
+   "correctIndex": 2,
+   "quip": "Son como copos de nieve gigantes, ¡pero mejor no los pongas en tu chocolate caliente!"
+  },
+  {
+   "id": "space-hard-45",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué sonda espacial visitó por primera vez Urano y Neptuno?",
+   "choices": [
+    "Cassini",
+    "Voyager 1",
+    "Voyager 2",
+    "Pioneer 11"
+   ],
+   "correctIndex": 2,
+   "quip": "Voyager 2 es la única sonda que les hizo una visita cercana, ¡y les sacó fotos de cerca!"
+  },
+  {
+   "id": "space-hard-46",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué planeta tiene su eje de rotación inclinado casi 98 grados?",
+   "choices": [
+    "Venus",
+    "Neptuno",
+    "Saturno",
+    "Urano"
+   ],
+   "correctIndex": 3,
+   "quip": "Urano gira como una pelota rodando, ¡el planeta más rebelde del sistema solar!"
+  },
+  {
+   "id": "space-hard-47",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué fenómeno astronómico crea las 'luces del sur' o auroras australes?",
+   "choices": [
+    "Refracción de luz",
+    "Volcanes submarinos",
+    "Partículas solares",
+    "Rayos cósmicos"
+   ],
+   "correctIndex": 2,
+   "quip": "Las partículas solares bailan con el campo magnético, ¡y pintan el cielo de colores!"
+  },
+  {
+   "id": "space-hard-48",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Cuál es el volcán más alto conocido en el sistema solar?",
+   "choices": [
+    "Rheasilvia",
+    "Monte Olimpo",
+    "Mauna Kea",
+    "Monte Etna"
+   ],
+   "correctIndex": 1,
+   "quip": "¡En Marte, hasta los volcanes quieren tocar las estrellas!"
+  },
+  {
+   "id": "space-hard-49",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué misión descubrió por primera vez géiseres en Tritón?",
+   "choices": [
+    "New Horizons",
+    "Voyager 2",
+    "Cassini",
+    "Voyager 1"
+   ],
+   "correctIndex": 1,
+   "quip": "Voyager 2 nos enseñó que hasta las lunas lejanas saben hacer espectáculo."
+  },
+  {
+   "id": "space-hard-50",
+   "topic": "Space",
+   "level": "hard",
+   "text": "¿Qué luna de Júpiter tiene más cráteres que cualquier otro cuerpo?",
+   "choices": [
+    "Calisto",
+    "Ío",
+    "Europa",
+    "Ganímedes"
+   ],
+   "correctIndex": 0,
+   "quip": "Calisto es como el álbum de fotos más antiguo del sistema solar."
+  },
+  {
+   "id": "space-medium-11",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué gas forma la mayor parte de la atmósfera del Sol?",
+   "choices": [
+    "Hidrógeno",
+    "Oxígeno",
+    "Nitrógeno",
+    "Helio"
+   ],
+   "correctIndex": 0,
+   "quip": "¡El Sol es básicamente una bola de hidrógeno con actitud!"
+  },
+  {
+   "id": "space-medium-12",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuántas lunas tiene Marte?",
+   "choices": [
+    "3",
+    "0",
+    "1",
+    "2"
+   ],
+   "correctIndex": 3,
+   "quip": "Marte tiene dos lunas: ¡como si fuera un planeta con compañía!"
+  },
+  {
+   "id": "space-medium-13",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta es conocido como la 'Estrella de la Mañana'?",
+   "choices": [
+    "Mercurio",
+    "Júpiter",
+    "Venus",
+    "Saturno"
+   ],
+   "correctIndex": 2,
+   "quip": "Venus brilla tanto que hasta parece un farol en el cielo."
+  },
+  {
+   "id": "space-medium-14",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué fenómeno ocurre cuando la Luna pasa entre la Tierra y el Sol?",
+   "choices": [
+    "Luna llena",
+    "Eclipse solar",
+    "Eclipse lunar",
+    "Menguante"
+   ],
+   "correctIndex": 1,
+   "quip": "¡El Sol se esconde como si jugara al escondite!"
+  },
+  {
+   "id": "space-medium-15",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es el único planeta que rota en sentido horario?",
+   "choices": [
+    "Marte",
+    "Tierra",
+    "Venus",
+    "Neptuno"
+   ],
+   "correctIndex": 2,
+   "quip": "Venus es rebelde: gira al revés que los demás."
+  },
+  {
+   "id": "space-medium-16",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué unidad se usa para medir distancias dentro del sistema solar?",
+   "choices": [
+    "Unidad Astronómica",
+    "Año luz",
+    "Kilómetro",
+    "Parsec"
+   ],
+   "correctIndex": 0,
+   "quip": "Una Unidad Astronómica es la distancia promedio Tierra-Sol, ¡como un viaje largo!"
+  },
+  {
+   "id": "space-medium-17",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué cuerpo celeste deja de ser un planeta en 2006?",
+   "choices": [
+    "Eris",
+    "Haumea",
+    "Ceres",
+    "Plutón"
+   ],
+   "correctIndex": 3,
+   "quip": "Plutón pasó de planeta a 'planeta enano', pero sigue siendo especial."
+  },
+  {
+   "id": "space-medium-18",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué sonda espacial visitó Plutón en 2015?",
+   "choices": [
+    "New Horizons",
+    "Hubble",
+    "Cassini",
+    "Voyager 1"
+   ],
+   "correctIndex": 0,
+   "quip": "New Horizons nos mostró a Plutón como nunca antes lo habíamos visto."
+  },
+  {
+   "id": "space-medium-19",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es el movimiento de la Tierra alrededor del Sol llamado?",
+   "choices": [
+    "Nutación",
+    "Precesión",
+    "Rotación",
+    "Traslación"
+   ],
+   "correctIndex": 3,
+   "quip": "La traslación es como el baile anual de la Tierra alrededor del Sol."
+  },
+  {
+   "id": "space-medium-20",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tiene los anillos más visibles?",
+   "choices": [
+    "Urano",
+    "Júpiter",
+    "Neptuno",
+    "Saturno"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Saturno es el rey de los anillos, pero ojo, no es el único con joyería cósmica!"
+  },
+  {
+   "id": "space-medium-21",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué objeto celeste es una bola de hielo y polvo que brilla cerca del Sol?",
+   "choices": [
+    "Cometa",
+    "Estrella fugaz",
+    "Asteroide",
+    "Meteorito"
+   ],
+   "correctIndex": 0,
+   "quip": "Los cometas son como viajeros con cola, ¡y su brillo es su despedida al Sol!"
+  },
+  {
+   "id": "space-medium-22",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta es conocido por sus tormentas de polvo gigantes?",
+   "choices": [
+    "Neptuno",
+    "Mercurio",
+    "Venus",
+    "Marte"
+   ],
+   "correctIndex": 3,
+   "quip": "Marte tiene más polvo que un armario viejo, ¡y no es fácil barrerlo!"
+  },
+  {
+   "id": "space-medium-23",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es el nombre de la capa externa del Sol que vemos durante un eclipse?",
+   "choices": [
+    "Corona",
+    "Fotosfera",
+    "Cromosfera",
+    "Núcleo"
+   ],
+   "correctIndex": 0,
+   "quip": "La corona del Sol es como su sombrero brillante, ¡pero no se la pongas en la cabeza!"
+  },
+  {
+   "id": "space-medium-24",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué tipo de estrella es el Sol?",
+   "choices": [
+    "Gigante roja",
+    "Enana amarilla",
+    "Enana blanca",
+    "Supergigante azul"
+   ],
+   "correctIndex": 1,
+   "quip": "El Sol es una enana amarilla, ¡pero su luz no es nada pequeña!"
+  },
+  {
+   "id": "space-medium-25",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta es el más pequeño del sistema solar?",
+   "choices": [
+    "Neptuno",
+    "Venus",
+    "Mercurio",
+    "Marte"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Mercurio es tan pequeño que cabría en la órbita de nuestra Luna varias veces!"
+  },
+  {
+   "id": "space-medium-26",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál de estos no es un tipo de galaxia?",
+   "choices": [
+    "Espiral",
+    "Elíptica",
+    "Cuadrada",
+    "Irregular"
+   ],
+   "correctIndex": 2,
+   "quip": "El universo no hace cuadrados, ¡siempre redondea!"
+  },
+  {
+   "id": "space-medium-27",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuántos planetas tienen anillos en nuestro sistema solar?",
+   "choices": [
+    "2",
+    "1",
+    "3",
+    "4"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Saturno, Júpiter, Urano y Neptuno tienen su propio 'accesorio' brillante!"
+  },
+  {
+   "id": "space-medium-28",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tiene el día más largo?",
+   "choices": [
+    "Marte",
+    "Venus",
+    "Tierra",
+    "Júpiter"
+   ],
+   "correctIndex": 1,
+   "quip": "En Venus, un día dura más que un año terrestre. ¡Lento pero seguro!"
+  },
+  {
+   "id": "space-medium-29",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué cuerpo celeste tiene cráteres llamados como artistas famosos?",
+   "choices": [
+    "Plutón",
+    "La Luna",
+    "Marte",
+    "Mercurio"
+   ],
+   "correctIndex": 3,
+   "quip": "En Mercurio, hasta los cráteres tienen nombre de genios como Beethoven o Shakespeare."
+  },
+  {
+   "id": "space-medium-30",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué fenómeno ocurre cuando una estrella explota?",
+   "choices": [
+    "Eclipse",
+    "Aurora",
+    "Meteorito",
+    "Supernova"
+   ],
+   "correctIndex": 3,
+   "quip": "Una supernova brilla tanto que puede verse incluso de día."
+  },
+  {
+   "id": "space-medium-31",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es la temperatura aproximada del espacio exterior?",
+   "choices": [
+    "-270 grados",
+    "-100 grados",
+    "100 grados",
+    "0 grados"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Hace tanto frío que el agua se congela al instante!"
+  },
+  {
+   "id": "space-medium-32",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tiene lunas llamadas Fobos y Deimos?",
+   "choices": [
+    "Urano",
+    "Júpiter",
+    "Saturno",
+    "Marte"
+   ],
+   "correctIndex": 3,
+   "quip": "Fobos y Deimos suenan a nombres de héroes, pero son solo piedras espaciales."
+  },
+  {
+   "id": "space-medium-33",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué gas produce el color azul de Urano y Neptuno?",
+   "choices": [
+    "Oxígeno",
+    "Metano",
+    "Hidrógeno",
+    "Helio"
+   ],
+   "correctIndex": 1,
+   "quip": "El metano les da a estos planetas su look de 'hielo azul elegante'."
+  },
+  {
+   "id": "space-medium-34",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué estrella es la más cercana al sistema solar?",
+   "choices": [
+    "Alfa Centauri",
+    "Sirio",
+    "Betelgeuse",
+    "Próxima Centauri"
+   ],
+   "correctIndex": 3,
+   "quip": "Próxima Centauri está a solo 4.24 años luz… ¡un paseo interestelar!"
+  },
+  {
+   "id": "space-medium-35",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué fenómeno crea las auroras en los polos terrestres?",
+   "choices": [
+    "Relámpagos",
+    "Rayos cósmicos",
+    "Partículas solares",
+    "Meteoritos"
+   ],
+   "correctIndex": 2,
+   "quip": "El Sol nos envía luces de fiesta… ¡y la Tierra las recibe con estilo!"
+  },
+  {
+   "id": "space-medium-36",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tiene una rotación retrógrada (gira al revés)?",
+   "choices": [
+    "Venus",
+    "Saturno",
+    "Neptuno",
+    "Mercurio"
+   ],
+   "correctIndex": 0,
+   "quip": "Venus baila al ritmo de su propio reloj… ¡y al revés!"
+  },
+  {
+   "id": "space-medium-37",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es el planeta más denso del sistema solar?",
+   "choices": [
+    "Mercurio",
+    "Tierra",
+    "Marte",
+    "Júpiter"
+   ],
+   "correctIndex": 1,
+   "quip": "La Tierra no solo es nuestra casa, ¡es la más compacta del barrio!"
+  },
+  {
+   "id": "space-medium-38",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué misión llevó al primer rover a Marte?",
+   "choices": [
+    "Pathfinder",
+    "Mars Express",
+    "Curiosity",
+    "Viking 1"
+   ],
+   "correctIndex": 0,
+   "quip": "Pathfinder abrió el camino… ¡y Sojourner fue el primer 'turista' marciano!"
+  },
+  {
+   "id": "space-medium-39",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es el satélite natural más grande de Saturno?",
+   "choices": [
+    "Ganímedes",
+    "Titán",
+    "Calisto",
+    "Europa"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Tiene lagos de metano… pero no intentes nadar allí!"
+  },
+  {
+   "id": "space-medium-40",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tarda más en dar una vuelta al Sol?",
+   "choices": [
+    "Júpiter",
+    "Saturno",
+    "Urano",
+    "Neptuno"
+   ],
+   "correctIndex": 3,
+   "quip": "¡Un año allí dura 165 años terrestres… casi una vida entera!"
+  },
+  {
+   "id": "space-medium-41",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál de estos NO es un cinturón de asteroides?",
+   "choices": [
+    "Cinturón principal",
+    "Cinturón de Kuiper",
+    "Cinturón de Orión",
+    "Nube de Oort"
+   ],
+   "correctIndex": 2,
+   "quip": "¡Orión es un cazador, no un guardián de rocas espaciales!"
+  },
+  {
+   "id": "space-medium-42",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es el planeta más cercano al Sol?",
+   "choices": [
+    "Marte",
+    "Mercurio",
+    "Tierra",
+    "Venus"
+   ],
+   "correctIndex": 1,
+   "quip": "¡Allí hace tanto calor que hasta el plomo se derretiría!"
+  },
+  {
+   "id": "space-medium-43",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué misión espacial llevó al primer humano al espacio?",
+   "choices": [
+    "Vostok 1",
+    "Sputnik 1",
+    "Voyager 1",
+    "Apolo 11"
+   ],
+   "correctIndex": 0,
+   "quip": "¡Yuri Gagarin dijo: 'La Tierra es azul… y redonda!'"
+  },
+  {
+   "id": "space-medium-44",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tiene el monte más alto del sistema solar?",
+   "choices": [
+    "Júpiter",
+    "Tierra",
+    "Venus",
+    "Marte"
+   ],
+   "correctIndex": 3,
+   "quip": "¡El Monte Olimpo en Marte es tan alto que casi toca el cielo... si es que Marte tuviera cielo como el nuestro!"
+  },
+  {
+   "id": "space-medium-45",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué tipo de estrella es el Sol según su tamaño?",
+   "choices": [
+    "Enana blanca",
+    "Enana amarilla",
+    "Gigante roja",
+    "Supergigante"
+   ],
+   "correctIndex": 1,
+   "quip": "El Sol es una enana amarilla, pero no te dejes engañar, ¡es la estrella más importante para nosotros!"
+  },
+  {
+   "id": "space-medium-46",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué fenómeno ocurre cuando un meteoroide entra a la atmósfera terrestre?",
+   "choices": [
+    "Estrella fugaz",
+    "Cometa",
+    "Aurora",
+    "Eclipse"
+   ],
+   "correctIndex": 0,
+   "quip": "¡No son estrellas, pero brillan tanto que parece magia!"
+  },
+  {
+   "id": "space-medium-47",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tiene una gran mancha oscura, similar a la Gran Mancha Roja de Júpiter?",
+   "choices": [
+    "Urano",
+    "Neptuno",
+    "Venus",
+    "Saturno"
+   ],
+   "correctIndex": 1,
+   "quip": "Neptuno tiene su propia mancha, pero en azul... ¡y es igual de misteriosa!"
+  },
+  {
+   "id": "space-medium-48",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Cuál es el satélite natural más grande del sistema solar?",
+   "choices": [
+    "Titán",
+    "Europa",
+    "Luna",
+    "Ganímedes"
+   ],
+   "correctIndex": 3,
+   "quip": "Ganímedes es tan grande que hasta tiene su propio campo magnético. ¡Es más grande que Mercurio!"
+  },
+  {
+   "id": "space-medium-49",
+   "topic": "Space",
+   "level": "medium",
+   "text": "¿Qué planeta tiene una inclinación axial de casi 98 grados?",
+   "choices": [
+    "Júpiter",
+    "Saturno",
+    "Neptuno",
+    "Urano"
+   ],
+   "correctIndex": 3,
+   "quip": "Urano gira de lado como si alguien lo hubiera empujado... ¡y nadie sabe por qué!"
   }
  ]
 }

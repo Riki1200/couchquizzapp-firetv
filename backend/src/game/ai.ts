@@ -213,10 +213,12 @@ export function parseQuestions(input: unknown, count: number): Question[] {
   const questions = z.object({ questions: z.array(QuestionSchema).length(count) }).parse(input).questions;
   // Some models add Markdown emphasis despite the instructions; the TV shows plain text.
   const plain = (text: string) => text.replace(/[*_`]+/g, '').replace(/\s+/g, ' ').trim();
+  // …and some number the choices ("C. A ring of spikes"); the TV adds its own letters.
+  const choice = (text: string) => plain(text).replace(/^[A-D][.)]\s+/, '');
   const cleaned = questions.map((q) => ({
     ...q,
     text: plain(q.text),
-    choices: q.choices.map(plain) as Question['choices'],
+    choices: q.choices.map(choice) as Question['choices'],
     quip: plain(q.quip),
   }));
   // Models tend to favor one slot for the correct answer; shuffle so it is fair.

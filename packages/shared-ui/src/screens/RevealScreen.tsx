@@ -28,6 +28,7 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
   const question = questions[questionIndex];
   const isLast = questionIndex === questions.length - 1;
   const autoNextMs = state.difficulty === 'kids' ? AUTO_NEXT_KIDS_MS : AUTO_NEXT_MS;
+  const teamMode = players.some((p) => p.team !== null);
 
   useBackHandler(onBack);
 
@@ -68,10 +69,9 @@ export default function RevealScreen({ navActive, onNext, onBack }: Props) {
             {results !== null ? (
               <FadeIn delay={400} style={styles.standings}>
                 <Text style={styles.standingsTitle}>{t('reveal.standings')}</Text>
-                {players.some((p) => p.team !== null) ? (
-                  <TeamScores players={players} label={(team) => t(`team.${team}` as TextKey)} />
-                ) : null}
-                <Leaderboard players={players} results={results} />
+                {teamMode ? <TeamScores players={players} label={(team) => t(`team.${team}` as TextKey)} /> : null}
+                {/* Fewer rows under the team bars, so the footer still fits on screen. */}
+                <Leaderboard players={players} results={results} maxRows={teamMode ? 3 : undefined} />
               </FadeIn>
             ) : null}
             <DefaultFocus>

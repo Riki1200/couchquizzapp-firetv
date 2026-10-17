@@ -45,8 +45,8 @@ export default function PodiumScreen({ onRematch, onNewTopic, onFamily }: Props)
                   {winner === null
                     ? t('podium.teamTie')
                     : t('podium.teamWins', { emoji: TEAMS[winner].emoji, team: t(`team.${winner}` as TextKey) })}
-                  {'  '}
-                  {totals[0].toLocaleString()} – {totals[1].toLocaleString()}
+                  {'   '}
+                  {TEAMS[0].emoji} {totals[0].toLocaleString()} – {TEAMS[1].emoji} {totals[1].toLocaleString()}
                 </Text>
               </View>
             </PopIn>

@@ -22,19 +22,19 @@ interface Row {
  * Standings after a question: rows slide from their previous rank to the new one, scores count up
  * from the previous total, and ▲/▼ show places gained or lost.
  */
-export function Leaderboard({ players, results }: { players: Player[]; results: PlayerResult[] }) {
-  const rows = rank(players, results).slice(0, MAX_ROWS);
+export function Leaderboard({ players, results, maxRows = MAX_ROWS }: { players: Player[]; results: PlayerResult[]; maxRows?: number }) {
+  const rows = rank(players, results).slice(0, maxRows);
   return (
     <View style={[styles.board, { height: rows.length * ROW_HEIGHT }]}>
       {rows.map((row) => (
-        <LeaderboardRow key={row.player.id} row={row} />
+        <LeaderboardRow key={row.player.id} row={row} maxRows={maxRows} />
       ))}
     </View>
   );
 }
 
-function LeaderboardRow({ row }: { row: Row }) {
-  const offset = useRef(new Animated.Value((Math.min(row.oldRank, MAX_ROWS) - row.newRank) * ROW_HEIGHT)).current;
+function LeaderboardRow({ row, maxRows }: { row: Row; maxRows: number }) {
+  const offset = useRef(new Animated.Value((Math.min(row.oldRank, maxRows) - row.newRank) * ROW_HEIGHT)).current;
   // Rank number and leader highlight switch when the row starts moving, not before.
   const [moved, setMoved] = useState(false);
   useEffect(() => {
