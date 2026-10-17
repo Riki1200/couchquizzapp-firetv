@@ -1,12 +1,35 @@
 # Couch Quiz — Devpost submission
 
-**Tagline:** An AI-hosted family trivia game for Fire TV: the TV is the board, every phone is a buzzer.
+Everything to paste into the Devpost form. Long answers live in their own files: [product feedback](product-feedback.md), [feature requests](feature-requests.md), [friction log](friction-log.md).
+
+## Form fields
+
+| Field | Value |
+|---|---|
+| **Project name** | Couch Quiz |
+| **Tagline** | A multi-modal family game show for Fire TV: the D-pad runs the show, every phone is a buzzer, and an AI host on Amazon Bedrock writes the questions. |
+| **Primary track** | Fire TV (Vega OS). Priority categories: family entertainment, multi-modal UX, AI-enhanced viewing. |
+| **Mini challenges** | AWS Builder (Amazon Bedrock, API Gateway WebSocket + HTTP APIs, AWS Lambda, Amazon DynamoDB, AWS CDK; see Product Feedback and the README's "AWS integrations"). |
+| **Code repository** | https://github.com/Riki1200/couchquizzapp-firetv (public, MIT license; setup and run instructions in the README) |
+| **Demo video** | *(YouTube or Vimeo link, public, under 3 minutes, in English)* |
+| **Built with** | React Native for Vega, Vega SDK, Vega Virtual Device, TypeScript, Amazon Bedrock, Amazon API Gateway, AWS Lambda, Amazon DynamoDB, AWS CDK, React, Vite, zod |
+| **Product feedback** | Paste [product-feedback.md](product-feedback.md); it covers every tool, API and SDK, including how each AWS service is used. |
+| **Feature requests (optional)** | Paste [feature-requests.md](feature-requests.md). |
+| **Friction log (optional, judging bonus)** | Paste [friction-log.md](friction-log.md) (13 entries). |
+
+**Built during the hackathon:** all of Couch Quiz was built during the submission period (first commit October 15, 2026). We started from Amazon's open-source [react-native-multi-tv-app-sample](https://github.com/AmazonAppDev/react-native-multi-tv-app-sample) (MIT-0) for the monorepo layout and build setup. Everything else is new: every screen, the phone controller, the game engine, the AWS backend and infrastructure, the AI host, the question bank, the sounds and the icon. The sample's demo content was removed.
+
+**How judges can test it:**
+- *Easiest:* install the release package on the Vega Virtual Device (`vega run-app apps/vega/build/aarch64-release/vega_aarch64.vpkg com.romeodev.couchquiz.main -d VirtualDevice`, or build it with `yarn build:vega`). It talks to our AWS backend, which stays deployed through the end of judging. Join from any phone by scanning the QR code on the TV.
+- *Without AWS:* `yarn play` runs a local server, the phone page and the TV in a browser (see the README).
 
 ## Inspiration
 
-Game night at home breaks down at the controller: one person plays, everyone else watches. Party games solve that with phones, but they usually need an app on every device and a fixed set of questions. We wanted something a family could start from the couch in under a minute — pick a topic with the remote, scan a code, play — with a host that can talk about *anything*, from "space for kids" to "our family trip to the beach".
+Game night at home breaks down at the controller: one person holds the remote, everyone else watches. Party games solve that with phones, but they usually need an app on every device and a fixed set of questions. We wanted something a family could start from the couch in under a minute — pick a topic with the remote, scan a code, play — with a host that can talk about *anything*, from "space for kids" to "our family trip to the beach".
 
 ## What it does
+
+Couch Quiz is a **multi-modal** experience: three inputs work together in a single flow. The **remote's D-pad** runs the show on the TV, **every phone** becomes a private answer pad and topic-suggestion box, and the **AI host** turns any idea into a game in seconds.
 
 - **On the TV (Vega, D-pad only):** pick a topic and a difficulty (Easy, Medium, Hard or Kids — simpler questions, no timer), or type your own topic with the TV keyboard. The TV shows a QR code and a room code.
 - **On the phones (no install):** scan, type a name, pick an avatar — you appear on the TV live. Each question shows four big answer buttons.
@@ -16,6 +39,10 @@ Game night at home breaks down at the controller: one person plays, everyone els
 - **Everyone can pick the topic:** players **suggest topics from their phones** and the TV plays one with a click; or press **"Surprise me"** for three AI ideas — no typing with the remote.
 - **The AI host (Amazon Bedrock):** writes 10 questions and a one-liner per answer for any custom topic, and the end-of-game awards. A **second model fact-checks** every AI game before it is played and swaps out anything wrong or ambiguous. Preset topics play instantly from a built-in bank of about 1,450 questions in English and Spanish that doesn't repeat games you already finished — 300 written by hand, the rest written by AI and kept only after two fact-checking models and a human review agreed.
 - **Polish:** English and Spanish (TV, phones and questions), 5 or 10 questions per game, original synthesized music and sound effects, saved settings, automatic reconnection for phones that drop off Wi-Fi.
+
+## Who it's for
+
+Families and friends on the couch, a mixed-age group with one TV and a handful of phones. Kids mode has no timer and simpler questions, the whole game switches to Spanish, and nobody needs an account or an app. The same pattern (TV as the shared screen, phones as private controllers, AI-generated content) fits classrooms, office parties and bilingual homes. It's built to ship on the Amazon Appstore: D-pad-first UI, a serverless backend that costs cents per game, and a built-in question bank that works even without the AI.
 
 ## How we built it
 
@@ -54,4 +81,4 @@ Game night at home breaks down at the controller: one person plays, everyone els
 
 ## Built with
 
-React Native for Vega · Vega SDK · TypeScript · React · Vite · Amazon API Gateway (HTTP + WebSocket) · AWS Lambda · Amazon DynamoDB · Amazon Bedrock (Mistral Large 3, DeepSeek V3.1) · AWS CDK · zod
+React Native for Vega · Vega SDK · Vega Virtual Device · TypeScript · React · Vite · Amazon API Gateway (HTTP + WebSocket) · AWS Lambda · Amazon DynamoDB · Amazon Bedrock (Mistral Large 3, DeepSeek V3.1) · AWS CDK · zod

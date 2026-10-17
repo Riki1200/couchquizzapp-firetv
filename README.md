@@ -59,7 +59,7 @@ All game rules live in one transport-independent class, [`GameService`](backend/
 - **Animations** use the native driver (smooth countdown bar, focus springs, staggered answers, sliding leaderboard, confetti).
 - **Sound** with the W3C media `AudioPlayer`; it only plays HTTPS sources and does not replay after `ended`, so every effect uses a fresh preloaded player ([`sounds.vega.ts`](packages/shared-ui/src/audio/sounds.vega.ts)).
 - **Saved settings** with the Vega port of AsyncStorage.
-- Everything we tripped over is in the [friction log](docs/friction-log.md).
+- Everything we tripped over is in the [friction log](docs/friction-log.md); what worked and what needs work for each tool is in the [product feedback](docs/product-feedback.md), and what we'd like built next is in the [feature requests](docs/feature-requests.md).
 
 ## AWS integrations
 
@@ -88,6 +88,8 @@ Everything is defined with AWS CDK (TypeScript) in [`infra/lib/couch-quiz-stack.
 | `backend` | `GameService` + adapters: Lambda handlers, DynamoDB store, Bedrock AI host, local server |
 | `infra` | AWS CDK app |
 | `docs/friction-log.md` | Issues found in the Vega SDK, docs and tooling while building this |
+| `docs/product-feedback.md`, `docs/feature-requests.md` | Feedback on every tool, API and SDK used, and feature requests |
+| `docs/devpost.md`, `docs/demo-script.md` | Hackathon submission text and the demo video script |
 | `docs/demo-script.md` | Script for the 3-minute demo video |
 | `docs/devpost.md` | Project description for the Devpost submission |
 | `docs/images/` | Screenshots used in this README |
