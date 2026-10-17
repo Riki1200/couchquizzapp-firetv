@@ -48,6 +48,21 @@ export function startMusic() {
   element('music')?.play().catch(() => {});
 }
 
+let speech: HTMLAudioElement | null = null;
+
+/** The host's voice (Amazon Polly, streamed from the backend). Cuts off whatever the host was saying. */
+export function speak(url: string) {
+  stopSpeaking();
+  if (!audioOptions.voice || typeof Audio === 'undefined') return;
+  speech = new Audio(url);
+  speech.play().catch(() => {});
+}
+
+export function stopSpeaking() {
+  speech?.pause();
+  speech = null;
+}
+
 export function stopMusic() {
   const music = elements.get('music');
   if (!music) return;

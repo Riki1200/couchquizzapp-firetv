@@ -352,6 +352,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@aws-sdk/client-polly@npm:^3.1152.0":
+  version: 3.1152.0
+  resolution: "@aws-sdk/client-polly@npm:3.1152.0"
+  dependencies:
+    "@aws-sdk/core": "npm:^3.978.3"
+    "@aws-sdk/credential-provider-node": "npm:^3.972.86"
+    "@aws-sdk/eventstream-handler-node": "npm:^3.972.36"
+    "@aws-sdk/middleware-eventstream": "npm:^3.972.31"
+    "@aws-sdk/types": "npm:^3.974.6"
+    "@smithy/core": "npm:^3.35.2"
+    "@smithy/fetch-http-handler": "npm:^5.8.0"
+    "@smithy/node-http-handler": "npm:^4.12.1"
+    "@smithy/types": "npm:^4.19.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/9ab7b97ebd5bb41dd19c720273a1784a38f2b5f8f82ab87e7c1be410d6367ca9fe84ad553515eca41fc88547eb81922bd55ea35133730af8d0b3e7653d6dcc87
+  languageName: node
+  linkType: hard
+
 "@aws-sdk/core@npm:^3.978.3":
   version: 3.978.3
   resolution: "@aws-sdk/core@npm:3.978.3"
@@ -2912,6 +2930,7 @@ __metadata:
     "@aws-sdk/client-bedrock-runtime": "npm:^3.1152.0"
     "@aws-sdk/client-dynamodb": "npm:^3.1152.0"
     "@aws-sdk/client-lambda": "npm:^3.1152.0"
+    "@aws-sdk/client-polly": "npm:^3.1152.0"
     "@aws-sdk/credential-provider-node": "npm:^3.972.86"
     "@aws-sdk/lib-dynamodb": "npm:^3.1152.0"
     "@couch-quiz/protocol": "workspace:*"

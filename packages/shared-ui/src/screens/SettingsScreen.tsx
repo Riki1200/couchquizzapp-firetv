@@ -12,7 +12,7 @@ import { colors } from '../theme/colors';
 
 const TILE_WIDTH = scaledPixels(240);
 
-/** Host settings: language (TV, phones and questions), questions per game, teams, sound effects, music. */
+/** Host settings: language (TV, phones and questions), host voice, questions per game, teams, sound effects, music. */
 export default function SettingsScreen({ onDone }: { onDone: () => void }) {
   const { state, updateSettings, t } = useGame();
   const { settings } = state;
@@ -36,23 +36,26 @@ export default function SettingsScreen({ onDone }: { onDone: () => void }) {
       <Screen>
         <Text style={styles.title}>{t('settings.title')}</Text>
         <SpatialNavigationView direction="vertical" style={styles.sections}>
-          {row(
-            t('settings.language'),
-            80,
-            LANGUAGES.map((language, i) => {
-              const tile = (
-                <OptionTile
-                  key={language.code}
-                  width={TILE_WIDTH}
-                  label={language.label}
-                  icon={language.code === 'en' ? '🇬🇧' : '🇪🇸'}
-                  selected={settings.language === language.code}
-                  onSelect={() => updateSettings({ language: language.code })}
-                />
-              );
-              return i === 0 ? <DefaultFocus key={language.code}>{tile}</DefaultFocus> : tile;
-            }),
-          )}
+          <SpatialNavigationView direction="horizontal" style={styles.pair}>
+            {row(
+              t('settings.language'),
+              80,
+              LANGUAGES.map((language, i) => {
+                const tile = (
+                  <OptionTile
+                    key={language.code}
+                    width={TILE_WIDTH}
+                    label={language.label}
+                    icon={language.code === 'en' ? '🇬🇧' : '🇪🇸'}
+                    selected={settings.language === language.code}
+                    onSelect={() => updateSettings({ language: language.code })}
+                  />
+                );
+                return i === 0 ? <DefaultFocus key={language.code}>{tile}</DefaultFocus> : tile;
+              }),
+            )}
+            {row(t('settings.voice'), 120, onOff(settings.voice, (voice) => updateSettings({ voice })))}
+          </SpatialNavigationView>
           <SpatialNavigationView direction="horizontal" style={styles.pair}>
             {row(
               t('settings.questions'),

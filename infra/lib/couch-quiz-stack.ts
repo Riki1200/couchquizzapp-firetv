@@ -148,6 +148,8 @@ export class CouchQuizStack extends Stack {
     generateFn.addToRolePolicy(bedrockPolicy); // questions
     socketFn.addToRolePolicy(bedrockPolicy); // end-of-game awards
     httpFn.addToRolePolicy(bedrockPolicy); // "Surprise me" topic ideas
+    // The spoken host: Amazon Polly reads questions and quips (text comes from the room, not the caller).
+    httpFn.addToRolePolicy(new PolicyStatement({ actions: ['polly:SynthesizeSpeech'], resources: ['*'] }));
 
     // ---------- APIs ----------
     const socketIntegration = new WebSocketLambdaIntegration('SocketIntegration', socketFn);
@@ -167,6 +169,7 @@ export class CouchQuizStack extends Stack {
     httpApi.addRoutes({ path: '/rooms/{code}', methods: [HttpMethod.GET], integration: httpIntegration });
     httpApi.addRoutes({ path: '/families/{id}', methods: [HttpMethod.GET], integration: httpIntegration });
     httpApi.addRoutes({ path: '/topic-ideas', methods: [HttpMethod.GET], integration: httpIntegration });
+    httpApi.addRoutes({ path: '/rooms/{code}/speech/{index}/{kind}', methods: [HttpMethod.GET], integration: httpIntegration });
     httpApi.addRoutes({ path: '/sounds/{file}', methods: [HttpMethod.GET], integration: httpIntegration });
     httpApi.addRoutes({ path: '/', methods: [HttpMethod.GET], integration: httpIntegration });
     httpApi.addRoutes({ path: '/assets/{file}', methods: [HttpMethod.GET], integration: httpIntegration });

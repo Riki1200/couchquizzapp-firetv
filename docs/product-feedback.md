@@ -110,6 +110,14 @@ Couch Quiz's backend is fully serverless and defined in CDK (TypeScript). How ea
 - **Onboarding:** IAM and SigV4 for mantle took a couple of hours from docs plus trial and error. Once working, it was very stable.
 - **Build again?** **Yes.** Model choice through one endpoint and keyless IAM auth is exactly what a small team wants, but we'd ask for clearer errors and access status for new accounts.
 
+### Amazon Polly
+
+- **Used for:** the spoken host. The TV reads each question aloud when it appears and the host's quip after every reveal, with neural voices: Matthew in English, Pedro in Spanish. The HTTP Lambda calls `SynthesizeSpeech` (MP3) and streams it to the TV over HTTPS, where Vega's `AudioPlayer` plays it.
+- **Worked well:** about 0.3 s per line after the first call, natural-sounding neural voices in both languages, and no setup beyond one IAM action. It worked first time in Lambda and on the Vega Virtual Device.
+- **Needs work:** choosing a voice per language means reading a long table. A "recommended neural voice per locale" default in the API would help.
+- **Onboarding:** under an hour from SDK install to the TV speaking.
+- **Build again?** **Yes.**
+
 ### AWS CDK (TypeScript)
 
 - **Used for:** the whole stack: table, three `NodejsFunction`s (esbuild bundling with hooks that ship sound files and the built phone page), HTTP and WebSocket APIs, IAM, log groups, and an optional S3 + CloudFront site.

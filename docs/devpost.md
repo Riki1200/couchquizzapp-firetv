@@ -38,6 +38,7 @@ Couch Quiz is a **multi-modal** experience: three inputs work together in a sing
 - **Families, not just players:** play in **two teams** (red vs. blue, balanced automatically), and every finished game adds to the **family scores** kept per TV — who has the most wins this month?
 - **Everyone can pick the topic:** players **suggest topics from their phones** and the TV plays one with a click; or press **"Surprise me"** for three AI ideas — no typing with the remote.
 - **The AI host (Amazon Bedrock):** writes 10 questions and a one-liner per answer for any custom topic, and the end-of-game awards. A **second model fact-checks** every AI game before it is played and swaps out anything wrong or ambiguous. Preset topics play instantly from a built-in bank of about 1,450 questions in English and Spanish that doesn't repeat games you already finished — 300 written by hand, the rest written by AI and kept only after two fact-checking models and a human review agreed.
+- **A host you can hear:** the TV reads every question and every quip aloud with Amazon Polly neural voices (English and Spanish), which is great for kids who are still learning to read.
 - **Polish:** English and Spanish (TV, phones and questions), 5 or 10 questions per game, original synthesized music and sound effects, saved settings, automatic reconnection for phones that drop off Wi-Fi.
 
 ## Who it's for
@@ -75,10 +76,9 @@ Families and friends on the couch, a mixed-age group with one TV and a handful o
 
 ## What's next
 
-- A spoken AI host with Amazon Polly.
 - Custom question packs a family can save and replay.
 - Publishing to the Amazon Appstore.
 
 ## Built with
 
-React Native for Vega · Vega SDK · Vega Virtual Device · TypeScript · React · Vite · Amazon API Gateway (HTTP + WebSocket) · AWS Lambda · Amazon DynamoDB · Amazon Bedrock (Mistral Large 3, DeepSeek V3.1) · AWS CDK · zod
+React Native for Vega · Vega SDK · Vega Virtual Device · TypeScript · React · Vite · Amazon API Gateway (HTTP + WebSocket) · AWS Lambda · Amazon DynamoDB · Amazon Bedrock (Mistral Large 3, DeepSeek V3.1) · Amazon Polly · AWS CDK · zod

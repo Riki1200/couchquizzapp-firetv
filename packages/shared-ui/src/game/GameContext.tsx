@@ -2,7 +2,8 @@ import React, { createContext, useContext, useEffect, useMemo, useReducer, useRe
 import { createGameClient } from './createGameClient';
 import { GameClient, GameClientEvent } from './GameClient';
 import { audioOptions } from '../audio/options';
-import { stopMusic } from '../audio/sounds';
+import { speak, stopMusic, stopSpeaking } from '../audio/sounds';
+import { GAME_SERVER } from '../config';
 import { loadValue, saveValue } from '../storage';
 import {
   Award,
@@ -32,6 +33,8 @@ export interface Settings {
   questionCount: number;
   effects: boolean;
   music: boolean;
+  /** The host reads questions and quips aloud (Amazon Polly). */
+  voice: boolean;
   /** Two teams instead of everyone for themselves. */
   teams: boolean;
 }
@@ -93,7 +96,7 @@ const initialState: GameState = {
   suggestions: [],
   familyId: null,
   family: null,
-  settings: { language: 'en', questionCount: QUESTION_COUNT, effects: true, music: true, teams: false },
+  settings: { language: 'en', questionCount: QUESTION_COUNT, effects: true, music: true, voice: true, teams: false },
 };
 
 function reducer(state: GameState, action: Action): GameState {
@@ -164,6 +167,8 @@ interface GameContextValue {
   reveal: () => void;
   endGame: () => void;
   updateSettings: (settings: Partial<Settings>) => void;
+  /** The host reads the current question, or its quip after the reveal. */
+  hostSays: (kind: 'question' | 'quip') => void;
   loadFamily: () => Promise<void>;
   /** "Surprise me" topic ideas in the host's language. */
   topicIdeas: () => Promise<string[]>;
@@ -195,6 +200,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         if (!isLanguage(settings.language) || !(QUESTION_COUNT_OPTIONS as readonly number[]).includes(settings.questionCount)) return;
         audioOptions.effects = settings.effects;
         audioOptions.music = settings.music;
+        audioOptions.voice = settings.voice;
         dispatch({ type: 'settings', settings });
       } catch {
         // ignore unreadable settings
@@ -213,6 +219,13 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
 
   const value = useMemo<GameContextValue>(() => {
     const client = clientRef.current;
+    // The backend reads the line from the room's own questions; the text hash only keeps caches per game.
+    const hostSays = (kind: 'question' | 'quip') => {
+      const question = state.questions[state.questionIndex];
+      if (!GAME_SERVER || !state.room || !question) return;
+      const text = kind === 'question' ? question.text : question.quip;
+      speak(`${GAME_SERVER.httpUrl}/rooms/${state.room.roomCode}/speech/${state.questionIndex}/${kind}?v=${textKey(text)}`);
+    };
     return {
       state,
       setTopic: (topic) => dispatch({ type: 'setTopic', topic }),
@@ -228,12 +241,22 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
           dispatch({ type: 'generation', status: 'failed' }); // the lobby offers "Try again"
         }
       },
-      showQuestion: (index) => dispatch({ type: 'questionStarted', index }),
-      beginQuestion: () => client.startQuestion(state.questionIndex),
+      showQuestion: (index) => {
+        stopSpeaking();
+        dispatch({ type: 'questionStarted', index });
+      },
+      beginQuestion: () => {
+        client.startQuestion(state.questionIndex);
+        hostSays('question');
+      },
       reveal: () => client.reveal(state.questionIndex),
       endGame: () => client.endGame(),
       updateSettings: (settings) => {
         if (settings.effects !== undefined) audioOptions.effects = settings.effects;
+        if (settings.voice !== undefined) {
+          audioOptions.voice = settings.voice;
+          if (!settings.voice) stopSpeaking();
+        }
         if (settings.music !== undefined) {
           audioOptions.music = settings.music;
           if (!settings.music) stopMusic();
@@ -241,6 +264,7 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
         dispatch({ type: 'settings', settings });
         saveValue(SETTINGS_KEY, JSON.stringify({ ...state.settings, ...settings }));
       },
+      hostSays,
       loadFamily: async () => {
         if (!state.familyId) return;
         try {
@@ -256,6 +280,13 @@ export function GameProvider({ children }: { children: React.ReactNode }) {
   }, [state]);
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
+}
+
+/** A short, stable key for a line of text (cache-busting for the host's speech URLs). */
+function textKey(text: string): string {
+  let hash = 0;
+  for (let i = 0; i < text.length; i++) hash = (hash * 31 + text.charCodeAt(i)) | 0;
+  return (hash >>> 0).toString(36);
 }
 
 export function useGame() {

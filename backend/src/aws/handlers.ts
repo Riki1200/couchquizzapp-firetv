@@ -9,6 +9,7 @@ import { MantleHostAi } from './mantleAi';
 import { DynamoStore } from './dynamoStore';
 import { readSound } from '../game/sounds';
 import { readControllerFile } from './controllerPage';
+import { PollyHostVoice } from './pollyVoice';
 
 const { TABLE_NAME, WS_ENDPOINT, GENERATE_FUNCTION, CONTROLLER_URL, PUBLIC_HTTP_URL, PUBLIC_WS_URL } = process.env;
 
@@ -21,6 +22,7 @@ const game = new GameService({
   ai: process.env.AI_API === 'mantle' ? new MantleHostAi() : new BedrockHostAi(),
   controllerUrl: CONTROLLER_URL ?? '',
   publicUrls: { httpUrl: PUBLIC_HTTP_URL ?? '', wsUrl: PUBLIC_WS_URL ?? '' },
+  voice: new PollyHostVoice(),
   send: async (connId, event) => {
     try {
       await sockets.send(new PostToConnectionCommand({ ConnectionId: connId, Data: JSON.stringify(event) }));
@@ -49,6 +51,19 @@ export async function http(event: APIGatewayProxyEventV2): Promise<APIGatewayPro
   if (event.routeKey === 'GET /topic-ideas') {
     const q = event.queryStringParameters ?? {};
     return json(200, { topics: await game.topicIdeas(q.language as Language, q.difficulty as Difficulty) });
+  }
+  if (event.routeKey === 'GET /rooms/{code}/speech/{index}/{kind}') {
+    const p = event.pathParameters ?? {};
+    const audio = await game.speech(p.code ?? '', Number(p.index), p.kind ?? '');
+    if (audio) {
+      return {
+        statusCode: 200,
+        // The TV adds a hash of the text to the URL, so a cached answer is never another game's line.
+        headers: { 'Content-Type': 'audio/mpeg', 'Cache-Control': 'public, max-age=86400' },
+        body: Buffer.from(audio).toString('base64'),
+        isBase64Encoded: true,
+      };
+    }
   }
   if (event.routeKey === 'GET /sounds/{file}') {
     // The sound files are copied next to the bundled handler (see the stack's bundling hooks).

@@ -56,6 +56,7 @@ The whole backend is serverless and defined in AWS CDK (TypeScript); every integ
   - A second model, DeepSeek V3.1, independently fact-checks every AI game. The writer produces 3 spare questions and the game keeps the ones that passed.
   - Output is constrained with JSON schema, validated with zod, and retried with the validation errors as feedback.
   - Offline, the same writer + checker pipeline (plus Qwen3 235B as a second opinion and a manual review) grew our built-in question bank to about 1,450 questions.
+- Amazon Polly: the spoken host. The HTTP function calls SynthesizeSpeech (neural voices: Matthew in English, Pedro in Spanish) to read each question when it appears and each quip after the reveal, and streams the MP3 to the TV over HTTPS. The text always comes from the room's own questions, so the endpoint can't be abused to read arbitrary text.
 - AWS IAM: least-privilege grants from CDK. Bedrock access is limited to exactly the two models with a bedrock-mantle:Model condition.
 - Amazon CloudWatch Logs: model latency and token usage per call.
 - AWS CDK: the whole stack (table, functions, both APIs, IAM, logs, and an optional S3 + CloudFront site) in one TypeScript app, deployed with one command.
@@ -95,6 +96,7 @@ https://github.com/Riki1200/couchquizzapp-firetv#on-the-vega-virtual-device
 - react-native-multi-tv-app-sample and vega-tv-interfaces-sample: starting point (one codebase for Vega, Android TV and web) and 10-foot UI patterns.
 - react-tv-space-navigation (used by the samples): D-pad focus on every screen.
 - Amazon Bedrock via the bedrock-mantle endpoint: Mistral Large 3 writes questions, jokes, topic ideas and awards; DeepSeek V3.1 fact-checks.
+- Amazon Polly (neural voices): the spoken host reads questions and quips aloud on the TV.
 - Amazon API Gateway (WebSocket + HTTP), AWS Lambda, Amazon DynamoDB, IAM, CloudWatch Logs: the serverless game backend.
 - AWS CDK (TypeScript): all infrastructure as code.
 

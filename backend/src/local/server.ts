@@ -5,6 +5,7 @@
 //   yarn dev:server                 mock AI (bundled "Space for kids" questions)
 //   AI=mantle yarn dev:server       Amazon Bedrock, Mistral Large 3 via bedrock-mantle (local AWS credentials)
 //   AI=bedrock yarn dev:server      Amazon Bedrock Converse API (e.g. Amazon Nova)
+//   VOICE=polly yarn dev:server     spoken host with Amazon Polly (combine with AI=…)
 import { randomUUID } from 'crypto';
 import { createServer, IncomingMessage, ServerResponse } from 'http';
 import { networkInterfaces } from 'os';
@@ -17,6 +18,7 @@ import { MemoryStore } from '../game/store';
 import { readSound } from '../game/sounds';
 import { BedrockHostAi } from '../aws/bedrockAi';
 import { MantleHostAi } from '../aws/mantleAi';
+import { PollyHostVoice } from '../aws/pollyVoice';
 
 const PORT = Number(process.env.PORT ?? 8787);
 const lanIp =
@@ -35,6 +37,8 @@ const game: GameService = new GameService({
   ai,
   controllerUrl: CONTROLLER_URL,
   publicUrls: { httpUrl: `http://${lanIp}:${PORT}`, wsUrl: `ws://${lanIp}:${PORT}` },
+  // VOICE=polly: the spoken host via Amazon Polly with local AWS credentials (silent otherwise).
+  voice: process.env.VOICE === 'polly' ? new PollyHostVoice() : undefined,
   send: async (connId, event) => {
     const socket = sockets.get(connId);
     if (socket?.readyState === WebSocket.OPEN) socket.send(JSON.stringify(event));
@@ -84,6 +88,9 @@ const server = createServer(async (req: IncomingMessage, res: ServerResponse) =>
     }
     const match = url.pathname.match(/^\/rooms\/([A-Za-z]{4})$/);
     if (req.method === 'GET' && match) return json(200, await game.getRoom(match[1]));
+    const speech = url.pathname.match(/^\/rooms\/([A-Za-z]{4})\/speech\/(\d+)\/(question|quip)$/);
+    const spoken = speech && (await game.speech(speech[1], Number(speech[2]), speech[3]).catch(() => null));
+    if (spoken) return void res.writeHead(200, { 'Content-Type': 'audio/mpeg', 'Cache-Control': 'max-age=3600' }).end(spoken);
     const family = url.pathname.match(/^\/families\/([A-Za-z0-9-]+)$/);
     if (req.method === 'GET' && family) return json(200, { standings: await game.getFamily(family[1]) });
     if (req.method === 'GET' && url.pathname === '/topic-ideas') {

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { playSound, preloadSounds, startMusic, stopMusic } from './audio/sounds';
+import { playSound, preloadSounds, startMusic, stopMusic, stopSpeaking } from './audio/sounds';
 import { QuitDialog } from './components/QuitDialog';
 import { GameProvider, useGame } from './game/GameContext';
 import { scaledPixels } from './hooks/useScale';
@@ -40,6 +40,7 @@ function Screens() {
   }, [screen]);
 
   const goToSetup = () => {
+    stopSpeaking();
     setQuitOpen(false);
     setSetupFocus('topics');
     setScreen('setup');
@@ -137,15 +138,19 @@ function Screens() {
 
 /** Sounds for things that happen on the phones: a player joins, a player answers, the answer is revealed. */
 function useGameSounds() {
-  const { state } = useGame();
+  const { state, hostSays } = useGame();
   const previous = useRef(state);
   useEffect(() => {
     const before = previous.current;
     if (state.players.length > before.players.length) playSound('join');
     if (state.answeredIds.length > before.answeredIds.length) playSound('lock');
-    if (state.results && !before.results) playSound('reveal');
+    if (state.results && !before.results) {
+      playSound('reveal');
+      // The host reads the quip right after the reveal sting.
+      setTimeout(() => hostSays('quip'), 700);
+    }
     previous.current = state;
-  }, [state]);
+  }, [state, hostSays]);
 }
 
 function ConnectionBanner() {

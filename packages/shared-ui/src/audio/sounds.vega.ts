@@ -99,6 +99,40 @@ export function startMusic() {
   });
 }
 
+let speech: Promise<AudioPlayer | null> | null = null;
+
+/** The host's voice (Amazon Polly, streamed from the backend over HTTPS). Cuts off whatever the host was saying. */
+export function speak(url: string) {
+  stopSpeaking();
+  if (!audioOptions.voice) return;
+  const current: Promise<AudioPlayer | null> = (async () => {
+    const audio = new AudioPlayer();
+    await audio.initialize();
+    audio.addEventListener('error' as never, () => console.warn(`[voice] could not play (code ${audio.error?.code})`));
+    audio.addEventListener('ended' as never, () => {
+      if (speech === current) speech = null;
+      release(audio);
+    });
+    audio.src = url;
+    audio.load();
+    audio.play();
+    return audio;
+  })().catch((error) => {
+    console.warn('[voice] could not be created', error);
+    return null;
+  });
+  speech = current;
+}
+
+export function stopSpeaking() {
+  const playing = speech;
+  speech = null;
+  playing?.then((audio) => {
+    audio?.pause();
+    release(audio ?? undefined);
+  });
+}
+
 export function stopMusic() {
   const playing = music;
   music = null;

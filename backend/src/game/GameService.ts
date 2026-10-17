@@ -35,6 +35,7 @@ import {
   winningTeam,
 } from '@couch-quiz/protocol';
 import { HostAi, PlayerFacts, fallbackAwards } from './ai';
+import { HostVoice } from './voice';
 import { ConnectionRecord, PlayerRecord, RoomRecord, Store } from './store';
 
 const DIFFICULTIES: Difficulty[] = ['easy', 'medium', 'hard', 'kids'];
@@ -61,6 +62,8 @@ export interface GameDeps {
    * phone talks to the same backend that created the room, wherever its page is served from.
    */
   publicUrls: { httpUrl: string; wsUrl: string };
+  /** Optional spoken host (Amazon Polly in AWS). */
+  voice?: HostVoice;
   now?: () => number;
 }
 
@@ -146,6 +149,18 @@ export class GameService {
     if (!room) return { exists: false, playerCount: 0, language: 'en' };
     const playerCount = (await this.deps.store.getPlayers(room.roomCode)).length;
     return { exists: true, playerCount, language: room.language };
+  }
+
+  /**
+   * The host reading question `index` of a room, or its quip. The text always comes from the room's
+   * own questions, so the endpoint can't be used to synthesize arbitrary text. Null if not available.
+   */
+  async speech(roomCode: string, index: number, kind: string): Promise<Uint8Array | null> {
+    if (!this.deps.voice || (kind !== 'question' && kind !== 'quip')) return null;
+    const room = await this.deps.store.getRoom(roomCode.toUpperCase());
+    const question = room?.questions[index];
+    if (!room || !question) return null;
+    return this.deps.voice.synthesize(kind === 'question' ? question.text : question.quip, room.language);
   }
 
   async getFamily(familyId: string): Promise<FamilyStanding[]> {
