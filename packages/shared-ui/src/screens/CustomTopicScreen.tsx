@@ -26,11 +26,14 @@ export default function CustomTopicScreen({ initialTopic, onDone, onCancel }: Pr
   const [topic, setTopic] = useState(initialTopic);
   // "Surprise me": topic ideas from the AI host, picked with the D-pad (no typing).
   const [ideas, setIdeas] = useState<string[] | null>(null);
+  const [loadingIdeas, setLoadingIdeas] = useState(false);
+  // The current ideas (and "More ideas") stay on screen while new ones load, so the D-pad focus isn't lost.
   const loadIdeas = () => {
-    setIdeas(null);
+    setLoadingIdeas(true);
     topicIdeas()
       .then(setIdeas)
-      .catch(() => setIdeas([]));
+      .catch(() => setIdeas((current) => current ?? []))
+      .finally(() => setLoadingIdeas(false));
   };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(loadIdeas, []);
@@ -81,7 +84,7 @@ export default function CustomTopicScreen({ initialTopic, onDone, onCancel }: Pr
           </FadeIn>
 
           <FadeIn delay={320}>
-            <Text style={styles.ideasLabel}>{ideas === null ? t('custom.loadingIdeas') : t('custom.ideas')}</Text>
+            <Text style={styles.ideasLabel}>{ideas === null || loadingIdeas ? t('custom.loadingIdeas') : t('custom.ideas')}</Text>
             <SpatialNavigationView direction="horizontal" style={styles.buttons}>
               {(ideas ?? []).map((idea) => (
                 <FocusableButton key={idea} label={`✨ ${idea}`} onSelect={() => onDone(idea)} />
