@@ -1,10 +1,29 @@
 # Couch Quiz
 
-An AI-hosted family trivia game for Fire TV (Vega OS). The TV is the game board, driven with the remote's D-pad. Players join by scanning a QR code and use their phones as answer pads — no app install for players. An AI host on Amazon Bedrock writes the questions for any topic ("space for kids", "our family trip to the beach", "90s cartoons"), cracks a joke after every answer, and hands out awards at the end.
+A multi-modal family game show for Fire TV (Vega OS). The remote's D-pad runs the show on the TV, every phone in the room becomes a private answer pad (scan a QR code, no app install), and an AI host on Amazon Bedrock writes the questions for any topic — "space for kids", "our family trip to the beach", "90s cartoons" — reads them aloud, cracks a joke after every answer, and hands out awards at the end.
 
 > Built for the Build, Ship, Shape: Amazon Developer Hackathon (Fire TV track).
 
 ▶️ **[Watch the demo video (2:48)](https://youtu.be/niDcQKdPz00)**: a full game on the Vega Virtual Device against the AWS backend.
+
+### Highlights
+
+- **TV + phones + AI in one flow:** D-pad on the TV, private answers and topic suggestions on the phones, an AI host that writes, speaks and jokes.
+- **Any topic in seconds:** Mistral Large 3 on Amazon Bedrock writes the game, and a second model (DeepSeek V3.1) fact-checks every question before you play.
+- **A host you can hear:** questions and quips read aloud with Amazon Polly neural voices, in English and Spanish.
+- **Made for families:** Kids mode with no timer, two teams, rematch with the same players, family scores per TV, English and Spanish.
+- **Fully serverless on AWS:** API Gateway WebSockets, Lambda, DynamoDB, Bedrock and Polly, defined in AWS CDK; the phone page is served by the same API.
+
+### Try it in two minutes
+
+The backend is already running in AWS, so you only need the Vega SDK:
+
+```sh
+vega virtual-device start
+vega run-app apps/vega/build/aarch64-release/vega_aarch64.vpkg com.romeodev.couchquiz.main -d VirtualDevice   # after `yarn build:vega`
+```
+
+Pick a topic and a difficulty with the remote, create a room, and scan the QR code with any phone (Wi-Fi or mobile data). Building from source and running everything locally are covered below.
 
 | Setup (D-pad) | Lobby (QR join) | Question |
 |---|---|---|
@@ -28,7 +47,12 @@ Phones that lose the connection rejoin automatically with their name and score.
 
 **Family scores.** Every finished game adds to a family table kept per TV (wins, games, points and best game per person, matched by name), stored in DynamoDB under a random family id the TV creates on first run. Open it from Setup (🏆 Family) or the podium.
 
-**Question bank.** [`question-bank.json`](packages/protocol/src/question-bank.json) holds 747 questions (5 topics × easy/medium/hard, at least 30 per topic and level, each with a host quip; Kids mode uses the easy ones — about 74 ten-question games), and [`question-bank.es.json`](packages/protocol/src/question-bank.es.json) 710 in Spanish (about 71 games). 150 per language were written by hand; the rest were written by AI and kept only after **two fact-checking models and a manual review** agreed (see below). Questions of a **completed** game (one that reached the podium) are not served again for that topic and level; an abandoned game can come back. When a topic is used up, the AI host writes a fresh game (or, without AI, a new cycle starts). To grow the bank, `yarn workspace @couch-quiz/backend expand-bank` writes new games with Bedrock (Mistral Large 3, told to avoid the questions already in the bank) and has a second model (Qwen3 235B) fact-check every question; `expand-bank --recheck --second-opinion` (with `CHECKER_MODEL=deepseek.v3.1`) asks a third model about the ones that passed. Nothing is added directly: the candidates land in `bank-review/` with a `review.<lang>.md` that lists flagged questions first; after reviewing, `yarn workspace @couch-quiz/backend merge-bank --lang en` adds the ones that passed (and any flagged ones you marked `"approved": true`). In our run, 1,625 candidates → 1,352 passed both checkers → 1,157 kept after the manual review (wrong facts, myths, questions with two defensible answers and alcohol-related questions were dropped).
+**Question bank.** Preset topics play instantly from a built-in bank that doesn't repeat finished games:
+
+- [`question-bank.json`](packages/protocol/src/question-bank.json) has 747 questions in English and [`question-bank.es.json`](packages/protocol/src/question-bank.es.json) has 710 in Spanish (about 70 ten-question games each). That's 5 topics × easy/medium/hard, at least 30 per topic and level, each with a host quip; Kids mode uses the easy ones.
+- Questions of a **completed** game (one that reached the podium) are not served again for that topic and level; an abandoned game can come back. When a topic is used up, the AI host writes a fresh game (or, without AI, a new cycle starts).
+- 150 questions per language were written by hand. The rest were written by AI and kept only after **two fact-checking models and a manual review** agreed: 1,625 candidates → 1,352 passed both checkers → 1,157 kept. Wrong facts, myths, questions with two defensible answers and alcohol-related questions were dropped.
+- To grow it: `yarn workspace @couch-quiz/backend expand-bank` writes candidates with Bedrock (Mistral Large 3, told to avoid existing questions) and fact-checks them (Qwen3 235B); `expand-bank --recheck --second-opinion` with `CHECKER_MODEL=deepseek.v3.1` asks a third model about the ones that passed. Nothing is added directly: candidates land in `bank-review/` with a `review.<lang>.md` (flagged first), and `yarn workspace @couch-quiz/backend merge-bank --lang en` adds the ones that passed plus any you marked `"approved": true`.
 
 **Settings.** From the Setup screen (⚙): language (English or Spanish — applies to the TV, the phones, the question bank and the AI host), host voice on/off, questions per game (5 or 10), teams (off or 2 teams), sound effects and music on/off. Settings are saved on the TV (AsyncStorage on Vega, localStorage on web).
 
