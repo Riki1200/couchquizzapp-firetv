@@ -33,21 +33,6 @@
           }
         }
       ],
-      [
-        "react-native-video",
-        {
-          "enableNotificationControls": false,
-          "enableBackgroundAudio": false,
-          "enableADSExtension": false,
-          "enableCacheExtension": false,
-          "androidExtensions": {
-            "useExoplayerRtsp": false,
-            "useExoplayerSmoothStreaming": true,
-            "useExoplayerHls": false,
-            "useExoplayerDash": false
-          }
-        }
-      ],
       "./plugins/withFmtXcode26Fix",
       [
         "expo-splash-screen",
@@ -57,7 +42,8 @@
           "resizeMode": "contain",
           "backgroundColor": "#0B1026"
         }
-      ]
+      ],
+      "expo-audio"
     ],
     "name": "Couch Quiz",
     "slug": "couch-quiz",

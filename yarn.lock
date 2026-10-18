@@ -4811,6 +4811,7 @@ __metadata:
     "@expo/metro-runtime": "npm:~4.0.0"
     "@expo/vector-icons": "npm:^14.0.0"
     "@multi-tv/shared-ui": "workspace:*"
+    "@react-native-async-storage/async-storage": "npm:2.2.0"
     "@react-native-tvos/config-tv": "npm:^0.0.10"
     "@react-navigation/drawer": "npm:^7.0.0"
     "@react-navigation/native": "npm:^7.0.0"
@@ -4825,6 +4826,7 @@ __metadata:
     eslint-plugin-react: "npm:^7.37.1"
     eslint-plugin-react-native: "npm:^4.1.0"
     expo: "npm:~54.0.0"
+    expo-audio: "npm:~1.1.1"
     expo-build-properties: "npm:~0.13.0"
     expo-constants: "npm:~17.0.0"
     expo-font: "npm:~13.0.0"
@@ -4849,7 +4851,6 @@ __metadata:
     react-native-reanimated: "npm:3.19.5"
     react-native-safe-area-context: "npm:~5.4.0"
     react-native-screens: "npm:^4.24.0"
-    react-native-video: "npm:^6.8.0"
     react-native-web: "npm:~0.19.10"
     react-tv-space-navigation: "npm:6.0.0-beta1"
     typescript: "npm:~5.7.0"
@@ -4998,6 +4999,17 @@ __metadata:
   version: 0.2.9
   resolution: "@pkgr/core@npm:0.2.9"
   checksum: 10c0/ac8e4e8138b1a7a4ac6282873aef7389c352f1f8b577b4850778f5182e4a39a5241facbe48361fec817f56d02b51691b383010843fb08b34a8e8ea3614688fd5
+  languageName: node
+  linkType: hard
+
+"@react-native-async-storage/async-storage@npm:2.2.0":
+  version: 2.2.0
+  resolution: "@react-native-async-storage/async-storage@npm:2.2.0"
+  dependencies:
+    merge-options: "npm:^3.0.4"
+  peerDependencies:
+    react-native: ^0.0.0-0 || >=0.65 <1.0
+  checksum: 10c0/84900eba46a40225c4ac9bf5eb58885200dc1e789d873ecda46a2a213870cc7110536ed1fd7a74b873071f3603c093958fbd84c635d6f6d4f94bfbb616ffa0ef
   languageName: node
   linkType: hard
 
@@ -10741,6 +10753,18 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 10c0/303b7e08126edbddd3235a6803ffa6ff98b1cc0fb7bfa019d1ad891560bbbe9a9b84db7275ced33011330a8f4f225175d3780f4771a925d8e1c3782a343b9796
+  languageName: node
+  linkType: hard
+
+"expo-audio@npm:~1.1.1":
+  version: 1.1.1
+  resolution: "expo-audio@npm:1.1.1"
+  peerDependencies:
+    expo: "*"
+    expo-asset: "*"
+    react: "*"
+    react-native: "*"
+  checksum: 10c0/3ec687ca239b816097336808c9bd69995149166faf8dd74cb5fe732878843436178cbd1d901642779148df397562ffd36d207d217c801f16c300ab7df24d2208
   languageName: node
   linkType: hard
 
@@ -18707,16 +18731,6 @@ __metadata:
   bin:
     react-native-tscodegen: bin/cli
   checksum: 10c0/de9160a2bc42e43ab4163c39e4bff57bc53a384b6a1f3e98695155002592778fc9253aad8aa6664f97920d1d94aa02509d12c1c45d46169ccc6d0f4dc2729970
-  languageName: node
-  linkType: hard
-
-"react-native-video@npm:^6.8.0":
-  version: 6.19.1
-  resolution: "react-native-video@npm:6.19.1"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 10c0/0a57c490f15d0388db083c678e4feb3f9c67914ac812ec6ce3d03ca498631039d445b7113cc812a304752a9895a9b021c3148cab5573b9d03646aee0be871896
   languageName: node
   linkType: hard
 
