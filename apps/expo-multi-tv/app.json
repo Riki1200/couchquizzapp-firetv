@@ -48,17 +48,31 @@
           }
         }
       ],
-      "./plugins/withFmtXcode26Fix"
+      "./plugins/withFmtXcode26Fix",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 220,
+          "resizeMode": "contain",
+          "backgroundColor": "#0B1026"
+        }
+      ]
     ],
     "name": "Couch Quiz",
     "slug": "couch-quiz",
     "scheme": "com.romeodev.couchquiz",
     "android": {
-      "package": "com.romeodev.couchquiz"
+      "package": "com.romeodev.couchquiz",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#3C3687"
+      }
     },
     "ios": {
       "bundleIdentifier": "com.romeodev.couchquiz"
     },
-    "newArchEnabled": false
+    "newArchEnabled": false,
+    "icon": "./assets/icon.png"
   }
 }

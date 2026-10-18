@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Draws the Couch Quiz app icon and TV banners (original artwork, no external assets).
+"""Draws the Couch Quiz app icons, TV banners and splash image (original artwork, no external assets).
 
     python3 apps/vega/scripts/make-icons.py      # needs Pillow
 """
@@ -56,6 +56,13 @@ def app_icon(size):
     return rounded
 
 
+def mark_only(size, scale):
+    """The couch mark on a transparent square (Android adaptive-icon foreground, splash image)."""
+    img = Image.new('RGBA', (size, size), (0, 0, 0, 0))
+    draw_mark(ImageDraw.Draw(img), size / 2, size / 2 + size * 0.03 * scale, size / 512 * scale)
+    return img
+
+
 def banner(w, h):
     img = gradient((w, h), PURPLE, NAVY)
     d = ImageDraw.Draw(img)
@@ -75,6 +82,11 @@ def main():
     tv_icons = os.path.join(ROOT, 'apps', 'expo-multi-tv', 'assets', 'tv_icons')
     for w, h in [(400, 240), (800, 480), (1280, 768), (1920, 720)]:
         banner(w, h).save(os.path.join(tv_icons, f'icon-{w}x{h}.png'))
+    # Android / Fire OS build (apps/expo-multi-tv): launcher icon, adaptive icon and splash screen.
+    expo_assets = os.path.join(ROOT, 'apps', 'expo-multi-tv', 'assets')
+    app_icon(1024).save(os.path.join(expo_assets, 'icon.png'))
+    mark_only(1024, 0.62).save(os.path.join(expo_assets, 'adaptive-icon.png'))  # inside the 66% safe zone
+    mark_only(512, 0.95).save(os.path.join(expo_assets, 'splash-icon.png'))
     print('icons written')
 
 
